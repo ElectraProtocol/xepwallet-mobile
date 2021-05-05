@@ -124,7 +124,7 @@ function WalletImport() {
       const decryptedKey = await bip38.decrypt(importText, password);
 
       if (decryptedKey) {
-        importText = wif.encode(0x80, decryptedKey.privateKey, decryptedKey.compressed);
+        importText = wif.encode(0xa2, decryptedKey.privateKey, decryptedKey.compressed);
       }
     }
 
