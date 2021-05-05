@@ -265,12 +265,17 @@ export function formatBalance(balance, toUnit, withFormatting = false) {
     return balance + ' ' + strings.units[BitcoinUnit.BTC];
   }
   if (toUnit === BitcoinUnit.BTC) {
+    console.log("===unit-btc::", toUnit)
     const value = new BigNumber(balance).dividedBy(100000000).toFixed(8);
     return removeTrailingZeros(value) + ' ' + strings.units[BitcoinUnit.BTC];
   } else if (toUnit === BitcoinUnit.SATS) {
     return (withFormatting ? new Intl.NumberFormat().format(balance).toString() : String(balance)) + ' ' + strings.units[BitcoinUnit.SATS];
   } else if (toUnit === BitcoinUnit.LOCAL_CURRENCY) {
     return currency.satoshiToLocalCurrency(balance);
+  } else if (toUnit === BitcoinUnit.XEP) {
+    console.log("===unit::", toUnit)
+    const value = new BigNumber(balance).dividedBy(100000000).toFixed(8);
+    return removeTrailingZeros(value) + ' ' + strings.units[BitcoinUnit.XEP];
   }
 }
 

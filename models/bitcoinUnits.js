@@ -3,6 +3,7 @@ export const BitcoinUnit = Object.freeze({
   SATS: 'sats',
   LOCAL_CURRENCY: 'local_currency',
   MAX: 'MAX',
+  XEP: 'XEP',
 });
 
 export const Chain = Object.freeze({

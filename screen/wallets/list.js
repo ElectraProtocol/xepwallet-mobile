@@ -242,27 +242,27 @@ const WalletsList = () => {
     );
   };
 
-  const renderLocalTrader = () => {
-    if (carouselData.every(wallet => wallet === false)) return null;
-    if (carouselData.length > 0 && !carouselData.some(wallet => wallet.type === PlaceholderWallet.type)) {
-      const button = (
-        <TouchableOpacity
-          onPress={() => {
-            navigate('HodlHodl', { screen: 'HodlHodl' });
-          }}
-          style={[styles.ltRoot, stylesHook.ltRoot]}
-        >
-          <View style={styles.ltTextWrap}>
-            <Text style={[styles.ltTextBig, stylesHook.ltTextBig]}>{loc.hodl.local_trader}</Text>
-            <Text style={[styles.ltTextSmall, stylesHook.ltTextSmall]}>{loc.hodl.p2p}</Text>
-          </View>
-        </TouchableOpacity>
-      );
-      return isLargeScreen ? <SafeAreaView>{button}</SafeAreaView> : button;
-    } else {
-      return null;
-    }
-  };
+  // const renderLocalTrader = () => {
+  //   if (carouselData.every(wallet => wallet === false)) return null;
+  //   if (carouselData.length > 0 && !carouselData.some(wallet => wallet.type === PlaceholderWallet.type)) {
+  //     const button = (
+  //       <TouchableOpacity
+  //         onPress={() => {
+  //           navigate('HodlHodl', { screen: 'HodlHodl' });
+  //         }}
+  //         style={[styles.ltRoot, stylesHook.ltRoot]}
+  //       >
+  //         <View style={styles.ltTextWrap}>
+  //           <Text style={[styles.ltTextBig, stylesHook.ltTextBig]}>{loc.hodl.local_trader}</Text>
+  //           <Text style={[styles.ltTextSmall, stylesHook.ltTextSmall]}>{loc.hodl.p2p}</Text>
+  //         </View>
+  //       </TouchableOpacity>
+  //     );
+  //     return isLargeScreen ? <SafeAreaView>{button}</SafeAreaView> : button;
+  //   } else {
+  //     return null;
+  //   }
+  // };
 
   const renderWalletsCarousel = () => {
     return (
@@ -284,8 +284,8 @@ const WalletsList = () => {
     switch (item.section.key) {
       case WalletsListSections.CAROUSEL:
         return isLargeScreen ? null : renderWalletsCarousel();
-      case WalletsListSections.LOCALTRADER:
-        return renderLocalTrader();
+      // case WalletsListSections.LOCALTRADER:
+      //   return renderLocalTrader();
       case WalletsListSections.TRANSACTIONS:
         return renderTransactionListsRow(item);
       default:

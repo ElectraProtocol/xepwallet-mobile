@@ -253,7 +253,7 @@ const WalletTransactions = () => {
             The idea is to avoid showing on iOS an appstore/market style app that goes against the TOS.
 
            */}
-          {wallet.getTransactions().length > 0 && wallet.type !== LightningCustodianWallet.type && renderSellFiat()}
+          {/* {wallet.getTransactions().length > 0 && wallet.type !== LightningCustodianWallet.type && renderSellFiat()} */}
           {wallet.type === LightningCustodianWallet.type && renderMarketplaceButton()}
           {wallet.type === LightningCustodianWallet.type && Platform.OS === 'ios' && renderLappBrowserButton()}
         </View>
@@ -390,13 +390,13 @@ const WalletTransactions = () => {
     );
   };
 
-  const renderSellFiat = () => {
-    return (
-      <TouchableOpacity onPress={navigateToBuyBitcoin} style={[styles.marketplaceButton2, stylesHook.marketplaceButton2]}>
-        <Text style={[styles.marketpalceText1, stylesHook.marketpalceText1]}>{loc.wallets.list_tap_here_to_buy}</Text>
-      </TouchableOpacity>
-    );
-  };
+  // const renderSellFiat = () => {
+  //   return (
+  //     <TouchableOpacity onPress={navigateToBuyBitcoin} style={[styles.marketplaceButton2, stylesHook.marketplaceButton2]}>
+  //       <Text style={[styles.marketpalceText1, stylesHook.marketpalceText1]}>{loc.wallets.list_tap_here_to_buy}</Text>
+  //     </TouchableOpacity>
+  //   );
+  // };
 
   const onWalletSelect = async selectedWallet => {
     if (selectedWallet) {

@@ -24,14 +24,13 @@ class WidgetAPI {
   static func fetchPrice(currency: String, completion: @escaping ((WidgetDataStore?, Error?) -> Void)) {
     let currencyToFiatUnit = fiatUnit(currency: currency)
     guard let source = currencyToFiatUnit?.source, let endPointKey = currencyToFiatUnit?.endPointKey else { return }
-
     var urlString: String
     switch source {
     case "Yadio":
       urlString = "https://api.yadio.io/json/\(endPointKey)"
     case "BitcoinduLiban":
       urlString = "https://bitcoinduliban.org/api.php?key=lbpusd"
-    default:
+    default:    
       urlString = "https://api.coindesk.com/v1/bpi/currentprice/\(endPointKey).json"
     }
 
