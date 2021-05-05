@@ -22,6 +22,7 @@ import { LightningCustodianWallet, MultisigHDWallet, PlaceholderWallet } from '.
 import WalletGradient from '../class/wallet-gradient';
 import { BluePrivateBalance } from '../BlueComponents';
 import { BlueStorageContext } from '../blue_modules/storage-context';
+import { BitcoinUnit } from '../models/bitcoinUnits';
 
 const nStyles = StyleSheet.create({
   root: {
@@ -222,6 +223,7 @@ const WalletCarouselItem = ({ item, index, onPress, handleLongPress, isSelectedW
 
   const balance = !item.hideBalance && formatBalance(Number(item.getBalance()), item.getPreferredBalanceUnit(), true);
 
+  console.log("====balance::", item.getBalance(), "===", item.getPreferredBalanceUnit());
   return (
     <Animated.View
       style={[iStyles.root, { opacity, transform: [{ scale: scaleValue }] }]}

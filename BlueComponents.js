@@ -190,7 +190,7 @@ export const VaultButton = props => {
 export const LightningButton = props => {
   const { colors } = useTheme();
   return (
-    <TouchableOpacity onPress={props.onPress}>
+    <TouchableOpacity onPress={props.onPress} disabled>
       <View
         style={{
           borderColor: (props.active && colors.lnborderColor) || colors.buttonDisabledBackgroundColor,

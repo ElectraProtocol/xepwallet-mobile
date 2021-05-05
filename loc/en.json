@@ -290,7 +290,7 @@
     "general_adv_mode_e": "When enabled, you will see advanced options such as different wallet types, and custom entropy during wallet creation.",
     "general_continuity": "Continuity",
     "general_continuity_e": "When enabled, you will be able to view selected wallets, and transactions, using your other Apple iCloud connected devices.",
-    "groundcontrol_explanation": "GroundControl is a free, open-source push notifications server for Bitcoin wallets. You can install your own GroundControl server and put its URL here to not rely on XEP wallet's infrastructure. Leave blank to use GroundControl’s default server.",
+    "groundcontrol_explanation": "GroundControl is a free, open-source push notifications server for XEP wallets. You can install your own GroundControl server and put its URL here to not rely on XEP wallet's infrastructure. Leave blank to use GroundControl’s default server.",
     "header": "Settings",
     "language": "Language",
     "language_isRTL": "Restarting XEP wallet is required for the language orientation to take effect.",

@@ -265,30 +265,30 @@ const WalletDetails = () => {
       walletID: wallet.getID(),
     });
 
-  const renderMarketplaceButton = () => {
-    return Platform.select({
-      android: (
-        <SecondButton
-          testID="Marketplace"
-          onPress={() =>
-            navigate('Marketplace', {
-              fromWallet: wallet,
-            })
-          }
-          title={loc.wallets.details_marketplace}
-        />
-      ),
-      ios: (
-        <SecondButton
-          testID="Marketplace"
-          onPress={async () => {
-            Linking.openURL('https://bluewallet.io/marketplace-btc/');
-          }}
-          title={loc.wallets.details_marketplace}
-        />
-      ),
-    });
-  };
+  // const renderMarketplaceButton = () => {
+  //   return Platform.select({
+  //     android: (
+  //       <SecondButton
+  //         testID="Marketplace"
+  //         onPress={() =>
+  //           navigate('Marketplace', {
+  //             fromWallet: wallet,
+  //           })
+  //         }
+  //         title={loc.wallets.details_marketplace}
+  //       />
+  //     ),
+  //     ios: (
+  //       <SecondButton
+  //         testID="Marketplace"
+  //         onPress={async () => {
+  //           Linking.openURL('https://bluewallet.io/marketplace-btc/');
+  //         }}
+  //         title={loc.wallets.details_marketplace}
+  //       />
+  //     ),
+  //   });
+  // };
 
   const exportInternals = async () => {
     if (backdoorPressed < 10) return setBackdoorPressed(backdoorPressed + 1);
@@ -582,9 +582,9 @@ const WalletDetails = () => {
                   <>
                     <BlueSpacing20 />
                     <SecondButton onPress={navigateToXPub} testID="XPub" title={loc.wallets.details_show_xpub} />
-                    <BlueSpacing20 />
+                    {/* <BlueSpacing20 /> */}
 
-                    {renderMarketplaceButton()}
+                    {/* {renderMarketplaceButton()} */}
                   </>
                 )}
                 {wallet.allowSignVerifyMessage() && (
