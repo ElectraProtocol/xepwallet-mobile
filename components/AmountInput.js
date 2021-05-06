@@ -62,6 +62,9 @@ class AmountInput extends Component {
       case BitcoinUnit.BTC:
         sats = new BigNumber(amount).multipliedBy(100000000).toString();
         break;
+      case BitcoinUnit.XEP:
+        sats = new BigNumber(amount).multipliedBy(100000000).toString();
+        break;
       case BitcoinUnit.SATS:
         sats = amount;
         break;
@@ -227,7 +230,7 @@ class AmountInput extends Component {
                 style={[styles.input, stylesHook.input]}
               />
               {unit !== BitcoinUnit.LOCAL_CURRENCY && amount !== BitcoinUnit.MAX && (
-                <Text style={[styles.cryptoCurrency, stylesHook.cryptoCurrency]}>{' ' + loc.units[unit]}</Text>
+                <Text style={[styles.cryptoCurrency, stylesHook.cryptoCurrency]}>{' ' + loc.units[BitcoinUnit.BTC]}</Text>
               )}
             </View>
             <View style={styles.secondaryRoot}>

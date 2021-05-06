@@ -31,11 +31,24 @@ import { BlueStorageContext } from '../../blue_modules/storage-context';
 import { isCatalyst, isMacCatalina, isTablet } from '../../blue_modules/environment';
 import BlueClipboard from '../../blue_modules/clipboard';
 import navigationStyle from '../../components/navigationStyle';
+import BigNumber from 'bignumber.js';
 
 const scanqrHelper = require('../../helpers/scan-qr');
 const A = require('../../blue_modules/analytics');
 const fs = require('../../blue_modules/fs');
 const WalletsListSections = { CAROUSEL: 'CAROUSEL', LOCALTRADER: 'LOCALTRADER', TRANSACTIONS: 'TRANSACTIONS' };
+
+export const removeTrailingZeros = value => {
+  value = value.toString();
+
+  if (value.indexOf('.') === -1) {
+    return value;
+  }
+  while ((value.slice(-1) === '0' || value.slice(-1) === '.') && value.indexOf('.') !== -1) {
+    value = value.substr(0, value.length - 1);
+  }
+  return value;
+};
 
 const WalletsList = () => {
   const walletsCarousel = useRef();
@@ -234,7 +247,14 @@ const WalletsList = () => {
     }
   };
 
+  
+
   const renderTransactionListsRow = data => {
+    const newItem = {
+      ...data.item,
+      value: new BigNumber(data?.item?.value).dividedBy(100000000).toFixed(10),
+      // value: removeTrailingZeros(val)
+    };
     return (
       <View style={styles.transaction}>
         <BlueTransactionListItem item={data.item} itemPriceUnit={data.item.walletPreferredBalanceUnit} />

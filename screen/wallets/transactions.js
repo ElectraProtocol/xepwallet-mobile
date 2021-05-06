@@ -437,7 +437,7 @@ const WalletTransactions = () => {
   };
 
   const renderItem = item => <BlueTransactionListItem item={item.item} itemPriceUnit={itemPriceUnit} timeElapsed={timeElapsed} />;
-
+console.log("==render item::", renderItem)
   const onBarCodeRead = ret => {
     if (!isLoading) {
       setIsLoading(true);
@@ -652,7 +652,7 @@ const WalletTransactions = () => {
               <Text numberOfLines={0} style={styles.emptyTxs}>
                 {(isLightning() && loc.wallets.list_empty_txs1_lightning) || loc.wallets.list_empty_txs1}
               </Text>
-              {isLightning() && <Text style={styles.emptyTxsLightning}>{loc.wallets.list_empty_txs2_lightning}</Text>}
+              {/* {isLightning() && <Text style={styles.emptyTxsLightning}>{loc.wallets.list_empty_txs2_lightning}</Text>}
 
               {!isLightning() && (
                 <TouchableOpacity onPress={navigateToBuyBitcoin} style={styles.buyBitcoin}>
@@ -660,7 +660,7 @@ const WalletTransactions = () => {
                     {loc.wallets.list_tap_here_to_buy}
                   </Text>
                 </TouchableOpacity>
-              )}
+              )} */}
             </ScrollView>
           }
           onRefresh={refreshTransactions}

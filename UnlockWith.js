@@ -7,6 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { StackActions, useNavigation, useRoute } from '@react-navigation/native';
 import { BlueStorageContext } from './blue_modules/storage-context';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
+import tr from 'dayjs/locale/tr';
 
 const styles = StyleSheet.create({
   root: {
@@ -136,7 +137,7 @@ const UnlockWith = () => {
     <SafeAreaView style={styles.root}>
       <StatusBar barStyle="default" />
       <View style={styles.container}>
-        <LottieView source={require('./img/bluewalletsplash.json')} autoPlay loop={false} onAnimationFinish={onAnimationFinish} />
+        <LottieView source={require('./img/xepsplash.json')} autoPlay loop={false} onAnimationFinish={onAnimationFinish} />
         <View style={styles.biometric}>{animationDidFinish && <View style={styles.biometricRow}>{renderUnlockOptions()}</View>}</View>
       </View>
     </SafeAreaView>

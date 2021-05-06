@@ -24,7 +24,7 @@ const About = () => {
       marginTop: 54,
     },
     logo: {
-      width: 102,
+      width: 124,
       height: 124,
     },
     textFree: {
@@ -72,31 +72,31 @@ const About = () => {
   };
 
   const handleOnLicensingPress = () => {
-    navigate('Licensing');
+    // navigate('Licensing');
   };
 
   const handleOnTwitterPress = () => {
-    Linking.openURL('https://twitter.com/bluewalletio');
+    Linking.openURL('https://twitter.com/ElectraProtocol');
   };
 
   const handleOnDiscordPress = () => {
-    Linking.openURL('https://discord.gg/btWq2Aby2z');
+    Linking.openURL('https://discord.com/invite/B8F7Jdv');
   };
 
   const handleOnTelegramPress = () => {
-    Linking.openURL('https://t.me/bluewallethat');
+    Linking.openURL('https://t.me/ElectraProtocol');
   };
   const handleOnGithubPress = () => {
-    Linking.openURL('https://github.com/BlueWallet/BlueWallet');
+    Linking.openURL('https://github.com/ElectraProtocol');
   };
   const handleOnRatePress = () => {
     const options = {
       AppleAppID: '1376878040',
-      GooglePackageName: 'io.bluewallet.bluewallet',
+      GooglePackageName: 'io.electraprotocol.xepwallet',
       preferredAndroidMarket: AndroidMarket.Google,
       preferInApp: true,
       openAppStoreIfInAppFails: true,
-      fallbackPlatformURL: 'https://bluewallet.io',
+      fallbackPlatformURL: 'https://www.electraprotocol.com/',
     };
     Rate.rate(options, success => {
       if (success) {
@@ -109,7 +109,7 @@ const About = () => {
     <ScrollView testID="AboutScrollView" contentInsetAdjustmentBehavior="automatic">
       <BlueCard>
         <View style={styles.center}>
-          <Image style={styles.logo} source={require('../../img/bluebeast.png')} />
+          <Image style={styles.logo} source={require('../../img/icon.png')} />
           <Text style={styles.textFree}>{loc.settings.about_free}</Text>
           <Text style={styles.textBackup}>{loc.settings.about_backup}</Text>
           <BlueButton onPress={handleOnRatePress} title={loc.settings.about_review + ' ⭐🙏'} />
