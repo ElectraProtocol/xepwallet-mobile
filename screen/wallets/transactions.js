@@ -437,7 +437,6 @@ const WalletTransactions = () => {
   };
 
   const renderItem = item => <BlueTransactionListItem item={item.item} itemPriceUnit={itemPriceUnit} timeElapsed={timeElapsed} />;
-console.log("==render item::", renderItem)
   const onBarCodeRead = ret => {
     if (!isLoading) {
       setIsLoading(true);

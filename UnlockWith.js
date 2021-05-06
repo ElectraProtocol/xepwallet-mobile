@@ -137,7 +137,7 @@ const UnlockWith = () => {
     <SafeAreaView style={styles.root}>
       <StatusBar barStyle="default" />
       <View style={styles.container}>
-        <LottieView source={require('./img/xepsplash.json')} autoPlay loop={false} onAnimationFinish={onAnimationFinish} />
+        <LottieView source={require('./img/xepLogoSplash.json')} autoPlay loop={false} onAnimationFinish={onAnimationFinish} />
         <View style={styles.biometric}>{animationDidFinish && <View style={styles.biometricRow}>{renderUnlockOptions()}</View>}</View>
       </View>
     </SafeAreaView>

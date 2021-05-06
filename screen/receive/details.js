@@ -178,7 +178,7 @@ const ReceiveDetails = () => {
             />
 
             <QRCode
-              value={bip21encoded}
+              value={address}
               logo={require('../../img/qr-code.png')}
               size={(is.ipad() && 300) || 300}
               logoSize={90}
@@ -189,7 +189,7 @@ const ReceiveDetails = () => {
               getRef={qrCode}
             />
           </TouchableWithoutFeedback>
-          <BlueCopyTextToClipboard text={isCustom ? bip21encoded : address} />
+          <BlueCopyTextToClipboard text={address} />
         </View>
         <View style={styles.share}>
           <BlueCard>
@@ -358,7 +358,9 @@ const ReceiveDetails = () => {
   };
 
   const handleShareButtonPressed = () => {
-    Share.open({ message: bip21encoded }).catch(error => console.log(error));
+    let shareAddress = bip21encoded.replace("bitcoin", BitcoinUnit.XEP)
+    console.log("======share new::", shareAddress, bip21encoded)
+    Share.open({ message: shareAddress }).catch(error => console.log(error));
   };
 
   /**
