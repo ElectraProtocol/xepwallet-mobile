@@ -77,7 +77,7 @@ export default class LnurlPaySuccess extends Component {
         <ScrollView>
           {justPaid ? (
             <View style={styles.iconContainer}>
-              <LottieView style={styles.icon} source={require('../../img/bluenice.json')} autoPlay loop={false} />
+              <LottieView style={styles.icon} source={require('../../img/xepSuccess.json')} autoPlay loop={false} />
             </View>
           ) : (
             <View style={styles.iconContainer}>
