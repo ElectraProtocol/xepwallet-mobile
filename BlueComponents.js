@@ -284,27 +284,27 @@ export class BlueWalletNavigationHeader extends Component {
     await this.context.saveToDisk();
   };
 
-  // changeWalletBalanceUnit = () => {
-  //   let walletPreviousPreferredUnit = this.state.wallet.getPreferredBalanceUnit();
-  //   const wallet = this.state.wallet;
-  //   if (walletPreviousPreferredUnit === BitcoinUnit.BTC) {
-  //     wallet.preferredBalanceUnit = BitcoinUnit.SATS;
-  //     walletPreviousPreferredUnit = BitcoinUnit.BTC;
-  //   } else if (walletPreviousPreferredUnit === BitcoinUnit.SATS) {
-  //     wallet.preferredBalanceUnit = BitcoinUnit.LOCAL_CURRENCY;
-  //     walletPreviousPreferredUnit = BitcoinUnit.SATS;
-  //   } else if (walletPreviousPreferredUnit === BitcoinUnit.LOCAL_CURRENCY) {
-  //     wallet.preferredBalanceUnit = BitcoinUnit.BTC;
-  //     walletPreviousPreferredUnit = BitcoinUnit.BTC;
-  //   } else {
-  //     wallet.preferredBalanceUnit = BitcoinUnit.BTC;
-  //     walletPreviousPreferredUnit = BitcoinUnit.BTC;
-  //   }
+  changeWalletBalanceUnit = () => {
+    let walletPreviousPreferredUnit = this.state.wallet.getPreferredBalanceUnit();
+    const wallet = this.state.wallet;
+    if (walletPreviousPreferredUnit === BitcoinUnit.BTC) {
+      wallet.preferredBalanceUnit = BitcoinUnit.LOCAL_CURRENCY;
+      walletPreviousPreferredUnit = BitcoinUnit.BTC;
+    } else if (walletPreviousPreferredUnit === BitcoinUnit.SATS) {
+      wallet.preferredBalanceUnit = BitcoinUnit.LOCAL_CURRENCY;
+      walletPreviousPreferredUnit = BitcoinUnit.SATS;
+    } else if (walletPreviousPreferredUnit === BitcoinUnit.LOCAL_CURRENCY) {
+      wallet.preferredBalanceUnit = BitcoinUnit.BTC;
+      walletPreviousPreferredUnit = BitcoinUnit.LOCAL_CURRENCY;
+    } else {
+      wallet.preferredBalanceUnit = BitcoinUnit.BTC;
+      walletPreviousPreferredUnit = BitcoinUnit.BTC;
+    }
 
-  //   this.setState({ wallet, walletPreviousPreferredUnit: walletPreviousPreferredUnit }, () => {
-  //     this.props.onWalletUnitChange(wallet);
-  //   });
-  // };
+    this.setState({ wallet, walletPreviousPreferredUnit: walletPreviousPreferredUnit }, () => {
+      this.props.onWalletUnitChange(wallet);
+    });
+  };
 
   manageFundsPressed = () => {
     this.props.onManageFundsPressed();
@@ -382,7 +382,7 @@ export class BlueWalletNavigationHeader extends Component {
         />
         <TouchableOpacity
           style={styles.balance}
-          // onPress={this.changeWalletBalanceUnit}
+          onPress={this.changeWalletBalanceUnit}
           ref={this.walletBalanceText}
           onLongPress={this.showToolTipMenu}
         >

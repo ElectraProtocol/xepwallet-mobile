@@ -151,6 +151,9 @@ const ReceiveDetails = () => {
     toolTip.current.showMenu();
   };
   const renderReceiveDetails = () => {
+    console.log("===bip21::", bip21encoded)
+    let showQRData = bip21encoded.replace("bitcoin", "xep");
+    showQRData = showQRData.replace("label", "message");
     return (
       <ScrollView contentContainerStyle={styles.root} keyboardShouldPersistTaps="always">
         <View style={styles.scrollBody}>
@@ -178,7 +181,7 @@ const ReceiveDetails = () => {
             />
 
             <QRCode
-              value={address}
+              value={showQRData}
               logo={require('../../img/qr-code.png')}
               size={(is.ipad() && 300) || 300}
               logoSize={90}
@@ -189,7 +192,7 @@ const ReceiveDetails = () => {
               getRef={qrCode}
             />
           </TouchableWithoutFeedback>
-          <BlueCopyTextToClipboard text={address} />
+          <BlueCopyTextToClipboard text={isCustom ? showQRData : address} />
         </View>
         <View style={styles.share}>
           <BlueCard>
@@ -254,6 +257,7 @@ const ReceiveDetails = () => {
   }, []);
 
   const setAddressBIP21Encoded = address => {
+    console.log("==========setaddressbip21::", address, bip21encoded)
     const bip21encoded = DeeplinkSchemaMatch.bip21encode(address);
     setParams({ address });
     setBip21encoded(bip21encoded);
@@ -358,8 +362,8 @@ const ReceiveDetails = () => {
   };
 
   const handleShareButtonPressed = () => {
-    let shareAddress = bip21encoded.replace("bitcoin", BitcoinUnit.XEP)
-    console.log("======share new::", shareAddress, bip21encoded)
+    let shareAddress = bip21encoded.replace("bitcoin", "xep")
+    console.log("======share new::", shareAddress)
     Share.open({ message: shareAddress }).catch(error => console.log(error));
   };
 
@@ -369,11 +373,11 @@ const ReceiveDetails = () => {
   const getDisplayAmount = () => {
     switch (customUnit) {
       case BitcoinUnit.BTC:
-        return customAmount + ' BTC';
+        return customAmount + ' XEP';
       case BitcoinUnit.SATS:
-        return currency.satoshiToBTC(customAmount) + ' BTC';
+        return currency.satoshiToBTC(customAmount) + ' XEP';
       case BitcoinUnit.LOCAL_CURRENCY:
-        return currency.fiatToBTC(customAmount) + ' BTC';
+        return currency.fiatToBTC(customAmount) + ' XEP';
     }
     return customAmount + ' ' + customUnit;
   };

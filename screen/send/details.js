@@ -129,11 +129,12 @@ const SendDetails = () => {
 
     // decode route params
     if (routeParams.uri) {
+      console.log("===decode uri::", routeParams);
       try {
         const { address, amount, memo: initialMemo, payjoinUrl } = DeeplinkSchemaMatch.decodeBitcoinUri(routeParams.uri);
         setAddresses([{ address, amount, amountSats: currency.btcToSatoshi(amount), key: String(Math.random()) }]);
         setMemo(initialMemo || '');
-        setAmountUnit(BitcoinUnit.BTC);
+        setAmountUnit(BitcoinUnit.XEP);
         setPayjoinUrl(payjoinUrl);
       } catch (error) {
         console.log(error);
@@ -142,7 +143,7 @@ const SendDetails = () => {
     } else if (routeParams.address) {
       setAddresses([{ address: routeParams.address, key: String(Math.random()) }]);
       setMemo(routeParams.memo || '');
-      setAmountUnit(BitcoinUnit.BTC);
+      setAmountUnit(BitcoinUnit.XEP);
     } else {
       setAddresses([{ address: '', key: String(Math.random()) }]); // key is for the FlatList
     }
@@ -360,7 +361,7 @@ const SendDetails = () => {
       options = decoded.options;
     }
 
-    console.log('options', options);
+    console.log('===options', options, address);
     if (btcAddressRx.test(address) || address.startsWith('ep1') || address.startsWith('EP1')) {
       setAddresses(addresses => {
         addresses[scrollIndex.current].address = address;
@@ -369,11 +370,11 @@ const SendDetails = () => {
         return [...addresses];
       });
       setUnits(units => {
-        units[scrollIndex.current] = BitcoinUnit.BTC; // also resetting current unit to BTC
+        units[scrollIndex.current] = BitcoinUnit.XEP; // also resetting current unit to BTC
         return [...units];
       });
       setMemo(options.label || options.message);
-      setAmountUnit(BitcoinUnit.BTC);
+      setAmountUnit(BitcoinUnit.XEP);
       setPayjoinUrl(options.pj || '');
     }
 

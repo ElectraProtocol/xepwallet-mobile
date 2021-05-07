@@ -18,6 +18,7 @@ class DeeplinkSchemaMatch {
       lowercaseString.startsWith('blue:') ||
       lowercaseString.startsWith('bluewallet:') ||
       lowercaseString.startsWith('lapp:') ||
+      lowercaseString.startsWith('xep:') ||
       lowercaseString.startsWith('aopp:')
     );
   }
@@ -429,14 +430,17 @@ class DeeplinkSchemaMatch {
   }
 
   static bip21decode(uri) {
-    return bip21.decode(uri.replace('BITCOIN:', 'bitcoin:'));
+    console.log("===bip21decode::", uri);
+    return bip21.decode(uri.replace('xep:', ''));
   }
 
   static bip21encode() {
+    console.log("====encode bip21::", arguments);
     return bip21.encode.apply(bip21, arguments);
   }
 
   static decodeBitcoinUri(uri) {
+    console.log("===decoded BitcoinUri::", uri)
     let amount = '';
     let parsedBitcoinUri = null;
     let address = uri || '';
@@ -450,7 +454,7 @@ class DeeplinkSchemaMatch {
           amount = parsedBitcoinUri.options.amount.toString();
           amount = parsedBitcoinUri.options.amount;
         }
-        if ('label' in parsedBitcoinUri.options) {
+        if ('message' in parsedBitcoinUri.options) {
           memo = parsedBitcoinUri.options.label || memo;
         }
         if ('pj' in parsedBitcoinUri.options) {
