@@ -92,6 +92,7 @@ const WalletsImport = () => {
    * @param additionalProperties key-values passed from outside. Used only to set up `masterFingerprint` property for watch-only wallet
    */
   const onBarScanned = (value, additionalProperties) => {
+    console.log("=====import onBarScanned::", value)
     if (value && value.data) value = value.data + ''; // no objects here, only strings
     setImportText(value);
     setTimeout(() => importMnemonic(value, additionalProperties), 500);

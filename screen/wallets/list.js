@@ -32,6 +32,7 @@ import { isCatalyst, isMacCatalina, isTablet } from '../../blue_modules/environm
 import BlueClipboard from '../../blue_modules/clipboard';
 import navigationStyle from '../../components/navigationStyle';
 import BigNumber from 'bignumber.js';
+import ro from 'dayjs/locale/ro';
 
 const scanqrHelper = require('../../helpers/scan-qr');
 const A = require('../../blue_modules/analytics');
@@ -378,7 +379,8 @@ const WalletsList = () => {
 
   const onBarScanned = value => {
     if (!value) return;
-    DeeplinkSchemaMatch.navigationRouteFor({ url: value }, completionValue => {
+    let realValue = value.replace("xep:", "bitcoin:");
+    DeeplinkSchemaMatch.navigationRouteFor({ url: realValue }, completionValue => {
       ReactNativeHapticFeedback.trigger('impactLight', { ignoreAndroidSystemSettings: false });
       navigate(...completionValue);
     });

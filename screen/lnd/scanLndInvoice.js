@@ -100,7 +100,7 @@ const ScanLndInvoice = () => {
       }
 
       data = data.replace('LIGHTNING:', '').replace('lightning:', '');
-      console.log(data);
+      console.log("===LIGHTNING", data);
 
       /**
        * @type {LightningCustodianWallet}
