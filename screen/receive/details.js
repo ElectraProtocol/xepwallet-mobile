@@ -89,7 +89,7 @@ const ReceiveDetails = () => {
     },
     qrCodeContainer: { borderWidth: 6, borderRadius: 8, borderColor: '#FFFFFF' },
     root: {
-      flex: 1,
+      // flex: 1,
       backgroundColor: colors.elevated,
       justifyContent: 'space-between',
     },
@@ -104,6 +104,7 @@ const ReceiveDetails = () => {
       paddingVertical: 16,
       alignItems: 'center',
       flexGrow: 1,
+      marginTop: 40,
       marginBottom: 8,
     },
     link: {
@@ -151,18 +152,17 @@ const ReceiveDetails = () => {
     toolTip.current.showMenu();
   };
   const renderReceiveDetails = () => {
-    console.log("===bip21::", bip21encoded)
-    let showQRData = bip21encoded.replace("bitcoin", "xep");
+    let showQRData = bip21encoded.replace("bitcoin:", "xep:");
     showQRData = showQRData.replace("label", "message");
     return (
       <ScrollView contentContainerStyle={styles.root} keyboardShouldPersistTaps="always">
         <View style={styles.scrollBody}>
           {isCustom && (
             <>
-              <BlueText testID="CustomAmountText" style={styles.amount} numberOfLines={1}>
+              <BlueText testID="CustomAmountText" style={styles.amount} numberOfLines={2}>
                 {getDisplayAmount()}
               </BlueText>
-              <BlueText testID="CustomAmountDescriptionText" style={styles.label} numberOfLines={1}>
+              <BlueText testID="CustomAmountDescriptionText" style={styles.label} numberOfLines={10}>
                 {customLabel}
               </BlueText>
             </>
@@ -388,7 +388,7 @@ const ReceiveDetails = () => {
       {address !== undefined && showAddress && (
         <HandoffComponent
           title={`Bitcoin Transaction ${address}`}
-          type="io.bluewallet.bluewallet"
+          type="io.electraprotocol.xepwallet"
           url={`https://blockstream.info/address/${address}`}
         />
       )}

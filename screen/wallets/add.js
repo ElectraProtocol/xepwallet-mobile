@@ -16,7 +16,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   BlueText,
   BlueListItem,
-  LightningButton,
+  // LightningButton,
   BitcoinButton,
   VaultButton,
   BlueFormLabel,
@@ -208,10 +208,10 @@ const WalletsAdd = () => {
     setSelectedWalletType(ButtonSelected.ONCHAIN);
   };
 
-  const handleOnLightningButtonPressed = () => {
-    Keyboard.dismiss();
-    setSelectedWalletType(ButtonSelected.OFFCHAIN);
-  };
+  // const handleOnLightningButtonPressed = () => {
+  //   Keyboard.dismiss();
+  //   setSelectedWalletType(ButtonSelected.OFFCHAIN);
+  // };
 
   return (
     <ScrollView style={stylesHook.root}>
@@ -239,11 +239,11 @@ const WalletsAdd = () => {
             onPress={handleOnBitcoinButtonPressed}
             style={styles.button}
           />
-          <LightningButton
+          {/* <LightningButton
             active={selectedWalletType === ButtonSelected.OFFCHAIN}
             onPress={handleOnLightningButtonPressed}
             style={styles.button}
-          />
+          /> */}
           <VaultButton active={selectedWalletType === ButtonSelected.VAULT} onPress={handleOnVaultButtonPressed} style={styles.button} />
         </View>
 

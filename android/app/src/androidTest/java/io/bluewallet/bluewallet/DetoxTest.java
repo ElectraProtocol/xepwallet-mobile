@@ -1,4 +1,4 @@
-package io.bluewallet.bluewallet;
+package io.electraprotocol.xepwallet;
 
 import com.wix.detox.Detox;
 
