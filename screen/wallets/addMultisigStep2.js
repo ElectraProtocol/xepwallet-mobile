@@ -218,6 +218,7 @@ const WalletsAddMultisigStep2 = () => {
       cosignersCopy.push([w.getSecret(), false, false]);
       if (Platform.OS !== 'android') LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
       setCosigners(cosignersCopy);
+      console.log("===cosigner::", cosignersCopy);
       setVaultKeyData({ keyIndex: cosignersCopy.length, seed: w.getSecret(), xpub: w.getXpub(), isLoading: false });
       setIsLoading(true);
       setIsMnemonicsModalVisible(true);
@@ -226,7 +227,10 @@ const WalletsAddMultisigStep2 = () => {
       setTimeout(() => {
         // filling cache
         setXpubCacheForMnemonics(w.getSecret());
+        console.log("======4::", w.getSecret(), typeof(w.getSecret()));
+
         setFpCacheForMnemonics(w.getSecret());
+        console.log("======5");
         setIsLoading(false);
       }, 500);
     });

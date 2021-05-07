@@ -59,7 +59,7 @@ export class AbstractHDElectrumWallet extends AbstractHDWallet {
   }
 
   async generate() {
-    const buf = await randomBytes(16);
+    const buf = await randomBytes(10);
     this.secret = bip39.entropyToMnemonic(buf.toString('hex'));
   }
 
@@ -1105,7 +1105,18 @@ export class AbstractHDElectrumWallet extends AbstractHDWallet {
    * @returns {string} Hex string of fingerprint derived from mnemonics. Always has lenght of 8 chars and correct leading zeroes
    */
   static seedToFingerprint(seed) {
-    const root = bitcoin.bip32.fromSeed(seed);
+    console.log("======seed byte size ::", seed.length);
+    let new_seed;
+    if(seed.length < 16) {
+      return
+    } else if(seed.length > 64) {
+      new_seed = seed.substring(0, 63);
+    }
+    const buffer_seed = Buffer.from(new_seed);
+    console.log("======seed ::", buffer_seed);
+
+    const root = bitcoin.bip32.fromSeed(buffer_seed);
+    console.log("======seed-2 ::", seed)
     let hex = root.fingerprint.toString('hex');
     while (hex.length < 8) hex = '0' + hex; // leading zeroes
     return hex.toUpperCase();
