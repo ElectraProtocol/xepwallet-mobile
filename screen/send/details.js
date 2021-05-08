@@ -77,6 +77,7 @@ const SendDetails = () => {
   const [payjoinUrl, setPayjoinUrl] = useState(null);
   const [changeAddress, setChangeAddress] = useState();
   const [dumb, setDumb] = useState(false);
+  const [firstLoading, setFirstLoading] = useState(false);
 
   // if cutomFee is not set, we need to choose highest possible fee for wallet balance
   // if there are no funds for even Slow option, use 1 sat/byte fee
@@ -84,12 +85,12 @@ const SendDetails = () => {
     if (customFee) return customFee;
     if (feePrecalc.slowFee === null) return '1'; // wait for precalculated fees
     let initialFee;
-    if (feePrecalc.fastestFee !== null) {
-      initialFee = String(networkTransactionFees.fastestFee);
+    if (feePrecalc.slowFee !== null) {
+      initialFee = String(networkTransactionFees.slowFee);
     } else if (feePrecalc.mediumFee !== null) {
       initialFee = String(networkTransactionFees.mediumFee);
     } else {
-      initialFee = String(networkTransactionFees.slowFee);
+      initialFee = String(networkTransactionFees.fastestFee);
     }
     return initialFee;
   }, [customFee, feePrecalc, networkTransactionFees]);
@@ -129,7 +130,6 @@ const SendDetails = () => {
 
     // decode route params
     if (routeParams.uri) {
-      console.log("===decode uri::", routeParams);
       try {
         const { address, amount, memo: initialMemo, payjoinUrl } = DeeplinkSchemaMatch.decodeBitcoinUri(routeParams.uri);
         setAddresses([{ address, amount, amountSats: currency.btcToSatoshi(amount), key: String(Math.random()) }]);
@@ -218,8 +218,10 @@ const SendDetails = () => {
       { key: 'fastestFee', fee: fees.fastestFee },
     ];
 
+    console.log("============================ ***********************")
     const newFeePrecalc = { ...feePrecalc };
 
+    let tempFee = { ...feePrecalc };
     for (const opt of options) {
       let targets = [];
       for (const transaction of addresses) {
@@ -257,8 +259,9 @@ const SendDetails = () => {
       while (true) {
         try {
           const { fee } = wallet.coinselect(lutxo, targets, opt.fee, changeAddress);
-
+          
           newFeePrecalc[opt.key] = fee;
+          tempFee[opt.key] = fee;
           break;
         } catch (e) {
           if (e.message.includes('Not enough') && !flag) {
@@ -274,7 +277,9 @@ const SendDetails = () => {
       }
     }
 
-    setFeePrecalc(newFeePrecalc);
+    tempFee.current = tempFee.slowFee;
+    firstLoading? setFeePrecalc(newFeePrecalc) : setFeePrecalc(tempFee);
+     
   }, [wallet, networkTransactionFees, utxo, addresses, feeRate, dumb]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getChangeAddressFast = () => {
@@ -916,7 +921,7 @@ const SendDetails = () => {
         active: Number(feeRate) === nf.slowFee,
       },
     ];
-
+    
     return (
       <BottomModal
         deviceWidth={width + width / 2}
@@ -1213,7 +1218,7 @@ const SendDetails = () => {
   // if utxo is limited we use it to calculate available balance
   const balance = utxo ? utxo.reduce((prev, curr) => prev + curr.value, 0) : wallet.getBalance();
   const allBalance = formatBalanceWithoutSuffix(balance, BitcoinUnit.BTC, true);
-
+  console.log("=======Start Render::", feePrecalc.current);
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={[styles.root, stylesHook.root]} onLayout={e => setWidth(e.nativeEvent.layout.width)}>
@@ -1251,7 +1256,10 @@ const SendDetails = () => {
             </View>
             <TouchableOpacity
               testID="chooseFee"
-              onPress={() => setIsFeeSelectionModalVisible(true)}
+              onPress={() => {
+                setIsFeeSelectionModalVisible(true);
+                setFirstLoading(true);
+              }}
               disabled={isLoading}
               style={styles.fee}
             >
