@@ -125,7 +125,7 @@ const TransactionsDetails = () => {
   };
 
   const handleOnOpenTransactionOnBlockExporerTapped = () => {
-    const url = `https://mempool.space/tx/${tx.hash}`;
+    const url = `http://explorer.xepdev.com/transaction/${tx.hash}`;
     Linking.canOpenURL(url).then(supported => {
       if (supported) {
         Linking.openURL(url);
@@ -134,7 +134,7 @@ const TransactionsDetails = () => {
   };
 
   const handleCopyPress = () => {
-    Clipboard.setString(`https://mempool.space/tx/${tx.hash}`);
+    Clipboard.setString(`http://explorer.xepdev.com/transaction/${tx.hash}`);
   };
 
   const showToolTipMenu = () => {

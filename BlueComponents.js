@@ -1406,7 +1406,7 @@ export const BlueTransactionListItem = React.memo(({ item, itemPriceUnit = Bitco
   const handleOnCopyTransactionID = useCallback(() => Clipboard.setString(item.hash), [item.hash]);
   const handleOnCopyNote = useCallback(() => Clipboard.setString(subtitle), [subtitle]);
   const handleOnViewOnBlockExplorer = useCallback(() => {
-    const url = `https://mempool.space/tx/${item.hash}`;
+    const url = `http://explorer.xepdev.com/transaction/${item.hash}`;
     Linking.canOpenURL(url).then(supported => {
       if (supported) {
         Linking.openURL(url);
@@ -1414,7 +1414,7 @@ export const BlueTransactionListItem = React.memo(({ item, itemPriceUnit = Bitco
     });
   }, [item.hash]);
   const handleCopyOpenInBlockExplorerPress = useCallback(() => {
-    Clipboard.setString(`https://mempool.space/tx/${item.hash}`);
+    Clipboard.setString(`http://explorer.xepdev.com/transaction/${item.hash}`);
   }, [item.hash]);
   const toolTipActions = useMemo(() => {
     const actions = [
