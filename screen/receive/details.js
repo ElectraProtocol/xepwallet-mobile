@@ -104,7 +104,7 @@ const ReceiveDetails = () => {
       paddingVertical: 16,
       alignItems: 'center',
       flexGrow: 1,
-      marginTop: 40,
+      marginTop: -50,
       marginBottom: 8,
     },
     link: {

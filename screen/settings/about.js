@@ -21,7 +21,7 @@ const About = () => {
     center: {
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: 54,
+      marginTop: 0,
     },
     logo: {
       width: 124,
@@ -37,7 +37,7 @@ const About = () => {
     },
     textBackup: {
       maxWidth: 260,
-      marginBottom: 40,
+      marginBottom: 0,
       color: colors.foregroundColor,
       fontSize: 15,
       textAlign: 'center',
@@ -45,7 +45,7 @@ const About = () => {
     },
     buildWith: {
       backgroundColor: colors.inputBackgroundColor,
-      padding: 16,
+      padding: 6,
       paddingTop: 0,
       borderRadius: 8,
     },
@@ -112,7 +112,7 @@ const About = () => {
           <Image style={styles.logo} source={require('../../img/icon.png')} />
           <Text style={styles.textFree}>{loc.settings.about_free}</Text>
           <Text style={styles.textBackup}>{loc.settings.about_backup}</Text>
-          <BlueButton onPress={handleOnRatePress} title={loc.settings.about_review + ' ⭐🙏'} />
+          {/* <BlueButton onPress={handleOnRatePress} title={loc.settings.about_review + ' ⭐🙏'} /> */}
         </View>
       </BlueCard>
       <BlueListItem
@@ -180,7 +180,7 @@ const About = () => {
         onPress={handleOnLicensingPress}
         title={loc.settings.about_license}
       />
-      <BlueListItem
+      {/* <BlueListItem
         leftIcon={{
           name: 'flask',
           type: 'font-awesome',
@@ -191,7 +191,7 @@ const About = () => {
         testID="RunSelfTestButton"
         title={loc.settings.about_selftest}
       />
-      <BlueSpacing20 />
+      <BlueSpacing20 /> */}
       <BlueSpacing20 />
       <BlueTextCentered>
         {getApplicationName()} ver {getVersion()} (build {getBuildNumber()})
