@@ -218,7 +218,6 @@ const SendDetails = () => {
       { key: 'fastestFee', fee: fees.fastestFee },
     ];
 
-    console.log("============================ ***********************")
     const newFeePrecalc = { ...feePrecalc };
 
     let tempFee = { ...feePrecalc };
@@ -355,11 +354,13 @@ const SendDetails = () => {
     let options;
     try {
       if (!data.toLowerCase().startsWith('bitcoin:')) data = `bitcoin:${data}`;
+      console.log("===bip21decode-1::", data);
       const decoded = DeeplinkSchemaMatch.bip21decode(data);
       address = decoded.address;
       options = decoded.options;
     } catch (error) {
       data = data.replace(/(amount)=([^&]+)/g, '').replace(/(amount)=([^&]+)&/g, '');
+      console.log("===bip21decode-2::", data);
       const decoded = DeeplinkSchemaMatch.bip21decode(data);
       decoded.options.amount = 0;
       address = decoded.address;
@@ -1218,7 +1219,7 @@ const SendDetails = () => {
   // if utxo is limited we use it to calculate available balance
   const balance = utxo ? utxo.reduce((prev, curr) => prev + curr.value, 0) : wallet.getBalance();
   const allBalance = formatBalanceWithoutSuffix(balance, BitcoinUnit.BTC, true);
-  console.log("=======Start Render::", feePrecalc.current);
+  
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={[styles.root, stylesHook.root]} onLayout={e => setWidth(e.nativeEvent.layout.width)}>

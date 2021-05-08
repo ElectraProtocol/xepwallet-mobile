@@ -430,7 +430,6 @@ class DeeplinkSchemaMatch {
   }
 
   static bip21decode(uri) {
-    console.log("===bip21decode::", uri);
     return bip21.decode(uri.replace('xep:', ''));
   }
 

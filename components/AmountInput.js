@@ -68,7 +68,8 @@ class AmountInput extends Component {
         console.log("====sats-xep::", sats);
         break;
       case BitcoinUnit.SATS:
-        sats = amount;
+        sats = new BigNumber(amount).multipliedBy(100000000).toString();
+        // sats = amount;
         console.log("====sats-sat::", sats);
         break;
       case BitcoinUnit.LOCAL_CURRENCY:
@@ -101,13 +102,13 @@ class AmountInput extends Component {
     let newUnit;
     if (previousUnit === BitcoinUnit.BTC) {
       newUnit = BitcoinUnit.LOCAL_CURRENCY;
-    } else if (previousUnit === BitcoinUnit.SATS) {
-      newUnit = BitcoinUnit.LOCAL_CURRENCY;
+    // } else if (previousUnit === BitcoinUnit.SATS) {
+    //   newUnit = BitcoinUnit.LOCAL_CURRENCY;
     } else if (previousUnit === BitcoinUnit.LOCAL_CURRENCY) {
       newUnit = BitcoinUnit.BTC;
     } else {
-      newUnit = BitcoinUnit.BTC;
-      previousUnit = BitcoinUnit.LOCAL_CURRENCY;
+      newUnit = BitcoinUnit.LOCAL_CURRENCY;
+      previousUnit = BitcoinUnit.BTC;
     }
     this.onAmountUnitChange(previousUnit, newUnit);
   };
@@ -173,12 +174,13 @@ class AmountInput extends Component {
     const { colors, disabled, unit } = this.props;
     const amount = this.props.amount || 0;
     let secondaryDisplayCurrency = formatBalanceWithoutSuffix(amount, BitcoinUnit.LOCAL_CURRENCY, false);
-
+console.log("=====unit::", unit, amount);
     // if main display is sat or btc - secondary display is fiat
     // if main display is fiat - secondary dislay is btc
     let sat;
     switch (unit) {
       case BitcoinUnit.BTC:
+      case BitcoinUnit.XEP:
         sat = new BigNumber(amount).multipliedBy(100000000).toString();
         secondaryDisplayCurrency = formatBalanceWithoutSuffix(sat, BitcoinUnit.LOCAL_CURRENCY, false);
         break;
@@ -239,9 +241,7 @@ class AmountInput extends Component {
             </View>
             <View style={styles.secondaryRoot}>
               <Text style={styles.secondaryText}>
-                {unit === BitcoinUnit.LOCAL_CURRENCY && amount !== BitcoinUnit.MAX
-                  ? removeTrailingZeros(secondaryDisplayCurrency)
-                  : secondaryDisplayCurrency}
+                {unit === BitcoinUnit.LOCAL_CURRENCY && amount !== BitcoinUnit.MAX ? removeTrailingZeros(secondaryDisplayCurrency) : secondaryDisplayCurrency}
                 {unit === BitcoinUnit.LOCAL_CURRENCY && amount !== BitcoinUnit.MAX ? ` ${loc.units[BitcoinUnit.BTC]}` : null}
               </Text>
             </View>
