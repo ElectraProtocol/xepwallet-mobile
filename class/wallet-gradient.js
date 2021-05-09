@@ -15,15 +15,15 @@ import { SLIP39LegacyP2PKHWallet, SLIP39SegwitP2SHWallet, SLIP39SegwitBech32Wall
 import { useTheme } from '@react-navigation/native';
 
 export default class WalletGradient {
-  static hdSegwitP2SHWallet = ['#007AFF', '#0040FF'];
-  static hdSegwitBech32Wallet = ['#6CD9FC', '#44BEE5'];
-  static segwitBech32Wallet = ['#6CD9FC', '#44BEE5'];
+  static hdSegwitP2SHWallet = ['#0283F3', '#191B6B'];
+  static hdSegwitBech32Wallet = ['#21D8F6', '#3F33F6'];
+  static segwitBech32Wallet = ['#21D8F6', '#3F33F6'];
   static watchOnlyWallet = ['#474646', '#282828'];
   static legacyWallet = ['#37E8C0', '#15BE98'];
-  static hdLegacyP2PKHWallet = ['#FD7478', '#E73B40'];
-  static hdLegacyBreadWallet = ['#fe6381', '#f99c42'];
+  static hdLegacyP2PKHWallet = ['#3F33F6', '#E73B40'];
+  static hdLegacyBreadWallet = ['#fe6381', '#191B6B'];
   static multisigHdWallet = ['#1ce6eb', '#296fc5', '#3500A2'];
-  static defaultGradients = ['#B770F6', '#9013FE'];
+  static defaultGradients = ['#21D8F6', '#3F33F6'];
   static lightningCustodianWallet = ['#F1AA07', '#FD7E37'];
   static aezeedWallet = ['#8584FF', '#5351FB'];
 
