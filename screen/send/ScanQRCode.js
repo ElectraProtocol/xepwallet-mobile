@@ -132,7 +132,6 @@ const ScanQRCode = () => {
         if (launchedBy) {
           navigation.navigate(launchedBy);
         }
-        console.log("====_onReadUniformResource::", data)
         onBarScanned({ data });
       } else {
         setAnimatedQRCodeData(animatedQRCodeData);

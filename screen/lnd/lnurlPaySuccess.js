@@ -178,8 +178,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    width: 400,
-    height: 400,
+    width: 100,
+    height: 100,
   },
   successContainer: {
     marginTop: 10,

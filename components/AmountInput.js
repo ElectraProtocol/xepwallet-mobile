@@ -60,21 +60,15 @@ class AmountInput extends Component {
     let sats = 0;
     switch (previousUnit) {
       case BitcoinUnit.BTC:
-        sats = new BigNumber(amount).multipliedBy(100000000).toString();
-        console.log("====sats-btc::", sats);
-        break;
       case BitcoinUnit.XEP:
         sats = new BigNumber(amount).multipliedBy(100000000).toString();
-        console.log("====sats-xep::", sats);
         break;
       case BitcoinUnit.SATS:
-        sats = new BigNumber(amount).multipliedBy(100000000).toString();
-        // sats = amount;
-        console.log("====sats-sat::", sats);
+        // sats = new BigNumber(amount).multipliedBy(100000000).toString();
+        sats = amount;
         break;
       case BitcoinUnit.LOCAL_CURRENCY:
         sats = new BigNumber(currency.fiatToBTC(amount)).multipliedBy(100000000).toString();
-        console.log("====sats-sats::", sats);
         break;
     }
     if (previousUnit === BitcoinUnit.LOCAL_CURRENCY && AmountInput.conversionCache[amount + previousUnit]) {
@@ -174,7 +168,6 @@ class AmountInput extends Component {
     const { colors, disabled, unit } = this.props;
     const amount = this.props.amount || 0;
     let secondaryDisplayCurrency = formatBalanceWithoutSuffix(amount, BitcoinUnit.LOCAL_CURRENCY, false);
-console.log("=====unit::", unit, amount);
     // if main display is sat or btc - secondary display is fiat
     // if main display is fiat - secondary dislay is btc
     let sat;

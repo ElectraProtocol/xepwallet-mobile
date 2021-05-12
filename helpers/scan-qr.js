@@ -14,7 +14,6 @@ module.exports = function scanQrHelper(navigateFunc, currentScreenName, showFile
     params.showFileImportButton = !!showFileImportButton;
 
     params.onBarScanned = function (data) {
-      console.log("====scanedData::", data, currentScreenName)
       setTimeout(() => resolve(data.data || data), 1);
       navigateFunc(currentScreenName);
     };

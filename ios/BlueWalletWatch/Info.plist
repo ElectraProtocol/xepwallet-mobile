@@ -26,7 +26,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>io.electraprotocol.xepwallet</string>
+	<string>io.electraprotocol.xepwallet5</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>

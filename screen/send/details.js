@@ -134,7 +134,7 @@ const SendDetails = () => {
         const { address, amount, memo: initialMemo, payjoinUrl } = DeeplinkSchemaMatch.decodeBitcoinUri(routeParams.uri);
         setAddresses([{ address, amount, amountSats: currency.btcToSatoshi(amount), key: String(Math.random()) }]);
         setMemo(initialMemo || '');
-        setAmountUnit(BitcoinUnit.XEP);
+        setAmountUnit(BitcoinUnit.BTC);
         setPayjoinUrl(payjoinUrl);
       } catch (error) {
         console.log(error);
@@ -143,7 +143,7 @@ const SendDetails = () => {
     } else if (routeParams.address) {
       setAddresses([{ address: routeParams.address, key: String(Math.random()) }]);
       setMemo(routeParams.memo || '');
-      setAmountUnit(BitcoinUnit.XEP);
+      setAmountUnit(BitcoinUnit.BTC);
     } else {
       setAddresses([{ address: '', key: String(Math.random()) }]); // key is for the FlatList
     }
@@ -354,13 +354,11 @@ const SendDetails = () => {
     let options;
     try {
       if (!data.toLowerCase().startsWith('bitcoin:')) data = `bitcoin:${data}`;
-      console.log("===bip21decode-1::", data);
       const decoded = DeeplinkSchemaMatch.bip21decode(data);
       address = decoded.address;
       options = decoded.options;
     } catch (error) {
       data = data.replace(/(amount)=([^&]+)/g, '').replace(/(amount)=([^&]+)&/g, '');
-      console.log("===bip21decode-2::", data);
       const decoded = DeeplinkSchemaMatch.bip21decode(data);
       decoded.options.amount = 0;
       address = decoded.address;
@@ -376,11 +374,11 @@ const SendDetails = () => {
         return [...addresses];
       });
       setUnits(units => {
-        units[scrollIndex.current] = BitcoinUnit.XEP; // also resetting current unit to BTC
+        units[scrollIndex.current] = BitcoinUnit.BTC; // also resetting current unit to BTC
         return [...units];
       });
       setMemo(options.label || options.message);
-      setAmountUnit(BitcoinUnit.XEP);
+      setAmountUnit(BitcoinUnit.BTC);
       setPayjoinUrl(options.pj || '');
     }
 
