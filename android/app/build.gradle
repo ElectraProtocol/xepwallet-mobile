@@ -146,7 +146,7 @@ android {
         applicationId "io.electraprotocol.xepwallet"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 7
+        versionCode 8
         versionName "1.0.1"
         multiDexEnabled true
         missingDimensionStrategy 'react-native-camera', 'general'

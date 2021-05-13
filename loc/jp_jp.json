@@ -124,7 +124,7 @@
     "create_fake_storage": "ダミーの暗号化ウォレットの作成",
     "create_password": "パスワードの作成",
     "create_password_explanation": "ダミーのウォレットのパスワードはメインのウォレットのパスワードと異なる必要があります。",
-    "help": "BuleWallet のウォレットの復号に必要なパスワードを第三者に強要される場合、コインを安全に保護するためにメインのウォレットとは異なるパスワードで暗号化されたダミーのウォレットを作成することが可能です。第三者へ異なるパスワードを提供すれば、BlueWallet のダミーの暗号化ウォレットを復号することとなり、メインのウォレットは隠匿されコインは安全に保護されます。",
+    "help": "BuleWallet のウォレットの復号に必要なパスワードを第三者に強要される場合、コインを安全に保護するためにメインのウォレットとは異なるパスワードで暗号化されたダミーのウォレットを作成することが可能です。第三者へ異なるパスワードを提供すれば、XEP-Wallet のダミーの暗号化ウォレットを復号することとなり、メインのウォレットは隠匿されコインは安全に保護されます。",
     "help2": "新規のダミーのウォレットはメインと同様に機能します。少額のコインを入金しておくことでダミーと疑われないようにすることが可能です。",
     "password_should_not_match": "ダミーのウォレットのパスワードはメインのウォレットのパスワードと異なる必要があります。",
     "passwords_do_not_match": "パスワードが一致しません。もう一度試してください。",
@@ -229,7 +229,7 @@
     "problem_with_psbt": "PSBTに問題"
   },
   "settings": {
-    "about": "BlueWallet について",
+    "about": "XEP-Wallet について",
     "about_awesome": "Built with the awesome",
     "about_backup": "常に秘密鍵はバックアップしましょう！",
     "about_free": "BlueWalletはフリーでオープンソースのプロジェクトです。ビットコインユーザーによって作られています。",
@@ -355,7 +355,7 @@
   },
   "wallets": {
     "add_bitcoin": "ビットコイン",
-    "add_bitcoin_explain": "シンプルかつパワフルなBitcoinウォレット",
+    "add_bitcoin_explain": "シンプルかつパワフルなXEPウォレット",
     "add_create": "作成",
     "add_entropy_generated": "生成されたエントロピーの {gen} バイト",
     "add_entropy_provide": "サイコロを振ってエントロピーを提供",
@@ -418,7 +418,7 @@
     "list_long_clipboard": "クリップボードからコピー",
     "list_long_scan": "QRコードをスキャン",
     "list_marketplace": "Marketplace",
-    "list_tap_here_to_buy": "Bitcoin を購入するにはここをタップ",
+    "list_tap_here_to_buy": "XEP を購入するにはここをタップ",
     "list_title": "ウォレット",
     "list_tryagain": "再度試す",
     "looks_like_bip38": "パスワード保護された秘密鍵(BIP38)のようです。",
@@ -436,7 +436,7 @@
     "provide_signature": "署名を提供",
     "vault_key": "ヴォールトキー {number}",
     "fee": "費用: {number}",
-    "fee_btc": "{number} BTC",
+    "fee_btc": "{number} XEP",
     "confirm": "承認",
     "header": "送る",
     "share": "共有",
@@ -485,7 +485,7 @@
     "use_coins": "コインを利用"
   },
   "units": {
-    "BTC": "BTC",
+    "BTC": "XEP",
     "sat_byte": "sat/byte",
     "sats": "sats"
   },

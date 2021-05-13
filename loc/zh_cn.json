@@ -309,7 +309,7 @@
     "plausible_deniability": "合理推诿",
     "privacy": "隐私",
     "privacy_read_clipboard": "阅读剪贴板",
-    "privacy_read_clipboard_alert": "BlueWallet 将显示用于处理剪贴板中账单或地址的捷径。",
+    "privacy_read_clipboard_alert": "XEP-Wallet 将显示用于处理剪贴板中账单或地址的捷径。",
     "privacy_system_settings": "系统设置",
     "privacy_quickactions": "钱包捷径",
     "privacy_quickactions_explanation": "触碰并按住主屏幕上的BlueWallet应用图标，以快速查看您的钱包余额。",
@@ -532,7 +532,7 @@
     "ms_help_title4": "导入保管库",
     "ms_help_4": "要导入多重签名，请使用您的备份文件和导入功能。 如果只有种子和公钥，则可以在创建保管库密钥时使用单独的“导入”按钮。",
     "ms_help_title5": "进阶模式",
-    "ms_help_5": "默认情况下，BlueWallet 将生成 2-of-3 保管库。要创建不同的法定人数或更改地址类型，请在“设置”中激活“进阶模式”。"
+    "ms_help_5": "默认情况下，XEP-Wallet 将生成 2-of-3 保管库。要创建不同的法定人数或更改地址类型，请在“设置”中激活“进阶模式”。"
   },
   "is_it_my_address": {
     "title": "是我的地址吗？",
