@@ -10,8 +10,8 @@ function BlueClipboard() {
     try {
       const clipboardAccessAllowed = await isClipboardAccessAllowed();
       if (clipboardAccessAllowed === null) {
-        await setIsClipboardAccessAllowed(JSON.stringify(true));
-        return true;
+        await setIsClipboardAccessAllowed(JSON.stringify(false));
+        return false;
       }
       return !!JSON.parse(clipboardAccessAllowed);
     } catch {

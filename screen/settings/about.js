@@ -146,7 +146,7 @@ const About = () => {
         <View style={styles.buildWith}>
           <BlueSpacing20 />
 
-          <BlueTextCentered>{loc.settings.about_awesome} 👍</BlueTextCentered>
+          <BlueTextCentered>{loc.settings.about_awesome}</BlueTextCentered>
           <BlueSpacing20 />
           <BlueTextCentered>React Native</BlueTextCentered>
           <BlueTextCentered>bitcoinjs-lib</BlueTextCentered>
@@ -170,7 +170,7 @@ const About = () => {
         onPress={handleOnReleaseNotesPress}
         title={loc.settings.about_release_notes}
       />
-      <BlueListItem
+      {/*<BlueListItem
         leftIcon={{
           name: 'law',
           type: 'octicon',
@@ -180,7 +180,7 @@ const About = () => {
         onPress={handleOnLicensingPress}
         title={loc.settings.about_license}
       />
-      {/* <BlueListItem
+      <BlueListItem
         leftIcon={{
           name: 'flask',
           type: 'font-awesome',

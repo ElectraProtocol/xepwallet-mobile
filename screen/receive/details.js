@@ -257,7 +257,6 @@ const ReceiveDetails = () => {
   }, []);
 
   const setAddressBIP21Encoded = address => {
-    console.log("==========setaddressbip21::", address, bip21encoded)
     const bip21encoded = DeeplinkSchemaMatch.bip21encode(address);
     setParams({ address });
     setBip21encoded(bip21encoded);
@@ -363,7 +362,6 @@ const ReceiveDetails = () => {
 
   const handleShareButtonPressed = () => {
     let shareAddress = bip21encoded.replace("bitcoin", "xep")
-    console.log("======share new::", shareAddress)
     Share.open({ message: shareAddress }).catch(error => console.log(error));
   };
 

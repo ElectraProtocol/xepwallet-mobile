@@ -434,12 +434,10 @@ class DeeplinkSchemaMatch {
   }
 
   static bip21encode() {
-    console.log("====encode bip21::", arguments);
     return bip21.encode.apply(bip21, arguments);
   }
 
   static decodeBitcoinUri(uri) {
-    console.log("===decoded BitcoinUri::", uri)
     let amount = '';
     let parsedBitcoinUri = null;
     let address = uri || '';
