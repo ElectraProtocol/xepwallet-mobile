@@ -223,7 +223,6 @@ const WalletCarouselItem = ({ item, index, onPress, handleLongPress, isSelectedW
 
   const balance = !item.hideBalance && formatBalance(Number(item.getBalance()), item.getPreferredBalanceUnit(), true);
 
-  console.log("====balance::", balance);
   return (
     <Animated.View
       style={[iStyles.root, { opacity, transform: [{ scale: scaleValue }] }]}

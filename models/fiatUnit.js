@@ -10,7 +10,6 @@ export const FiatUnitSource = Object.freeze({
 const RateExtractors = Object.freeze({
   CoinDesk: async ticker => {
     const api = new Frisbee({ baseURI: 'https://api.coindesk.com' });
-    console.log("====api-coindesk:: ticker=", ticker);
     const res = await api.get(`/v1/bpi/currentprice/${ticker}.json`);
     if (res.err) throw new Error(`Could not update rate for ${ticker}: ${res.err}`);
 
@@ -65,14 +64,12 @@ const RateExtractors = Object.freeze({
   // },
   CoinGecko: async ticker => {
     const api = new Frisbee({ baseURI: 'https://api.coingecko.com' });
-    console.log("====api-gecko:: ticker=", ticker);
     const res = await api.get(`/api/v3/simple/price?ids=electra-protocol&vs_currencies=${ticker}&include_market_cap=false&include_24hr_vol=false&include_24hr_change=false&include_last_updated_at=false`);
     if (res.err) throw new Error(`Could not update rate for ${ticker}: ${res.err}`);
 
     let json;
     try {
       json = typeof res.body === 'string' ? JSON.parse(res.body) : res.body;
-      console.log("===json ::", json);//{"electra-protocol": {"ltc": 0.00000728}}
     } catch (e) {
       throw new Error(`Could not update rate for ${ticker}: ${e.message}`);
     }
@@ -81,7 +78,6 @@ const RateExtractors = Object.freeze({
 
     rate = Number(rate);
     if (!(rate >= 0)) throw new Error(`Could not update rate for ${ticker}: data is wrong`);
-    console.log("===rate ::", rate)
     return rate;
   },
 });
