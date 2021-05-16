@@ -167,7 +167,7 @@ const WalletsList = () => {
    */
   const refreshTransactions = (showLoadingIndicator = true, showUpdateStatusIndicator = false) => {
     setIsLoading(showLoadingIndicator);
-    refreshAllWalletTransactions(showLoadingIndicator, showUpdateStatusIndicator).finally(() => setIsLoading(false));
+    refreshAllWalletTransactions(0, showUpdateStatusIndicator).finally(() => setIsLoading(false));
   };
 
   useEffect(() => {
@@ -176,7 +176,6 @@ const WalletsList = () => {
   }, []); // call refreshTransactions() only once, when screen mounts
 
   const handleClick = index => {
-    console.log('click', index);
     const wallet = carouselData[index];
     if (wallet) {
       if (wallet.type === PlaceholderWallet.type) {
@@ -217,9 +216,7 @@ const WalletsList = () => {
   };
 
   const onSnapToItem = index => {
-    console.log('onSnapToItem', index);
     if (wallets[index] && (wallets[index].timeToRefreshBalance() || wallets[index].timeToRefreshTransaction())) {
-      console.log(wallets[index].getLabel(), 'thinks its time to refresh either balance or transactions. refetching both');
       refreshAllWalletTransactions(index, false).finally(() => setIsLoading(false));
     }
   };
@@ -251,18 +248,12 @@ const WalletsList = () => {
   
 
   const renderTransactionListsRow = data => {
-    const newItem = {
-      ...data.item,
-      value: new BigNumber(data?.item?.value).dividedBy(100000000).toFixed(10),
-      // value: removeTrailingZeros(val)
-    };
     return (
       <View style={styles.transaction}>
         <BlueTransactionListItem item={data.item} itemPriceUnit={data.item.walletPreferredBalanceUnit} />
       </View>
     );
   };
-
   // const renderLocalTrader = () => {
   //   if (carouselData.every(wallet => wallet === false)) return null;
   //   if (carouselData.length > 0 && !carouselData.some(wallet => wallet.type === PlaceholderWallet.type)) {
@@ -449,7 +440,7 @@ const WalletsList = () => {
   };
 
   const onRefresh = () => {
-    refreshTransactions(true, false);
+    refreshTransactions(true, true);
   };
 
   return (
