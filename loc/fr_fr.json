@@ -316,6 +316,8 @@
     "privacy_quickactions": "Raccourci Portefeuille",
     "privacy_quickactions_explanation": "Touchez et maintenez l'icone XEP wallet sur votre écran d'accueil pour voir rapidement le solde de vos portefeuilles.",
     "privacy_clipboard_explanation": "Fourni un raccourci si une adresse ou une facture est trouvée dans le presse-papier.",
+    "privacy_do_not_track": "Ne pas suivre",
+    "privacy_do_not_track_explanation": "Certaines données d'analyse et de débogage anonymes ne seront pas envoyées au service d'analyse.",
     "push_notifications": "Notifications push",
     "retype_password": "Re-saisir votre mot de passe",
     "selfTest": "Auto-test",
