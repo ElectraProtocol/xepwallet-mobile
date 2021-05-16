@@ -286,7 +286,7 @@
     "encrypt_use": "Utiliser {type}",
     "encrypt_use_expl": "{type} sera utilisé pour confirmer votre identité avant toute transaction, dévérouillage, export ou suppression de portefeuille. {type} ne sera pas utilisé pour dévérouiller un stockage chiffré.",
     "general": "Général",
-    "general_adv_mode": "Enable advanced mode",
+    "general_adv_mode": "Activer le mode avancé",
     "general_adv_mode_e": "Si activé, vous aurez accès aux options avancées telles que la sélection parmi différents types de portefeuilles, la possibilité de spécifier une instance LNDHub de votre choix, et la création manuelle d'entropie lors de la création de portefeuille.",
     "general_continuity": "Continuité",
     "general_continuity_e": "Si activé, vous pourrez visualiser les portefeuilles sélectionnés ainsi que leurs transactions depuis vos autres appareils Apple iCloud connectés.",
