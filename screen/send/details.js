@@ -1004,6 +1004,7 @@ const SendDetails = () => {
               component={TouchableOpacity}
               onPress={onUseAllPressed}
             />
+            {/*}
             {wallet.type === HDSegwitBech32Wallet.type && (
               <BlueListItem
                 title={loc.send.details_adv_fee_bump}
@@ -1011,6 +1012,7 @@ const SendDetails = () => {
                 switch={{ value: isTransactionReplaceable, onValueChange: onReplaceableFeeSwitchValueChanged }}
               />
             )}
+            */}
             {wallet.type === WatchOnlyWallet.type && wallet.isHd() && (
               <BlueListItem title={loc.send.details_adv_import} hideChevron component={TouchableOpacity} onPress={importTransaction} />
             )}
