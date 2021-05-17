@@ -387,7 +387,7 @@ const ReceiveDetails = () => {
         <HandoffComponent
           title={`Bitcoin Transaction ${address}`}
           type="io.electraprotocol.xepwallet"
-          url={`https://blockstream.info/address/${address}`}
+          url={`http://electraprotocol.eu/address/${address}`}
         />
       )}
       {showAddress ? renderReceiveDetails() : <BlueLoading />}

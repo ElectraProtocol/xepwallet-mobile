@@ -125,7 +125,7 @@ const TransactionsDetails = () => {
   };
 
   const handleOnOpenTransactionOnBlockExporerTapped = () => {
-    const url = `http://explorer.xepdev.com/transaction/${tx.hash}`;
+    const url = `http://electraprotocol.eu/tx/${tx.hash}`;
     Linking.canOpenURL(url).then(supported => {
       if (supported) {
         Linking.openURL(url);
@@ -134,7 +134,7 @@ const TransactionsDetails = () => {
   };
 
   const handleCopyPress = () => {
-    Clipboard.setString(`http://explorer.xepdev.com/transaction/${tx.hash}`);
+    Clipboard.setString(`http://electraprotocol.eu/tx/${tx.hash}`);
   };
 
   const showToolTipMenu = () => {
@@ -150,7 +150,7 @@ const TransactionsDetails = () => {
       <HandoffComponent
         title={`Bitcoin Transaction ${tx.hash}`}
         type="io.electraprotocol.xepwallet"
-        url={`https://blockstream.info/tx/${tx.hash}`}
+        url={`http://electraprotocol.eu/tx/${tx.hash}`}
       />
       <StatusBar barStyle="default" />
       <ScrollView style={styles.scroll}>

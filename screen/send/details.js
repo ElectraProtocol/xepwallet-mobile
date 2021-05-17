@@ -922,6 +922,7 @@ const SendDetails = () => {
     ];
     
     return (
+      
       <BottomModal
         deviceWidth={width + width / 2}
         isVisible={isFeeSelectionModalVisible}
@@ -1254,11 +1255,11 @@ const SendDetails = () => {
               />
             </View>
             <TouchableOpacity
-              testID="chooseFee"
-              onPress={() => {
-                setIsFeeSelectionModalVisible(true);
-                setFirstLoading(true);
-              }}
+              testID="chooseFee"              
+              //onPress={() => {
+              //  setIsFeeSelectionModalVisible(true);
+              //  setFirstLoading(true);
+              //}              
               disabled={isLoading}
               style={styles.fee}
             >

@@ -239,11 +239,12 @@ class AmountInput extends Component {
               </Text>
             </View>
           </View>
-          {!disabled && amount !== BitcoinUnit.MAX && (
+          {/*}
+           {!disabled && amount !== BitcoinUnit.MAX && (
             <TouchableOpacity testID="changeAmountUnitButton" style={styles.changeAmountUnit} onPress={this.changeAmountUnit}>
               <Image source={require('../img/round-compare-arrows-24-px.png')} />
             </TouchableOpacity>
-          )}
+          )}*/}
         </View>
       </TouchableWithoutFeedback>
     );

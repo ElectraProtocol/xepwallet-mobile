@@ -209,8 +209,8 @@ const TransactionsStatus = () => {
     } else if (isCPFPPossible === buttonStatus.possible) {
       return (
         <>
-          <BlueButton onPress={navigateToCPFP} title={loc.transactions.status_bump} />
-          <BlueSpacing10 />
+          {/*<BlueButton onPress={navigateToCPFP} title={loc.transactions.status_bump} />
+          <BlueSpacing10 />*/}
         </>
       );
     }
@@ -225,13 +225,14 @@ const TransactionsStatus = () => {
       );
     } else if (isRBFCancelPossible === buttonStatus.possible) {
       return (
-        <>
+        <>{/*
           <TouchableOpacity style={styles.cancel}>
             <Text onPress={navigateToRBFCancel} style={styles.cancelText}>
               {loc.transactions.status_cancel}
             </Text>
           </TouchableOpacity>
           <BlueSpacing10 />
+        */}
         </>
       );
     }
@@ -248,8 +249,8 @@ const TransactionsStatus = () => {
     } else if (isRBFBumpFeePossible === buttonStatus.possible) {
       return (
         <>
-          <BlueButton onPress={navigateToRBFBumpFee} title={loc.transactions.status_bump} />
-          <BlueSpacing10 />
+          {/*<BlueButton onPress={navigateToRBFBumpFee} title={loc.transactions.status_bump} />
+          <BlueSpacing10 />*/}
         </>
       );
     }
@@ -280,7 +281,7 @@ const TransactionsStatus = () => {
       <HandoffComponent
         title={`Bitcoin Transaction ${tx.hash}`}
         type="io.electraprotocol.xepwallet"
-        url={`https://blockstream.info/tx/${tx.hash}`}
+        url={`http://electraprotocol.eu/tx/${tx.hash}`}
       />
 
       <StatusBar barStyle="default" />
