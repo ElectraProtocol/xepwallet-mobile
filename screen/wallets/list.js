@@ -11,7 +11,6 @@ import {
   Image,
   Dimensions,
   useWindowDimensions,
-  SafeAreaView,
   findNodeHandle,
   useColorScheme,
   I18nManager,
@@ -24,15 +23,13 @@ import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import { PlaceholderWallet } from '../../class';
 import WalletImport from '../../class/wallet-import';
 import ActionSheet from '../ActionSheet';
-import loc, { formatBalance, formatBalanceWithoutSuffix, transactionTimeToReadable } from '../../loc';
+import loc, {formatBalanceWithoutSuffix } from '../../loc';
 import { FContainer, FButton } from '../../components/FloatButtons';
 import { useFocusEffect, useNavigation, useRoute, useTheme } from '@react-navigation/native';
 import { BlueStorageContext } from '../../blue_modules/storage-context';
 import { isCatalyst, isMacCatalina, isTablet } from '../../blue_modules/environment';
 import BlueClipboard from '../../blue_modules/clipboard';
 import navigationStyle from '../../components/navigationStyle';
-import BigNumber from 'bignumber.js';
-import ro from 'dayjs/locale/ro';
 import { BitcoinUnit } from '../../models/bitcoinUnits';
 
 const scanqrHelper = require('../../helpers/scan-qr');
