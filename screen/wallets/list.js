@@ -305,7 +305,7 @@ const WalletsList = () => {
 
   const renderUnitPrice = () => {
     return <Text style={{fontSize:16, fontWeight:'bold', color: colors.foregroundColor, paddingHorizontal:18}}>
-      1 XEP = {formatBalanceWithoutSuffix(1*10e8, BitcoinUnit.LOCAL_CURRENCY, true).toString()}
+      1 XEP = {formatBalanceWithoutSuffix(1*1e8, BitcoinUnit.LOCAL_CURRENCY, true).toString()}
       </Text>
   }
 
