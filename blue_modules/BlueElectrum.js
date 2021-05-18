@@ -712,15 +712,15 @@ module.exports.estimateFees = async function () {
   if (!histogram) throw new Error('timeout while getting mempool_getFeeHistogram');
 
   // fetching what electrum (which uses bitcoin core) thinks about fees:
-  const _fast = await module.exports.estimateFee(1);
-  const _medium = await module.exports.estimateFee(18);
-  const _slow = await module.exports.estimateFee(144);
+  //const _fast = await module.exports.estimateFee(1);
+  //const _medium = await module.exports.estimateFee(18);
+  //const _slow = await module.exports.estimateFee(144);
 
   // calculating fast fees from mempool:
-  const fast = 100000; //module.exports.calcEstimateFeeFromFeeHistorgam(1, histogram);
+  const fast = 300; //module.exports.calcEstimateFeeFromFeeHistorgam(1, histogram);
   // recalculating medium and slow fees using bitcoincore estimations only like relative weights:
   // (minimum 1 sat, just for any case)
-  const medium = 1000; //Math.max(1, Math.round((fast * _medium) / _fast));
+  const medium = 200; //Math.max(1, Math.round((fast * _medium) / _fast));
   const slow = 100; //Math.max(1, Math.round((fast * _slow) / _fast));
   return { fast, medium, slow };
 };
