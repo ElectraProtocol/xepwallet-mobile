@@ -24,7 +24,7 @@ import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import { PlaceholderWallet } from '../../class';
 import WalletImport from '../../class/wallet-import';
 import ActionSheet from '../ActionSheet';
-import loc from '../../loc';
+import loc, { formatBalance, formatBalanceWithoutSuffix, transactionTimeToReadable } from '../../loc';
 import { FContainer, FButton } from '../../components/FloatButtons';
 import { useFocusEffect, useNavigation, useRoute, useTheme } from '@react-navigation/native';
 import { BlueStorageContext } from '../../blue_modules/storage-context';
@@ -33,6 +33,7 @@ import BlueClipboard from '../../blue_modules/clipboard';
 import navigationStyle from '../../components/navigationStyle';
 import BigNumber from 'bignumber.js';
 import ro from 'dayjs/locale/ro';
+import { BitcoinUnit } from '../../models/bitcoinUnits';
 
 const scanqrHelper = require('../../helpers/scan-qr');
 const A = require('../../blue_modules/analytics');
@@ -305,14 +306,23 @@ const WalletsList = () => {
     }
   };
 
+  const renderUnitPrice = () => {
+    return <Text style={{fontSize:16, fontWeight:'bold', color: colors.foregroundColor, paddingHorizontal:18}}>
+      1 XEP = {formatBalanceWithoutSuffix(1*10e8, BitcoinUnit.LOCAL_CURRENCY, true).toString()}
+      </Text>
+  }
+
   const renderSectionHeader = section => {
     switch (section.section.key) {
       case WalletsListSections.CAROUSEL:
         return isLargeScreen ? null : (
-          <BlueHeaderDefaultMain
-            leftText={loc.wallets.list_title}
-            onNewWalletPress={!carouselData.some(wallet => wallet.type === PlaceholderWallet.type) ? () => navigate('AddWalletRoot') : null}
-          />
+          <React.Fragment>
+            <BlueHeaderDefaultMain
+              leftText={loc.wallets.list_title}
+              onNewWalletPress={!carouselData.some(wallet => wallet.type === PlaceholderWallet.type) ? () => navigate('AddWalletRoot') : null}
+            />
+            {renderUnitPrice()}
+          </React.Fragment>
         );
       case WalletsListSections.TRANSACTIONS:
         return renderListHeaderComponent();
