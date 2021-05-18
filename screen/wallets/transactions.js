@@ -57,8 +57,8 @@ const WalletTransactions = () => {
   const [itemPriceUnit, setItemPriceUnit] = useState(wallet.getPreferredBalanceUnit());
   const [dataSource, setDataSource] = useState(wallet.getTransactions(15));
   const [timeElapsed, setTimeElapsed] = useState(0);
-  const [limit, setLimit] = useState(15);
-  const [pageSize, setPageSize] = useState(20);
+  const [limit, setLimit] = useState(5);
+  const [pageSize, setPageSize] = useState(5);
   const { setParams, setOptions, navigate } = useNavigation();
   const { colors } = useTheme();
   const walletActionButtonsRef = useRef();
@@ -207,10 +207,10 @@ const WalletTransactions = () => {
       setIsLoading(false);
       setTimeElapsed(prev => prev + 1);
     }
-    if (noErr && smthChanged) {
+    if (noErr) {
       console.log('saving to disk');
       await saveToDisk(); // caching
-      //    setDataSource([...getTransactionsSliced(limit)]);
+      setDataSource(getTransactionsSliced(limit));
     }
     setIsLoading(false);
     setTimeElapsed(prev => prev + 1);
@@ -435,7 +435,6 @@ const WalletTransactions = () => {
       },
     });
   };
-
   const renderItem = item => <BlueTransactionListItem item={item.item} itemPriceUnit={itemPriceUnit} timeElapsed={timeElapsed} />;
   const onBarCodeRead = ret => {
     if (!isLoading) {
