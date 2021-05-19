@@ -57,8 +57,8 @@ const WalletTransactions = () => {
   const [itemPriceUnit, setItemPriceUnit] = useState(wallet.getPreferredBalanceUnit());
   const [dataSource, setDataSource] = useState(wallet.getTransactions(15));
   const [timeElapsed, setTimeElapsed] = useState(0);
-  const [limit, setLimit] = useState(5);
-  const [pageSize, setPageSize] = useState(5);
+  const [limit, setLimit] = useState(15);
+  const [pageSize, setPageSize] = useState(20);
   const { setParams, setOptions, navigate } = useNavigation();
   const { colors } = useTheme();
   const walletActionButtonsRef = useRef();
