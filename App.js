@@ -44,7 +44,7 @@ const eventEmitter = new NativeEventEmitter(NativeModules.EventEmitter);
 
 if (process.env.NODE_ENV !== 'development') {
   Sentry.init({
-    dsn: 'https://23377936131848ca8003448a893cb622@sentry.io/1295736',
+    dsn: 'https://1b69ef8000b94653ae330d1b924aa27c@o696478.ingest.sentry.io/5776389',
   });
 }
 
