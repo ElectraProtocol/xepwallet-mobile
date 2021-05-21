@@ -196,7 +196,7 @@ const About = () => {
       <BlueTextCentered>
         {getApplicationName()} ver {getVersion()} (build {getBuildNumber()})
       </BlueTextCentered>
-      <BlueTextCentered>{new Date(getBuildNumber() * 1000).toGMTString()}</BlueTextCentered>
+      {/*<BlueTextCentered>{new Date(getBuildNumber() * 1000).toGMTString()}</BlueTextCentered>
       <BlueTextCentered>{getBundleId()}</BlueTextCentered>
       <BlueTextCentered>
         w, h = {width}, {height}
@@ -208,7 +208,7 @@ const About = () => {
           displayText={loc.transactions.details_copy}
         />
       </View>
-      <BlueSpacing20 />
+      <BlueSpacing20 />*/}
       <BlueSpacing20 />
     </ScrollView>
   );
