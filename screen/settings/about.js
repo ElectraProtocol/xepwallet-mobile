@@ -86,12 +86,17 @@ const About = () => {
   const handleOnTelegramPress = () => {
     Linking.openURL('https://t.me/ElectraProtocol');
   };
+
+  const handleOnWebsitePress = () => {
+    Linking.openURL('https://www.electraprotocol.com/');
+  };
+
   const handleOnGithubPress = () => {
     Linking.openURL('https://github.com/ElectraProtocol');
   };
   const handleOnRatePress = () => {
     const options = {
-      AppleAppID: '1376878040',
+      AppleAppID: 'xxx',
       GooglePackageName: 'io.electraprotocol.xepwallet',
       preferredAndroidMarket: AndroidMarket.Google,
       preferInApp: true,
@@ -142,6 +147,15 @@ const About = () => {
         onPress={handleOnDiscordPress}
         title={loc.settings.about_sm_discord}
       />
+      <BlueListItem
+        leftIcon={{
+          name: 'link',
+          type: 'font-awesome-5',
+          color: '#0088cc',
+        }}
+        onPress={handleOnWebsitePress}
+        title= 'www.electraprotocol.com'
+      />
       <BlueCard>
         <View style={styles.buildWith}>
           <BlueSpacing20 />
@@ -151,7 +165,7 @@ const About = () => {
           <BlueTextCentered>React Native</BlueTextCentered>
           <BlueTextCentered>bitcoinjs-lib</BlueTextCentered>
           <BlueTextCentered>Nodejs</BlueTextCentered>
-          <BlueTextCentered>Electrum server</BlueTextCentered>
+          <BlueTextCentered>ElectrumX server</BlueTextCentered>
           <BlueSpacing20 />
 
           <TouchableOpacity onPress={handleOnGithubPress} style={styles.buttonLink}>
