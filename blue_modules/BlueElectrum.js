@@ -704,12 +704,12 @@ module.exports.calcEstimateFeeFromFeeHistorgam = function (numberOfBlocks, feeHi
 };
 
 module.exports.estimateFees = async function () {
-  let histogram;
-  try {
-    histogram = await Promise.race([mainClient.mempool_getFeeHistogram(), new Promise(resolve => setTimeout(resolve, 29000))]);
-  } catch (_) {}
+  //let histogram;
+  //try {
+  //  histogram = await Promise.race([mainClient.mempool_getFeeHistogram(), new Promise(resolve => setTimeout(resolve, 29000))]);
+  //} catch (_) {}
 
-  if (!histogram) throw new Error('timeout while getting mempool_getFeeHistogram');
+  //if (!histogram) throw new Error('timeout while getting mempool_getFeeHistogram');
 
   // fetching what electrum (which uses bitcoin core) thinks about fees:
   //const _fast = await module.exports.estimateFee(1);
