@@ -136,12 +136,12 @@ const NotificationSettings = () => {
         </View>
 
         <BlueSpacing20 />
-        <BlueText style={styles.centered} onPress={() => setShowTokenInfo(isShowTokenInfo + 1)}>
+        {/*<BlueText style={styles.centered} onPress={() => setShowTokenInfo(isShowTokenInfo + 1)}>
           ♪ Ground Control to Major Tom ♪
         </BlueText>
         <BlueText style={styles.centered} onPress={() => setShowTokenInfo(isShowTokenInfo + 1)}>
           ♪ Commencing countdown, engines on ♪
-        </BlueText>
+      </BlueText>*/}
 
         {isShowTokenInfo >= 9 && (
           <View>
