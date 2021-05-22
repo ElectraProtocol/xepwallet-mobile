@@ -140,7 +140,7 @@
     "ok_lnd": "Oke, saya sudah menyimpannya.",
     "text": "Mohon luangkan waktu sejenak untuk menuliskan kalimat mnemonik ini di selembar kertas. Ini adalah cadangan dompet Anda yang dapat Anda gunakan untuk memulihkan dompet di perangkat lain.",
     "text_lnd": "Harap luangkan waktu sejenak untuk menyimpan otentikasi LNDHub ini. Ini cadangan Anda yang dapat Anda gunakan untuk memulihkan dompet di perangkat lain.",
-    "text_lnd2": "Dompet ini dihost oleh BlueWallet",
+    "text_lnd2": "Dompet ini dihost oleh XEPWallet",
     "title": "Dompet Anda telah dibuat ..."
   },
   "receive": {

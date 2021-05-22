@@ -202,7 +202,7 @@
     "header": "inställningar",
     "language": "Språk",
     "lightning_settings": "Lightning Network",
-    "lightning_settings_explain": "För att ansluta till din egen LND-nod, installera LndHub och mata in dess URL nedan. Lämna blankt för att använda BlueWallet's LNDHub (lndhub.io). Plånböcker skapade efter att inställningarna sparats kommer att använda den angivna LNDHub:en",
+    "lightning_settings_explain": "För att ansluta till din egen LND-nod, installera LndHub och mata in dess URL nedan. Lämna blankt för att använda XEPWallet's LNDHub (lndhub.io). Plånböcker skapade efter att inställningarna sparats kommer att använda den angivna LNDHub:en",
     "network": "Nätverk",
     "network_electrum": "Electrum server",
     "notifications": "Notifikationer",

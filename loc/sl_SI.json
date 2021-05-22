@@ -124,7 +124,7 @@
     "create_fake_storage": "Ustvari šifrirano shrambo",
     "create_password": "Ustvarite geslo",
     "create_password_explanation": "Geslo za lažno shrambo se ne sme ujemati z geslom glavne shrambe.",
-    "help": "V določenih okoliščinah boste morda prisiljeni razkriti geslo. Da zavarujete vaša sredstva, lahko XEP-Wallet ustvari dodatno šifrirano shrambo z drugačnim geslom. Pod prisilo, lahko to geslo razkrijete tretji osebi. Če ga vnesete v BlueWallet, bo odklenilo 'lažno' shrambo. To se bo tretji osebi zdelo verodostojno, vaša skrivna glavna shramba s pravimi sredstvi pa bo ostala varna.",
+    "help": "V določenih okoliščinah boste morda prisiljeni razkriti geslo. Da zavarujete vaša sredstva, lahko XEP-Wallet ustvari dodatno šifrirano shrambo z drugačnim geslom. Pod prisilo, lahko to geslo razkrijete tretji osebi. Če ga vnesete v XEPWallet, bo odklenilo 'lažno' shrambo. To se bo tretji osebi zdelo verodostojno, vaša skrivna glavna shramba s pravimi sredstvi pa bo ostala varna.",
     "help2": "Nova shramba bo popolnoma uporabna, za večjo verodostojnost lahko tam hranite manjši znesek.",
     "password_should_not_match": "Geslo je trenutno v uporabi. Prosimo, poskusite z drugim geslom.",
     "passwords_do_not_match": "Gesli se ne ujemata, prosimo poskusite ponovno.",
@@ -140,7 +140,7 @@
     "ok_lnd": "V redu, sem shranil",
     "text": "Prosimo zapišite si seznam besed (mnemonično seme) na list papirja.\nTo je varnostna kopija, ki jo lahko uporabite za obnovitev denarnice.",
     "text_lnd": "Shranite varnostno kopijo te denarnice. Omogoča vam obnovitev denarnice v primeru izgube te naprave.",
-    "text_lnd2": "Ta denarnica uporablja gostovanje BlueWallet.",
+    "text_lnd2": "Ta denarnica uporablja gostovanje XEPWallet.",
     "title": "Vaša denarnica je ustvarjena"
   },
   "receive": {
@@ -476,7 +476,7 @@
     "share": "Deli",
     "view": "Prikaži",
     "manage_keys": "Urejanje ključev",
-    "how_many_signatures_can_bluewallet_make": "koliko podpisov lahko naredi BlueWallet",
+    "how_many_signatures_can_bluewallet_make": "koliko podpisov lahko naredi XEPWallet",
     "signatures_required_to_spend": "Zahtevano podpisov {number}",
     "signatures_we_can_make": "na napravi {number}",
     "scan_or_import_file": "Skenirajte ali uvozite datoteko",

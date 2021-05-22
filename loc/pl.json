@@ -140,7 +140,7 @@
     "ok_lnd": "OK, zapisałem ",
     "text": "Poświęć whilę by zapisać tę frazę mnemoniczną na kartce papieru\nTo Twoja kopia zapasowa, którą możesz użyć później by odtworzyć portfel.",
     "text_lnd": "Proszę, poświęć chwilę, żeby zapisać to uwierzytelnienie LNDHub. To twoja kopia zapasowa, możesz użyć jej, aby odtworzyć portfel na innym urządzeniu.",
-    "text_lnd2": "Ten portfel jest obsługiwany przez BlueWallet.",
+    "text_lnd2": "Ten portfel jest obsługiwany przez XEPWallet.",
     "title": "Twój portfel został utworzony"
   },
   "receive": {
@@ -290,7 +290,7 @@
     "general_adv_mode_e": "Gdy włączone, zobaczysz zaawansowane ustawienia takie jak np. różne typy portfeli, zdolność do określenia instancji LNDHub, z którą chcesz się połączyć oraz niestandardowej entropii w trakcie tworzenia portfela.",
     "general_continuity": "Funkcja Continuity",
     "general_continuity_e": "Gdy włączone, będziesz miał podgląd do wybranych portfeli i transakcji przy użyciu swoich urządzeń zalogowanych do Apple iCloud. ",
-    "groundcontrol_explanation": "GroundControl jest darmową opcją serwera powiadamień push dla portfeli XEP. Możesz zainstalować swój własny serwer GroundControl i podać jego URL tutaj, tak aby nie polegać na infrastrukturze BlueWallet. Zostaw puste by użyć domyślnej wartości.",
+    "groundcontrol_explanation": "GroundControl jest darmową opcją serwera powiadamień push dla portfeli XEP. Możesz zainstalować swój własny serwer GroundControl i podać jego URL tutaj, tak aby nie polegać na infrastrukturze XEPWallet. Zostaw puste by użyć domyślnej wartości.",
     "header": "ustawienia",
     "language": "Język",
     "language_isRTL": "Aby ustawienia dotyczące kierunku pisma wybranego języka zaczęły obowiązywać, XEP-Wallet musi być zrestartowany.",

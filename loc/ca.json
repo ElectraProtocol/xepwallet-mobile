@@ -134,7 +134,7 @@
     "ok_lnd": "D'acord, l'he guardat",
     "text": "Si us plau, preneu-vos un moment per escriure aquesta frase mnemotècnica en un tros de paper. És la vostra còpia de seguretat que podeu utilitzar per restaurar el moneder en un altre dispositiu.",
     "text_lnd": "Si us plau, deseu aquesta còpia de seguretat del moneder. Permet restaurar el moneder en cas de pèrdua.",
-    "text_lnd2": "Aquest moneder està allotjat a BlueWallet.",
+    "text_lnd2": "Aquest moneder està allotjat a XEPWallet.",
     "title": "El teu moneder ha estat creat..."
   },
   "receive": {

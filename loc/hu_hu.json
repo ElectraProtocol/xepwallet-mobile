@@ -119,7 +119,7 @@
     "create_fake_storage": "Hamis tárhely létrehozása",
     "create_password": "Jelszó létrehozása",
     "create_password_explanation": "A hamis tárhely jelszava nem lehet ugyanaz, mint az igazi tárhelyé",
-    "help": "Bizonyos körülmények között arra kényszerülhetsz, hogy megadda jelszavadat. A pénzed biztonsága érdekében a BlueWallettel létrehozhatsz egy alternatív titkosított tárhelyet, alternatív jelszóval. Kényszer hatása alatt megadhatod az alternatív jelszavadat, ami után a XEP-Wallet az alternatív tárhelyedet fogja megnyitni. Ez ugyanúgy fog kinézni, mint egy igazi tárhely, azzal a különbséggel, hogy a pénzed teljes biztonságban lesz az elsődleges tárhelyen.",
+    "help": "Bizonyos körülmények között arra kényszerülhetsz, hogy megadda jelszavadat. A pénzed biztonsága érdekében a XEPWallettel létrehozhatsz egy alternatív titkosított tárhelyet, alternatív jelszóval. Kényszer hatása alatt megadhatod az alternatív jelszavadat, ami után a XEP-Wallet az alternatív tárhelyedet fogja megnyitni. Ez ugyanúgy fog kinézni, mint egy igazi tárhely, azzal a különbséggel, hogy a pénzed teljes biztonságban lesz az elsődleges tárhelyen.",
     "help2": "Az alternatív tárhely teljesen működőképes, és akár egy kisebb összeget is elhelyezhetsz rajta, hogy hitelesebbnek tűnjön.",
     "password_should_not_match": "A hamis tárhely jelszava nem lehet ugyanaz, mint az igazi tárhelyé",
     "passwords_do_not_match": "Jelszavak nem egyeznek, próbáld újra.",

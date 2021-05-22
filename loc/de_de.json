@@ -476,7 +476,7 @@
     "share": "Teilen",
     "view": "Anzeigen",
     "manage_keys": "Schlüssel verwalten",
-    "how_many_signatures_can_bluewallet_make": "Anzahl Signaturen durch BlueWallet",
+    "how_many_signatures_can_bluewallet_make": "Anzahl Signaturen durch XEPWallet",
     "signatures_required_to_spend": "Benötigte Signaturen {number}",
     "signatures_we_can_make": "von {number}",
     "scan_or_import_file": "Datei scannen oder importieren",
