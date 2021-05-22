@@ -261,13 +261,13 @@ const WalletsAdd = () => {
                     title={HDSegwitBech32Wallet.typeReadable}
                     checkmark={selectedIndex === 0}
                   />
-                  <BlueListItem
+                  {/*<BlueListItem
                     containerStyle={[styles.noPadding, stylesHook.noPadding]}
                     bottomDivider={false}
                     onPress={() => setSelectedIndex(1)}
                     title={SegwitP2SHWallet.typeReadable}
                     checkmark={selectedIndex === 1}
-                  />
+                  />*/}
                   <BlueListItem
                     containerStyle={[styles.noPadding, stylesHook.noPadding]}
                     bottomDivider={false}
