@@ -825,7 +825,7 @@ const SendDetails = () => {
               units[scrollIndex.current] = BitcoinUnit.BTC;
               return [...units];
             });
-            LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+            //LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
             setOptionsVisible(false);
           },
           style: 'default',
