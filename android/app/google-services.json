@@ -1,34 +1,33 @@
 {
   "project_info": {
-    "project_number": "244290401148",
-    "firebase_url": "https://realtimedb-b2811.firebaseio.com",
-    "project_id": "realtimedb-b2811",
-    "storage_bucket": "realtimedb-b2811.appspot.com"
+    "project_number": "578919764311",
+    "project_id": "xepwallet",
+    "storage_bucket": "xepwallet.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:244290401148:android:cb92a49da0105f08892af9",
+        "mobilesdk_app_id": "1:578919764311:android:856a3c76fdb181db006e12",
         "android_client_info": {
           "package_name": "io.electraprotocol.xepwallet"
         }
       },
       "oauth_client": [
         {
-          "client_id": "244290401148-b3006rfefcf0efllabnso0lhcsv7q97k.apps.googleusercontent.com",
+          "client_id": "578919764311-70ucat8vc6u2v5q4hhr2m0fqjt96tur6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC3zRFBmkyXUbfTlCY6SUONZND2Bc0YG0A"
+          "current_key": "AIzaSyCjCAGhP_62Yan671SjAUDoMES8xWpkJJs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "244290401148-b3006rfefcf0efllabnso0lhcsv7q97k.apps.googleusercontent.com",
+              "client_id": "578919764311-70ucat8vc6u2v5q4hhr2m0fqjt96tur6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
