@@ -77,7 +77,7 @@ export default class LnurlPaySuccess extends Component {
         <ScrollView>
           {justPaid ? (
             <View style={styles.iconContainer}>
-              <LottieView style={styles.icon} source={require('../../img/bluenice.json')} autoPlay loop={false} />
+              <LottieView style={styles.icon} source={require('../../img/xepSuccess.json')} autoPlay loop={false} />
             </View>
           ) : (
             <View style={styles.iconContainer}>
@@ -178,8 +178,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    width: 400,
-    height: 400,
+    width: 100,
+    height: 100,
   },
   successContainer: {
     marginTop: 10,

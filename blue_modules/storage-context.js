@@ -8,6 +8,7 @@ const BlueApp = require('../BlueApp');
 const BlueElectrum = require('./BlueElectrum');
 
 const _lastTimeTriedToRefetchWallet = {}; // hashmap of timestamps we _started_ refetching some wallet
+let _lastFullRefreshTime = Date.now()
 
 export const WalletTransactionsStatus = { NONE: false, ALL: true };
 export const BlueStorageContext = createContext();
@@ -81,6 +82,27 @@ export const BlueStorageProvider = ({ children }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    const autoRefreshDelay = 30 // In seconds
+
+    const autoRefresh = async () => {
+      try {
+        const currentTime = Date.now()
+        if ((currentTime - _lastFullRefreshTime) / 1000 >= autoRefreshDelay) {
+          await refreshAllWalletTransactions(0, false)
+        } 
+      }
+      catch (err) { 
+        console.error('Cannot run automatic refresh', err)
+      }
+      finally {
+        _lastFullRefreshTime = Date.now()
+        setTimeout(autoRefresh, autoRefreshDelay * 1000)
+      }
+    }
+    autoRefresh()
+  }, [])
+
   const resetWallets = () => {
     setWallets(BlueApp.getWallets());
   };
@@ -92,6 +114,7 @@ export const BlueStorageProvider = ({ children }) => {
 
   const refreshAllWalletTransactions = async (lastSnappedTo, showUpdateStatusIndicator = true) => {
     let noErr = true;
+    _lastFullRefreshTime = new Date().getTime()
     try {
       if (showUpdateStatusIndicator) {
         setWalletTransactionUpdateStatus(WalletTransactionsStatus.ALL);
@@ -175,6 +198,8 @@ export const BlueStorageProvider = ({ children }) => {
   const getHodlHodlSignatureKey = BlueApp.getHodlHodlSignatureKey;
   const addHodlHodlContract = BlueApp.addHodlHodlContract;
   const getHodlHodlContracts = BlueApp.getHodlHodlContracts;
+  const setDoNotTrack = BlueApp.setDoNotTrack;
+  const isDoNotTrackEnabled = BlueApp.isDoNotTrackEnabled;
   const getItem = BlueApp.getItem;
   const setItem = BlueApp.setItem;
 
@@ -227,6 +252,8 @@ export const BlueStorageProvider = ({ children }) => {
         setWalletTransactionUpdateStatus,
         isDrawerListBlurred,
         setIsDrawerListBlurred,
+        setDoNotTrack,
+        isDoNotTrackEnabled,
       }}
     >
       {children}

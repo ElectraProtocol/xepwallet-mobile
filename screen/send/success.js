@@ -97,7 +97,7 @@ export const SuccessView = ({ amount, amountUnit, fee, invoiceDescription, shoul
       <View style={styles.ready}>
         <LottieView
           style={styles.lottie}
-          source={require('../../img/bluenice.json')}
+          source={require('../../img/xepSuccess.json')}
           autoPlay={shouldAnimate}
           ref={animationRef}
           loop={false}
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     marginBottom: 53,
   },
   lottie: {
-    width: 400,
-    height: 400,
+    width: 100,
+    height: 100,
   },
 });

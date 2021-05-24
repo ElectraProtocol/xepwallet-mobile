@@ -137,7 +137,7 @@ const ScanQRCode = () => {
         setAnimatedQRCodeData(animatedQRCodeData);
       }
     } catch (error) {
-      console.warn(error);
+      console.warn("=== error", error);
       setIsLoading(true);
       Alert.alert(loc.send.scan_error, loc._.invalid_animated_qr_code_fragment, [
         {

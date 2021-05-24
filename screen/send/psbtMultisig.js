@@ -234,7 +234,7 @@ const PsbtMultisig = () => {
       <View style={styles.containerText}>
         <BlueText style={[styles.textBtc, stylesHook.textBtc]}>{totalBtc}</BlueText>
         <View style={styles.textBtcUnit}>
-          <BlueText style={[styles.textBtcUnitValue, stylesHook.textBtcUnitValue]}> {BitcoinUnit.BTC}</BlueText>
+          <BlueText style={[styles.textBtcUnitValue, stylesHook.textBtcUnitValue]}> {BitcoinUnit.XEP}</BlueText>
         </View>
       </View>
       <View style={styles.containerText}>

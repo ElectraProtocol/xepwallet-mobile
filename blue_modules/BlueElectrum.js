@@ -40,19 +40,13 @@ async function _getRealm() {
 }
 
 const storageKey = 'ELECTRUM_PEERS';
-const defaultPeer = { host: 'electrum1.bluewallet.io', ssl: '443' };
+const defaultPeer = { host: 'electrumx1.electraprotocol.eu', ssl: '50002' };
 const hardcodedPeers = [
-  // { host: 'noveltybobble.coinjoined.com', tcp: '50001' }, // down
-  // { host: 'electrum.be', tcp: '50001' },
-  // { host: 'node.ispol.sk', tcp: '50001' }, // down
-  // { host: '139.162.14.142', tcp: '50001' },
-  // { host: 'electrum.coinucopia.io', tcp: '50001' }, // SLOW
-  // { host: 'Bitkoins.nl', tcp: '50001' }, // down
-  // { host: 'fullnode.coinkite.com', tcp: '50001' },
-  // { host: 'preperfect.eleCTruMioUS.com', tcp: '50001' }, // down
-  { host: 'electrum1.bluewallet.io', ssl: '443' },
-  { host: 'electrum2.bluewallet.io', ssl: '443' },
-  { host: 'electrum3.bluewallet.io', ssl: '443' },
+  { host: 'electrumx1.electraprotocol.eu', ssl: '50002' },
+  //{ host: 'electrumx2.electraprotocol.eu', ssl: '50002' },
+  //{ host: 'electrumx3.electraprotocol.eu', ssl: '50002' },
+  //{ host: 'electrumx4.electraprotocol.eu', ssl: '50002' },
+  //{ host: 'electrumx5.electraprotocol.eu', ssl: '50002' },
 ];
 
 /** @type {ElectrumClient} */
@@ -75,7 +69,7 @@ async function connectMain() {
     usingPeer = savedPeer;
   }
 
-  await DefaultPreference.setName('group.io.bluewallet.bluewallet');
+  await DefaultPreference.setName('group.io.electraprotocol.xepwallet');
   try {
     if (usingPeer.host.endsWith('onion')) {
       const randomPeer = await getRandomHardcodedPeer();
@@ -191,7 +185,7 @@ async function presentNetworkErrorAlert(usingPeer) {
                   await AsyncStorage.setItem(AppStorage.ELECTRUM_TCP_PORT, '');
                   await AsyncStorage.setItem(AppStorage.ELECTRUM_SSL_PORT, '');
                   try {
-                    await DefaultPreference.setName('group.io.bluewallet.bluewallet');
+                    await DefaultPreference.setName('group.io.electraprotocol.xepwallet');
                     await DefaultPreference.clear(AppStorage.ELECTRUM_HOST);
                     await DefaultPreference.clear(AppStorage.ELECTRUM_SSL_PORT);
                     await DefaultPreference.clear(AppStorage.ELECTRUM_TCP_PORT);
@@ -710,24 +704,24 @@ module.exports.calcEstimateFeeFromFeeHistorgam = function (numberOfBlocks, feeHi
 };
 
 module.exports.estimateFees = async function () {
-  let histogram;
-  try {
-    histogram = await Promise.race([mainClient.mempool_getFeeHistogram(), new Promise(resolve => setTimeout(resolve, 29000))]);
-  } catch (_) {}
+  //let histogram;
+  //try {
+  //  histogram = await Promise.race([mainClient.mempool_getFeeHistogram(), new Promise(resolve => setTimeout(resolve, 29000))]);
+  //} catch (_) {}
 
-  if (!histogram) throw new Error('timeout while getting mempool_getFeeHistogram');
+  //if (!histogram) throw new Error('timeout while getting mempool_getFeeHistogram');
 
   // fetching what electrum (which uses bitcoin core) thinks about fees:
-  const _fast = await module.exports.estimateFee(1);
-  const _medium = await module.exports.estimateFee(18);
-  const _slow = await module.exports.estimateFee(144);
+  //const _fast = await module.exports.estimateFee(1);
+  //const _medium = await module.exports.estimateFee(18);
+  //const _slow = await module.exports.estimateFee(144);
 
   // calculating fast fees from mempool:
-  const fast = module.exports.calcEstimateFeeFromFeeHistorgam(1, histogram);
+  const fast = 300; //module.exports.calcEstimateFeeFromFeeHistorgam(1, histogram);
   // recalculating medium and slow fees using bitcoincore estimations only like relative weights:
   // (minimum 1 sat, just for any case)
-  const medium = Math.max(1, Math.round((fast * _medium) / _fast));
-  const slow = Math.max(1, Math.round((fast * _slow) / _fast));
+  const medium = 200; //Math.max(1, Math.round((fast * _medium) / _fast));
+  const slow = 100; //Math.max(1, Math.round((fast * _slow) / _fast));
   return { fast, medium, slow };
 };
 

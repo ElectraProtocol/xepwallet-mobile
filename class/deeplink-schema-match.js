@@ -18,6 +18,7 @@ class DeeplinkSchemaMatch {
       lowercaseString.startsWith('blue:') ||
       lowercaseString.startsWith('bluewallet:') ||
       lowercaseString.startsWith('lapp:') ||
+      lowercaseString.startsWith('xep:') ||
       lowercaseString.startsWith('aopp:')
     );
   }
@@ -27,7 +28,7 @@ class DeeplinkSchemaMatch {
    * If the content is recognizable, create a dictionary with the respective
    * navigation dictionary required by react-navigation
    *
-   * @param event {{url: string}} URL deeplink as passed to app, e.g. `bitcoin:bc1qh6tf004ty7z7un2v5ntu4mkf630545gvhs45u7?amount=666&label=Yo`
+   * @param event {{url: string}} URL deeplink as passed to app, e.g. `xep:ep1qh6tf004ty7z7un2v5ntu4mkf630545gvhs45u7?amount=666&label=Yo`
    * @param completionHandler {function} Callback that returns [string, params: object]
    */
   static navigationRouteFor(event, completionHandler, context = { wallets: [], saveToDisk: () => {}, addWallet: () => {} }) {
@@ -429,7 +430,7 @@ class DeeplinkSchemaMatch {
   }
 
   static bip21decode(uri) {
-    return bip21.decode(uri.replace('BITCOIN:', 'bitcoin:'));
+    return bip21.decode(uri.replace('xep:', ''));
   }
 
   static bip21encode() {
@@ -450,7 +451,7 @@ class DeeplinkSchemaMatch {
           amount = parsedBitcoinUri.options.amount.toString();
           amount = parsedBitcoinUri.options.amount;
         }
-        if ('label' in parsedBitcoinUri.options) {
+        if ('message' in parsedBitcoinUri.options) {
           memo = parsedBitcoinUri.options.label || memo;
         }
         if ('pj' in parsedBitcoinUri.options) {

@@ -89,7 +89,7 @@ const ReceiveDetails = () => {
     },
     qrCodeContainer: { borderWidth: 6, borderRadius: 8, borderColor: '#FFFFFF' },
     root: {
-      flex: 1,
+      // flex: 1,
       backgroundColor: colors.elevated,
       justifyContent: 'space-between',
     },
@@ -104,6 +104,7 @@ const ReceiveDetails = () => {
       paddingVertical: 16,
       alignItems: 'center',
       flexGrow: 1,
+      marginTop: -50,
       marginBottom: 8,
     },
     link: {
@@ -151,15 +152,17 @@ const ReceiveDetails = () => {
     toolTip.current.showMenu();
   };
   const renderReceiveDetails = () => {
+    let showQRData = bip21encoded.replace("bitcoin:", "xep:");
+    showQRData = showQRData.replace("label", "message");
     return (
       <ScrollView contentContainerStyle={styles.root} keyboardShouldPersistTaps="always">
         <View style={styles.scrollBody}>
           {isCustom && (
             <>
-              <BlueText testID="CustomAmountText" style={styles.amount} numberOfLines={1}>
+              <BlueText testID="CustomAmountText" style={styles.amount} numberOfLines={2}>
                 {getDisplayAmount()}
               </BlueText>
-              <BlueText testID="CustomAmountDescriptionText" style={styles.label} numberOfLines={1}>
+              <BlueText testID="CustomAmountDescriptionText" style={styles.label} numberOfLines={10}>
                 {customLabel}
               </BlueText>
             </>
@@ -178,7 +181,7 @@ const ReceiveDetails = () => {
             />
 
             <QRCode
-              value={bip21encoded}
+              value={showQRData}
               logo={require('../../img/qr-code.png')}
               size={(is.ipad() && 300) || 300}
               logoSize={90}
@@ -189,7 +192,7 @@ const ReceiveDetails = () => {
               getRef={qrCode}
             />
           </TouchableWithoutFeedback>
-          <BlueCopyTextToClipboard text={isCustom ? bip21encoded : address} />
+          <BlueCopyTextToClipboard text={isCustom ? showQRData : address} />
         </View>
         <View style={styles.share}>
           <BlueCard>
@@ -358,7 +361,8 @@ const ReceiveDetails = () => {
   };
 
   const handleShareButtonPressed = () => {
-    Share.open({ message: bip21encoded }).catch(error => console.log(error));
+    let shareAddress = bip21encoded.replace("bitcoin", "xep")
+    Share.open({ message: shareAddress }).catch(error => console.log(error));
   };
 
   /**
@@ -367,11 +371,11 @@ const ReceiveDetails = () => {
   const getDisplayAmount = () => {
     switch (customUnit) {
       case BitcoinUnit.BTC:
-        return customAmount + ' BTC';
+        return customAmount + ' XEP';
       case BitcoinUnit.SATS:
-        return currency.satoshiToBTC(customAmount) + ' BTC';
+        return currency.satoshiToBTC(customAmount) + ' XEP';
       case BitcoinUnit.LOCAL_CURRENCY:
-        return currency.fiatToBTC(customAmount) + ' BTC';
+        return currency.fiatToBTC(customAmount) + ' XEP';
     }
     return customAmount + ' ' + customUnit;
   };
@@ -382,8 +386,8 @@ const ReceiveDetails = () => {
       {address !== undefined && showAddress && (
         <HandoffComponent
           title={`Bitcoin Transaction ${address}`}
-          type="io.bluewallet.bluewallet"
-          url={`https://blockstream.info/address/${address}`}
+          type="io.electraprotocol.xepwallet"
+          url={`http://electraprotocol.eu/address/${address}`}
         />
       )}
       {showAddress ? renderReceiveDetails() : <BlueLoading />}

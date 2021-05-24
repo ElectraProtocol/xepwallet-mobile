@@ -112,9 +112,9 @@ const NotificationSettings = () => {
           type: 'font-awesome',
           color: colors.foregroundColor,
         }}
-        onPress={() => Linking.openURL('https://github.com/BlueWallet/GroundControl')}
+        onPress={() => Linking.openURL('https://github.com/Jenova7/GroundControl')}
         titleStyle={{ color: colors.buttonAlternativeTextColor }}
-        title="github.com/BlueWallet/GroundControl"
+        title="github.com/Jenova7/GroundControl"
         color={colors.buttonTextColor}
         buttonStyle={styles.buttonStyle}
       />
@@ -136,12 +136,12 @@ const NotificationSettings = () => {
         </View>
 
         <BlueSpacing20 />
-        <BlueText style={styles.centered} onPress={() => setShowTokenInfo(isShowTokenInfo + 1)}>
+        {/*<BlueText style={styles.centered} onPress={() => setShowTokenInfo(isShowTokenInfo + 1)}>
           ♪ Ground Control to Major Tom ♪
         </BlueText>
         <BlueText style={styles.centered} onPress={() => setShowTokenInfo(isShowTokenInfo + 1)}>
           ♪ Commencing countdown, engines on ♪
-        </BlueText>
+      </BlueText>*/}
 
         {isShowTokenInfo >= 9 && (
           <View>

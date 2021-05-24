@@ -68,7 +68,7 @@
       <RemoteRunnable
          runnableDebuggingMode = "2"
          BundleIdentifier = "com.apple.Carousel"
-         RemotePath = "/BlueWallet">
+         RemotePath = "/XEPWallet">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B40D4E2F225841EC00428FCC"
@@ -89,7 +89,7 @@
       <RemoteRunnable
          runnableDebuggingMode = "2"
          BundleIdentifier = "com.apple.Carousel"
-         RemotePath = "/BlueWallet">
+         RemotePath = "/XEPWallet">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B40D4E2F225841EC00428FCC"

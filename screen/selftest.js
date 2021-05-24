@@ -161,7 +161,7 @@ export default class Selftest extends Component {
       const seed = bip39.mnemonicToSeed(mnemonic);
       const root = bitcoin.bip32.fromSeed(seed);
 
-      const path = "m/49'/0'/0'/0/0";
+      const path = "m/49'/597'/0'/0/0";
       const child = root.derivePath(path);
       const address = bitcoin.payments.p2sh({
         redeem: bitcoin.payments.p2wpkh({

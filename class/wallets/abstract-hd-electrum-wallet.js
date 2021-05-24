@@ -88,7 +88,7 @@ export class AbstractHDElectrumWallet extends AbstractHDWallet {
     if (!this.secret) return false;
     const seed = this._getSeed();
     const root = HDNode.fromSeed(seed);
-    const path = `m/84'/0'/0'/${internal ? 1 : 0}/${index}`;
+    const path = `m/84'/597'/0'/${internal ? 1 : 0}/${index}`;
     const child = root.derivePath(path);
 
     return child.toWIF();
@@ -180,7 +180,7 @@ export class AbstractHDElectrumWallet extends AbstractHDWallet {
     const seed = this._getSeed();
     const root = HDNode.fromSeed(seed);
 
-    const path = "m/84'/0'/0'";
+    const path = "m/84'/597'/0'";
     const child = root.derivePath(path).neutered();
     const xpub = child.toBase58();
 
@@ -1102,13 +1102,22 @@ export class AbstractHDElectrumWallet extends AbstractHDWallet {
 
   /**
    * @param seed {Buffer} Buffer object with seed
-   * @returns {string} Hex string of fingerprint derived from mnemonics. Always has lenght of 8 chars and correct leading zeroes
+   * @returns {string} Hex string of fingerprint derived from mnemonics. Always has lenght of 8 chars and correct leading zeroes. All caps
    */
   static seedToFingerprint(seed) {
     const root = bitcoin.bip32.fromSeed(seed);
     let hex = root.fingerprint.toString('hex');
     while (hex.length < 8) hex = '0' + hex; // leading zeroes
     return hex.toUpperCase();
+  }
+
+  /**
+   * @param mnemonic {string}  Mnemonic phrase (12 or 24 words)
+   * @returns {string} Hex fingerprint
+   */
+  static mnemonicToFingerprint(mnemonic) {
+    const seed = bip39.mnemonicToSeed(mnemonic);
+    return AbstractHDElectrumWallet.seedToFingerprint(seed);
   }
 
   /**

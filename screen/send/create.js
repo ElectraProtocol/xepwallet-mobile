@@ -119,7 +119,7 @@ export default class SendCreate extends Component {
           <Text style={styles.transactionDetailsSubtitle}>{item.address}</Text>
           <Text style={styles.transactionDetailsTitle}>{loc.send.create_amount}</Text>
           <Text style={styles.transactionDetailsSubtitle}>
-            {currency.satoshiToBTC(item.value)} {BitcoinUnit.BTC}
+            {currency.satoshiToBTC(item.value)} {BitcoinUnit.XEP}
           </Text>
           {this.state.recipients.length > 1 && (
             <BlueText style={styles.itemOf}>
@@ -145,12 +145,12 @@ export default class SendCreate extends Component {
               <BlueText style={styles.cardText}>{loc.send.create_this_is_hex}</BlueText>
               <TextInput testID="TxhexInput" style={styles.cardTx} height={72} multiline editable value={this.state.tx} />
 
-              <TouchableOpacity style={styles.actionTouch} onPress={() => Clipboard.setString(this.state.tx)}>
+              {/* <TouchableOpacity style={styles.actionTouch} onPress={() => Clipboard.setString(this.state.tx)}>
                 <Text style={styles.actionText}>{loc.send.create_copy}</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.actionTouch} onPress={() => Linking.openURL('https://coinb.in/?verify=' + this.state.tx)}>
                 <Text style={styles.actionText}>{loc.send.create_verify}</Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
             </BlueCard>
             <BlueCard>
               <FlatList
@@ -163,7 +163,7 @@ export default class SendCreate extends Component {
               />
               <Text style={styles.transactionDetailsTitle}>{loc.send.create_fee}</Text>
               <Text style={styles.transactionDetailsSubtitle}>
-                {new BigNumber(this.state.fee).toFixed()} {BitcoinUnit.BTC}
+                {new BigNumber(this.state.fee).toFixed()} {BitcoinUnit.XEP}
               </Text>
 
               <Text style={styles.transactionDetailsTitle}>{loc.send.create_tx_size}</Text>

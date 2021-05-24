@@ -70,3 +70,6 @@ artifacts/
 *.mx
 *.realm
 *.realm.lock
+android/app/release/app-release.aab
+android/app/release/output-metadata.json
+android/app/release/app-release.apk

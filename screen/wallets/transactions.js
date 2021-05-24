@@ -207,10 +207,10 @@ const WalletTransactions = () => {
       setIsLoading(false);
       setTimeElapsed(prev => prev + 1);
     }
-    if (noErr && smthChanged) {
+    if (noErr) {
       console.log('saving to disk');
       await saveToDisk(); // caching
-      //    setDataSource([...getTransactionsSliced(limit)]);
+      setDataSource(getTransactionsSliced(limit));
     }
     setIsLoading(false);
     setTimeElapsed(prev => prev + 1);
@@ -253,7 +253,7 @@ const WalletTransactions = () => {
             The idea is to avoid showing on iOS an appstore/market style app that goes against the TOS.
 
            */}
-          {wallet.getTransactions().length > 0 && wallet.type !== LightningCustodianWallet.type && renderSellFiat()}
+          {/* {wallet.getTransactions().length > 0 && wallet.type !== LightningCustodianWallet.type && renderSellFiat()} */}
           {wallet.type === LightningCustodianWallet.type && renderMarketplaceButton()}
           {wallet.type === LightningCustodianWallet.type && Platform.OS === 'ios' && renderLappBrowserButton()}
         </View>
@@ -390,13 +390,13 @@ const WalletTransactions = () => {
     );
   };
 
-  const renderSellFiat = () => {
-    return (
-      <TouchableOpacity onPress={navigateToBuyBitcoin} style={[styles.marketplaceButton2, stylesHook.marketplaceButton2]}>
-        <Text style={[styles.marketpalceText1, stylesHook.marketpalceText1]}>{loc.wallets.list_tap_here_to_buy}</Text>
-      </TouchableOpacity>
-    );
-  };
+  // const renderSellFiat = () => {
+  //   return (
+  //     <TouchableOpacity onPress={navigateToBuyBitcoin} style={[styles.marketplaceButton2, stylesHook.marketplaceButton2]}>
+  //       <Text style={[styles.marketpalceText1, stylesHook.marketpalceText1]}>{loc.wallets.list_tap_here_to_buy}</Text>
+  //     </TouchableOpacity>
+  //   );
+  // };
 
   const onWalletSelect = async selectedWallet => {
     if (selectedWallet) {
@@ -435,9 +435,7 @@ const WalletTransactions = () => {
       },
     });
   };
-
   const renderItem = item => <BlueTransactionListItem item={item.item} itemPriceUnit={itemPriceUnit} timeElapsed={timeElapsed} />;
-
   const onBarCodeRead = ret => {
     if (!isLoading) {
       setIsLoading(true);
@@ -592,7 +590,7 @@ const WalletTransactions = () => {
       {wallet.chain === Chain.ONCHAIN && wallet.type !== MultisigHDWallet.type && (
         <HandoffComponent
           title={`Bitcoin Wallet ${wallet.getLabel()}`}
-          type="io.bluewallet.bluewallet"
+          type="io.electraprotocol.xepwallet"
           url={`https://blockpath.com/search/addr?q=${wallet.getXpub()}`}
         />
       )}
@@ -652,7 +650,7 @@ const WalletTransactions = () => {
               <Text numberOfLines={0} style={styles.emptyTxs}>
                 {(isLightning() && loc.wallets.list_empty_txs1_lightning) || loc.wallets.list_empty_txs1}
               </Text>
-              {isLightning() && <Text style={styles.emptyTxsLightning}>{loc.wallets.list_empty_txs2_lightning}</Text>}
+              {/* {isLightning() && <Text style={styles.emptyTxsLightning}>{loc.wallets.list_empty_txs2_lightning}</Text>}
 
               {!isLightning() && (
                 <TouchableOpacity onPress={navigateToBuyBitcoin} style={styles.buyBitcoin}>
@@ -660,7 +658,7 @@ const WalletTransactions = () => {
                     {loc.wallets.list_tap_here_to_buy}
                   </Text>
                 </TouchableOpacity>
-              )}
+              )} */}
             </ScrollView>
           }
           onRefresh={refreshTransactions}

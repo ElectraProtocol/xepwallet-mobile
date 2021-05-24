@@ -190,7 +190,7 @@ export const VaultButton = props => {
 export const LightningButton = props => {
   const { colors } = useTheme();
   return (
-    <TouchableOpacity onPress={props.onPress}>
+    <TouchableOpacity onPress={props.onPress} disabled>
       <View
         style={{
           borderColor: (props.active && colors.lnborderColor) || colors.buttonDisabledBackgroundColor,
@@ -288,14 +288,14 @@ export class BlueWalletNavigationHeader extends Component {
     let walletPreviousPreferredUnit = this.state.wallet.getPreferredBalanceUnit();
     const wallet = this.state.wallet;
     if (walletPreviousPreferredUnit === BitcoinUnit.BTC) {
-      wallet.preferredBalanceUnit = BitcoinUnit.SATS;
+      wallet.preferredBalanceUnit = BitcoinUnit.LOCAL_CURRENCY;
       walletPreviousPreferredUnit = BitcoinUnit.BTC;
     } else if (walletPreviousPreferredUnit === BitcoinUnit.SATS) {
       wallet.preferredBalanceUnit = BitcoinUnit.LOCAL_CURRENCY;
       walletPreviousPreferredUnit = BitcoinUnit.SATS;
     } else if (walletPreviousPreferredUnit === BitcoinUnit.LOCAL_CURRENCY) {
       wallet.preferredBalanceUnit = BitcoinUnit.BTC;
-      walletPreviousPreferredUnit = BitcoinUnit.BTC;
+      walletPreviousPreferredUnit = BitcoinUnit.LOCAL_CURRENCY;
     } else {
       wallet.preferredBalanceUnit = BitcoinUnit.BTC;
       walletPreviousPreferredUnit = BitcoinUnit.BTC;
@@ -315,9 +315,7 @@ export class BlueWalletNavigationHeader extends Component {
   };
 
   render() {
-    const balance =
-      !this.state.wallet.hideBalance &&
-      formatBalance(this.state.wallet.getBalance(), this.state.wallet.getPreferredBalanceUnit(), true).toString();
+    const balance = !this.state.wallet.hideBalance && formatBalance(this.state.wallet.getBalance(), this.state.wallet.getPreferredBalanceUnit(), true).toString();
 
     return (
       <LinearGradient
@@ -1408,7 +1406,7 @@ export const BlueTransactionListItem = React.memo(({ item, itemPriceUnit = Bitco
   const handleOnCopyTransactionID = useCallback(() => Clipboard.setString(item.hash), [item.hash]);
   const handleOnCopyNote = useCallback(() => Clipboard.setString(subtitle), [subtitle]);
   const handleOnViewOnBlockExplorer = useCallback(() => {
-    const url = `https://mempool.space/tx/${item.hash}`;
+    const url = `http://electraprotocol.eu/tx/${item.hash}`;
     Linking.canOpenURL(url).then(supported => {
       if (supported) {
         Linking.openURL(url);
@@ -1416,7 +1414,7 @@ export const BlueTransactionListItem = React.memo(({ item, itemPriceUnit = Bitco
     });
   }, [item.hash]);
   const handleCopyOpenInBlockExplorerPress = useCallback(() => {
-    Clipboard.setString(`https://mempool.space/tx/${item.hash}`);
+    Clipboard.setString(`http://electraprotocol.eu/tx/${item.hash}`);
   }, [item.hash]);
   const toolTipActions = useMemo(() => {
     const actions = [

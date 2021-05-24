@@ -11,7 +11,6 @@ import {
   Image,
   Dimensions,
   useWindowDimensions,
-  SafeAreaView,
   findNodeHandle,
   useColorScheme,
   I18nManager,
@@ -24,18 +23,31 @@ import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import { PlaceholderWallet } from '../../class';
 import WalletImport from '../../class/wallet-import';
 import ActionSheet from '../ActionSheet';
-import loc from '../../loc';
+import loc, {formatBalanceWithoutSuffix } from '../../loc';
 import { FContainer, FButton } from '../../components/FloatButtons';
 import { useFocusEffect, useNavigation, useRoute, useTheme } from '@react-navigation/native';
 import { BlueStorageContext } from '../../blue_modules/storage-context';
 import { isCatalyst, isMacCatalina, isTablet } from '../../blue_modules/environment';
 import BlueClipboard from '../../blue_modules/clipboard';
 import navigationStyle from '../../components/navigationStyle';
+import { BitcoinUnit } from '../../models/bitcoinUnits';
 
 const scanqrHelper = require('../../helpers/scan-qr');
 const A = require('../../blue_modules/analytics');
 const fs = require('../../blue_modules/fs');
 const WalletsListSections = { CAROUSEL: 'CAROUSEL', LOCALTRADER: 'LOCALTRADER', TRANSACTIONS: 'TRANSACTIONS' };
+
+export const removeTrailingZeros = value => {
+  value = value.toString();
+
+  if (value.indexOf('.') === -1) {
+    return value;
+  }
+  while ((value.slice(-1) === '0' || value.slice(-1) === '.') && value.indexOf('.') !== -1) {
+    value = value.substr(0, value.length - 1);
+  }
+  return value;
+};
 
 const WalletsList = () => {
   const walletsCarousel = useRef();
@@ -153,7 +165,7 @@ const WalletsList = () => {
    */
   const refreshTransactions = (showLoadingIndicator = true, showUpdateStatusIndicator = false) => {
     setIsLoading(showLoadingIndicator);
-    refreshAllWalletTransactions(showLoadingIndicator, showUpdateStatusIndicator).finally(() => setIsLoading(false));
+    refreshAllWalletTransactions(0, showUpdateStatusIndicator).finally(() => setIsLoading(false));
   };
 
   useEffect(() => {
@@ -162,7 +174,6 @@ const WalletsList = () => {
   }, []); // call refreshTransactions() only once, when screen mounts
 
   const handleClick = index => {
-    console.log('click', index);
     const wallet = carouselData[index];
     if (wallet) {
       if (wallet.type === PlaceholderWallet.type) {
@@ -203,9 +214,7 @@ const WalletsList = () => {
   };
 
   const onSnapToItem = index => {
-    console.log('onSnapToItem', index);
     if (wallets[index] && (wallets[index].timeToRefreshBalance() || wallets[index].timeToRefreshTransaction())) {
-      console.log(wallets[index].getLabel(), 'thinks its time to refresh either balance or transactions. refetching both');
       refreshAllWalletTransactions(index, false).finally(() => setIsLoading(false));
     }
   };
@@ -234,6 +243,8 @@ const WalletsList = () => {
     }
   };
 
+  
+
   const renderTransactionListsRow = data => {
     return (
       <View style={styles.transaction}>
@@ -241,28 +252,27 @@ const WalletsList = () => {
       </View>
     );
   };
-
-  const renderLocalTrader = () => {
-    if (carouselData.every(wallet => wallet === false)) return null;
-    if (carouselData.length > 0 && !carouselData.some(wallet => wallet.type === PlaceholderWallet.type)) {
-      const button = (
-        <TouchableOpacity
-          onPress={() => {
-            navigate('HodlHodl', { screen: 'HodlHodl' });
-          }}
-          style={[styles.ltRoot, stylesHook.ltRoot]}
-        >
-          <View style={styles.ltTextWrap}>
-            <Text style={[styles.ltTextBig, stylesHook.ltTextBig]}>{loc.hodl.local_trader}</Text>
-            <Text style={[styles.ltTextSmall, stylesHook.ltTextSmall]}>{loc.hodl.p2p}</Text>
-          </View>
-        </TouchableOpacity>
-      );
-      return isLargeScreen ? <SafeAreaView>{button}</SafeAreaView> : button;
-    } else {
-      return null;
-    }
-  };
+  // const renderLocalTrader = () => {
+  //   if (carouselData.every(wallet => wallet === false)) return null;
+  //   if (carouselData.length > 0 && !carouselData.some(wallet => wallet.type === PlaceholderWallet.type)) {
+  //     const button = (
+  //       <TouchableOpacity
+  //         onPress={() => {
+  //           navigate('HodlHodl', { screen: 'HodlHodl' });
+  //         }}
+  //         style={[styles.ltRoot, stylesHook.ltRoot]}
+  //       >
+  //         <View style={styles.ltTextWrap}>
+  //           <Text style={[styles.ltTextBig, stylesHook.ltTextBig]}>{loc.hodl.local_trader}</Text>
+  //           <Text style={[styles.ltTextSmall, stylesHook.ltTextSmall]}>{loc.hodl.p2p}</Text>
+  //         </View>
+  //       </TouchableOpacity>
+  //     );
+  //     return isLargeScreen ? <SafeAreaView>{button}</SafeAreaView> : button;
+  //   } else {
+  //     return null;
+  //   }
+  // };
 
   const renderWalletsCarousel = () => {
     return (
@@ -284,8 +294,8 @@ const WalletsList = () => {
     switch (item.section.key) {
       case WalletsListSections.CAROUSEL:
         return isLargeScreen ? null : renderWalletsCarousel();
-      case WalletsListSections.LOCALTRADER:
-        return renderLocalTrader();
+      // case WalletsListSections.LOCALTRADER:
+      //   return renderLocalTrader();
       case WalletsListSections.TRANSACTIONS:
         return renderTransactionListsRow(item);
       default:
@@ -293,14 +303,23 @@ const WalletsList = () => {
     }
   };
 
+  const renderUnitPrice = () => {
+    return <Text style={{fontSize:16, fontWeight:'bold', color: colors.foregroundColor, paddingHorizontal:18}}>
+      1 XEP = {formatBalanceWithoutSuffix(1*1e8, BitcoinUnit.LOCAL_CURRENCY, true).toString()}
+      </Text>
+  }
+
   const renderSectionHeader = section => {
     switch (section.section.key) {
       case WalletsListSections.CAROUSEL:
         return isLargeScreen ? null : (
-          <BlueHeaderDefaultMain
-            leftText={loc.wallets.list_title}
-            onNewWalletPress={!carouselData.some(wallet => wallet.type === PlaceholderWallet.type) ? () => navigate('AddWalletRoot') : null}
-          />
+          <React.Fragment>
+            <BlueHeaderDefaultMain
+              leftText={loc.wallets.list_title}
+              onNewWalletPress={!carouselData.some(wallet => wallet.type === PlaceholderWallet.type) ? () => navigate('AddWalletRoot') : null}
+            />
+            {renderUnitPrice()}
+          </React.Fragment>
         );
       case WalletsListSections.TRANSACTIONS:
         return renderListHeaderComponent();
@@ -358,7 +377,8 @@ const WalletsList = () => {
 
   const onBarScanned = value => {
     if (!value) return;
-    DeeplinkSchemaMatch.navigationRouteFor({ url: value }, completionValue => {
+    let realValue = value.replace("xep:", "bitcoin:");
+    DeeplinkSchemaMatch.navigationRouteFor({ url: realValue }, completionValue => {
       ReactNativeHapticFeedback.trigger('impactLight', { ignoreAndroidSystemSettings: false });
       navigate(...completionValue);
     });
@@ -427,7 +447,7 @@ const WalletsList = () => {
   };
 
   const onRefresh = () => {
-    refreshTransactions(true, false);
+    refreshTransactions(true, true);
   };
 
   return (

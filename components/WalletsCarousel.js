@@ -22,6 +22,7 @@ import { LightningCustodianWallet, MultisigHDWallet, PlaceholderWallet } from '.
 import WalletGradient from '../class/wallet-gradient';
 import { BluePrivateBalance } from '../BlueComponents';
 import { BlueStorageContext } from '../blue_modules/storage-context';
+import { BitcoinUnit } from '../models/bitcoinUnits';
 
 const nStyles = StyleSheet.create({
   root: {

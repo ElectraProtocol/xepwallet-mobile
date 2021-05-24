@@ -60,9 +60,11 @@ class AmountInput extends Component {
     let sats = 0;
     switch (previousUnit) {
       case BitcoinUnit.BTC:
+      case BitcoinUnit.XEP:
         sats = new BigNumber(amount).multipliedBy(100000000).toString();
         break;
       case BitcoinUnit.SATS:
+        // sats = new BigNumber(amount).multipliedBy(100000000).toString();
         sats = amount;
         break;
       case BitcoinUnit.LOCAL_CURRENCY:
@@ -93,14 +95,14 @@ class AmountInput extends Component {
     let previousUnit = this.props.unit;
     let newUnit;
     if (previousUnit === BitcoinUnit.BTC) {
-      newUnit = BitcoinUnit.SATS;
-    } else if (previousUnit === BitcoinUnit.SATS) {
       newUnit = BitcoinUnit.LOCAL_CURRENCY;
+    // } else if (previousUnit === BitcoinUnit.SATS) {
+    //   newUnit = BitcoinUnit.LOCAL_CURRENCY;
     } else if (previousUnit === BitcoinUnit.LOCAL_CURRENCY) {
       newUnit = BitcoinUnit.BTC;
     } else {
-      newUnit = BitcoinUnit.BTC;
-      previousUnit = BitcoinUnit.SATS;
+      newUnit = BitcoinUnit.LOCAL_CURRENCY;
+      previousUnit = BitcoinUnit.BTC;
     }
     this.onAmountUnitChange(previousUnit, newUnit);
   };
@@ -166,12 +168,12 @@ class AmountInput extends Component {
     const { colors, disabled, unit } = this.props;
     const amount = this.props.amount || 0;
     let secondaryDisplayCurrency = formatBalanceWithoutSuffix(amount, BitcoinUnit.LOCAL_CURRENCY, false);
-
     // if main display is sat or btc - secondary display is fiat
     // if main display is fiat - secondary dislay is btc
     let sat;
     switch (unit) {
       case BitcoinUnit.BTC:
+      case BitcoinUnit.XEP:
         sat = new BigNumber(amount).multipliedBy(100000000).toString();
         secondaryDisplayCurrency = formatBalanceWithoutSuffix(sat, BitcoinUnit.LOCAL_CURRENCY, false);
         break;
@@ -227,23 +229,22 @@ class AmountInput extends Component {
                 style={[styles.input, stylesHook.input]}
               />
               {unit !== BitcoinUnit.LOCAL_CURRENCY && amount !== BitcoinUnit.MAX && (
-                <Text style={[styles.cryptoCurrency, stylesHook.cryptoCurrency]}>{' ' + loc.units[unit]}</Text>
+                <Text style={[styles.cryptoCurrency, stylesHook.cryptoCurrency]}>{' ' + loc.units[BitcoinUnit.BTC]}</Text>
               )}
             </View>
             <View style={styles.secondaryRoot}>
               <Text style={styles.secondaryText}>
-                {unit === BitcoinUnit.LOCAL_CURRENCY && amount !== BitcoinUnit.MAX
-                  ? removeTrailingZeros(secondaryDisplayCurrency)
-                  : secondaryDisplayCurrency}
+                {unit === BitcoinUnit.LOCAL_CURRENCY && amount !== BitcoinUnit.MAX ? removeTrailingZeros(secondaryDisplayCurrency) : secondaryDisplayCurrency}
                 {unit === BitcoinUnit.LOCAL_CURRENCY && amount !== BitcoinUnit.MAX ? ` ${loc.units[BitcoinUnit.BTC]}` : null}
               </Text>
             </View>
           </View>
-          {!disabled && amount !== BitcoinUnit.MAX && (
+          {/*}
+           {!disabled && amount !== BitcoinUnit.MAX && (
             <TouchableOpacity testID="changeAmountUnitButton" style={styles.changeAmountUnit} onPress={this.changeAmountUnit}>
               <Image source={require('../img/round-compare-arrows-24-px.png')} />
             </TouchableOpacity>
-          )}
+          )}*/}
         </View>
       </TouchableWithoutFeedback>
     );

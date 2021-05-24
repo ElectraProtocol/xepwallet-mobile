@@ -77,6 +77,7 @@ const SendDetails = () => {
   const [payjoinUrl, setPayjoinUrl] = useState(null);
   const [changeAddress, setChangeAddress] = useState();
   const [dumb, setDumb] = useState(false);
+  const [firstLoading, setFirstLoading] = useState(false);
 
   // if cutomFee is not set, we need to choose highest possible fee for wallet balance
   // if there are no funds for even Slow option, use 1 sat/byte fee
@@ -84,12 +85,12 @@ const SendDetails = () => {
     if (customFee) return customFee;
     if (feePrecalc.slowFee === null) return '1'; // wait for precalculated fees
     let initialFee;
-    if (feePrecalc.fastestFee !== null) {
-      initialFee = String(networkTransactionFees.fastestFee);
+    if (feePrecalc.slowFee !== null) {
+      initialFee = String(networkTransactionFees.slowFee);
     } else if (feePrecalc.mediumFee !== null) {
       initialFee = String(networkTransactionFees.mediumFee);
     } else {
-      initialFee = String(networkTransactionFees.slowFee);
+      initialFee = String(networkTransactionFees.fastestFee);
     }
     return initialFee;
   }, [customFee, feePrecalc, networkTransactionFees]);
@@ -161,7 +162,7 @@ const SendDetails = () => {
 
     // load fresh fees from servers
 
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    //LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     setNetworkTransactionFeesIsLoading(true);
     NetworkTransactionFees.recommendedFees()
       .then(async fees => {
@@ -171,7 +172,7 @@ const SendDetails = () => {
       })
       .catch(e => console.log('loading recommendedFees error', e))
       .finally(() => {
-        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+        //LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
         setNetworkTransactionFeesIsLoading(false);
       });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -219,6 +220,7 @@ const SendDetails = () => {
 
     const newFeePrecalc = { ...feePrecalc };
 
+    let tempFee = { ...feePrecalc };
     for (const opt of options) {
       let targets = [];
       for (const transaction of addresses) {
@@ -256,8 +258,9 @@ const SendDetails = () => {
       while (true) {
         try {
           const { fee } = wallet.coinselect(lutxo, targets, opt.fee, changeAddress);
-
+          
           newFeePrecalc[opt.key] = fee;
+          tempFee[opt.key] = fee;
           break;
         } catch (e) {
           if (e.message.includes('Not enough') && !flag) {
@@ -273,7 +276,9 @@ const SendDetails = () => {
       }
     }
 
-    setFeePrecalc(newFeePrecalc);
+    tempFee.current = tempFee.slowFee;
+    firstLoading? setFeePrecalc(newFeePrecalc) : setFeePrecalc(tempFee);
+     
   }, [wallet, networkTransactionFees, utxo, addresses, feeRate, dumb]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getChangeAddressFast = () => {
@@ -360,8 +365,8 @@ const SendDetails = () => {
       options = decoded.options;
     }
 
-    console.log('options', options);
-    if (btcAddressRx.test(address) || address.startsWith('bc1') || address.startsWith('BC1')) {
+    console.log('===options', options, address);
+    if (btcAddressRx.test(address) || address.startsWith('ep1') || address.startsWith('EP1')) {
       setAddresses(addresses => {
         addresses[scrollIndex.current].address = address;
         addresses[scrollIndex.current].amount = options.amount;
@@ -389,9 +394,9 @@ const SendDetails = () => {
       if (!transaction.amount || transaction.amount < 0 || parseFloat(transaction.amount) === 0) {
         error = loc.send.details_amount_field_is_not_valid;
         console.log('validation error');
-      } else if (parseFloat(transaction.amountSats) <= 500) {
-        error = loc.send.details_amount_field_is_less_than_minimum_amount_sat;
-        console.log('validation error');
+      // } else if (parseFloat(transaction.amountSats) <= 500) {
+      //   error = loc.send.details_amount_field_is_less_than_minimum_amount_sat;
+      //   console.log('validation error');
       } else if (!requestedSatPerByte || parseFloat(requestedSatPerByte) < 1) {
         error = loc.send.details_fee_field_is_not_valid;
         console.log('validation error');
@@ -820,7 +825,7 @@ const SendDetails = () => {
               units[scrollIndex.current] = BitcoinUnit.BTC;
               return [...units];
             });
-            LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+            //LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
             setOptionsVisible(false);
           },
           style: 'default',
@@ -915,8 +920,9 @@ const SendDetails = () => {
         active: Number(feeRate) === nf.slowFee,
       },
     ];
-
+    
     return (
+      
       <BottomModal
         deviceWidth={width + width / 2}
         isVisible={isFeeSelectionModalVisible}
@@ -998,6 +1004,7 @@ const SendDetails = () => {
               component={TouchableOpacity}
               onPress={onUseAllPressed}
             />
+            {/*}
             {wallet.type === HDSegwitBech32Wallet.type && (
               <BlueListItem
                 title={loc.send.details_adv_fee_bump}
@@ -1005,6 +1012,7 @@ const SendDetails = () => {
                 switch={{ value: isTransactionReplaceable, onValueChange: onReplaceableFeeSwitchValueChanged }}
               />
             )}
+            */}
             {wallet.type === WatchOnlyWallet.type && wallet.isHd() && (
               <BlueListItem title={loc.send.details_adv_import} hideChevron component={TouchableOpacity} onPress={importTransaction} />
             )}
@@ -1133,6 +1141,7 @@ const SendDetails = () => {
                   item.amountSats = parseInt(item.amount);
                   break;
                 case BitcoinUnit.BTC:
+                case BitcoinUnit.XEP:
                   item.amountSats = currency.btcToSatoshi(item.amount);
                   break;
                 case BitcoinUnit.LOCAL_CURRENCY:
@@ -1211,7 +1220,7 @@ const SendDetails = () => {
   // if utxo is limited we use it to calculate available balance
   const balance = utxo ? utxo.reduce((prev, curr) => prev + curr.value, 0) : wallet.getBalance();
   const allBalance = formatBalanceWithoutSuffix(balance, BitcoinUnit.BTC, true);
-
+  
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
       <View style={[styles.root, stylesHook.root]} onLayout={e => setWidth(e.nativeEvent.layout.width)}>
@@ -1248,8 +1257,11 @@ const SendDetails = () => {
               />
             </View>
             <TouchableOpacity
-              testID="chooseFee"
-              onPress={() => setIsFeeSelectionModalVisible(true)}
+              testID="chooseFee"              
+              //onPress={() => {
+              //  setIsFeeSelectionModalVisible(true);
+              //  setFirstLoading(true);
+              //}              
               disabled={isLoading}
               style={styles.fee}
             >
