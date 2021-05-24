@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "578919764311",
+    "firebase_url": "https://xepwallet-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "xepwallet",
     "storage_bucket": "xepwallet.appspot.com"
   },
