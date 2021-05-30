@@ -4,7 +4,7 @@ Based on blue wallet with React Native and Electrum.
 
 Website: [www.electraprotocol.com](https://www.electraprotocol.com/)
 
-[![Appstore](https://cdn.discordapp.com/attachments/840949872504602664/846428046134345748/app-store-badge.png)](https://www.electraprotocol.com/)
+[![Appstore](https://cdn.discordapp.com/attachments/840949872504602664/846428046134345748/app-store-badge.png)](https://play.google.com/store/apps/details?id=io.electraprotocol.xepwallet)
 [![Playstore](https://cdn.discordapp.com/attachments/840949872504602664/846427872150421504/play-store-badge.png)](https://www.electraprotocol.com/)
 
 ## This wallet uses the XEP ElectrumX server to communicate with the blockchain and does not store the chain in your device. 
