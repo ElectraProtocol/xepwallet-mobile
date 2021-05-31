@@ -91,7 +91,7 @@ export const FiatUnit = Object.freeze({
   EOS: { endPointKey: 'EOS', symbol: 'EOS', locale: 'en-US', source: FiatUnitSource.CoinGecko},
   XRP: { endPointKey: 'XRP', symbol: 'XRP', locale: 'en-US', source: FiatUnitSource.CoinGecko},
   XLM: { endPointKey: 'XLM', symbol: 'XLM', locale: 'en-US', source: FiatUnitSource.CoinGecko},
-  LINK: { endPointKey: 'LINK', symbol: '$', locale: 'en-US', source: FiatUnitSource.CoinGecko},
+  //LINK: { endPointKey: 'LINK', symbol: '$', locale: 'en-US', source: FiatUnitSource.CoinGecko},
   DOT: { endPointKey: 'DOT', symbol: '$', locale: 'en-US', source: FiatUnitSource.CoinGecko},
   YFI: { endPointKey: 'YFI', symbol: '$', locale: 'en-US', source: FiatUnitSource.CoinGecko},
   USD: { endPointKey: 'USD', symbol: '$', locale: 'en-US', source: FiatUnitSource.CoinGecko},
@@ -142,8 +142,8 @@ export const FiatUnit = Object.freeze({
   XDR: { endPointKey: 'XDR', symbol: '$', locale: 'en-US', source: FiatUnitSource.CoinGecko},
   XAG: { endPointKey: 'XAG', symbol: '$', locale: 'en-US', source: FiatUnitSource.CoinGecko},
   XAU: { endPointKey: 'XAU', symbol: '$', locale: 'en-US', source: FiatUnitSource.CoinGecko},
-  BITS: { endPointKey: 'BITS', symbol: '$', locale: 'en-US', source: FiatUnitSource.CoinGecko},
-  SATS: { endPointKey: 'SATS', symbol: '$', locale: 'en-US', source: FiatUnitSource.CoinGecko},
+  //BITS: { endPointKey: 'BITS', symbol: '$', locale: 'en-US', source: FiatUnitSource.CoinGecko},
+  //SATS: { endPointKey: 'SATS', symbol: '$', locale: 'en-US', source: FiatUnitSource.CoinGecko},
 });
 export const FiatUnit_1 = Object.freeze({
   USD: { endPointKey: 'USD', symbol: '$', locale: 'en-US', source: FiatUnitSource.CoinDesk },
