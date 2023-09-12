@@ -610,8 +610,8 @@ describe('BlueWallet UI Tests - no wallets', () => {
       .withTimeout(300 * 1000);
 
     await expect(element(by.text("m/44'/0'/1'"))).toBeVisible();
-    await expect(element(by.text("m/49'/0'/0'"))).toBeVisible();
-    await expect(element(by.text("m/84'/0'/0'"))).toBeVisible();
+    await expect(element(by.text("m/49'/597'/0'"))).toBeVisible();
+    await expect(element(by.text("m/84'/597'/0'"))).toBeVisible();
 
     // open custom derivation path screen and import the wallet
     await element(by.id('CustomDerivationPathButton')).tap();

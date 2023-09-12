@@ -188,7 +188,7 @@
     "open_settings": "설정 열기",
     "permission_storage_later": "나중에 물어보기",
     "permission_storage_message": "블루월렛이 이 파일을 스토리지에 저장하기 위해서는 사용자의 허가가 필요합니다.",
-    "permission_storage_denied_message": "BlueWallet이 이 화일을 저장할 수 없습니다. 설정에 가셔서 저장관련 허가설정을 허락가능으로 설정하세요",
+    "permission_storage_denied_message": "XEPWallet이 이 화일을 저장할 수 없습니다. 설정에 가셔서 저장관련 허가설정을 허락가능으로 설정하세요",
     "permission_storage_title": "스토리지 접근 허가",
     "psbt_clipboard": "클립보드에 복사하기",
     "psbt_this_is_psbt": "PSBT(서명 비트코인거래) 입니다. 하드웨어월렛으로 서명을 마무리해주세요.",
@@ -361,7 +361,6 @@
     "updating": "갱신중..."
   },
   "wallets": {
-    "add_bitcoin": "비트코인",
     "add_bitcoin_explain": "단순하고 강력한 비트코인 지갑",
     "add_create": "생성하기",
     "add_entropy_generated": "{gen} 바이트 엔트로피",
@@ -456,20 +455,17 @@
     "xpub_title": "지갑 XPUB"
   },
   "multisig": {
-    "multisig_vault": "금고",
-    "default_label": "다중서명 금고",
-    "multisig_vault_explain": "대규모 금액을 위한 최고의 보안",
     "provide_signature": "서명 제공하기",
     "vault_key": "금고 키 {number}",
     "required_keys_out_of_total": "총 갯수중 요구되는 키의 수",
     "fee": "수수료: {number}",
-    "fee_btc": "{number} BTC",
+    "fee_btc": "{number} XEP",
     "confirm": "컨펌",
     "header": "보내기",
     "share": "공유하기",
     "view": "보기",
     "manage_keys": "키 관리",
-    "how_many_signatures_can_bluewallet_make": "블루월렛은 몇 개의 서명을 만들 수 있습니까",
+    "how_many_signatures_can_XEPWallet_make": "블루월렛은 몇 개의 서명을 만들 수 있습니까",
     "signatures_required_to_spend": "서명이 필요합니다 {number}",
     "signatures_we_can_make": "{number}개 가능",
     "scan_or_import_file": "스캔하거나 화일 들여오기",
@@ -516,7 +512,7 @@
     "ms_help_title": "다중 서명 저장소 작동 방식 : 팁과 요령",
     "ms_help_text": "보안을 강화위한 여러 개의 키가있는 지갑에 보관하는것이 좋습니다.",
     "ms_help_title1": "여러 디바이스를 사용하는 것이 좋습니다.",
-    "ms_help_1": "이 볼트는 Electrum, Spectre, Coldcard, Cobo Vault 등과 같은 다른 BlueWallet 앱 및 PSBT 호환 지갑과 함께 사용됩니다.",
+    "ms_help_1": "이 볼트는 Electrum, Spectre, Coldcard, Cobo Vault 등과 같은 다른 XEPWallet 앱 및 PSBT 호환 지갑과 함께 사용됩니다.",
     "ms_help_title2": "키 편집",
     "ms_help_2": "이 기기에서 모든 금고 키를 만든다음 나중에 지우거나 수정하실 수 있습니다. 모든 키를 같은 기기내에 가지고 있게되는 것은 보통 비트코인 지갑의 보안과 동등한 수준입니다.",
     "ms_help_title3": "볼트 백업",
@@ -524,7 +520,7 @@
     "ms_help_title4": "볼트로 가져 오기",
     "ms_help_4": "다중 서명을 가져오려면 백업 파일과 가져오기 기능을 사용하십시오. 시드 및 공개 키만 있는 경우 저장소 키를 만들 때 별도의 \"가져오기\" 버튼을 사용할 수 있습니다.",
     "ms_help_title5": "고급 모드",
-    "ms_help_5": "기본적으로 BlueWallet은 2/3 Vault를 생성합니다. 다른 쿼럼을 생성하거나 주소 유형을 변경하려면 설정에서 고급 모드를 활성화하십시오."
+    "ms_help_5": "기본적으로 XEPWallet은 2/3 Vault를 생성합니다. 다른 쿼럼을 생성하거나 주소 유형을 변경하려면 설정에서 고급 모드를 활성화하십시오."
   },
   "is_it_my_address": {
     "title": "이것은 자신의 주소?",
@@ -548,7 +544,7 @@
     "tip": "이 기능을 사용하면 코인을 확인, 표시, 동결 또는 선택하여 지갑 관리를 개선 할 수 있습니다. 색칠 된 원을 선택하여 여러 코인을 선택할 수 있습니다."
   },
   "units": {
-    "BTC": "비트코인",
+    "XEP": "XEP",
     "MAX": "최대",
     "sat_vbyte": "가상바이트당 사토시",
     "sats": "사토시"

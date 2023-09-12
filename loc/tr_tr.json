@@ -25,7 +25,7 @@
   },
   "azteco": {
     "codeIs": "Bilet kodunuz ",
-    "errorBeforeRefeem": "Hesabiniza yuklemeden once bir Bitcoin cuzdani olusturmalisiniz",
+    "errorBeforeRefeem": "Hesabiniza yuklemeden once bir XEP cuzdani olusturmalisiniz",
     "errorSomething": "Birseyler yanlis gitti. Bu kod hala gecerli mi?",
     "redeem": "Cüzdana yükle",
     "redeemButton": "Yükle",
@@ -85,7 +85,7 @@
     "create_fake_storage": "Sahte şifreli depolama oluşturun",
     "create_password": "Şifre oluştur",
     "create_password_explanation": "Sahte depolama şifreniz, ana depolama şifrenizle aynı olmamalıdır.",
-    "help": "Bazı koşullar altında, şifrenizi açıklamanız gerekebilir. Paralarınızı güvende tutmak için, BlueWallet başka bir şifre ile şifreli depolama alanı yaratabilir. Baskı altında, Bu şifreyi 3. bir tarafa söyleyebilirsiniz. Girilirse BlueWallet, yeni 'sahte' bir depolamanın kilidini açacaktır. Bu 3. şahıslara normal görünecektir, ancak paraların olduğu ana depolama alanınızı gizlice saklamaya devam edecektir.",
+    "help": "Bazı koşullar altında, şifrenizi açıklamanız gerekebilir. Paralarınızı güvende tutmak için, XEPWallet başka bir şifre ile şifreli depolama alanı yaratabilir. Baskı altında, Bu şifreyi 3. bir tarafa söyleyebilirsiniz. Girilirse XEPWallet, yeni 'sahte' bir depolamanın kilidini açacaktır. Bu 3. şahıslara normal görünecektir, ancak paraların olduğu ana depolama alanınızı gizlice saklamaya devam edecektir.",
     "help2": "Yeni depolama alanı tamamen işlevsel olacak ve ufak bir miktar tutarsanız daha inanılır görünecektir.",
     "password_should_not_match": "Sahte depolama şifreniz, ana depolama şifrenizle aynı olmamalıdır",
     "retype_password": "Şifrenizi yeniden yazın",
@@ -136,14 +136,14 @@
     "details_amount_field_is_not_valid": "Miktar alanı geçerli değil",
     "details_amount_field_is_less_than_minimum_amount_sat": "Belirlediğiniz tutar çok az. Lütfen 500 sat'tan daha büyük bir tutar giriniz.",
     "details_create": "Oluştur",
-    "details_error_decode": "Bitcoin adresi tanımlanamadı",
+    "details_error_decode": "XEP adresi tanımlanamadı",
     "details_fee_field_is_not_valid": "Ücret miktarı geçerli değil.",
     "details_next": "İleri",
     "details_note_placeholder": "Kendime not",
     "details_scan": "Tara",
     "details_total_exceeds_balance": "Gönderme miktarı mevcut bakiyeyi aşıyor.",
     "details_unrecognized_file_format": "Bilinmeyen dosya türü",
-    "details_wallet_before_tx": "İşlem yapmadan önce Bitcoin cüzdanınızı oluşturmalısınız.",
+    "details_wallet_before_tx": "İşlem yapmadan önce XEP cüzdanınızı oluşturmalısınız.",
     "dynamic_init": "Başlatılıyor",
     "dynamic_next": "Sonraki",
     "dynamic_prev": "Önceki",
@@ -257,7 +257,7 @@
     "check_address": "Adresi kontrol et"
   },
   "units": {
-    "BTC": "BTC",
+    "XEP": "XEP",
     "MAX": "Maks",
     "sats": "sat"
   },

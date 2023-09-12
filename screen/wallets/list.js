@@ -19,7 +19,7 @@ import { Icon } from 'react-native-elements';
 import DeeplinkSchemaMatch from '../../class/deeplink-schema-match';
 import ReactNativeHapticFeedback from 'react-native-haptic-feedback';
 import ActionSheet from '../ActionSheet';
-import loc from '../../loc';
+import loc, {formatBalanceWithoutSuffix } from '../../loc';
 import { FContainer, FButton } from '../../components/FloatButtons';
 import { useFocusEffect, useIsFocused, useNavigation, useRoute, useTheme } from '@react-navigation/native';
 import { BlueStorageContext } from '../../blue_modules/storage-context';
@@ -27,6 +27,7 @@ import { isDesktop, isTablet } from '../../blue_modules/environment';
 import BlueClipboard from '../../blue_modules/clipboard';
 import navigationStyle from '../../components/navigationStyle';
 import { TransactionListItem } from '../../components/TransactionListItem';
+import { BitcoinUnit } from '../../models/bitcoinUnits';
 
 const scanqrHelper = require('../../helpers/scan-qr');
 const A = require('../../blue_modules/analytics');
@@ -232,11 +233,23 @@ const WalletsList = () => {
     }
   };
 
+  const renderUnitPrice = () => {
+    return <Text style={{fontSize:16, fontWeight:'bold', color: colors.foregroundColor, paddingHorizontal:18}}>
+      1 XEP = {formatBalanceWithoutSuffix(1*1e8, BitcoinUnit.LOCAL_CURRENCY, true).toString()}
+      </Text>
+  }
+
   const renderSectionHeader = section => {
     switch (section.section.key) {
       case WalletsListSections.CAROUSEL:
         return isLargeScreen ? null : (
-          <BlueHeaderDefaultMain leftText={loc.wallets.list_title} onNewWalletPress={() => navigate('AddWalletRoot')} />
+          <React.Fragment>
+            <BlueHeaderDefaultMain
+              leftText={loc.wallets.list_title}
+              onNewWalletPress={() => navigate('AddWalletRoot')}
+            />
+            {renderUnitPrice()}
+          </React.Fragment>
         );
       case WalletsListSections.TRANSACTIONS:
         return renderListHeaderComponent();
@@ -290,7 +303,8 @@ const WalletsList = () => {
 
   const onBarScanned = value => {
     if (!value) return;
-    DeeplinkSchemaMatch.navigationRouteFor({ url: value }, completionValue => {
+    let realValue = value.replace("xep:", "bitcoin:");
+    DeeplinkSchemaMatch.navigationRouteFor({ url: realValue }, completionValue => {
       ReactNativeHapticFeedback.trigger('impactLight', { ignoreAndroidSystemSettings: false });
       navigate(...completionValue);
     });
@@ -354,7 +368,7 @@ const WalletsList = () => {
   };
 
   const onRefresh = () => {
-    refreshTransactions(true, false);
+    refreshTransactions(true, true);
   };
 
   return (

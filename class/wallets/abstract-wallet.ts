@@ -221,7 +221,7 @@ export class AbstractWallet {
   setSecret(newSecret: string): this {
     this.secret = newSecret.trim().replace('bitcoin:', '').replace('BITCOIN:', '');
 
-    if (this.secret.startsWith('BC1')) this.secret = this.secret.toLowerCase();
+    if (this.secret.startsWith('EP1')) this.secret = this.secret.toLowerCase();
 
     // [fingerprint/derivation]zpub
     const re = /\[([^\]]+)\](.*)/;
@@ -236,12 +236,12 @@ export class AbstractWallet {
       }
       this.secret = m[2];
 
-      if (derivationPath.startsWith("m/84'/0'/") && this.secret.toLowerCase().startsWith('xpub')) {
+      if (derivationPath.startsWith("m/84'/597'/") && this.secret.toLowerCase().startsWith('xpub')) {
         // need to convert xpub to zpub
         this.secret = this._xpubToZpub(this.secret);
       }
 
-      if (derivationPath.startsWith("m/49'/0'/") && this.secret.toLowerCase().startsWith('xpub')) {
+      if (derivationPath.startsWith("m/49'/597'/") && this.secret.toLowerCase().startsWith('xpub')) {
         // need to convert xpub to ypub
         this.secret = this._xpubToYpub(this.secret);
       }
@@ -293,11 +293,11 @@ export class AbstractWallet {
 
     if (!this._derivationPath) {
       if (this.secret.startsWith('xpub')) {
-        this._derivationPath = "m/44'/0'/0'"; // Assume default BIP44 path for legacy wallets
+        this._derivationPath = "m/44'/597'/0'"; // Assume default BIP44 path for legacy wallets
       } else if (this.secret.startsWith('ypub')) {
-        this._derivationPath = "m/49'/0'/0'"; // Assume default BIP49 path for segwit wrapped wallets
+        this._derivationPath = "m/49'/597'/0'"; // Assume default BIP49 path for segwit wrapped wallets
       } else if (this.secret.startsWith('zpub')) {
-        this._derivationPath = "m/84'/0'/0'"; // Assume default BIP84 for native segwit wallets
+        this._derivationPath = "m/84'/597'/0'"; // Assume default BIP84 for native segwit wallets
       }
     }
 

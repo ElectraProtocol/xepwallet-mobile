@@ -286,8 +286,8 @@ const TransactionsStatus = () => {
     } else if (isCPFPPossible === buttonStatus.possible) {
       return (
         <>
-          <BlueButton onPress={navigateToCPFP} title={loc.transactions.status_bump} />
-          <BlueSpacing10 />
+          {/*<BlueButton onPress={navigateToCPFP} title={loc.transactions.status_bump} />
+          <BlueSpacing10 />*/}
         </>
       );
     }
@@ -302,13 +302,14 @@ const TransactionsStatus = () => {
       );
     } else if (isRBFCancelPossible === buttonStatus.possible) {
       return (
-        <>
+        <> {/*
           <TouchableOpacity accessibilityRole="button" style={styles.cancel}>
             <Text onPress={navigateToRBFCancel} style={styles.cancelText}>
               {loc.transactions.status_cancel}
             </Text>
           </TouchableOpacity>
           <BlueSpacing10 />
+          */}
         </>
       );
     }
@@ -325,7 +326,7 @@ const TransactionsStatus = () => {
     } else if (isRBFBumpFeePossible === buttonStatus.possible) {
       return (
         <>
-          <BlueButton onPress={navigateToRBFBumpFee} title={loc.transactions.status_bump} />
+          {/*<BlueButton onPress={navigateToRBFBumpFee} title={loc.transactions.status_bump} />*/}
           <BlueSpacing10 />
         </>
       );
@@ -357,7 +358,7 @@ const TransactionsStatus = () => {
       <HandoffComponent
         title={loc.transactions.details_title}
         type={HandoffComponent.activityTypes.ViewInBlockExplorer}
-        url={`https://mempool.space/tx/${tx.hash}`}
+        url={`https://electraprotocol.network/transaction/${tx.hash}`}
       />
 
       <StatusBar barStyle="default" />

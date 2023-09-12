@@ -47,12 +47,11 @@ async function _getRealm() {
 }
 
 const storageKey = 'ELECTRUM_PEERS';
-const defaultPeer = { host: 'electrum1.bluewallet.io', ssl: '443' };
+const defaultPeer = { host: 'electrumx1.electraprotocol.eu', ssl: '50002' };
 const hardcodedPeers = [
-  { host: 'electrum1.bluewallet.io', ssl: '443' },
-  { host: 'electrum2.bluewallet.io', ssl: '443' },
-  { host: 'electrum.acinq.co', ssl: '50002' },
-  { host: 'electrum.bitaroo.net', ssl: '50002' },
+  { host: 'electrumx1.electraprotocol.eu', ssl: '50002' },
+  { host: 'electrumx2.electraprotocol.eu', ssl: '50002' },
+  { host: 'electrumx3.electraprotocol.eu', ssl: '50002' },
 ];
 
 /** @type {ElectrumClient} */
@@ -99,7 +98,7 @@ async function connectMain() {
     usingPeer = savedPeer;
   }
 
-  await DefaultPreference.setName('group.io.bluewallet.bluewallet');
+  await DefaultPreference.setName('group.io.electraprotocol.xepwallet');
   try {
     if (usingPeer.host.endsWith('onion')) {
       const randomPeer = await getCurrentPeer();
@@ -221,7 +220,7 @@ async function presentNetworkErrorAlert(usingPeer) {
                   await AsyncStorage.setItem(ELECTRUM_TCP_PORT, '');
                   await AsyncStorage.setItem(ELECTRUM_SSL_PORT, '');
                   try {
-                    await DefaultPreference.setName('group.io.bluewallet.bluewallet');
+                    await DefaultPreference.setName('group.io.electraprotocol.xepwallet');
                     await DefaultPreference.clear(ELECTRUM_HOST);
                     await DefaultPreference.clear(ELECTRUM_SSL_PORT);
                     await DefaultPreference.clear(ELECTRUM_TCP_PORT);
@@ -819,6 +818,7 @@ module.exports.calcEstimateFeeFromFeeHistorgam = function (numberOfBlocks, feeHi
 };
 
 module.exports.estimateFees = async function () {
+/*
   let histogram;
   let timeoutId;
   try {
@@ -831,18 +831,18 @@ module.exports.estimateFees = async function () {
   }
 
   if (!histogram) throw new Error('timeout while getting mempool_getFeeHistogram');
-
+  
   // fetching what electrum (which uses bitcoin core) thinks about fees:
   const _fast = await module.exports.estimateFee(1);
   const _medium = await module.exports.estimateFee(18);
   const _slow = await module.exports.estimateFee(144);
-
+*/
   // calculating fast fees from mempool:
-  const fast = Math.max(2, module.exports.calcEstimateFeeFromFeeHistorgam(1, histogram));
+  const fast = 300; //Math.max(2, module.exports.calcEstimateFeeFromFeeHistorgam(1, histogram));
   // recalculating medium and slow fees using bitcoincore estimations only like relative weights:
   // (minimum 1 sat, just for any case)
-  const medium = Math.max(1, Math.round((fast * _medium) / _fast));
-  const slow = Math.max(1, Math.round((fast * _slow) / _fast));
+  const medium = 200; //Math.max(1, Math.round((fast * _medium) / _fast));
+  const slow = 100; //Math.max(1, Math.round((fast * _slow) / _fast));
   return { fast, medium, slow };
 };
 

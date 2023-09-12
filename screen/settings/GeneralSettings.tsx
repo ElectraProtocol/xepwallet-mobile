@@ -88,12 +88,14 @@ const GeneralSettings: React.FC = () => {
       </BlueCard>
       <BlueSpacing20 />
       {/* @ts-ignore: Fix later */}
+      {/*
       <BlueListItem
         // @ts-ignore: Fix later
         Component={Pressable}
         title="Legacy URv1 QR"
         switch={{ onValueChange: onLegacyURv1Switch, value: isURv1SwitchEnabled }}
       />
+      */}
       <BlueSpacing20 />
     </ScrollView>
   );

@@ -5,13 +5,13 @@ import { SafeBlueArea, BlueCard, BlueText } from '../../BlueComponents';
 import loc from '../../loc';
 
 const ReleaseNotes = () => {
-  const notes = require('../../release-notes');
+  //const notes = require('../../release-notes');
 
   return (
     <SafeBlueArea>
       <ScrollView>
         <BlueCard>
-          <BlueText>{notes}</BlueText>
+          {/*<BlueText>{notes}</BlueText>*/}
         </BlueCard>
       </ScrollView>
     </SafeBlueArea>

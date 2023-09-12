@@ -29,15 +29,16 @@ const RateExtractors = {
   CoinGecko: async (ticker: string): Promise<number> => {
     let json;
     try {
-      const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${ticker.toLowerCase()}`);
+      const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=electra-protocol&vs_currencies=${ticker.toLowerCase()}`);
       json = await res.json();
     } catch (e: any) {
       throw new Error(`Could not update rate for ${ticker}: ${e.message}`);
     }
-    let rate = json?.bitcoin?.[ticker] || json?.bitcoin?.[ticker.toLowerCase()]; // eslint-disable-line
+    let rate = json?.["electra-protocol"]?.[ticker] || json?.["electra-protocol"]?.[ticker.toLowerCase()]; // eslint-disable-line
     if (!rate) throw new Error(`Could not update rate for ${ticker}: data is wrong`);
     return rate;
   },
+/*
   Bitstamp: async (ticker: string): Promise<number> => {
     let json;
     try {
@@ -58,7 +59,8 @@ const RateExtractors = {
     if (!(rate >= 0)) throw new Error(`Could not update rate from Bitstamp for ${ticker}: data is wrong`);
     return rate;
   },
-
+*/
+/*
   Yadio: async (ticker: string): Promise<number> => {
     let json;
     try {
@@ -74,7 +76,8 @@ const RateExtractors = {
     if (!(rate >= 0)) throw new Error(`Could not update rate for ${ticker}: data is wrong`);
     return rate;
   },
-
+*/
+/*
   YadioConvert: async (ticker: string): Promise<number> => {
     let json;
     try {
@@ -90,7 +93,8 @@ const RateExtractors = {
     if (!(rate >= 0)) throw new Error(`Could not update rate for ${ticker}: data is wrong`);
     return rate;
   },
-
+*/
+/*
   Exir: async (ticker: string): Promise<number> => {
     let json;
     try {
@@ -106,7 +110,8 @@ const RateExtractors = {
     if (!(rate >= 0)) throw new Error(`Could not update rate for ${ticker}: data is wrong`);
     return rate;
   },
-
+*/
+/*
   wazirx: async (ticker: string): Promise<number> => {
     let json;
     try {
@@ -122,6 +127,7 @@ const RateExtractors = {
     if (!(rate >= 0)) throw new Error(`Could not update rate for ${ticker}: data is wrong`);
     return rate;
   },
+  */
 } as const;
 
 type FiatUnit = {

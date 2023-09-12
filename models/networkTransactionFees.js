@@ -20,7 +20,12 @@ export class NetworkTransactionFee {
 export default class NetworkTransactionFees {
   static recommendedFees() {
     // eslint-disable-next-line no-async-promise-executor
-    return new Promise(async resolve => {
+    return new Promise(async resolve => {      
+      const response = await BlueElectrum.estimateFees();
+      const networkFee = new NetworkTransactionFee(response.fast, response.medium, response.slow);
+      resolve(networkFee);
+
+      /*
       try {
         const isDisabled = await BlueElectrum.isDisabled();
         if (isDisabled) {
@@ -39,6 +44,7 @@ export default class NetworkTransactionFees {
         const networkFee = new NetworkTransactionFee(2, 1, 1);
         resolve(networkFee);
       }
+      */
     });
   }
 }

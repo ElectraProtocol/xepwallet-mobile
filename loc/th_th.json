@@ -148,7 +148,7 @@
   "settings": {
     "about": "เกี่ยวกับ",
     "about_backup": "ท่านควรบันทึกคีย์ของท่านเสมอ",
-    "about_free": "BlueWallet คือโปรเจ็คโอเพนซอร์ส ไม่มีการคิดค่าใช้จ่าย สร้างโดยผู้ใช้บิตคอยน์",
+    "about_free": "XEPWallet คือโปรเจ็คโอเพนซอร์ส ไม่มีการคิดค่าใช้จ่าย สร้างโดยผู้ใช้บิตคอยน์",
     "about_release_notes": "บันทึกของโปรแกรมนี้",
     "about_review": "กรุณาแสดงความเห็น",
     "about_selftest": "ทำการทดสอบ",
@@ -234,7 +234,6 @@
     "transactions_count": "จำนวนธุรกรรม"
   },
   "wallets": {
-    "add_bitcoin": "บิตคอยน์",
     "add_bitcoin_explain": "กระเป๋าเงินบิตคอยน์ที่เรียบง่ายและทรงพลัง",
     "add_create": "สร้าง",
     "add_import_wallet": "นำเข้ากระเป๋าสตางค์",
@@ -291,9 +290,6 @@
     "xpub_title": "XPUB ของกระเป๋าสตางค์"
   },
   "multisig": {
-    "multisig_vault": "ห้องนิรภัย",
-    "default_label": "ห้องนิรภัยหลายลายเซ็น",
-    "multisig_vault_explain": "ความปลอดภัยที่ดีที่สุดสำหรับเงินจำนวนมาก",
     "provide_signature": "ใส่ลายเซ็น",
     "required_keys_out_of_total": "กุญแจที่ต้องการจากทั้งหมด",
     "fee": "ค่าธรรมเนียม: {number}",
@@ -345,7 +341,7 @@
     "use_coins": "ใช้เหรียญ"
   },
   "units": {
-    "BTC": "บิตคอยน์",
+    "XEP": "XEP",
     "sats": "แซท"
   },
   "addresses": {

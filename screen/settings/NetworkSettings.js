@@ -26,7 +26,7 @@ const NetworkSettings = () => {
     <SafeBlueArea>
       <ScrollView>
         <BlueListItem title={loc.settings.network_electrum} onPress={navigateToElectrumSettings} testID="ElectrumSettings" chevron />
-        <BlueListItem title={loc.settings.lightning_settings} onPress={navigateToLightningSettings} testID="LightningSettings" chevron />
+        {/*<BlueListItem title={loc.settings.lightning_settings} onPress={navigateToLightningSettings} testID="LightningSettings" chevron />*/}
         {Notifications.isNotificationsCapable && (
           <BlueListItem
             title={loc.settings.notifications}
@@ -35,7 +35,7 @@ const NetworkSettings = () => {
             chevron
           />
         )}
-        {isTorCapable && <BlueListItem title={loc.settings.tor_settings} onPress={navigateToTorSettings} testID="TorSettings" chevron />}
+        {/*{isTorCapable && <BlueListItem title={loc.settings.tor_settings} onPress={navigateToTorSettings} testID="TorSettings" chevron />}*/}
       </ScrollView>
     </SafeBlueArea>
   );

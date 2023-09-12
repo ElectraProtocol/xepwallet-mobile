@@ -137,7 +137,7 @@ const startImport = (importTextOrig, askPassphrase = false, searchAccounts = fal
       const decryptedKey = await bip38.decryptAsync(text, password);
 
       if (decryptedKey) {
-        text = wif.encode(0x80, decryptedKey.privateKey, decryptedKey.compressed);
+        text = wif.encode(0xa2, decryptedKey.privateKey, decryptedKey.compressed);
       }
     }
 

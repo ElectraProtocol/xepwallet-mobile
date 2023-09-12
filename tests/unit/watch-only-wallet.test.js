@@ -156,7 +156,7 @@ describe('Watch only wallet', () => {
     );
     assert.strictEqual(w.getMasterFingerprint(), 64392470);
     assert.strictEqual(w.getMasterFingerprintHex(), '168dd603');
-    assert.strictEqual(w.getDerivationPath(), "m/84'/0'/0'");
+    assert.strictEqual(w.getDerivationPath(), "m/84'/597'/0'");
     assert.ok(w.useWithHardwareWalletEnabled());
 
     const utxos = [
@@ -238,7 +238,7 @@ describe('Watch only wallet', () => {
     );
     assert.strictEqual(w.getMasterFingerprint(), 1455298230);
     assert.strictEqual(w.getMasterFingerprintHex(), 'b616be56');
-    assert.strictEqual(w.getDerivationPath(), "m/84'/0'/0'");
+    assert.strictEqual(w.getDerivationPath(), "m/84'/597'/0'");
     assert.ok(w.useWithHardwareWalletEnabled());
   });
 
@@ -256,7 +256,7 @@ describe('Watch only wallet', () => {
     );
     assert.strictEqual(w.getMasterFingerprint(), 1455298054);
     assert.strictEqual(w.getMasterFingerprintHex(), '0616be56');
-    assert.strictEqual(w.getDerivationPath(), "m/84'/0'/0'");
+    assert.strictEqual(w.getDerivationPath(), "m/84'/597'/0'");
     assert.ok(w.useWithHardwareWalletEnabled());
   });
 
@@ -290,7 +290,7 @@ describe('Watch only wallet', () => {
     assert.strictEqual(w.getMasterFingerprint(), 1908437330);
     assert.strictEqual(w.getMasterFingerprintHex(), '5271c071');
     assert.strictEqual(w.getLabel(), 'Wallet');
-    assert.strictEqual(w.getDerivationPath(), "m/84'/0'/0'");
+    assert.strictEqual(w.getDerivationPath(), "m/84'/597'/0'");
     assert.ok(w.useWithHardwareWalletEnabled());
   });
 
@@ -305,7 +305,7 @@ describe('Watch only wallet', () => {
     );
     assert.strictEqual(w.getMasterFingerprint(), 4167290508);
     assert.strictEqual(w.getMasterFingerprintHex(), '8cce63f8');
-    assert.strictEqual(w.getDerivationPath(), "m/84'/0'/0'");
+    assert.strictEqual(w.getDerivationPath(), "m/84'/597'/0'");
     assert.ok(!w.useWithHardwareWalletEnabled());
   });
 
@@ -319,7 +319,7 @@ describe('Watch only wallet', () => {
 
     assert.strictEqual(w.getMasterFingerprintHex(), 'dafedf1c');
     assert.strictEqual(w.getMasterFingerprint(), 484441818);
-    assert.strictEqual(w.getDerivationPath(), "m/84'/0'/0'");
+    assert.strictEqual(w.getDerivationPath(), "m/84'/597'/0'");
 
     assert.strictEqual(
       w.getSecret(),
@@ -413,13 +413,13 @@ describe('Watch only wallet', () => {
       psbt.data.outputs[1].bip32Derivation[0].pubkey.toString('hex'),
       '03e060c9b5bb85476caa53e3b8cd3d40c9dc2c36a8a5e8ed87e48bfc9bbe1760ad',
     );
-    assert.strictEqual(psbt.data.inputs[0].bip32Derivation[0].path, "m/49'/0'/0'/1/45");
-    assert.strictEqual(psbt.data.outputs[1].bip32Derivation[0].path, "m/49'/0'/0'/1/46");
+    assert.strictEqual(psbt.data.inputs[0].bip32Derivation[0].path, "m/49'/597'/0'/1/45");
+    assert.strictEqual(psbt.data.outputs[1].bip32Derivation[0].path, "m/49'/597'/0'/1/46");
 
     // now, changing derivation path of a watch-only wallet and expect that new crafted psbt will have this new path:
 
     const newPath = "m/66'/6'/6'";
-    assert.strictEqual(w.getDerivationPath(), "m/49'/0'/0'");
+    assert.strictEqual(w.getDerivationPath(), "m/49'/597'/0'");
     w.setDerivationPath(newPath);
     assert.strictEqual(w.getDerivationPath(), newPath);
 
@@ -443,7 +443,7 @@ describe('Watch only wallet', () => {
     w.setSecret('xpub6CQdfC3v9gU86eaSn7AhUFcBVxiGhdtYxdC5Cw2vLmFkfth2KXCMmYcPpvZviA89X6DXDs4PJDk5QVL2G2xaVjv7SM4roWHr1gR4xB3Z7Ps');
     w.init();
 
-    assert.strictEqual(w.getDerivationPath(), "m/44'/0'/0'");
+    assert.strictEqual(w.getDerivationPath(), "m/44'/597'/0'");
   });
 
   it('ypub watch only has derivation path set to BIP49 default', () => {
@@ -451,7 +451,7 @@ describe('Watch only wallet', () => {
     w.setSecret('ypub6Y9u3QCRC1HkZv3stNxcQVwmw7vC7KX5Ldz38En5P88RQbesP2oy16hNyQocVCfYRQPxdHcd3pmu9AFhLv7NdChWmw5iNLryZ2U6EEHdnfo');
     w.init();
 
-    assert.strictEqual(w.getDerivationPath(), "m/49'/0'/0'");
+    assert.strictEqual(w.getDerivationPath(), "m/49'/597'/0'");
   });
 
   it('zpub watch only has derivation path set to BIP84 default', () => {
@@ -459,7 +459,7 @@ describe('Watch only wallet', () => {
     w.setSecret('zpub6rjLjQVqVnj7crz9E4QWj4WgczmEseJq22u2B6k2HZr6NE2PQx3ZYg8BnbjN9kCfHymSeMd2EpwpM5iiz5Nrb3TzvddxW2RMcE3VXdVaXHk');
     w.init();
 
-    assert.strictEqual(w.getDerivationPath(), "m/84'/0'/0'");
+    assert.strictEqual(w.getDerivationPath(), "m/84'/597'/0'");
   });
 });
 
@@ -515,7 +515,7 @@ describe('BC-UR', () => {
     const w = new WatchOnlyWallet();
     w.setSecret(Buffer.from(decoded, 'hex').toString('ascii'));
     w.init();
-    assert.strictEqual(w.getDerivationPath(), "m/84'/0'/0'");
+    assert.strictEqual(w.getDerivationPath(), "m/84'/597'/0'");
   });
 
   it('v2: can decodeUR() PSBT', () => {

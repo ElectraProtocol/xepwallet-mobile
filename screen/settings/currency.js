@@ -88,7 +88,7 @@ const Currency = () => {
       />
       <BlueCard>
         <BlueText>
-          {loc.settings.currency_source} {selectedCurrency?.source ?? FiatUnitSource.CoinDesk}
+          {loc.settings.currency_source} {selectedCurrency?.source ?? FiatUnitSource.CoinGecko}
         </BlueText>
         <BlueSpacing10 />
         <BlueText>

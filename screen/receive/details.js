@@ -251,26 +251,28 @@ const ReceiveDetails = () => {
   }, []);
 
   const renderReceiveDetails = () => {
+    let showQRData = bip21encoded.replace("bitcoin:", "xep:");
+    showQRData = showQRData.replace("label", "message");
     return (
       <ScrollView contentContainerStyle={[styles.root, stylesHook.root]} keyboardShouldPersistTaps="always">
         <View style={styles.scrollBody}>
           {isCustom && (
             <>
               {getDisplayAmount() && (
-                <BlueText testID="CustomAmountText" style={[styles.amount, stylesHook.amount]} numberOfLines={1}>
+                <BlueText testID="CustomAmountText" style={[styles.amount, stylesHook.amount]} numberOfLines={2}>
                   {getDisplayAmount()}
                 </BlueText>
               )}
               {customLabel?.length > 0 && (
-                <BlueText testID="CustomAmountDescriptionText" style={[styles.label, stylesHook.label]} numberOfLines={1}>
+                <BlueText testID="CustomAmountDescriptionText" style={[styles.label, stylesHook.label]} numberOfLines={10}>
                   {customLabel}
                 </BlueText>
               )}
             </>
           )}
 
-          <QRCodeComponent value={bip21encoded} />
-          <BlueCopyTextToClipboard text={isCustom ? bip21encoded : address} />
+          <QRCodeComponent value={showQRData} />
+          <BlueCopyTextToClipboard text={isCustom ? showQRData : address} />
         </View>
         <View style={styles.share}>
           <BlueCard>
@@ -435,7 +437,9 @@ const ReceiveDetails = () => {
   };
 
   const handleShareButtonPressed = () => {
-    Share.open({ message: bip21encoded }).catch(error => console.log(error));
+    //Share.open({ message: bip21encoded }).catch(error => console.log(error));
+    let shareAddress = bip21encoded.replace("bitcoin", "xep")
+    Share.open({ message: shareAddress }).catch(error => console.log(error));
   };
 
   /**
@@ -445,11 +449,11 @@ const ReceiveDetails = () => {
     if (Number(customAmount) > 0) {
       switch (customUnit) {
         case BitcoinUnit.BTC:
-          return customAmount + ' BTC';
+          return customAmount + ' XEP';
         case BitcoinUnit.SATS:
-          return currency.satoshiToBTC(customAmount) + ' BTC';
+          return currency.satoshiToBTC(customAmount) + ' XEP';
         case BitcoinUnit.LOCAL_CURRENCY:
-          return currency.fiatToBTC(customAmount) + ' BTC';
+          return currency.fiatToBTC(customAmount) + ' XEP';
       }
       return customAmount + ' ' + customUnit;
     } else {

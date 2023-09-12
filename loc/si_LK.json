@@ -152,7 +152,7 @@
     "details_create": "ඉන්වොයිසියක් සාදන්න",
     "details_error_decode": "බිට්කොයින් ලිපිනය විකේතනය කළ නොහැක",
     "details_fee_field_is_not_valid": "ගාස්තුව වලංගු නොවේ.",
-    "details_frozen": "{amount} BTC නිශ්චල කර ඇත",
+    "details_frozen": "{amount} XEP නිශ්චල කර ඇත",
     "details_next": "ඊළඟ",
     "details_no_signed_tx": "තෝරාගත් ගොනුවේ ආනයනය කළ හැකි ගනුදෙනුවක් අඩංගු නොවේ.",
     "details_note_placeholder": "ස්වයං සටහන්",
@@ -359,7 +359,6 @@
     "updating": "යාවත්කාලීන කරමින් ..."
   },
   "wallets": {
-    "add_bitcoin": "බිට්කොයින්",
     "add_bitcoin_explain": "සරල හා බලවත් බිට්කොයින් පසුම්බිය",
     "add_create": "සාදන්න",
     "add_entropy_generated": "උත්පාදනය කරන ලද එන්ට්‍රොපි බයිට් {gen}",
@@ -454,9 +453,6 @@
     "xpub_title": "XPUB පසුම්බිය"
   },
   "multisig": {
-    "multisig_vault": "සුරක්ෂිතාගාරය",
-    "default_label": "බහු සිග් සුරක්ෂිතාගාරය",
-    "multisig_vault_explain": "විශාල ප්‍රමාණයක් සඳහා හොඳම ආරක්‍ෂාව",
     "provide_signature": "අත්සන ලබා දෙන්න",
     "vault_key": "සුරක්ෂිතාගාර යතුර {number}",
     "required_keys_out_of_total": "යතුරු එකතුවෙන් අවශ්‍ය යතුරු",
@@ -467,7 +463,7 @@
     "share": "බෙදාගන්න",
     "view": "දැක්ම",
     "manage_keys": "යතුරු කළමනාකරණය කරන්න",
-    "how_many_signatures_can_bluewallet_make": "බ්ලූවොලට්ට කොපමණ අත්සන් කළ හැකිද?",
+    "how_many_signatures_can_XEPWallet_make": "බ්ලූවොලට්ට කොපමණ අත්සන් කළ හැකිද?",
     "signatures_required_to_spend": "අත්සන් අවශ්‍යයි {number}",
     "signatures_we_can_make": "{number} සෑදිය හැක",
     "scan_or_import_file": "ගොනුව පරිලෝකනය කරන්න හෝ ආයාත කරන්න",
@@ -546,7 +542,7 @@
     "tip": "වැඩි දියුණු කළ පසුම්බිය කළමනාකරණය සඳහා කාසි බැලීමට, ලේබල් කිරීමට, කැටි කිරීමට හෝ තෝරා ගැනීමට මෙම පහසුකම ඔබට ඉඩ සලසයි. වර්ණ කව මත තට්ටු කිරීමෙන් ඔබට කාසි කිහිපයක් තෝරා ගත හැකිය."
   },
   "units": {
-    "BTC": "බී.ටී.සී",
+    "XEP": "XEP",
     "MAX": "උපරිම",
     "sat_vbyte": "සැට්/වීබයිට්",
     "sats": "සැට්ස්"

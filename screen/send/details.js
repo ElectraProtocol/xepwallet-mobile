@@ -78,6 +78,7 @@ const SendDetails = () => {
   const [payjoinUrl, setPayjoinUrl] = useState(null);
   const [changeAddress, setChangeAddress] = useState();
   const [dumb, setDumb] = useState(false);
+  const [firstLoading, setFirstLoading] = useState(false);
   const { isEditable = true } = routeParams;
   // if utxo is limited we use it to calculate available balance
   const balance = utxo ? utxo.reduce((prev, curr) => prev + curr.value, 0) : wallet?.getBalance();
@@ -89,12 +90,12 @@ const SendDetails = () => {
     if (customFee) return customFee;
     if (feePrecalc.slowFee === null) return '1'; // wait for precalculated fees
     let initialFee;
-    if (feePrecalc.fastestFee !== null) {
-      initialFee = String(networkTransactionFees.fastestFee);
+    if (feePrecalc.slowFee  !== null) {
+      initialFee = String(networkTransactionFees.slowFee );
     } else if (feePrecalc.mediumFee !== null) {
       initialFee = String(networkTransactionFees.mediumFee);
     } else {
-      initialFee = String(networkTransactionFees.slowFee);
+      initialFee = String(networkTransactionFees.fastestFee);
     }
     return initialFee;
   }, [customFee, feePrecalc, networkTransactionFees]);
@@ -221,7 +222,7 @@ const SendDetails = () => {
       })
       .catch(e => console.log('loading recommendedFees error', e))
       .finally(() => {
-        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+        //LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
         setNetworkTransactionFeesIsLoading(false);
       });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
@@ -270,6 +271,7 @@ const SendDetails = () => {
     ];
 
     const newFeePrecalc = { ...feePrecalc };
+    let tempFee = { ...feePrecalc };
 
     for (const opt of options) {
       let targets = [];
@@ -291,13 +293,13 @@ const SendDetails = () => {
 
       // if targets is empty, insert dust
       if (targets.length === 0) {
-        targets.push({ address: '36JxaUrpDzkEerkTf1FzwHNE1Hb7cCjgJV', value: 546 });
+        targets.push({ address: 'ep1q9ydhd0eptw4vywz4a649grk25t3sd6060hppgf', value: 546 });
       }
 
       // replace wrong addresses with dump
       targets = targets.map(t => {
         if (!wallet.isAddressValid(t.address)) {
-          return { ...t, address: '36JxaUrpDzkEerkTf1FzwHNE1Hb7cCjgJV' };
+          return { ...t, address: 'ep1q9ydhd0eptw4vywz4a649grk25t3sd6060hppgf' };
         } else {
           return t;
         }
@@ -309,6 +311,7 @@ const SendDetails = () => {
           const { fee } = wallet.coinselect(lutxo, targets, opt.fee, changeAddress);
 
           newFeePrecalc[opt.key] = fee;
+          tempFee[opt.key] = fee;
           break;
         } catch (e) {
           if (e.message.includes('Not enough') && !flag) {
@@ -325,6 +328,8 @@ const SendDetails = () => {
     }
 
     setFeePrecalc(newFeePrecalc);
+    tempFee.current = tempFee.slowFee;
+    firstLoading? setFeePrecalc(newFeePrecalc) : setFeePrecalc(tempFee);
     setFrozenBlance(frozen);
   }, [wallet, networkTransactionFees, utxo, addresses, feeRate, dumb]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -422,7 +427,7 @@ const SendDetails = () => {
     }
 
     console.log('options', options);
-    if (btcAddressRx.test(address) || address.startsWith('bc1') || address.startsWith('BC1')) {
+    if (btcAddressRx.test(address) || address.startsWith('ep1') || address.startsWith('EP1')) {
       setAddresses(addresses => {
         addresses[scrollIndex.current].address = address;
         addresses[scrollIndex.current].amount = options.amount;
@@ -1013,7 +1018,7 @@ const SendDetails = () => {
               units[scrollIndex.current] = BitcoinUnit.BTC;
               return [...units];
             });
-            LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+            //LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
             setOptionsVisible(false);
           },
           style: 'default',
@@ -1206,6 +1211,7 @@ const SendDetails = () => {
                 onPress={onUseAllPressed}
               />
             )}
+            {/*
             {wallet.type === HDSegwitBech32Wallet.type && isEditable && (
               <BlueListItem
                 title={loc.send.details_adv_fee_bump}
@@ -1213,6 +1219,7 @@ const SendDetails = () => {
                 switch={{ value: isTransactionReplaceable, onValueChange: onReplaceableFeeSwitchValueChanged }}
               />
             )}
+            */}
             {wallet.type === WatchOnlyWallet.type && wallet.isHd() && (
               <BlueListItem title={loc.send.details_adv_import} hideChevron component={TouchableOpacity} onPress={importTransaction} />
             )}
@@ -1469,7 +1476,10 @@ const SendDetails = () => {
             <TouchableOpacity
               testID="chooseFee"
               accessibilityRole="button"
-              onPress={() => setIsFeeSelectionModalVisible(true)}
+              //onPress={() => {
+              //  setIsFeeSelectionModalVisible(true);
+              //  setFirstLoading(true);
+              //}  
               disabled={isLoading}
               style={styles.fee}
             >

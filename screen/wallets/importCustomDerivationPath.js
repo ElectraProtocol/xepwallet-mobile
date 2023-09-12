@@ -23,7 +23,7 @@ const ImportCustomDerivationPath = () => {
   const importText = route.params.importText;
   const password = route.params.password;
   const { addAndSaveWallet } = useContext(BlueStorageContext);
-  const [path, setPath] = useState("m/84'/0'/0'");
+  const [path, setPath] = useState("m/84'/597'/0'");
   const [wallets, setWallets] = useState({});
   const [used, setUsed] = useState({});
   const [selected, setSelected] = useState();

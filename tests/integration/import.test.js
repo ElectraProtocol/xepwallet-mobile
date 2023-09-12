@@ -396,7 +396,7 @@ describe('import procedure', () => {
     );
     await promise;
     assert.strictEqual(store.state.wallets[0].type, WatchOnlyWallet.type);
-    assert.strictEqual(store.state.wallets[0].getDerivationPath(), "m/84'/0'/0'");
+    assert.strictEqual(store.state.wallets[0].getDerivationPath(), "m/84'/597'/0'");
   });
 
   it('can import watch-only Keystone vault export', async () => {
@@ -409,7 +409,7 @@ describe('import procedure', () => {
     );
     await promise;
     assert.strictEqual(store.state.wallets[0].type, WatchOnlyWallet.type);
-    assert.strictEqual(store.state.wallets[0].getDerivationPath(), "m/84'/0'/0'");
+    assert.strictEqual(store.state.wallets[0].getDerivationPath(), "m/84'/597'/0'");
   });
 
   it('can import BIP39 wallets with truncated words', async () => {

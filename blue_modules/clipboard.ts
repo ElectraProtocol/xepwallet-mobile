@@ -9,8 +9,8 @@ const BlueClipboard = () => {
     try {
       const clipboardAccessAllowed = await getItem();
       if (clipboardAccessAllowed === null) {
-        await setItem(JSON.stringify(true));
-        return true;
+        await setItem(JSON.stringify(false));
+        return false;
       }
       return !!JSON.parse(clipboardAccessAllowed);
     } catch {

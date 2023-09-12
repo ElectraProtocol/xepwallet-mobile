@@ -208,10 +208,10 @@ const WalletTransactions = ({ navigation }) => {
       setIsLoading(false);
       setTimeElapsed(prev => prev + 1);
     }
-    if (noErr && smthChanged) {
+    if (noErr /*&& smthChanged*/) {
       console.log('saving to disk');
       await saveToDisk(); // caching
-      //    setDataSource([...getTransactionsSliced(limit)]);
+      setDataSource([...getTransactionsSliced(limit)]);
     }
     setIsLoading(false);
     setTimeElapsed(prev => prev + 1);
@@ -538,7 +538,7 @@ const WalletTransactions = ({ navigation }) => {
               <Text numberOfLines={0} style={styles.emptyTxs}>
                 {(isLightning() && loc.wallets.list_empty_txs1_lightning) || loc.wallets.list_empty_txs1}
               </Text>
-              {isLightning() && <Text style={styles.emptyTxsLightning}>{loc.wallets.list_empty_txs2_lightning}</Text>}
+              {/*{isLightning() && <Text style={styles.emptyTxsLightning}>{loc.wallets.list_empty_txs2_lightning}</Text>}*/}
             </ScrollView>
           }
           {...(isElectrumDisabled ? {} : { refreshing: isLoading, onRefresh: refreshTransactions })}

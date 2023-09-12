@@ -1,19 +1,19 @@
 [
     {
         "description": "Standard BIP44 legacy",
-        "derivation_path": "m/44'/0'/0'",
+        "derivation_path": "m/44'/597'/0'",
         "script_type": "p2pkh",
         "iterate_accounts": true
     },
     {
         "description": "Standard BIP49 compatibility segwit",
-        "derivation_path": "m/49'/0'/0'",
+        "derivation_path": "m/49'/597'/0'",
         "script_type": "p2wpkh-p2sh",
         "iterate_accounts": true
     },
     {
         "description": "Standard BIP84 native segwit",
-        "derivation_path": "m/84'/0'/0'",
+        "derivation_path": "m/84'/597'/0'",
         "script_type": "p2wpkh",
         "iterate_accounts": true
     },
@@ -37,13 +37,13 @@
     },
     {
         "description": "Copay native segwit",
-        "derivation_path": "m/44'/0'/0'",
+        "derivation_path": "m/44'/597'/0'",
         "script_type": "p2wpkh",
         "iterate_accounts": true
     },
     {
         "description": "Coolwallet S derivation path using bip44 but with segwit script format",
-        "derivation_path": "m/44'/0'/0'",
+        "derivation_path": "m/44'/597'/0'",
         "script_type": "p2wpkh-p2sh",
         "iterate_accounts": true
     },

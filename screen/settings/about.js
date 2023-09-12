@@ -13,7 +13,7 @@ import alert from '../../components/Alert';
 import { HDSegwitBech32Wallet } from '../../class';
 
 const A = require('../../blue_modules/analytics');
-const branch = require('../../current-branch.json');
+//const branch = require('../../current-branch.json');
 
 const About = () => {
   const { navigate } = useNavigation();
@@ -36,7 +36,7 @@ const About = () => {
       marginTop: 54,
     },
     logo: {
-      width: 102,
+      width: 124,
       height: 124,
     },
     textFree: {
@@ -88,31 +88,36 @@ const About = () => {
   };
 
   const handleOnLicensingPress = () => {
-    navigate('Licensing');
+    //navigate('Licensing');
   };
 
   const handleOnTwitterPress = () => {
-    Linking.openURL('https://twitter.com/bluewalletio');
+    Linking.openURL('https://twitter.com/ElectraProtocol');
   };
 
   const handleOnDiscordPress = () => {
-    Linking.openURL('https://discord.gg/btWq2Aby2z');
+    Linking.openURL('https://discord.gg/eCSQMJsKpw');
   };
 
   const handleOnTelegramPress = () => {
-    Linking.openURL('https://t.me/bluewallethat');
+    Linking.openURL('https://t.me/ElectraProtocol');
   };
   const handleOnGithubPress = () => {
-    Linking.openURL('https://github.com/BlueWallet/BlueWallet');
+    Linking.openURL('https://github.com/ElectraProtocol');
   };
+  const handleOnWebsitePress = () => {
+    Linking.openURL('https://www.electraprotocol.com/');
+  };
+
+
   const handleOnRatePress = () => {
     const options = {
-      AppleAppID: '1376878040',
-      GooglePackageName: 'io.bluewallet.bluewallet',
+      AppleAppID: 'xxx',
+      GooglePackageName: 'io.electraprotocol.xepwallet',
       preferredAndroidMarket: AndroidMarket.Google,
       preferInApp: Platform.OS !== 'android',
       openAppStoreIfInAppFails: true,
-      fallbackPlatformURL: 'https://bluewallet.io',
+      fallbackPlatformURL: 'https://www.electraprotocol.com/',
     };
     Rate.rate(options, success => {
       if (success) {
@@ -125,12 +130,14 @@ const About = () => {
     <ScrollView testID="AboutScrollView" contentInsetAdjustmentBehavior="automatic">
       <BlueCard>
         <View style={styles.center}>
-          <Image style={styles.logo} source={require('../../img/bluebeast.png')} />
+          <Image style={styles.logo} source={require('../../img/icon.png')} />
           <Text style={styles.textFree}>{loc.settings.about_free}</Text>
           <Text style={styles.textBackup}>{formatStringAddTwoWhiteSpaces(loc.settings.about_backup)}</Text>
+          {/*
           {((Platform.OS === 'android' && hasGmsSync()) || Platform.OS !== 'android') && (
             <BlueButton onPress={handleOnRatePress} title={loc.settings.about_review + ' ⭐🙏'} />
           )}
+          */}
         </View>
       </BlueCard>
       <BlueListItem
@@ -160,6 +167,15 @@ const About = () => {
         onPress={handleOnDiscordPress}
         title={loc.settings.about_sm_discord}
       />
+      <BlueListItem
+        leftIcon={{
+          name: 'link',
+          type: 'font-awesome-5',
+          color: '#0088cc',
+        }}
+        onPress={handleOnWebsitePress}
+        title= 'www.electraprotocol.com'
+      />
       <BlueCard>
         <View style={styles.buildWith}>
           <BlueSpacing20 />
@@ -169,7 +185,7 @@ const About = () => {
           <BlueTextCentered>React Native</BlueTextCentered>
           <BlueTextCentered>bitcoinjs-lib</BlueTextCentered>
           <BlueTextCentered>Nodejs</BlueTextCentered>
-          <BlueTextCentered>Electrum server</BlueTextCentered>
+          <BlueTextCentered>Electrumx server</BlueTextCentered>
           <BlueSpacing20 />
 
           <TouchableOpacity accessibilityRole="button" onPress={handleOnGithubPress} style={styles.buttonLink}>
@@ -178,6 +194,7 @@ const About = () => {
           </TouchableOpacity>
         </View>
       </BlueCard>
+      {/*
       <BlueListItem
         leftIcon={{
           name: 'book',
@@ -234,11 +251,13 @@ const About = () => {
         }}
         title={loc.settings.run_performance_test}
       />
+      */}
       <BlueSpacing20 />
       <BlueSpacing20 />
       <BlueTextCentered>
-        {getApplicationName()} ver {getVersion()} (build {getBuildNumber() + ' ' + branch})
+        {getApplicationName()} ver {getVersion()} (build {getBuildNumber()/* + ' ' + branch*/})
       </BlueTextCentered>
+      {/*
       <BlueTextCentered>{new Date(getBuildNumber() * 1000).toGMTString()}</BlueTextCentered>
       <BlueTextCentered>{getBundleId()}</BlueTextCentered>
       <BlueTextCentered>
@@ -258,6 +277,7 @@ const About = () => {
         </TouchableOpacity>
       </View>
       <BlueSpacing20 />
+      */}
       <BlueSpacing20 />
     </ScrollView>
   );

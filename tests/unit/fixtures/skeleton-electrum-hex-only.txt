@@ -8,7 +8,7 @@
     "invoices": {},
     "keystore": {
         "ckcc_xpub": "xpub661MyMwAqRbcFG7osGX7Td2YTmiPEoizenPoxSRQKhirBamV4V8gpSsh8raBSkwPNyVcRFLEKyQg2FtNq6k3zA7yoc7RFMmMYcXGwEjwrVa",
-        "derivation": "m/84'/0'/0'",
+        "derivation": "m/84'/597'/0'",
         "hw_type": "coldcard",
         "label": "ColdcardImportB616BE56",
         "root_fingerprint": "b616be56",
