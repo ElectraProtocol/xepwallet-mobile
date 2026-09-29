@@ -661,7 +661,7 @@
     "sort_by": "Ordenar por"
   },
   "units": {
-    "BTC": "BTC",
+    "BTC": "XEP",
     "MAX": "Máx",
     "sat_vbyte": "sat/vByte",
     "sats": "sats"

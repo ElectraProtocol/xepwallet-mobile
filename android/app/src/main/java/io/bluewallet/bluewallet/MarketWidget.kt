@@ -19,7 +19,7 @@ class MarketWidget : AppWidgetProvider() {
 
     companion object {
         private const val TAG = "MarketWidget"
-        private const val SHARED_PREF_NAME = "group.io.bluewallet.bluewallet"
+        private const val SHARED_PREF_NAME = "group.io.electraprotocol.xepwallet"
         private const val DEFAULT_CURRENCY = "USD"
         private const val KEY_LAST_ONLINE_STATUS = "market_widget_last_online_status"
 

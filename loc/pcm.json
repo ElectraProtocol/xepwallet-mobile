@@ -638,7 +638,7 @@
     "sort_by": "Sort am by"
   },
   "units": {
-    "BTC": "BTC",
+    "BTC": "XEP",
     "MAX": "All of am",
     "sat_vbyte": "sat/vByte",
     "sats": "sats"

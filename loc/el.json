@@ -638,7 +638,7 @@
     "sort_by": "Ταξινόμηση κατά"
   },
   "units": {
-    "BTC": "BTC",
+    "BTC": "XEP",
     "MAX": "Μέγιστο",
     "sat_vbyte": "sat/vByte",
     "sats": "sats"

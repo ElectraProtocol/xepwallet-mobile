@@ -638,7 +638,7 @@
     "sort_by": "排序方式"
   },
   "units": {
-    "BTC": "BTC",
+    "BTC": "XEP",
     "MAX": "最大",
     "sat_vbyte": "sat/vByte",
     "sats": "聰"

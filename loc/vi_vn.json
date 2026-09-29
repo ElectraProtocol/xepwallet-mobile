@@ -638,7 +638,7 @@
     "sort_by": "Sắp xếp theo"
   },
   "units": {
-    "BTC": "BTC",
+    "BTC": "XEP",
     "MAX": "Tối đa",
     "sat_vbyte": "sat/vByte",
     "sats": "sats"

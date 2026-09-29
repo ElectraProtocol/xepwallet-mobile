@@ -35,7 +35,7 @@ class SettingsActivity : AppCompatActivity() {
     class SettingsFragment : PreferenceFragmentCompat() {
         override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
             // Set the SharedPreferences name to match the app's preferences
-            preferenceManager.sharedPreferencesName = "group.io.bluewallet.bluewallet"
+            preferenceManager.sharedPreferencesName = "group.io.electraprotocol.xepwallet"
             
             // Load preferences from XML
             setPreferencesFromResource(R.xml.settings_preferences, rootKey)

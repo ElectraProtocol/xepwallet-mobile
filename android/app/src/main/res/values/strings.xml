@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BlueWallet</string>
+    <string name="app_name">XEPWallet</string>
     <string name="loading">Loading...</string>
     <string name="last_updated">Last Updated</string>
     <string name="from">From</string>

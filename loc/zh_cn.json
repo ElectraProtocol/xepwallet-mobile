@@ -666,7 +666,7 @@
     "sort_by": "排序方式"
   },
   "units": {
-    "BTC": "BTC",
+    "BTC": "XEP",
     "MAX": "最大",
     "sat_vbyte": "聪/字节",
     "sats": "聪"

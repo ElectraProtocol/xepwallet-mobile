@@ -99,7 +99,7 @@
         <!-- Settings Activity alias for System Settings -->
         <activity-alias
             android:name=".SettingsActivityAlias"
-            android:label="BlueWallet Settings"
+            android:label="XEPWallet Settings"
             android:exported="true"
             android:targetActivity=".SettingsActivity">
             <intent-filter>
@@ -138,6 +138,7 @@
                 <data android:scheme="bluewallet" />
                 <data android:scheme="lapp" />
                 <data android:scheme="blue" />
+                <data android:scheme="xep" />
                 <data android:scheme="http" />
                 <data android:scheme="https" />
             </intent-filter>

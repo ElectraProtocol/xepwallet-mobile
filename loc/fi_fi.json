@@ -638,7 +638,7 @@
     "sort_by": "Järjestä"
   },
   "units": {
-    "BTC": "BTC",
+    "BTC": "XEP",
     "MAX": "MAX",
     "sat_vbyte": "sat/vByte",
     "sats": "sattia"

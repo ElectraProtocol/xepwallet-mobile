@@ -375,7 +375,7 @@ private enum PSBTPreview {
 
 /// Reads the most recently cached market rate selected in BlueWallet. Quick Look stays offline.
 private enum FiatEstimate {
-    private static let appGroup = "group.io.bluewallet.bluewallet"
+    private static let appGroup = "group.io.electraprotocol.xepwallet"
 
     static func format(sats: UInt64) -> String? {
         guard let defaults = UserDefaults(suiteName: appGroup),

@@ -666,7 +666,7 @@
     "sort_by": "ソート方法"
   },
   "units": {
-    "BTC": "BTC",
+    "BTC": "XEP",
     "MAX": "最大",
     "sat_vbyte": "sat/vByte",
     "sats": "sats"

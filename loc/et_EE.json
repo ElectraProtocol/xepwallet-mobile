@@ -638,7 +638,7 @@
     "sort_by": "Sorteeri"
   },
   "units": {
-    "BTC": "BTC",
+    "BTC": "XEP",
     "MAX": "Max",
     "sat_vbyte": "sat/vByte",
     "sats": "satid"

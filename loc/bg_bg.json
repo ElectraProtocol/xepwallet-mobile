@@ -638,7 +638,7 @@
     "sort_by": "Сортирай по"
   },
   "units": {
-    "BTC": "BTC",
+    "BTC": "XEP",
     "MAX": "Макс",
     "sat_vbyte": "sat/vByte",
     "sats": "сатоши"

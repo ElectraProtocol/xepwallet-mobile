@@ -638,7 +638,7 @@
     "sort_by": "Razvrsti po"
   },
   "units": {
-    "BTC": "BTC",
+    "BTC": "XEP",
     "MAX": "MAX",
     "sat_vbyte": "sat/vBajt",
     "sats": "sats"

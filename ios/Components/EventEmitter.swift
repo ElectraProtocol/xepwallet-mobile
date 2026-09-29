@@ -27,7 +27,7 @@ class EventEmitter: RCTEventEmitter, NativeEventEmitterSpec {
     
     @objc func getMostRecentUserActivity(_ resolve: @escaping RCTPromiseResolveBlock,
                                            rejecter reject: RCTPromiseRejectBlock) {
-        if let defaults = UserDefaults(suiteName: "group.io.bluewallet.bluewallet") {
+        if let defaults = UserDefaults(suiteName: "group.io.electraprotocol.xepwallet") {
             resolve(defaults.value(forKey: "onUserActivityOpen"))
         } else {
             resolve(nil)

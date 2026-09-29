@@ -13,7 +13,7 @@ class BitcoinPriceWidget : AppWidgetProvider() {
 
     companion object {
         private const val TAG = "BitcoinPriceWidget"
-        private const val SHARED_PREF_NAME = "group.io.bluewallet.bluewallet"
+        private const val SHARED_PREF_NAME = "group.io.electraprotocol.xepwallet"
         
         fun updateNetworkStatus(context: Context, appWidgetIds: IntArray) {
             val isNetworkAvailable = NetworkUtils.isNetworkAvailable(context)

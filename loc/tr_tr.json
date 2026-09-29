@@ -638,7 +638,7 @@
     "sort_by": "Sırala"
   },
   "units": {
-    "BTC": "BTC",
+    "BTC": "XEP",
     "MAX": "Maks",
     "sat_vbyte": "sat/vByte",
     "sats": "sat"

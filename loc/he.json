@@ -638,7 +638,7 @@
     "sort_by": "מיון לפי"
   },
   "units": {
-    "BTC": "BTC",
+    "BTC": "XEP",
     "MAX": "מקס'",
     "sat_vbyte": "sat/vByte",
     "sats": "sats"

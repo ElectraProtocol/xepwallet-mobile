@@ -27,6 +27,7 @@ class DeeplinkSchemaMatch {
       lowercaseString.startsWith('lightning:') ||
       lowercaseString.startsWith('blue:') ||
       lowercaseString.startsWith('bluewallet:') ||
+      lowercaseString.startsWith('xep:') ||
       lowercaseString.startsWith('lapp:')
     );
   }
@@ -388,7 +389,7 @@ class DeeplinkSchemaMatch {
       throw new Error('No URI provided');
     }
     let replacedUri = uri;
-    for (const replaceMe of ['BITCOIN://', 'bitcoin://', 'BITCOIN:']) {
+    for (const replaceMe of ['BITCOIN://', 'bitcoin://', 'BITCOIN:', 'XEP://', 'xep://', 'XEP:', 'xep:']) {
       replacedUri = replacedUri.replace(replaceMe, 'bitcoin:');
     }
 

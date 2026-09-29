@@ -638,7 +638,7 @@
     "sort_by": "Rendezés"
   },
   "units": {
-    "BTC": "BTC",
+    "BTC": "XEP",
     "MAX": "Maximum",
     "sat_vbyte": "sat/vByte",
     "sats": "sats"
