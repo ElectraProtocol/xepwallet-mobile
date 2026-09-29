@@ -2,7 +2,7 @@ import b58 from 'bs58check';
 import { sha256 } from '@noble/hashes/sha256';
 import wif from 'wif';
 
-import { BitcoinUnit, Chain } from '../../models/bitcoinUnits';
+import { balanceUnitForXepWallet, BitcoinUnit, Chain } from '../../models/bitcoinUnits';
 import { CreateTransactionResult, CreateTransactionUtxo, Transaction, Utxo } from './types';
 import { hexToUint8Array, concatUint8Arrays, uint8ArrayToHex } from '../../blue_modules/uint8array-extras';
 
@@ -133,14 +133,14 @@ export class AbstractWallet {
 
   getPreferredBalanceUnit(): BitcoinUnit {
     if (Object.values(BitcoinUnit).includes(this.preferredBalanceUnit)) {
-      return this.preferredBalanceUnit;
+      return balanceUnitForXepWallet(this.preferredBalanceUnit);
     }
     return BitcoinUnit.BTC;
   }
 
   setPreferredBalanceUnit(unit: BitcoinUnit): void {
     if (Object.values(BitcoinUnit).includes(unit)) {
-      this.preferredBalanceUnit = unit;
+      this.preferredBalanceUnit = balanceUnitForXepWallet(unit);
       return;
     }
     this.preferredBalanceUnit = BitcoinUnit.BTC;

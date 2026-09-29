@@ -739,7 +739,7 @@ export const clearStoredNotifications = async () => {
 
 export const getDeliveredNotifications: () => Promise<Record<string, any>[]> = () => {
   try {
-    if (Platform.OS !== 'ios') {
+    if (!PUSH_NOTIFICATIONS_ENABLED || Platform.OS !== 'ios') {
       return Promise.resolve([]);
     }
 
@@ -755,18 +755,19 @@ export const getDeliveredNotifications: () => Promise<Record<string, any>[]> = (
 };
 
 export const removeDeliveredNotifications = (identifiers = []) => {
-  if (Platform.OS === 'ios') {
+  if (PUSH_NOTIFICATIONS_ENABLED && Platform.OS === 'ios') {
     Notifications.ios.removeDeliveredNotifications(identifiers);
   }
 };
 
 export const setApplicationIconBadgeNumber = (badges: number) => {
-  if (Platform.OS === 'ios') {
+  if (PUSH_NOTIFICATIONS_ENABLED && Platform.OS === 'ios') {
     Notifications.ios.setBadgeCount(badges);
   }
 };
 
 export const removeAllDeliveredNotifications = () => {
+  if (!PUSH_NOTIFICATIONS_ENABLED) return;
   Notifications.removeAllDeliveredNotifications();
 };
 

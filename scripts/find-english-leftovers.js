@@ -140,9 +140,9 @@ const FILE_KEY_EXCEPTIONS = {
 // Single tokens that are legitimate English-equal values (brands, acronyms,
 // units, technical loanwords). When the entire string is one of these we keep it.
 const BRAND_TOKENS = new Set([
-  'BTC', 'BIP38', 'BIP39', 'BIP47', 'PSBT', 'XPUB', 'MAX', 'sats',
+  'BTC', 'XEP', 'XEPWallet', 'BIP38', 'BIP39', 'BIP47', 'PSBT', 'XPUB', 'MAX', 'sats',
   'sat/vByte', 'sat/vB', 'RBF', 'CPFP', 'LND', 'LNDhub', 'Electrum',
-  'GitHub', 'BlueWallet', 'Bitcoin', 'Lightning', 'Tor', 'Orbot',
+  'GitHub', 'Bitcoin', 'Lightning', 'Tor', 'Orbot',
   'SilentPayment', 'GroundControl', 'AirDrop', 'iCloud', 'Telegram',
   'Specter', 'Coldcard', 'Pre-image', 'Legacy', 'OK', 'ETA', 'P2SH',
   'PIN', 'QR', 'SSL', 'URL', 'URI', 'MIT', 'JSON', 'CSV', 'HD',

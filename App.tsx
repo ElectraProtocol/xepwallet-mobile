@@ -1,4 +1,4 @@
-import { CommonActions, NavigationAction, NavigationContainer, NavigationContainerRef, ParamListBase } from '@react-navigation/native';
+import { CommonActions, NavigationAction, NavigationContainer } from '@react-navigation/native';
 import React, { useCallback } from 'react';
 import { useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -7,7 +7,6 @@ import { SettingsProvider } from './components/Context/SettingsProvider';
 import { BlueDarkTheme, BlueDefaultTheme } from './components/themes';
 import MasterView from './navigation/MasterView';
 import { navigationRef } from './NavigationService';
-import { useLogger } from '@react-navigation/devtools';
 import { StorageProvider } from './components/Context/StorageProvider';
 import { useStorage } from './hooks/context/useStorage';
 import { unlockWithBiometrics, useBiometrics } from './hooks/useBiometrics';
@@ -43,7 +42,8 @@ const Navigation = ({ colorScheme }: { colorScheme: ReturnType<typeof useColorSc
     (action: Readonly<NavigationAction>) => {
       const guardedRoute = getGuardedRoute(action);
       if (!guardedRoute) {
-        console.error('Unhandled navigation action', action);
+        // Route params can contain import mnemonics, keys, or transaction data.
+        console.error('Unhandled navigation action', action.type);
         return;
       }
 
@@ -72,8 +72,6 @@ const Navigation = ({ colorScheme }: { colorScheme: ReturnType<typeof useColorSc
     },
     [validateNavigation],
   );
-
-  useLogger(navigationRef as unknown as React.RefObject<NavigationContainerRef<ParamListBase>>);
 
   return (
     <NavigationContainer

@@ -161,7 +161,7 @@
     "details_create": "청구서 만들기",
     "details_error_decode": "비트코인 주소를 해석할 수 없습니다",
     "details_fee_field_is_not_valid": "유효한 수수료가 아닙니다",
-    "details_frozen": "{amount} BTC가 동결되어 있습니다.",
+    "details_frozen": "{amount} XEP가 동결되어 있습니다.",
     "details_next": "다음",
     "details_no_signed_tx": "선택한 파일에 가져올 수 있는 트랜잭션이 없습니다.",
     "details_note_placeholder": "자기보관용 노트",
@@ -540,7 +540,7 @@
     "vault_key": "금고 키 {number}",
     "required_keys_out_of_total": "총 갯수중 요구되는 키의 수",
     "fee": "수수료: {number}",
-    "fee_btc": "{number} BTC",
+    "fee_btc": "{number} XEP",
     "confirm": "컨펌",
     "header": "보내기",
     "share": "공유...",
@@ -641,7 +641,7 @@
     "sort_by": "정렬 기준"
   },
   "units": {
-    "BTC": "비트코인",
+    "BTC": "XEP",
     "MAX": "최대",
     "sat_vbyte": "가상바이트당 사토시",
     "sats": "사토시"

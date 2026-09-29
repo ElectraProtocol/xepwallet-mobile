@@ -939,7 +939,7 @@ const TransactionStatus: React.FC = () => {
   const parsedConfirmations = Number(tx?.confirmations);
   const isOnChainTx = isOnChainTransaction(tx);
   const isPending = resolveTxDisplayState(tx) === 'pending';
-  const preferredBalanceUnit = wallet?.preferredBalanceUnit ?? BitcoinUnit.BTC;
+  const preferredBalanceUnit = wallet?.getPreferredBalanceUnit() ?? BitcoinUnit.BTC;
 
   const showBlocksAccordion = isOnChainTx && !isPending && parsedConfirmations > 0;
 
@@ -1087,13 +1087,13 @@ const TransactionStatus: React.FC = () => {
           >
             {txValue !== null ? formatBalanceWithoutSuffix(txValue, preferredBalanceUnit, true) : '-'}
             {preferredBalanceUnit !== BitcoinUnit.LOCAL_CURRENCY && (
-              <Text style={[styles.valueUnit, stylesHook.valueUnit]}>{` ${preferredBalanceUnit}`}</Text>
+              <Text style={[styles.valueUnit, stylesHook.valueUnit]}>{` ${loc.units[BitcoinUnit.BTC]}`}</Text>
             )}
           </Text>
           {txValue !== null && (
             <Text style={[styles.localCurrency, stylesHook.localCurrency, scaledStyles.localCurrency]}>
               {preferredBalanceUnit === BitcoinUnit.LOCAL_CURRENCY
-                ? `${formatBalanceWithoutSuffix(Math.abs(txValue), BitcoinUnit.BTC, true)} ${BitcoinUnit.BTC}`
+                ? `${formatBalanceWithoutSuffix(Math.abs(txValue), BitcoinUnit.BTC, true)} ${loc.units[BitcoinUnit.BTC]}`
                 : satoshiToLocalCurrency(Math.abs(txValue))}
             </Text>
           )}

@@ -65,7 +65,7 @@ export const getTotalBalancePreferredUnit = async (): Promise<BitcoinUnit> => {
   try {
     await DefaultPreference.setName(GROUP_IO_BLUEWALLET);
     const unit = (await DefaultPreference.get(TotalWalletsBalancePreferredUnit)) as BitcoinUnit | null;
-    return unit ?? BitcoinUnit.BTC;
+    return unit === BitcoinUnit.LOCAL_CURRENCY ? BitcoinUnit.LOCAL_CURRENCY : BitcoinUnit.BTC;
   } catch (e) {
     console.error('Error getting TotalBalancePreferredUnit:', e);
     return BitcoinUnit.BTC;

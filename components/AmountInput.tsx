@@ -28,7 +28,7 @@ import {
 import triggerHapticFeedback, { HapticFeedbackTypes } from '../blue_modules/hapticFeedback';
 import confirm from '../helpers/confirm';
 import loc, { formatBalancePlain, formatBalanceWithoutSuffix, removeTrailingZeros } from '../loc';
-import { BitcoinUnit } from '../models/bitcoinUnits';
+import { BitcoinUnit, nextXepWalletBalanceUnit } from '../models/bitcoinUnits';
 import Badge from './Badge';
 import BlueText from './BlueText';
 import Icon from './Icon';
@@ -196,23 +196,12 @@ export const AmountInput: React.FC<AmountInputProps> = props => {
   }, []);
 
   const changeAmountUnit = useCallback(() => {
-    let previousUnit = unit;
-    let newUnit;
-    // cycle through units BTC -> SAT -> LOCAL_CURRENCY -> BTC
-    if (previousUnit === BitcoinUnit.BTC) {
-      newUnit = BitcoinUnit.SATS;
-    } else if (previousUnit === BitcoinUnit.SATS) {
-      newUnit = BitcoinUnit.LOCAL_CURRENCY;
-    } else if (previousUnit === BitcoinUnit.LOCAL_CURRENCY) {
-      newUnit = BitcoinUnit.BTC;
-    } else {
-      newUnit = BitcoinUnit.BTC;
-      previousUnit = BitcoinUnit.SATS;
-    }
+    const previousUnit = unit;
+    // XEP amount entry offers only XEP and the selected fiat currency.
+    const newUnit = nextXepWalletBalanceUnit(previousUnit);
 
     /**
-     * here we must recalculate old amont value (which was denominated in `previousUnit`) to new denomination `newUnit`
-     * and fill this value in input box, so user can switch between, for example, 0.001 BTC <=> 100000 sats
+     * Recalculate the amount in the selected denomination before switching units.
      */
     let sats: string = '0';
     switch (previousUnit) {
@@ -233,9 +222,9 @@ export const AmountInput: React.FC<AmountInputProps> = props => {
 
     const newInputValue = formatBalancePlain(+sats, newUnit, false);
 
-    if (newUnit === BitcoinUnit.LOCAL_CURRENCY && previousUnit === BitcoinUnit.SATS) {
+    if (newUnit === BitcoinUnit.LOCAL_CURRENCY) {
       // we cache conversion, so when we will need reverse conversion there wont be a rounding error
-      conversionCache[newInputValue + newUnit] = amount;
+      conversionCache[newInputValue + newUnit] = sats;
     }
     onChangeText(newInputValue);
     onAmountUnitChange(newUnit);

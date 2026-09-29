@@ -534,7 +534,7 @@
     "vault_key": "کیلیت گاوصندوق {number}",
     "required_keys_out_of_total": "کلیدا لازم ز کول",
     "fee": "کارمزد: {number}",
-    "fee_btc": "{number} BTC",
+    "fee_btc": "{number} XEP",
     "confirm": "تاییڌ",
     "header": "فشناڌن",
     "share": "یک رسۊوی...",

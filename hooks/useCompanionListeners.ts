@@ -10,6 +10,7 @@ import {
   getDeliveredNotifications,
   getStoredNotifications,
   initializeNotifications,
+  PUSH_NOTIFICATIONS_ENABLED,
   removeAllDeliveredNotifications,
   setApplicationIconBadgeNumber,
 } from '../blue_modules/notifications';
@@ -64,7 +65,7 @@ const useCompanionListeners = (skipIfNotInitialized = true) => {
   useHandoffListener();
 
   const processPushNotifications = useCallback(async () => {
-    if (!shouldActivateListeners) return false;
+    if (!PUSH_NOTIFICATIONS_ENABLED || !shouldActivateListeners) return false;
 
     await new Promise(resolve => setTimeout(resolve, 200));
     try {

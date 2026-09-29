@@ -2,7 +2,7 @@ import React, { useMemo, useCallback } from 'react';
 import { TouchableOpacity, Text, StyleSheet, View, useWindowDimensions } from 'react-native';
 import { useStorage } from '../hooks/context/useStorage';
 import loc, { formatBalanceWithoutSuffix } from '../loc';
-import { BitcoinUnit } from '../models/bitcoinUnits';
+import { BitcoinUnit, nextXepWalletBalanceUnit } from '../models/bitcoinUnits';
 import ToolTipMenu from './TooltipMenu';
 import { CommonToolTipActions } from '../typings/CommonToolTipActions';
 import { useSettings } from '../hooks/context/useSettings';
@@ -60,7 +60,6 @@ const TotalWalletsBalance: React.FC = React.memo(() => {
             text: loc.formatString(loc.total_balance_view.display_in_fiat, { currency: preferredFiatCurrency.endPointKey }),
             hidden: totalBalancePreferredUnit === BitcoinUnit.LOCAL_CURRENCY,
           },
-          { ...CommonToolTipActions.ViewInSats, hidden: totalBalancePreferredUnit === BitcoinUnit.SATS },
           { ...CommonToolTipActions.ViewInBitcoin, hidden: totalBalancePreferredUnit === BitcoinUnit.BTC },
         ],
       },
@@ -75,9 +74,6 @@ const TotalWalletsBalance: React.FC = React.memo(() => {
       switch (id) {
         case CommonToolTipActions.ViewInFiat.id:
           await setTotalBalancePreferredUnitStorage(BitcoinUnit.LOCAL_CURRENCY);
-          break;
-        case CommonToolTipActions.ViewInSats.id:
-          await setTotalBalancePreferredUnitStorage(BitcoinUnit.SATS);
           break;
         case CommonToolTipActions.ViewInBitcoin.id:
           await setTotalBalancePreferredUnitStorage(BitcoinUnit.BTC);
@@ -96,12 +92,7 @@ const TotalWalletsBalance: React.FC = React.memo(() => {
   );
 
   const handleBalanceOnPress = useCallback(async () => {
-    const nextUnit =
-      totalBalancePreferredUnit === BitcoinUnit.BTC
-        ? BitcoinUnit.SATS
-        : totalBalancePreferredUnit === BitcoinUnit.SATS
-          ? BitcoinUnit.LOCAL_CURRENCY
-          : BitcoinUnit.BTC;
+    const nextUnit = nextXepWalletBalanceUnit(totalBalancePreferredUnit);
     await setTotalBalancePreferredUnitStorage(nextUnit);
   }, [totalBalancePreferredUnit, setTotalBalancePreferredUnitStorage]);
 
@@ -122,7 +113,7 @@ const TotalWalletsBalance: React.FC = React.memo(() => {
           >
             {totalBalanceFormatted}
             {totalBalancePreferredUnit !== BitcoinUnit.LOCAL_CURRENCY && (
-              <Text style={[styles.currency, { color: colors.foregroundColor }]}>{` ${totalBalancePreferredUnit}`}</Text>
+              <Text style={[styles.currency, { color: colors.foregroundColor }]}>{` ${loc.units[BitcoinUnit.BTC]}`}</Text>
             )}
           </Text>
         </TouchableOpacity>

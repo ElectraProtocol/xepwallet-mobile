@@ -161,7 +161,7 @@
     "details_create": "ایجاد صورت‌حساب",
     "details_error_decode": "ناموفق در رمزگشایی آدرس بیت‌کوین",
     "details_fee_field_is_not_valid": "کارمزد معتبر نیست.",
-    "details_frozen": "{amount} BTC مسدودشده است.",
+    "details_frozen": "{amount} XEP مسدودشده است.",
     "details_next": "بعدی",
     "details_no_signed_tx": "فایل انتخاب‌شده حاوی تراکنشی نیست که بتوان آن را وارد کرد.",
     "details_note_placeholder": "یادداشت به خود",
@@ -635,7 +635,7 @@
     "sort_by": "مرتب‌سازی بر اساس"
   },
   "units": {
-    "BTC": "بیت‌کوین",
+    "BTC": "XEP",
     "MAX": "کل موجودی",
     "sat_vbyte": "ساتوشی/بایت مجازی",
     "sats": "ساتوشی"

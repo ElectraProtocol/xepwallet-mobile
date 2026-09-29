@@ -165,7 +165,7 @@
     "details_create": "建立",
     "details_error_decode": "錯誤：無法解密比特幣地址",
     "details_fee_field_is_not_valid": "費用無效",
-    "details_frozen": "{amount} BTC 已凍結。",
+    "details_frozen": "{amount} XEP 已凍結。",
     "details_next": "下一個",
     "details_no_signed_tx": "所選檔案不包含可匯入的交易。",
     "details_note_placeholder": "給自己的訊息",
@@ -663,7 +663,7 @@
     "sort_by": "排序依據"
   },
   "units": {
-    "BTC": "比特幣",
+    "BTC": "XEP",
     "MAX": "最大",
     "sat_vbyte": "sat/vByte",
     "sats": "聰"

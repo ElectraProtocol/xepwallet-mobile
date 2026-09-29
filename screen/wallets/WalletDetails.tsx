@@ -259,7 +259,12 @@ const WalletDetails: React.FC = () => {
         .join('\n');
     }
 
-    const headers = [loc.transactions.date, loc.transactions.txid, `${loc.send.create_amount} (${BitcoinUnit.BTC})`, loc.send.create_memo];
+    const headers = [
+      loc.transactions.date,
+      loc.transactions.txid,
+      `${loc.send.create_amount} (${loc.units[BitcoinUnit.BTC]})`,
+      loc.send.create_memo,
+    ];
     headers.push(loc.lnd.payment);
 
     const rows = [encodeCsvRow(headers)];

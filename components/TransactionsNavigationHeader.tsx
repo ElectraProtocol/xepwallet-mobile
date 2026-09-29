@@ -9,7 +9,7 @@ import { MultisigHDWallet } from '../class/wallets/multisig-hd-wallet';
 import WalletGradient from '../class/wallet-gradient';
 import { TWallet } from '../class/wallets/types';
 import loc, { formatBalance, formatBalanceWithoutSuffix } from '../loc';
-import { BitcoinUnit } from '../models/bitcoinUnits';
+import { BitcoinUnit, nextXepWalletBalanceUnit } from '../models/bitcoinUnits';
 import { FiatUnit } from '../models/fiatUnit';
 import { BlurredBalanceView } from './BlurredBalanceView';
 import { useSettings } from '../hooks/context/useSettings';
@@ -84,17 +84,7 @@ const TransactionsNavigationHeader: React.FC<TransactionsNavigationHeaderProps> 
     if (hideBalance) {
       return;
     }
-    let newWalletPreferredUnit = wallet.getPreferredBalanceUnit();
-
-    if (newWalletPreferredUnit === BitcoinUnit.BTC) {
-      newWalletPreferredUnit = BitcoinUnit.SATS;
-    } else if (newWalletPreferredUnit === BitcoinUnit.SATS) {
-      newWalletPreferredUnit = BitcoinUnit.LOCAL_CURRENCY;
-    } else {
-      newWalletPreferredUnit = BitcoinUnit.BTC;
-    }
-
-    onWalletUnitChange(newWalletPreferredUnit);
+    onWalletUnitChange(nextXepWalletBalanceUnit(unit));
   };
 
   const handleManageFundsPressed = useCallback(
@@ -221,7 +211,7 @@ const TransactionsNavigationHeader: React.FC<TransactionsNavigationHeaderProps> 
             {!hideBalance && (
               <TouchableOpacity style={styles.walletPreferredUnitView} onPress={changeWalletBalanceUnit} disabled={unitSwitching}>
                 <Text style={styles.walletPreferredUnitText}>
-                  {unit === BitcoinUnit.LOCAL_CURRENCY ? (preferredFiatCurrency?.endPointKey ?? FiatUnit.USD) : unit}
+                  {unit === BitcoinUnit.LOCAL_CURRENCY ? (preferredFiatCurrency?.endPointKey ?? FiatUnit.USD) : loc.units[BitcoinUnit.BTC]}
                 </Text>
               </TouchableOpacity>
             )}

@@ -161,7 +161,7 @@
     "details_create": "ساتن سۊرت هساو",
     "details_error_decode": "نا مووفق د رزم گوشایی آدرس بیت کوین",
     "details_fee_field_is_not_valid": "کارمزد مۊعتبر نؽ.",
-    "details_frozen": "{amount} BTC مسدۊد بیه.",
+    "details_frozen": "{amount} XEP مسدۊد بیه.",
     "details_next": "هنی",
     "details_no_signed_tx": "فایل پسند بیه تراکونشی که بۊئه و مؽن اوورد ن دش ندیره.",
     "details_note_placeholder": "ویرداشت و خوت",
@@ -534,7 +534,7 @@
     "vault_key": "کلٛیل گاوصندوق {number}",
     "required_keys_out_of_total": "کلٛیلیا لازم ز کلٛ",
     "fee": "کارمزد: {number}",
-    "fee_btc": "{number} BTC",
+    "fee_btc": "{number} XEP",
     "confirm": "تایید",
     "header": "کلٛ کردن",
     "share": "یک رسونی...",
@@ -635,7 +635,7 @@
     "sort_by": "ترتیب و ری"
   },
   "units": {
-    "BTC": "بیت کوین",
+    "BTC": "XEP",
     "MAX": "گرد مۉجۊدی",
     "sat_vbyte": "ساتۊشی/بایت مجازی",
     "sats": "ساتۊشی"
