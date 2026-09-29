@@ -372,15 +372,17 @@ class AppDelegate: RCTAppDelegate, UNUserNotificationCenterDelegate {
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
-        let blockExplorer = userDefaultsGroup?.string(forKey: "blockExplorer") ?? "https://www.mempool.space"
+        let blockExplorer = userDefaultsGroup?.string(forKey: "blockExplorer") ?? "https://explorer.electraprotocol.network"
 
         if let data = userInfo["data"] as? [String: Any] {
             if response.actionIdentifier == "VIEW_ADDRESS_TRANSACTIONS", let address = data["address"] as? String {
-                if let url = URL(string: "\(blockExplorer)/address/\(address)") {
+                let addressPath = blockExplorer.contains("explorer.electraprotocol.network") ? "address/\(address)/transactions" : "address/\(address)"
+                if let url = URL(string: "\(blockExplorer)/\(addressPath)") {
                     UIApplication.shared.open(url)
                 }
             } else if response.actionIdentifier == "VIEW_TRANSACTION_DETAILS", let txid = data["txid"] as? String {
-                if let url = URL(string: "\(blockExplorer)/tx/\(txid)") {
+                let transactionPath = blockExplorer.contains("explorer.electraprotocol.network") ? "transaction" : "tx"
+                if let url = URL(string: "\(blockExplorer)/\(transactionPath)/\(txid)") {
                     UIApplication.shared.open(url)
                 }
             }

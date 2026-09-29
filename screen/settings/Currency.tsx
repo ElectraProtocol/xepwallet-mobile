@@ -17,7 +17,7 @@ import { SettingsListItem, settingsListCard, settingsSectionHeaderText } from '.
 import { useTheme } from '../../components/themes';
 import { useSettings } from '../../hooks/context/useSettings';
 import loc from '../../loc';
-import { FiatUnit, FiatUnitSource, FiatUnitType, getFiatRate } from '../../models/fiatUnit';
+import { FiatUnit, FiatUnitType, getFiatRate } from '../../models/fiatUnit';
 
 dayjs.extend(calendar);
 
@@ -136,7 +136,7 @@ const Currency: React.FC = () => {
     isSearchFocused || !selectedCurrencyVisible ? null : (
       <View style={[styles.infoHeader, stylesHook.infoHeader]}>
         <Text style={[settingsSectionHeaderText, styles.infoTitle, stylesHook.infoTitle]}>
-          {loc.settings.currency_source} {selectedCurrency?.source ?? FiatUnitSource.CoinDesk}
+          {loc.settings.currency_source} Electra Protocol
         </Text>
         <Text style={[styles.infoSubtitle, stylesHook.infoSubtitle]}>
           {loc.settings.rate}: {currencyRate.Rate ?? loc._.never}

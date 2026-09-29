@@ -40,7 +40,7 @@ interface CoinDeskResponse {
 }
 
 interface CoinGeckoResponse {
-  bitcoin: {
+  'electra-protocol': {
     [ticker: string]: number;
   };
 }
@@ -109,9 +109,9 @@ const RateExtractors = {
   CoinGecko: async (ticker: string): Promise<number> => {
     try {
       const json = (await fetchRate(
-        `https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${ticker.toLowerCase()}`,
+        `https://api.coingecko.com/api/v3/simple/price?ids=electra-protocol&vs_currencies=${ticker.toLowerCase()}`,
       )) as CoinGeckoResponse;
-      const rate = Number(json?.bitcoin?.[ticker.toLowerCase()]);
+      const rate = Number(json?.['electra-protocol']?.[ticker.toLowerCase()]);
       if (!(rate >= 0)) throw new Error('Invalid data received');
       return rate;
     } catch (error: any) {
@@ -235,5 +235,14 @@ export type FiatUnitType = {
 };
 
 export async function getFiatRate(ticker: string): Promise<number> {
-  return await RateExtractors[FiatUnit[ticker].source](ticker);
+  const currency = ticker.trim().toLowerCase();
+  const response = (await fetchRate('https://ecosystem.electraprotocol.network/api/ecosystem/values/xepfiat')) as {
+    data?: Record<string, number>;
+    error?: unknown;
+  };
+  const rate = response?.data?.[currency];
+  if (response?.error || typeof rate !== 'number' || !Number.isFinite(rate) || rate <= 0) {
+    throw new Error(`No valid XEP/${ticker.toUpperCase()} rate is available from Electra Protocol`);
+  }
+  return rate;
 }

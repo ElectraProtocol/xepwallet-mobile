@@ -1,0 +1,20 @@
+diff --git a/node_modules/@spsina/bip47/src/networks.js b/node_modules/@spsina/bip47/src/networks.js
+index 8df6fbc..5bdaa83 100644
+--- a/node_modules/@spsina/bip47/src/networks.js
++++ b/node_modules/@spsina/bip47/src/networks.js
+@@ -8,7 +8,14 @@ const testnetData = {
+ };
+ exports.testnetData = testnetData;
+ const mainnetData = {
+-    'network': networks_1.bitcoin,
++    'network': {
++        messagePrefix: '\x14XEP Signed Message:\n',
++        bech32: 'ep',
++        bip32: { public: 0x0488b21e, private: 0x0488ade4 },
++        pubKeyHash: 0x37,
++        scriptHash: 0x89,
++        wif: 0xa2,
++    },
+     'coin': '0'
+ };
+ exports.mainnetData = mainnetData;

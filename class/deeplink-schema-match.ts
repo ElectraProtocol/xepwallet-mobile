@@ -303,7 +303,7 @@ class DeeplinkSchemaMatch {
   }
 
   static isBitcoinAddress(address: string): boolean {
-    address = address.replace('://', ':').replace('bitcoin:', '').replace('BITCOIN:', '').replace('bitcoin=', '').split('?')[0];
+    address = address.replace('://', ':').replace(/^(bitcoin|xep):/i, '').replace('bitcoin=', '').split('?')[0];
     let isValidBitcoinAddress = false;
     try {
       bitcoin.address.toOutputScript(address);
@@ -398,7 +398,7 @@ class DeeplinkSchemaMatch {
 
   static bip21encode(address: string, options?: TOptions): string {
     // uppercase address if bech32 to satisfy BIP_0173
-    const isBech32 = address.startsWith('bc1');
+    const isBech32 = address.startsWith('ep1');
     if (isBech32) {
       address = address.toUpperCase();
     }
@@ -411,7 +411,7 @@ class DeeplinkSchemaMatch {
         delete options[key];
       }
     }
-    return bip21.encode(address, options);
+    return bip21.encode(address, options, 'xep');
   }
 
   static decodeBitcoinUri(uri: string) {

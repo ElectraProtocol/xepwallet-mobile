@@ -13,7 +13,7 @@ export class HDSegwitBech32Wallet extends AbstractHDElectrumWallet {
   // @ts-ignore: override
   public readonly typeReadable = HDSegwitBech32Wallet.typeReadable;
   public readonly segwitType = 'p2wpkh';
-  static readonly derivationPath = "m/84'/0'/0'";
+  static readonly derivationPath = "m/84'/597'/0'";
 
   allowSend() {
     return true;
@@ -24,7 +24,7 @@ export class HDSegwitBech32Wallet extends AbstractHDElectrumWallet {
   }
 
   allowPayJoin() {
-    return true;
+    return false;
   }
 
   allowCosignPsbt() {
@@ -48,10 +48,10 @@ export class HDSegwitBech32Wallet extends AbstractHDElectrumWallet {
   }
 
   allowBIP47() {
-    return true;
+    return false;
   }
 
   allowSilentPaymentSend(): boolean {
-    return true;
+    return false;
   }
 }

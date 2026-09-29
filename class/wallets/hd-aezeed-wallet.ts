@@ -22,7 +22,7 @@ export class HDAezeedWallet extends AbstractHDElectrumWallet {
   static readonly type = 'HDAezeedWallet';
   static readonly typeReadable = 'HD Aezeed';
   public readonly segwitType = 'p2wpkh';
-  static readonly derivationPath = "m/84'/0'/0'";
+  static readonly derivationPath = "m/84'/597'/0'";
   // @ts-ignore: override
   public readonly type = HDAezeedWallet.type;
   // @ts-ignore: override
@@ -49,7 +49,7 @@ export class HDAezeedWallet extends AbstractHDElectrumWallet {
     // first, getting xpub
     const root = bip32.fromSeed(this._getEntropyCached());
 
-    const path = "m/84'/0'/0'";
+    const path = "m/84'/597'/0'";
     const child = root.derivePath(path).neutered();
     const xpub = child.toBase58();
 
@@ -91,13 +91,13 @@ export class HDAezeedWallet extends AbstractHDElectrumWallet {
 
   _getNode0() {
     const root = bip32.fromSeed(this._getEntropyCached());
-    const node = root.derivePath("m/84'/0'/0'");
+    const node = root.derivePath("m/84'/597'/0'");
     return node.derive(0);
   }
 
   _getNode1() {
     const root = bip32.fromSeed(this._getEntropyCached());
-    const node = root.derivePath("m/84'/0'/0'");
+    const node = root.derivePath("m/84'/597'/0'");
     return node.derive(1);
   }
 
@@ -136,7 +136,7 @@ export class HDAezeedWallet extends AbstractHDElectrumWallet {
   _getWIFByIndex(internal: boolean, index: number): string | false {
     if (!this.secret) return false;
     const root = bip32.fromSeed(this._getEntropyCached());
-    const path = `m/84'/0'/0'/${internal ? 1 : 0}/${index}`;
+    const path = `m/84'/597'/0'/${internal ? 1 : 0}/${index}`;
     const child = root.derivePath(path);
 
     return child.toWIF();
@@ -182,7 +182,7 @@ export class HDAezeedWallet extends AbstractHDElectrumWallet {
   }
 
   allowPayJoin() {
-    return true;
+    return false;
   }
 
   isSegwit() {

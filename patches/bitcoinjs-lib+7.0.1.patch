@@ -1,0 +1,74 @@
+diff --git a/node_modules/bitcoinjs-lib/src/cjs/networks.cjs b/node_modules/bitcoinjs-lib/src/cjs/networks.cjs
+index 26aa44e..73bf102 100644
+--- a/node_modules/bitcoinjs-lib/src/cjs/networks.cjs
++++ b/node_modules/bitcoinjs-lib/src/cjs/networks.cjs
+@@ -8,11 +8,11 @@ exports.bitcoin = {
+   /**
+    * The message prefix used for signing Bitcoin messages.
+    */
+-  messagePrefix: '\x18Bitcoin Signed Message:\n',
++  messagePrefix: '\x14XEP Signed Message:\n',
+   /**
+    * The Bech32 prefix used for Bitcoin addresses.
+    */
+-  bech32: 'bc',
++  bech32: 'ep',
+   /**
+    * The BIP32 key prefixes for Bitcoin.
+    */
+@@ -29,15 +29,15 @@ exports.bitcoin = {
+   /**
+    * The prefix for Bitcoin public key hashes.
+    */
+-  pubKeyHash: 0x00,
++  pubKeyHash: 0x37,
+   /**
+    * The prefix for Bitcoin script hashes.
+    */
+-  scriptHash: 0x05,
++  scriptHash: 0x89,
+   /**
+    * The prefix for Bitcoin Wallet Import Format (WIF) private keys.
+    */
+-  wif: 0x80,
++  wif: 0xa2,
+ };
+ /**
+  * Represents the regtest network configuration.
+diff --git a/node_modules/bitcoinjs-lib/src/esm/networks.js b/node_modules/bitcoinjs-lib/src/esm/networks.js
+index f562097..0e4747a 100644
+--- a/node_modules/bitcoinjs-lib/src/esm/networks.js
++++ b/node_modules/bitcoinjs-lib/src/esm/networks.js
+@@ -5,11 +5,11 @@ export const bitcoin = {
+   /**
+    * The message prefix used for signing Bitcoin messages.
+    */
+-  messagePrefix: '\x18Bitcoin Signed Message:\n',
++  messagePrefix: '\x14XEP Signed Message:\n',
+   /**
+    * The Bech32 prefix used for Bitcoin addresses.
+    */
+-  bech32: 'bc',
++  bech32: 'ep',
+   /**
+    * The BIP32 key prefixes for Bitcoin.
+    */
+@@ -26,15 +26,15 @@ export const bitcoin = {
+   /**
+    * The prefix for Bitcoin public key hashes.
+    */
+-  pubKeyHash: 0x00,
++  pubKeyHash: 0x37,
+   /**
+    * The prefix for Bitcoin script hashes.
+    */
+-  scriptHash: 0x05,
++  scriptHash: 0x89,
+   /**
+    * The prefix for Bitcoin Wallet Import Format (WIF) private keys.
+    */
+-  wif: 0x80,
++  wif: 0xa2,
+ };
+ /**
+  * Represents the regtest network configuration.

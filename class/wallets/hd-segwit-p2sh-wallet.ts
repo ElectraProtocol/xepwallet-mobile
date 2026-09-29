@@ -21,7 +21,7 @@ export class HDSegwitP2SHWallet extends AbstractHDElectrumWallet {
   // @ts-ignore: override
   public readonly typeReadable = HDSegwitP2SHWallet.typeReadable;
   public readonly segwitType = 'p2sh(p2wpkh)';
-  static readonly derivationPath = "m/49'/0'/0'";
+  static readonly derivationPath = "m/49'/597'/0'";
 
   allowSend() {
     return true;
@@ -115,6 +115,6 @@ export class HDSegwitP2SHWallet extends AbstractHDElectrumWallet {
   }
 
   allowSilentPaymentSend(): boolean {
-    return true;
+    return false;
   }
 }

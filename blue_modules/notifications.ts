@@ -17,6 +17,9 @@ const PUSH_TOKEN = 'PUSH_TOKEN';
 const NOTIFICATIONS_STORAGE = 'NOTIFICATIONS_STORAGE';
 const ANDROID_NOTIFICATION_CHANNEL_ID = 'channel_01';
 export const NOTIFICATIONS_NO_AND_DONT_ASK_FLAG = 'NOTIFICATIONS_NO_AND_DONT_ASK_FLAG';
+// XEP has no push service. Keep the implementation for a future XEP backend,
+// but do not request permission, register a device token, or upload addresses.
+export const PUSH_NOTIFICATIONS_ENABLED = false;
 const baseURI = groundControlUri;
 let notificationSubscriptions: EmitterSubscription[] = [];
 let onProcessNotificationsHandler: undefined | (() => void | Promise<void>);
@@ -83,7 +86,7 @@ const ensureAndroidNotificationChannel = () => {
 
   Notifications.setNotificationChannel({
     channelId: ANDROID_NOTIFICATION_CHANNEL_ID,
-    name: 'BlueWallet notifications',
+    name: 'XEPWallet notifications',
     description: 'Notifications about incoming payments',
     importance: 4,
     enableVibration: true,
@@ -192,6 +195,7 @@ export const checkNotificationPermissionStatus = async () => {
 // Listener to monitor notification permission status changes while app is running
 let currentPermissionStatus = 'unavailable';
 const handleAppStateChange = async (nextAppState: AppStateStatus) => {
+  if (!PUSH_NOTIFICATIONS_ENABLED) return;
   try {
     if (nextAppState === 'active') {
       const isDisabledByUser = (await AsyncStorage.getItem(NOTIFICATIONS_NO_AND_DONT_ASK_FLAG)) === 'true';
@@ -210,7 +214,9 @@ const handleAppStateChange = async (nextAppState: AppStateStatus) => {
   }
 };
 
-AppState.addEventListener('change', handleAppStateChange);
+if (PUSH_NOTIFICATIONS_ENABLED) {
+  AppState.addEventListener('change', handleAppStateChange);
+}
 
 export const cleanUserOptOutFlag = async () => {
   return AsyncStorage.removeItem(NOTIFICATIONS_NO_AND_DONT_ASK_FLAG);
@@ -224,6 +230,7 @@ export const cleanUserOptOutFlag = async () => {
  * @returns {Promise<boolean>} TRUE if permissions were obtained, FALSE otherwise
  */
 export const tryToObtainPermissions = async (): Promise<boolean> => {
+  if (!PUSH_NOTIFICATIONS_ENABLED) return false;
   console.log('tryToObtainPermissions: Starting user-triggered permission request');
 
   if (!isNotificationsCapable) {
@@ -255,6 +262,7 @@ export const tryToObtainPermissions = async (): Promise<boolean> => {
 };
 
 export const enqueueTestPushNotification = async (): Promise<void> => {
+  if (!PUSH_NOTIFICATIONS_ENABLED) return;
   const pushToken = await getPushToken();
   if (!pushToken?.token || !pushToken?.os) {
     throw new Error('No push token available');
@@ -286,6 +294,7 @@ export const enqueueTestPushNotification = async (): Promise<void> => {
  * @returns {Promise<object>} Response object from API rest call
  */
 export const majorTomToGroundControl = async (addresses: string[], hashes: string[], txids: string[]) => {
+  if (!PUSH_NOTIFICATIONS_ENABLED) return;
   console.log('majorTomToGroundControl: Starting notification registration', {
     addressCount: addresses?.length,
     hashCount: hashes?.length,
@@ -358,6 +367,7 @@ export const majorTomToGroundControl = async (addresses: string[], hashes: strin
  * preimage is always stripped before leaving the device.
  */
 export const registerArkPaymentPush = async (paymentHash: string, label: string, pendingSwap: BoltzReverseSwap): Promise<void> => {
+  if (!PUSH_NOTIFICATIONS_ENABLED) return;
   if (!arkadePaymentPushUri) return;
   try {
     const noAndDontAskFlag = await AsyncStorage.getItem(NOTIFICATIONS_NO_AND_DONT_ASK_FLAG);
@@ -424,6 +434,7 @@ export const checkPermissions = async () => {
  * @returns {Promise<*>}
  */
 export const setLevels = async (levelAll: boolean) => {
+  if (!PUSH_NOTIFICATIONS_ENABLED) return;
   const pushToken = await getPushToken();
   if (!pushToken || !pushToken.token || !pushToken.os) return;
 
@@ -469,6 +480,7 @@ export const setLevels = async (levelAll: boolean) => {
  * @returns {Promise<void>}
  */
 export const setRedactNotifications = async (redacted: boolean) => {
+  if (!PUSH_NOTIFICATIONS_ENABLED) return;
   const pushToken = await getPushToken();
   if (!pushToken?.token || !pushToken?.os) {
     throw new Error('No push token available');
@@ -553,6 +565,7 @@ const _setPushToken = async (token: TPushToken) => {
  * @returns {Promise<boolean>} whether successfully registered for remote push notifications
  */
 const configureNotifications = async (onProcessNotifications?: () => void): Promise<boolean> => {
+  if (!PUSH_NOTIFICATIONS_ENABLED) return false;
   console.log('configureNotifications()');
   if (onProcessNotifications) {
     onProcessNotificationsHandler = onProcessNotifications;
@@ -626,7 +639,7 @@ const configureNotifications = async (onProcessNotifications?: () => void): Prom
   }
 };
 
-export const isNotificationsCapable = hasGmsSync() || hasHmsSync() || Platform.OS !== 'android';
+export const isNotificationsCapable = PUSH_NOTIFICATIONS_ENABLED && (hasGmsSync() || hasHmsSync() || Platform.OS !== 'android');
 
 export const getPushToken = async (): Promise<TPushToken> => {
   try {
@@ -674,6 +687,7 @@ const getLevels = async () => {
  * @returns {Promise<object>} Response object from API rest call
  */
 export const unsubscribe = async (addresses: string[], hashes: string[], txids: string[]) => {
+  if (!PUSH_NOTIFICATIONS_ENABLED) return;
   if (!Array.isArray(addresses) || !Array.isArray(hashes) || !Array.isArray(txids)) {
     throw new Error('No addresses, hashes, or txids provided');
   }
@@ -757,6 +771,7 @@ export const removeAllDeliveredNotifications = () => {
 };
 
 export const isNotificationsEnabled = async () => {
+  if (!PUSH_NOTIFICATIONS_ENABLED) return false;
   try {
     const levels = await getLevels();
     const token = await getPushToken();
@@ -794,6 +809,7 @@ export const getStoredNotifications = async (): Promise<TPayload[]> => {
 
 // on app launch (load module):
 export const initializeNotifications = async (onProcessNotifications?: () => void) => {
+  if (!PUSH_NOTIFICATIONS_ENABLED) return;
   console.log('initializeNotifications: Starting initialization');
 
   try {

@@ -1,0 +1,50 @@
+diff --git a/node_modules/bip32/src/cjs/bip32.cjs b/node_modules/bip32/src/cjs/bip32.cjs
+index cfc1c5b..82a9cf9 100644
+--- a/node_modules/bip32/src/cjs/bip32.cjs
++++ b/node_modules/bip32/src/cjs/bip32.cjs
+@@ -40,15 +40,15 @@ const bs58check = {
+ function BIP32Factory(ecc) {
+     (0, testecc_js_1.testEcc)(ecc);
+     const BITCOIN = {
+-        messagePrefix: '\x18Bitcoin Signed Message:\n',
+-        bech32: 'bc',
++        messagePrefix: '\x14XEP Signed Message:\n',
++        bech32: 'ep',
+         bip32: {
+             public: 0x0488b21e,
+             private: 0x0488ade4,
+         },
+-        pubKeyHash: 0x00,
+-        scriptHash: 0x05,
+-        wif: 0x80,
++        pubKeyHash: 0x37,
++        scriptHash: 0x89,
++        wif: 0xa2,
+     };
+     const HIGHEST_BIT = 0x80000000;
+     function toXOnly(pubKey) {
+diff --git a/node_modules/bip32/src/esm/bip32.js b/node_modules/bip32/src/esm/bip32.js
+index 707cde7..c1a5ca9 100644
+--- a/node_modules/bip32/src/esm/bip32.js
++++ b/node_modules/bip32/src/esm/bip32.js
+@@ -14,15 +14,15 @@ const bs58check = {
+ export function BIP32Factory(ecc) {
+     testEcc(ecc);
+     const BITCOIN = {
+-        messagePrefix: '\x18Bitcoin Signed Message:\n',
+-        bech32: 'bc',
++        messagePrefix: '\x14XEP Signed Message:\n',
++        bech32: 'ep',
+         bip32: {
+             public: 0x0488b21e,
+             private: 0x0488ade4,
+         },
+-        pubKeyHash: 0x00,
+-        scriptHash: 0x05,
+-        wif: 0x80,
++        pubKeyHash: 0x37,
++        scriptHash: 0x89,
++        wif: 0xa2,
+     };
+     const HIGHEST_BIT = 0x80000000;
+     function toXOnly(pubKey) {

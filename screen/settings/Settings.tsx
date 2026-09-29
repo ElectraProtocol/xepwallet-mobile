@@ -1,6 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useMemo, useLayoutEffect, useCallback } from 'react';
-import { View, StyleSheet, Linking, Image } from 'react-native';
+import React, { useLayoutEffect } from 'react';
 import loc from '../../loc';
 import { SettingsSection, SettingsListItem, SettingsScrollView } from '../../components/SettingsSection';
 import { useSettings } from '../../hooks/context/useSettings';
@@ -13,33 +12,8 @@ const Settings = () => {
     setOptions({ title: loc.settings.header });
   }, [setOptions, language]);
 
-  const handleDonatePress = useCallback(() => {
-    Linking.openURL('https://donate.bluewallet.io/');
-  }, []);
-
-  const donateIcon = useMemo(
-    () => (
-      <View style={styles.donateIconContainer}>
-        <Image source={require('../../img/bluebeast.png')} style={styles.donateIconImage} resizeMode="contain" />
-      </View>
-    ),
-    [],
-  );
-
   return (
     <SettingsScrollView testID="SettingsRoot">
-      <SettingsSection>
-        <SettingsListItem
-          title={loc.settings.donate}
-          subtitle={loc.settings.donate_description}
-          subtitleNumberOfLines={0}
-          leftAvatar={donateIcon}
-          onPress={handleDonatePress}
-          testID="Donate"
-          bottomDivider={false}
-        />
-      </SettingsSection>
-
       <SettingsSection>
         <SettingsListItem
           title={loc.settings.general}
@@ -105,13 +79,3 @@ const Settings = () => {
 };
 
 export default Settings;
-
-const styles = StyleSheet.create({
-  donateIconContainer: {
-    padding: 4,
-  },
-  donateIconImage: {
-    width: 48,
-    height: 48,
-  },
-});

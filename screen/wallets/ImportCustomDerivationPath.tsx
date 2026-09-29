@@ -47,7 +47,7 @@ const ImportCustomDerivationPath: React.FC = () => {
   const { importText, password } = useRoute<RouteProps>().params;
   const { addAndSaveWallet } = useStorage();
   const watchOnlyImport = useMemo(() => {
-    const fallback = { isWatchOnlyHd: false, defaultPath: "m/84'/0'/0'" };
+    const fallback = { isWatchOnlyHd: false, defaultPath: "m/84'/597'/0'" };
     try {
       const wallet = new WatchOnlyWallet();
       wallet.setSecret(importText);

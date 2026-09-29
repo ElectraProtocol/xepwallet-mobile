@@ -353,7 +353,7 @@ export class WatchOnlyWallet extends LegacyWallet {
 
   // wrap only export-safe 84/49/86 paths so setSecret's mapping applies
   setSecretForCustomPathImport(importText: string, path: string): this {
-    const wrapPath = path.startsWith("m/84'/0'/") || path.startsWith("m/49'/0'/") || path.startsWith("m/86'");
+    const wrapPath = path.startsWith("m/84'/597'/") || path.startsWith("m/49'/597'/") || path.startsWith("m/86'");
     const trimmed = importText.trim();
     // skip key-origin forms; wrapping would replace their fingerprint
     if (wrapPath && trimmed.startsWith('xpub') && !trimmed.includes('[')) {

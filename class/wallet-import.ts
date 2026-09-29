@@ -37,7 +37,7 @@ export const validateBip32 = (path: string) => normalizeDerivationPath(path).mat
 // because original file bip39WalletFormatsElectrum is from Electrum X and doesn't contain p2tr wallets, we need to add it
 bip39WalletFormatsElectrum.push({
   description: 'Standard BIP86 native taproot',
-  derivation_path: "m/86'/0'/0'",
+  derivation_path: "m/86'/597'/0'",
   script_type: 'p2tr',
   iterate_accounts: true,
 });
@@ -132,6 +132,11 @@ const startImport = (
     // 8. check if its a json array from BC-UR with multiple accounts
     let text = importTextOrig.trim();
     let password;
+
+    // XEPWallet does not support Lightning/LNDHub or Arkade wallets.
+    if (/^(blitzhub|lndhub|arkade):\/\//i.test(text)) {
+      throw new Error('Lightning and Arkade wallets are not supported by XEPWallet.');
+    }
 
     // BIP38 password required
     if (text.startsWith('6P')) {

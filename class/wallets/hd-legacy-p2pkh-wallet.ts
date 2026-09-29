@@ -21,7 +21,7 @@ export class HDLegacyP2PKHWallet extends AbstractHDElectrumWallet {
   public readonly type = HDLegacyP2PKHWallet.type;
   // @ts-ignore: override
   public readonly typeReadable = HDLegacyP2PKHWallet.typeReadable;
-  static readonly derivationPath = "m/44'/0'/0'";
+  static readonly derivationPath = "m/44'/597'/0'";
 
   allowSend() {
     return true;
@@ -44,7 +44,7 @@ export class HDLegacyP2PKHWallet extends AbstractHDElectrumWallet {
   }
 
   allowBIP47() {
-    return true;
+    return false;
   }
 
   getXpub() {
@@ -113,6 +113,6 @@ export class HDLegacyP2PKHWallet extends AbstractHDElectrumWallet {
   }
 
   allowSilentPaymentSend(): boolean {
-    return true;
+    return false;
   }
 }

@@ -161,7 +161,7 @@ export class HDLegacyBreadwalletWallet extends HDLegacyP2PKHWallet {
   _addPsbtInput(psbt: Psbt, input: CoinSelectReturnInput, sequence: number, masterFingerprintBuffer: Uint8Array) {
     // AbstractHDElectrumWallet._addPsbtInput for bech32 address
     // HDLegacyP2PKHWallet._addPsbtInput for legacy address
-    if (input?.address?.startsWith('bc1')) {
+    if (input?.address?.startsWith('ep1')) {
       return AbstractHDElectrumWallet.prototype._addPsbtInput.call(this, psbt, input, sequence, masterFingerprintBuffer);
     }
     return super._addPsbtInput(psbt, input, sequence, masterFingerprintBuffer);

@@ -18,7 +18,7 @@ export class HDTaprootWallet extends AbstractHDElectrumWallet {
   // @ts-ignore: override
   public readonly typeReadable = HDTaprootWallet.typeReadable;
   public readonly segwitType = 'p2tr';
-  static readonly derivationPath = "m/86'/0'/0'";
+  static readonly derivationPath = "m/86'/597'/0'";
 
   getXpub() {
     if (this._xpub) {
@@ -157,10 +157,10 @@ export class HDTaprootWallet extends AbstractHDElectrumWallet {
   }
 
   allowBIP47() {
-    return true;
+    return false;
   }
 
   allowSilentPaymentSend(): boolean {
-    return true;
+    return false;
   }
 }

@@ -11,6 +11,7 @@ import { useTheme } from '../../components/themes';
 import { SettingsSection, SettingsScrollView, settingsCardContent } from '../../components/SettingsSection';
 import loc from '../../loc';
 import { useSettings } from '../../hooks/context/useSettings';
+import { transactionExplorerUrl } from '../../models/blockExplorer';
 import { majorTomToGroundControl } from '../../blue_modules/notifications';
 import { scanQrHelper } from '../../helpers/scan-qr';
 import { BlueSpacing10, BlueSpacing20 } from '../../components/BlueSpacing';
@@ -144,7 +145,7 @@ const Broadcast: React.FC = () => {
               <BlueSpacing20 />
             </>
           )}
-          {BROADCAST_RESULT.success === broadcastResult && tx && <SuccessScreen tx={tx} url={`${selectedBlockExplorer.url}/tx/${tx}`} />}
+          {BROADCAST_RESULT.success === broadcastResult && tx && <SuccessScreen tx={tx} url={transactionExplorerUrl(selectedBlockExplorer, tx)} />}
         </View>
       </SettingsSection>
     </SettingsScrollView>

@@ -9,6 +9,7 @@ import SafeArea from '../../components/SafeArea';
 import { useTheme } from '../../components/themes';
 import loc from '../../loc';
 import { BitcoinUnit } from '../../models/bitcoinUnits';
+import { transactionExplorerUrl } from '../../models/blockExplorer';
 import HandOffComponent from '../../components/HandOffComponent';
 import { HandOffActivityType } from '../../components/types';
 import { useSettings } from '../../hooks/context/useSettings';
@@ -63,7 +64,7 @@ const Success = () => {
         <HandOffComponent
           title={loc.transactions.details_title}
           type={HandOffActivityType.ViewInBlockExplorer}
-          url={`${selectedBlockExplorer.url}/tx/${txid}`}
+          url={transactionExplorerUrl(selectedBlockExplorer, txid)}
         />
       )}
     </SafeArea>

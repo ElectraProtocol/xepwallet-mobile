@@ -15,6 +15,7 @@ import TransactionOutgoingIcon from '../components/icons/TransactionOutgoingIcon
 import TransactionPendingIcon from '../components/icons/TransactionPendingIcon';
 import loc, { formatBalanceWithoutSuffix, formatTransactionListDate, transactionTimeToReadable } from '../loc';
 import { BitcoinUnit } from '../models/bitcoinUnits';
+import { transactionExplorerUrl } from '../models/blockExplorer';
 import { useSettings } from '../hooks/context/useSettings';
 import { useTheme } from './themes';
 import { Action } from './types';
@@ -454,7 +455,7 @@ const TransactionListItemComponent: React.FC<TransactionListItemProps> = ({
   const handleOnCopyTransactionID = useCallback(() => Clipboard.setString(item.hash), [item.hash]);
   const handleOnCopyNote = useCallback(() => Clipboard.setString(noteForCopy ?? ''), [noteForCopy]);
   const handleOnViewOnBlockExplorer = useCallback(() => {
-    const url = `${selectedBlockExplorer.url}/tx/${item.hash}`;
+    const url = transactionExplorerUrl(selectedBlockExplorer, item.hash);
     Linking.canOpenURL(url).then(supported => {
       if (supported) {
         Linking.openURL(url);
@@ -462,7 +463,7 @@ const TransactionListItemComponent: React.FC<TransactionListItemProps> = ({
     });
   }, [item.hash, selectedBlockExplorer]);
   const handleCopyOpenInBlockExplorerPress = useCallback(() => {
-    Clipboard.setString(`${selectedBlockExplorer.url}/tx/${item.hash}`);
+    Clipboard.setString(transactionExplorerUrl(selectedBlockExplorer, item.hash));
   }, [item.hash, selectedBlockExplorer]);
 
   const onToolTipPress = useCallback(

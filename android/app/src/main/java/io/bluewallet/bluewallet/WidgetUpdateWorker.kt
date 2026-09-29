@@ -129,7 +129,7 @@ class WidgetUpdateWorker(context: Context, workerParams: WorkerParameters) : Cor
 
         val preferredCurrency = sharedPref.getString("preferredCurrency", null) ?: "USD"
         val preferredCurrencyLocale = sharedPref.getString("preferredCurrencyLocale", null) ?: "en-US"
-        val previousPrice = sharedPref.getString("previous_price", null)
+        val previousPrice = sharedPref.getString("previous_xep_price", null)
 
         val currentTime = SimpleDateFormat("hh:mm a", Locale.getDefault()).format(Date())
 
@@ -212,7 +212,7 @@ class WidgetUpdateWorker(context: Context, workerParams: WorkerParameters) : Cor
             setViewVisibility(R.id.loading_indicator, View.GONE)
             setViewVisibility(R.id.price_arrow_container, View.GONE)
             if (parsedPrevious != null) {
-                setTextViewText(R.id.price_value, currencyFormat.format(parsedPrevious.toInt()))
+                setTextViewText(R.id.price_value, currencyFormat.format(parsedPrevious))
                 setViewVisibility(R.id.price_value, View.VISIBLE)
                 setViewVisibility(R.id.last_updated_label, View.VISIBLE)
                 setViewVisibility(R.id.last_updated_time, View.VISIBLE)
@@ -233,7 +233,7 @@ class WidgetUpdateWorker(context: Context, workerParams: WorkerParameters) : Cor
         preferredCurrency: String?,
         preferredCurrencyLocale: String?
     ) {
-        val currentPrice = fetchedPrice.toDoubleOrNull()?.toInt()
+        val currentPrice = fetchedPrice.toDoubleOrNull()
         val currencyFormat = getCurrencyFormat(preferredCurrency, preferredCurrencyLocale)
 
         views.apply {
@@ -245,7 +245,7 @@ class WidgetUpdateWorker(context: Context, workerParams: WorkerParameters) : Cor
                 setViewVisibility(R.id.last_updated_label, View.VISIBLE)
                 setViewVisibility(R.id.last_updated_time, View.VISIBLE)
 
-                val previousParsed = previousPrice?.toDoubleOrNull()?.toInt()
+                val previousParsed = previousPrice?.toDoubleOrNull()
                 if (previousParsed != null) {
                     setViewVisibility(R.id.price_arrow_container, View.VISIBLE)
                     setTextViewText(R.id.previous_price, currencyFormat.format(previousParsed))
@@ -279,7 +279,7 @@ class WidgetUpdateWorker(context: Context, workerParams: WorkerParameters) : Cor
             Currency.getInstance("USD")
         }
         currencyFormat.currency = currency
-        currencyFormat.maximumFractionDigits = 0
+        currencyFormat.maximumFractionDigits = 8
 
         val decimalFormatSymbols = (currencyFormat as java.text.DecimalFormat).decimalFormatSymbols
         decimalFormatSymbols.currencySymbol = currency.symbol
@@ -289,6 +289,6 @@ class WidgetUpdateWorker(context: Context, workerParams: WorkerParameters) : Cor
     }
 
     private fun savePrice(sharedPref: SharedPreferences, price: String) {
-        sharedPref.edit().putString("previous_price", price).apply()
+        sharedPref.edit().putString("previous_xep_price", price).apply()
     }
 }

@@ -33,7 +33,7 @@ const IsItMyAddress: React.FC = () => {
 
   const checkAddress = () => {
     Keyboard.dismiss();
-    const cleanAddress = address.replace('bitcoin:', '').replace('BITCOIN:', '').replace('bitcoin=', '').split('?')[0];
+    const cleanAddress = address.replace(/^(bitcoin|xep):/i, '').replace('bitcoin=', '').split('?')[0];
     const matching: TWallet[] = [];
 
     for (const w of wallets) {

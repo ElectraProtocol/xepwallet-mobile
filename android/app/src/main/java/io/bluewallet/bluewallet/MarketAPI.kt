@@ -31,7 +31,7 @@ object MarketAPI {
     data class PriceResult(val rateDouble: Double, val formattedRate: String?)
 
     suspend fun fetchPrice(context: Context, currency: String): String? {
-        Log.i(TAG, "Fetching Bitcoin price for currency: $currency")
+        Log.i(TAG, "Fetching XEP price for currency: $currency")
         val startTime = System.currentTimeMillis()
         
         return try {
@@ -66,12 +66,12 @@ object MarketAPI {
             }
             
             val currencyInfo = json.getJSONObject(currency)
-            val source = currencyInfo.getString("source")
+            val source = "Electra Protocol"
             val endPointKey = currencyInfo.getString("endPointKey")
             
             Log.d(TAG, "Using price source: $source, endpoint key: $endPointKey")
 
-            val urlString = buildURLString(source, endPointKey)
+            val urlString = baseUrl ?: "https://ecosystem.electraprotocol.network/api/ecosystem/values/xepfiat"
             Log.d(TAG, "Fetching price from URL: $urlString")
 
             val request = Request.Builder().url(urlString).build()
@@ -97,7 +97,8 @@ object MarketAPI {
             Log.d(TAG, "Raw response from $source: $jsonResponse")
             
             val parsedResult = if (jsonResponse != null) {
-                parseJSONBasedOnSource(jsonResponse, source, endPointKey)
+                val rate = JSONObject(jsonResponse).optJSONObject("data")?.optDouble(endPointKey.lowercase(), 0.0) ?: 0.0
+                if (rate.isFinite() && rate > 0.0) rate.toString() else null
             } else null
             
             val totalDuration = System.currentTimeMillis() - startTime
@@ -115,50 +116,6 @@ object MarketAPI {
         }
     }
 
-    private fun buildURLString(source: String, endPointKey: String): String {
-        return if (baseUrl != null) {
-            baseUrl + endPointKey
-        } else {
-            when (source) {
-                "Yadio" -> "https://api.yadio.io/json/$endPointKey"
-                "YadioConvert" -> "https://api.yadio.io/convert/1/BTC/$endPointKey"
-                "Exir" -> "https://api.exir.io/v1/ticker?symbol=btc-irt"
-                "coinpaprika" -> "https://api.coinpaprika.com/v1/tickers/btc-bitcoin?quotes=INR"
-                "Bitstamp" -> "https://www.bitstamp.net/api/v2/ticker/btc${endPointKey.lowercase()}"
-                "Coinbase" -> "https://api.coinbase.com/v2/prices/BTC-${endPointKey.uppercase()}/buy"
-                "CoinGecko" -> "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=${endPointKey.lowercase()}"
-                "BNR" -> "https://www.bnr.ro/nbrfxrates.xml"
-                "Kraken" -> "https://api.kraken.com/0/public/Ticker?pair=XXBTZ${endPointKey.uppercase()}"
-                "CoinDesk" -> "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=${endPointKey.uppercase()}"
-                else -> "https://min-api.cryptocompare.com/data/price?fsym=BTC&tsyms=${endPointKey.uppercase()}"
-            }
-        }
-    }
-
-    private fun parseJSONBasedOnSource(jsonString: String, source: String, endPointKey: String): String? {
-        return try {
-            val json = JSONObject(jsonString)
-            when (source) {
-                "Yadio" -> json.getJSONObject(endPointKey).getString("price")
-                "YadioConvert" -> json.getString("rate")
-                "CoinGecko" -> json.getJSONObject("bitcoin").getString(endPointKey.lowercase())
-                "Exir" -> json.getString("last")
-                "Bitstamp" -> json.getString("last")
-                "coinpaprika" -> json.getJSONObject("quotes").getJSONObject("INR").getString("price")
-                "Coinbase" -> json.getJSONObject("data").getString("amount")
-                "Kraken" -> json.getJSONObject("result").getJSONObject("XXBTZ${endPointKey.uppercase()}").getJSONArray("c").getString(0)
-                "CoinDesk" -> {
-                    val rate = json.optDouble(endPointKey.uppercase(), -1.0)
-                    if (rate < 0) null else rate.toString()
-                }
-                else -> null
-            }
-        } catch (e: Exception) {
-            Log.e(TAG, "Error parsing price", e)
-            null
-        }
-    }
-    
     /**
      * Fetch the next block fee from Electrum servers with network awareness
      */
@@ -364,11 +321,11 @@ object MarketAPI {
         val formatter = NumberFormat.getCurrencyInstance()
         try {
             formatter.currency = Currency.getInstance(currencyCode)
-            formatter.maximumFractionDigits = 0 // Ensure no fractional parts
+            formatter.maximumFractionDigits = 8
         } catch (e: Exception) {
             Log.e(TAG, "Invalid currency code: $currencyCode", e)
         }
-        return formatter.format(amount.toInt()) // Convert to integer before formatting
+        return formatter.format(amount)
     }
     
     /**
@@ -409,14 +366,13 @@ object MarketAPI {
                 Log.d(TAG, "Parsed price rate: $rate")
                 
                 if (rate > 0) {
-                    // Format price with currency symbol - convert to integer
+                    // XEP is often worth less than one fiat unit, so retain fractional digits.
                     marketData.price = formatCurrencyAmount(rate, currency)
                     Log.d(TAG, "Formatted price: ${marketData.price}")
                     
-                    // Calculate sats - convert to integer for display
-                    val satsValue = ((10 / rate) * 10000000).toInt()
-                    marketData.sats = numberFormatter.format(satsValue)
-                    Log.d(TAG, "Calculated sats: ${marketData.sats}")
+                    // Number of XEP represented by one unit of the selected currency.
+                    marketData.sats = numberFormatter.format(1.0 / rate)
+                    Log.d(TAG, "Calculated XEP per currency unit: ${marketData.sats}")
                 } else {
                     Log.w(TAG, "Price rate is zero or negative: $rate")
                 }

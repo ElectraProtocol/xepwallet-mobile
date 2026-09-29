@@ -8,11 +8,12 @@ export interface BlockExplorer {
 }
 
 export const BLOCK_EXPLORERS: { [key: string]: BlockExplorer } = {
-  default: { key: 'default', name: 'Mempool.space', url: 'https://mempool.space' },
-  blockchair: { key: 'blockchair', name: 'Blockchair', url: 'https://blockchair.com/bitcoin' },
-  blockstream: { key: 'blockstream', name: 'Blockstream.info', url: 'https://blockstream.info' },
+  default: { key: 'default', name: 'Electra Protocol Explorer', url: 'https://explorer.electraprotocol.network' },
   custom: { key: 'custom', name: 'Custom', url: '' }, // Custom URL will be handled separately
 };
+
+export const transactionExplorerUrl = (explorer: BlockExplorer, txid: string): string =>
+  `${normalizeUrl(explorer.url)}/${explorer.key === 'default' ? 'transaction' : 'tx'}/${txid}`;
 
 export const getBlockExplorersList = (): BlockExplorer[] => {
   return Object.values(BLOCK_EXPLORERS);
@@ -71,7 +72,10 @@ export const removeBlockExplorer = async (): Promise<boolean> => {
 export const getBlockExplorerUrl = async (): Promise<string> => {
   try {
     const url = (await DefaultPreference.get(BLOCK_EXPLORER_STORAGE_KEY)) as string | null;
-    return url ?? BLOCK_EXPLORERS.default.url;
+    if (!url || ['https://mempool.space', 'https://blockchair.com/bitcoin', 'https://blockstream.info'].includes(normalizeUrl(url))) {
+      return BLOCK_EXPLORERS.default.url;
+    }
+    return url;
   } catch (error) {
     console.error('Error getting block explorer:', error);
     return BLOCK_EXPLORERS.default.url;

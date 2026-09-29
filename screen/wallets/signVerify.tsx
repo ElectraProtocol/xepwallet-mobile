@@ -80,9 +80,7 @@ const SignVerify = () => {
   });
 
   const handleShare = () => {
-    const baseUri = 'https://bluewallet.github.io/VerifySignature';
-    const uri = `${baseUri}?a=${address}&m=${encodeURIComponent(message)}&s=${encodeURIComponent(signature)}`;
-    Share.open({ message: uri }).catch(error => console.log(error));
+    Share.open({ message: `Address: ${address}\nMessage: ${message}\nSignature: ${signature}` }).catch(error => console.log(error));
   };
 
   const presentAlert = useCallback(

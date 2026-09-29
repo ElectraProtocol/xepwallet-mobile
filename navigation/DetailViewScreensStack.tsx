@@ -44,8 +44,6 @@ import About from '../screen/settings/About';
 import ElectrumSettings from '../screen/settings/ElectrumSettings';
 import EncryptStorage from '../screen/settings/EncryptStorage';
 import Language from '../screen/settings/Language';
-import LightningSettings from '../screen/settings/LightningSettings';
-import NotificationSettings from '../screen/settings/NotificationSettings';
 import SelfTest from '../screen/settings/SelfTest';
 import ReleaseNotes from '../screen/settings/ReleaseNotes';
 import SettingsTools from '../screen/settings/SettingsTools';
@@ -514,16 +512,6 @@ const DetailViewStackScreensStack = () => {
           options={settingsScreenOptions(loc.settings.encrypt_title)}
         />
         <DetailViewStack.Screen name="Language" component={Language} options={settingsScreenOptions(loc.settings.language)} />
-        <DetailViewStack.Screen
-          name="LightningSettings"
-          component={LightningSettings}
-          options={settingsScreenOptions(loc.settings.lightning_settings)}
-        />
-        <DetailViewStack.Screen
-          name="NotificationSettings"
-          component={NotificationSettings}
-          options={settingsScreenOptions(loc.settings.notifications)}
-        />
         <DetailViewStack.Screen name="SelfTest" component={SelfTest} options={settingsScreenOptions(loc.settings.selfTest)} />
         <DetailViewStack.Screen
           name="ReleaseNotes"

@@ -341,7 +341,7 @@ export default class SelfTest extends Component {
       //
 
       if (typeof navigator !== 'undefined' && navigator.product === 'ReactNative') {
-        assertStrictEqual(await Linking.canOpenURL('https://bluewallet.io/'), true, 'Linking can not open https url');
+        assertStrictEqual(await Linking.canOpenURL('https://electraprotocol.network/'), true, 'Linking can not open https url');
       } else {
         // skipping RN-specific test'
       }
@@ -414,7 +414,7 @@ const SelfTestContent: React.FC<{ state: TState; onPressImportDocument: () => vo
               <BlueSpacing20 />
               <View style={styles.fullWidth}>
                 <SaveFileButton
-                  fileName="bluewallet-selftest.txt"
+                  fileName="xepwallet-selftest.txt"
                   fileContent={'Success on ' + new Date().toUTCString()}
                   style={styles.fullWidth}
                 >

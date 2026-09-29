@@ -26,6 +26,7 @@ import BlueText from '../../components/BlueText';
 import { HDSegwitBech32Transaction } from '../../class/hd-segwit-bech32-transaction';
 import { HDSegwitBech32Wallet } from '../../class/wallets/hd-segwit-bech32-wallet';
 import { Transaction, TWallet } from '../../class/wallets/types';
+import { transactionExplorerUrl } from '../../models/blockExplorer';
 import presentAlert from '../../components/Alert';
 import { BlueLoading } from '../../components/BlueLoading';
 import CopyTextToClipboard, { CopyTextToClipboardHandle } from '../../components/CopyTextToClipboard';
@@ -808,7 +809,7 @@ const TransactionStatus: React.FC = () => {
 
   const handleOpenBlockExplorer = useCallback(() => {
     if (!tx?.hash || !selectedBlockExplorer) return;
-    const url = `${selectedBlockExplorer.url}/tx/${tx.hash}`;
+    const url = transactionExplorerUrl(selectedBlockExplorer, tx.hash);
     Linking.canOpenURL(url)
       .then(supported => {
         if (supported) {

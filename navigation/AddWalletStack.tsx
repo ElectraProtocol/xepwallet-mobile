@@ -10,8 +10,6 @@ import { isIOS26OrHigher } from '../blue_modules/environment';
 import { useTheme } from '../components/themes';
 import { HDLegacyP2PKHWallet } from '../class/wallets/hd-legacy-p2pkh-wallet';
 import { HDSegwitBech32Wallet } from '../class/wallets/hd-segwit-bech32-wallet';
-import { HDTaprootWallet } from '../class/wallets/hd-taproot-wallet';
-import { LightningCustodianWallet } from '../class/wallets/lightning-custodian-wallet';
 import loc from '../loc';
 import { Chain } from '../models/bitcoinUnits';
 import { CommonToolTipActions } from '../typings/CommonToolTipActions';
@@ -152,16 +150,6 @@ const addWalletTypes = [
     text: `${loc.multisig.legacy_title}`,
     subtitle: 'p2pkh/HD',
   },
-  {
-    id: HDTaprootWallet.type,
-    text: 'Taproot',
-    subtitle: 'p2tr/HD',
-  },
-  {
-    id: LightningCustodianWallet.type,
-    text: LightningCustodianWallet.typeReadable,
-    subtitle: LightningCustodianWallet.subtitleReadable,
-  },
 ];
 
 const createAddWalletOptions = (theme: ReturnType<typeof useTheme>) =>
@@ -180,9 +168,7 @@ const createAddWalletOptions = (theme: ReturnType<typeof useTheme>) =>
       : loc.wallets.add_entropy_provide;
 
     const onPressMenuItem = (id: string) => {
-      if (id === LightningCustodianWallet.type) {
-        navigation.setParams({ selectedWalletType: Chain.OFFCHAIN });
-      } else if (id === '12_words') {
+      if (id === '12_words') {
         navigation.navigate('ProvideEntropy', { words: 12, entropy: entropyHex });
       } else if (id === '24_words') {
         navigation.navigate('ProvideEntropy', { words: 24, entropy: entropyHex });
