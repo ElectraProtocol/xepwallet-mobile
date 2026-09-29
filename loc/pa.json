@@ -391,7 +391,6 @@
     "details_fee_rate": "ਫ਼ੀਸ ਦਰ",
     "details_size": "ਆਕਾਰ",
     "details_virtual_size": "ਵਰਚੁਅਲ ਆਕਾਰ",
-    "details_tx_hex": "Tx ਹੈਕਸ",
     "details_inputs_count": "ਇਨਪੁੱਟ ({count})",
     "details_outputs_count": "ਆਉਟਪੁੱਟ ({count})"
   },

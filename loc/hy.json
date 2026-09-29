@@ -391,7 +391,6 @@
     "details_fee_rate": "Վճարի դրույք",
     "details_size": "Չափ",
     "details_virtual_size": "Վիրտուալ չափ",
-    "details_tx_hex": "Գործարքի hex",
     "details_inputs_count": "Մուտքեր ({count})",
     "details_outputs_count": "Ելքեր ({count})"
   },

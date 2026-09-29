@@ -391,7 +391,6 @@
     "details_fee_rate": "Gebührenrate",
     "details_size": "Größe",
     "details_virtual_size": "Virtuelle Größe",
-    "details_tx_hex": "Tx Hex",
     "details_inputs_count": "Eingänge ({count})",
     "details_outputs_count": "Ausgänge ({count})"
   },

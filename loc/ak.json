@@ -391,7 +391,6 @@
     "details_fee_rate": "Ka boɔ",
     "details_size": "Kɛseɛ",
     "details_virtual_size": "Virtual kɛseɛ",
-    "details_tx_hex": "Tx Hex",
     "details_inputs_count": "Deɛ Ɛba Mu ({count})",
     "details_outputs_count": "Deɛ Ɛfiri Adi ({count})"
   },

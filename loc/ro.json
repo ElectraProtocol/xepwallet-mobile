@@ -391,7 +391,6 @@
     "details_fee_rate": "Rată comision",
     "details_size": "Mărime",
     "details_virtual_size": "Mărime virtuală",
-    "details_tx_hex": "Hex tranzacție",
     "details_inputs_count": "Intrări ({count})",
     "details_outputs_count": "Ieșiri ({count})"
   },

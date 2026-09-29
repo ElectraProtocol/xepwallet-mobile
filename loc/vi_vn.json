@@ -391,7 +391,6 @@
     "details_fee_rate": "Mức phí",
     "details_size": "Kích cỡ",
     "details_virtual_size": "Kích cỡ ảo",
-    "details_tx_hex": "Hex giao dịch",
     "details_inputs_count": "Đầu vào ({count})",
     "details_outputs_count": "Đầu ra ({count})"
   },

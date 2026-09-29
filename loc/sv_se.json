@@ -391,7 +391,6 @@
     "details_fee_rate": "Avgiftsnivå",
     "details_size": "Storlek",
     "details_virtual_size": "Virtuell storlek",
-    "details_tx_hex": "Tx hex",
     "details_inputs_count": "Indata ({count})",
     "details_outputs_count": "Utdata ({count})"
   },

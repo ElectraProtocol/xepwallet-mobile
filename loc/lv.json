@@ -391,7 +391,6 @@
     "details_fee_rate": "Maksas likme",
     "details_size": "Izmērs",
     "details_virtual_size": "Virtuālais izmērs",
-    "details_tx_hex": "Darījuma hex",
     "details_inputs_count": "Ievades ({count})",
     "details_outputs_count": "Izvades ({count})"
   },

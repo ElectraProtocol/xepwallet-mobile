@@ -391,7 +391,6 @@
     "details_fee_rate": "ගාස්තු අනුපාතය",
     "details_size": "ප්‍රමාණය",
     "details_virtual_size": "අතථ්‍ය ප්‍රමාණය",
-    "details_tx_hex": "Tx හෙක්ස්",
     "details_inputs_count": "ආදාන ({count})",
     "details_outputs_count": "ප්‍රතිදාන ({count})"
   },

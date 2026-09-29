@@ -391,7 +391,6 @@
     "details_fee_rate": "Díj-arány",
     "details_size": "Méret",
     "details_virtual_size": "Virtuális méret",
-    "details_tx_hex": "Tx hex",
     "details_inputs_count": "Bemenetek ({count})",
     "details_outputs_count": "Kimenetek ({count})"
   },

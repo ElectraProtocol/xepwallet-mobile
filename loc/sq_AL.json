@@ -391,7 +391,6 @@
     "details_fee_rate": "Norma e komisionit",
     "details_size": "Madhësia",
     "details_virtual_size": "Madhësia virtuale",
-    "details_tx_hex": "Hex-i i transaksionit",
     "details_inputs_count": "Hyrjet ({count})",
     "details_outputs_count": "Daljet ({count})"
   },

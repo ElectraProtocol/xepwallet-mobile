@@ -391,7 +391,6 @@
     "details_fee_rate": "Ставка комісії",
     "details_size": "Розмір",
     "details_virtual_size": "Віртуальний розмір",
-    "details_tx_hex": "Hex транзакції",
     "details_inputs_count": "Входи ({count})",
     "details_outputs_count": "Виходи ({count})"
   },

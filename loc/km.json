@@ -391,7 +391,6 @@
     "details_fee_rate": "អត្រាថ្លៃសេវា",
     "details_size": "ទំហំ",
     "details_virtual_size": "ទំហំនិម្មិត",
-    "details_tx_hex": "Tx Hex",
     "details_inputs_count": "ធាតុចូល ({count})",
     "details_outputs_count": "ធាតុចេញ ({count})"
   },

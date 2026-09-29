@@ -391,7 +391,6 @@
     "details_fee_rate": "نرخ کارمزد",
     "details_size": "هندا",
     "details_virtual_size": "هندا مجازی",
-    "details_tx_hex": "هگزادسیمال تراکونش",
     "details_inputs_count": "وۊرۊڌیا ({count})",
     "details_outputs_count": "خروجیا ({count})"
   },

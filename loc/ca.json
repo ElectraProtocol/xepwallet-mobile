@@ -391,7 +391,6 @@
     "details_fee_rate": "Taxa de comissió",
     "details_size": "Mida",
     "details_virtual_size": "Mida virtual",
-    "details_tx_hex": "Hex de la TX",
     "details_inputs_count": "Entrades ({count})",
     "details_outputs_count": "Sortides ({count})"
   },

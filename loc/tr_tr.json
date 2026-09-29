@@ -391,7 +391,6 @@
     "details_fee_rate": "Ücret oranı",
     "details_size": "Boyut",
     "details_virtual_size": "Sanal boyut",
-    "details_tx_hex": "İşlem Hex",
     "details_inputs_count": "Girdiler ({count})",
     "details_outputs_count": "Çıktılar ({count})"
   },

@@ -391,7 +391,6 @@
     "details_fee_rate": "อัตราค่าธรรมเนียม",
     "details_size": "ขนาด",
     "details_virtual_size": "ขนาดเสมือน",
-    "details_tx_hex": "Tx hex",
     "details_inputs_count": "อินพุต ({count})",
     "details_outputs_count": "เอาต์พุต ({count})"
   },

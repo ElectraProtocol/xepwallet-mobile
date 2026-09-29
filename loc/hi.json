@@ -391,7 +391,6 @@
     "details_fee_rate": "शुल्क दर",
     "details_size": "आकार",
     "details_virtual_size": "वर्चुअल आकार",
-    "details_tx_hex": "Tx हेक्स",
     "details_inputs_count": "इनपुट ({count})",
     "details_outputs_count": "आउटपुट ({count})"
   },

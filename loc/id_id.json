@@ -391,7 +391,6 @@
     "details_fee_rate": "Tarif biaya",
     "details_size": "Ukuran",
     "details_virtual_size": "Ukuran virtual",
-    "details_tx_hex": "Hex Tx",
     "details_inputs_count": "Input ({count})",
     "details_outputs_count": "Keluaran ({count})"
   },

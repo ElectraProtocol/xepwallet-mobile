@@ -391,7 +391,6 @@
     "details_fee_rate": "Tepy rate",
     "details_size": "Tuichakue",
     "details_virtual_size": "Tuichakue virtual",
-    "details_tx_hex": "Tx Hex",
     "details_inputs_count": "Jeikekuéra ({count})",
     "details_outputs_count": "Ñesẽkuéra ({count})"
   },

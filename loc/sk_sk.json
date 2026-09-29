@@ -391,7 +391,6 @@
     "details_fee_rate": "Sadzba poplatku",
     "details_size": "Veľkosť",
     "details_virtual_size": "Virtuálna veľkosť",
-    "details_tx_hex": "Hex transakcie",
     "details_inputs_count": "Vstupy ({count})",
     "details_outputs_count": "Výstupy ({count})"
   },

@@ -391,7 +391,6 @@
     "details_fee_rate": "Fooi-koers",
     "details_size": "Grootte",
     "details_virtual_size": "Virtuele grootte",
-    "details_tx_hex": "Tx hex",
     "details_inputs_count": "Insette ({count})",
     "details_outputs_count": "Uitsette ({count})"
   },

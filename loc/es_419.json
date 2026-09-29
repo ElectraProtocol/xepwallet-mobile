@@ -399,7 +399,6 @@
     "details_fee_rate": "Tasa de comisión",
     "details_size": "Tamaño",
     "details_virtual_size": "Tamaño virtual",
-    "details_tx_hex": "Hex de transacción",
     "details_inputs_count": "Entradas ({count})",
     "details_outputs_count": "Salidas ({count})"
   },

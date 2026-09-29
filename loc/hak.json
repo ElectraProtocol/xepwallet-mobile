@@ -391,7 +391,6 @@
     "details_fee_rate": "費率",
     "details_size": "大小",
     "details_virtual_size": "虛擬大小",
-    "details_tx_hex": "交易 Hex",
     "details_inputs_count": "輸入（{count}）",
     "details_outputs_count": "輸出（{count}）"
   },

@@ -404,7 +404,6 @@
     "details_fee_rate": "手数料レート",
     "details_size": "サイズ",
     "details_virtual_size": "仮想サイズ",
-    "details_tx_hex": "取引Hex",
     "details_inputs_count": "インプット ({count})",
     "details_outputs_count": "アウトプット ({count})"
   },

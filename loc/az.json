@@ -391,7 +391,6 @@
     "details_fee_rate": "Komissiya dərəcəsi",
     "details_size": "Ölçü",
     "details_virtual_size": "Virtual ölçü",
-    "details_tx_hex": "Tx Hex",
     "details_inputs_count": "Girişlər ({count})",
     "details_outputs_count": "Çıxışlar ({count})"
   },

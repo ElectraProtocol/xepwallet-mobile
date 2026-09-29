@@ -391,7 +391,6 @@
     "details_fee_rate": "ফি রেট",
     "details_size": "আকার",
     "details_virtual_size": "ভার্চুয়াল আকার",
-    "details_tx_hex": "Tx হেক্স",
     "details_inputs_count": "ইনপুট ({count})",
     "details_outputs_count": "আউটপুট ({count})"
   },

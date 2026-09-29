@@ -391,7 +391,6 @@
     "details_fee_rate": "Taux de frais",
     "details_size": "Taille",
     "details_virtual_size": "Taille virtuelle",
-    "details_tx_hex": "Hex de la transaction",
     "details_inputs_count": "Entrées ({count})",
     "details_outputs_count": "Sorties ({count})"
   },

@@ -391,7 +391,6 @@
     "details_fee_rate": "Taxa",
     "details_size": "Tamanho",
     "details_virtual_size": "Tamanho virtual",
-    "details_tx_hex": "Hex da Transação",
     "details_inputs_count": "Entradas ({count})",
     "details_outputs_count": "Saídas ({count})"
   },

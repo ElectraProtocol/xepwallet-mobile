@@ -391,7 +391,6 @@
     "details_fee_rate": "Rate ng bayarin",
     "details_size": "Laki",
     "details_virtual_size": "Virtual na laki",
-    "details_tx_hex": "Tx Hex",
     "details_inputs_count": "Mga Input ({count})",
     "details_outputs_count": "Mga Output ({count})"
   },

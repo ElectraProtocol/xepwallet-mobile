@@ -391,7 +391,6 @@
     "details_fee_rate": "معدل الرسوم",
     "details_size": "الحجم",
     "details_virtual_size": "الحجم الافتراضي",
-    "details_tx_hex": "Hex المعاملة",
     "details_inputs_count": "المدخلات ({count})",
     "details_outputs_count": "المخرجات ({count})"
   },

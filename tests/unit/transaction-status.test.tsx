@@ -1,4 +1,5 @@
 import React from 'react';
+import Clipboard from '@react-native-clipboard/clipboard';
 import { act, fireEvent, render, waitFor } from '@testing-library/react-native';
 
 import { _setSkipUpdateExchangeRate } from '../../blue_modules/currency';
@@ -187,7 +188,7 @@ jest.mock('../../loc', () => ({
       details_fee_rate: 'Fee Rate',
       details_size: 'Size',
       details_virtual_size: 'Virtual Size',
-      details_tx_hex: 'TX Hex',
+      details_txid: 'Txid',
       details_copy: 'Copy',
       details_advanced: 'Advanced',
       details_eta_analyzing: 'Analyzing...',
@@ -207,6 +208,7 @@ jest.mock('../../loc', () => ({
       ok: 'OK',
       cancel: 'Cancel',
     },
+    units: { BTC: 'XEP' },
   },
   formatBalanceWithoutSuffix: (value: number | string) => String(value),
 }));
@@ -276,6 +278,22 @@ describe('TransactionStatus regression', () => {
 
   afterEach(() => {
     jest.clearAllMocks();
+  });
+
+  it('copies the transaction ID from Advanced without fetching raw hex', async () => {
+    const BlueElectrum = require('../../blue_modules/BlueElectrum');
+    const { view } = setup(1, 1000);
+
+    await waitFor(() => expect(view.getByText('Advanced')).toBeTruthy());
+    BlueElectrum.multiGetTransactionByTxid.mockClear();
+
+    fireEvent.press(view.getByText('Advanced'));
+    expect(view.getByText('Txid')).toBeTruthy();
+    fireEvent.press(view.getByTestId('AdvancedTransactionIdCopyButton'));
+
+    expect(Clipboard.setString).toHaveBeenCalledWith('mock-tx');
+    expect(BlueElectrum.multiGetTransactionByTxid).not.toHaveBeenCalled();
+    view.unmount();
   });
 
   it('re-fetches wallet transactions when lastTxFetch changes', async () => {

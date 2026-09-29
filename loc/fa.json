@@ -391,7 +391,6 @@
     "details_fee_rate": "نرخ کارمزد",
     "details_size": "اندازه",
     "details_virtual_size": "اندازهٔ مجازی",
-    "details_tx_hex": "هگزادسیمال تراکنش",
     "details_inputs_count": "ورودی‌ها ({count})",
     "details_outputs_count": "خروجی‌ها ({count})"
   },

@@ -391,7 +391,6 @@
     "details_fee_rate": "Kadar yuran",
     "details_size": "Saiz",
     "details_virtual_size": "Saiz maya",
-    "details_tx_hex": "Heks Urus Niaga",
     "details_inputs_count": "Masukan ({count})",
     "details_outputs_count": "Keluaran ({count})"
   },

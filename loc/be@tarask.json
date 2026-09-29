@@ -391,7 +391,6 @@
     "details_fee_rate": "Стаўка камісіі",
     "details_size": "Памер",
     "details_virtual_size": "Віртуальны памер",
-    "details_tx_hex": "Hex трансакцыі",
     "details_inputs_count": "Уваходы ({count})",
     "details_outputs_count": "Выхады ({count})"
   },

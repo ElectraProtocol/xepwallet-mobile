@@ -391,7 +391,6 @@
     "details_fee_rate": "שיעור עמלה",
     "details_size": "גודל",
     "details_virtual_size": "גודל וירטואלי",
-    "details_tx_hex": "hex של עסקה",
     "details_inputs_count": "קלטים ({count})",
     "details_outputs_count": "פלטים ({count})"
   },

@@ -391,7 +391,6 @@
     "details_fee_rate": "Комиссия мөлшерлемесі",
     "details_size": "Өлшем",
     "details_virtual_size": "Виртуалды өлшем",
-    "details_tx_hex": "Tx hex",
     "details_inputs_count": "Кірістер ({count})",
     "details_outputs_count": "Шығыстар ({count})"
   },

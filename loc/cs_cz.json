@@ -404,7 +404,6 @@
     "details_fee_rate": "Sazba poplatku",
     "details_size": "Velikost",
     "details_virtual_size": "Virtuální velikost",
-    "details_tx_hex": "Hex transakce",
     "details_inputs_count": "Vstupy ({count})",
     "details_outputs_count": "Výstupy ({count})"
   },

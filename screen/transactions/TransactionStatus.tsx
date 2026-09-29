@@ -1,15 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
-import {
-  ActivityIndicator,
-  Alert,
-  BackHandler,
-  Linking,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  useWindowDimensions,
-  View,
-} from 'react-native';
+import { Alert, BackHandler, Linking, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
 import { sha256 } from '@noble/hashes/sha256';
 import { useNavigation, RouteProp, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationOptions, NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -42,7 +32,7 @@ import { useSettings } from '../../hooks/context/useSettings';
 import { useStorage } from '../../hooks/context/useStorage';
 import useWalletSubscribe from '../../hooks/useWalletSubscribe';
 import loc, { formatBalanceWithoutSuffix } from '../../loc';
-import { BitcoinUnit } from '../../models/bitcoinUnits';
+import { balanceUnitForXepWallet, BitcoinUnit } from '../../models/bitcoinUnits';
 import { DetailViewStackParamList } from '../../navigation/DetailViewStackParamList';
 import { isOnChainTransaction, resolveTxDisplayState } from '../../blue_modules/transactionDisplayState';
 import { isWatchOnlySegwitBech32 } from '../../util/isWatchOnlySegwitBech32';
@@ -243,8 +233,6 @@ const TransactionStatus: React.FC = () => {
 
   // Advanced section state
   const [isAdvancedExpanded, setIsAdvancedExpanded] = useState(false);
-  const [txHex, setTxHex] = useState<string | null>(null);
-  const [isLoadingHex, setIsLoadingHex] = useState(false);
   const [from, setFrom] = useState<string[]>([]);
   const [to, setTo] = useState<string[]>([]);
   const [txFromElectrum, setTxFromElectrum] = useState<any>(null);
@@ -388,25 +376,6 @@ const TransactionStatus: React.FC = () => {
   useEffect(() => {
     dispatch({ type: ActionType.SetWallet, payload: subscribedWallet });
   }, [subscribedWallet]);
-
-  // Fetch transaction hex when advanced section is expanded
-  useEffect(() => {
-    if (isAdvancedExpanded && tx?.hash && !txHex && !isLoadingHex) {
-      setIsLoadingHex(true);
-      BlueElectrum.multiGetTransactionByTxid([tx.hash], false, 10)
-        .then(hexes => {
-          const hex = hexes[tx.hash];
-          if (hex && typeof hex === 'string') {
-            setTxHex(hex);
-          }
-          setIsLoadingHex(false);
-        })
-        .catch(err => {
-          console.error('Error fetching transaction hex:', err);
-          setIsLoadingHex(false);
-        });
-    }
-  }, [isAdvancedExpanded, tx?.hash, txHex, isLoadingHex]);
 
   // re-fetching tx status periodically
   useEffect(() => {
@@ -939,7 +908,7 @@ const TransactionStatus: React.FC = () => {
   const parsedConfirmations = Number(tx?.confirmations);
   const isOnChainTx = isOnChainTransaction(tx);
   const isPending = resolveTxDisplayState(tx) === 'pending';
-  const preferredBalanceUnit = wallet?.getPreferredBalanceUnit() ?? BitcoinUnit.BTC;
+  const preferredBalanceUnit = balanceUnitForXepWallet(wallet?.preferredBalanceUnit ?? BitcoinUnit.BTC);
 
   const showBlocksAccordion = isOnChainTx && !isPending && parsedConfirmations > 0;
 
@@ -1416,28 +1385,21 @@ const TransactionStatus: React.FC = () => {
               </View>
             </View>
 
-            {/* Transaction Hex */}
-            <View style={[styles.detailRow, stylesHook.detailRow, scaledStyles.detailRow]}>
-              <BlueText style={[styles.detailLabel, stylesHook.detailLabel]}>{loc.transactions.details_tx_hex}</BlueText>
-              <View style={styles.detailValueContainer}>
-                {txHex ? (
+            {/* Full transaction ID */}
+            {transactionId && (
+              <View style={[styles.detailRow, stylesHook.detailRow, scaledStyles.detailRow]}>
+                <BlueText style={[styles.detailLabel, stylesHook.detailLabel]}>{loc.transactions.details_txid}</BlueText>
+                <View style={styles.detailValueContainer}>
                   <CopyTextToClipboard
-                    text={txHex}
+                    text={transactionId}
                     displayText={loc.transactions.details_copy}
+                    buttonTestID="AdvancedTransactionIdCopyButton"
                     style={StyleSheet.flatten([styles.detailValue, stylesHook.detailValue])}
                     textAlign="right"
                   />
-                ) : isLoadingHex ? (
-                  <ActivityIndicator size="small" />
-                ) : (
-                  <CopyTextToClipboard
-                    text="-"
-                    style={StyleSheet.flatten([styles.detailValue, stylesHook.detailValue])}
-                    textAlign="right"
-                  />
-                )}
+                </View>
               </View>
-            </View>
+            )}
 
             {/* Inputs */}
             {tx.inputs && tx.inputs.length > 0 && (

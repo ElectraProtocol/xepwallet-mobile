@@ -391,7 +391,6 @@
     "details_fee_rate": "Cyfradd ffi",
     "details_size": "Maint",
     "details_virtual_size": "Maint rhithwir",
-    "details_tx_hex": "Hex y Trafodyn",
     "details_inputs_count": "Mewnbynau ({count})",
     "details_outputs_count": "Allbynau ({count})"
   },

@@ -391,7 +391,6 @@
     "details_fee_rate": "Stopnja omrežnine",
     "details_size": "Velikost",
     "details_virtual_size": "Virtualna velikost",
-    "details_tx_hex": "Hex transakcije",
     "details_inputs_count": "Vhodi ({count})",
     "details_outputs_count": "Izhodi ({count})"
   },

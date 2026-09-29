@@ -391,7 +391,6 @@
     "details_fee_rate": "فیس ریٹ",
     "details_size": "سائز",
     "details_virtual_size": "ورچوئل سائز",
-    "details_tx_hex": "Tx Hex",
     "details_inputs_count": "اِن پُٹس ({count})",
     "details_outputs_count": "آؤٹ پُٹس ({count})"
   },

@@ -391,7 +391,6 @@
     "details_fee_rate": "ಶುಲ್ಕ ದರ",
     "details_size": "ಗಾತ್ರ",
     "details_virtual_size": "ವರ್ಚುವಲ್ ಗಾತ್ರ",
-    "details_tx_hex": "Tx ಹೆಕ್ಸ್",
     "details_inputs_count": "ಇನ್‌ಪುಟ್‌ಗಳು ({count})",
     "details_outputs_count": "ಔಟ್‌ಪುಟ್‌ಗಳು ({count})"
   },

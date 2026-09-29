@@ -404,7 +404,6 @@
     "details_fee_rate": "费率",
     "details_size": "大小",
     "details_virtual_size": "虚拟大小",
-    "details_tx_hex": "交易十六进制",
     "details_inputs_count": "输入（{count}）",
     "details_outputs_count": "输出（{count}）"
   },

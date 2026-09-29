@@ -391,7 +391,6 @@
     "details_fee_rate": "نرخ کارمزد",
     "details_size": "اندازه",
     "details_virtual_size": "اندازه مجازی",
-    "details_tx_hex": "هگزادسیمال تراکونش",
     "details_inputs_count": "ورودیا ({count})",
     "details_outputs_count": "خروجیا ({count})"
   },

@@ -391,7 +391,6 @@
     "details_fee_rate": "Ireyithi yeNtlawulo",
     "details_size": "Ubungakanani",
     "details_virtual_size": "Ubungakanani be-Virtual",
-    "details_tx_hex": "Tx Hex",
     "details_inputs_count": "Iinputs ({count})",
     "details_outputs_count": "Iioutputs ({count})"
   },

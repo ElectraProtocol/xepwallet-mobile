@@ -391,7 +391,6 @@
     "details_fee_rate": "Stopa naknade",
     "details_size": "Veličina",
     "details_virtual_size": "Virtualna veličina",
-    "details_tx_hex": "Tx hex",
     "details_inputs_count": "Ulazi ({count})",
     "details_outputs_count": "Izlazi ({count})"
   },

@@ -391,7 +391,6 @@
     "details_fee_rate": "Ρυθμός προμήθειας",
     "details_size": "Μέγεθος",
     "details_virtual_size": "Εικονικό μέγεθος",
-    "details_tx_hex": "Hex συναλλαγής",
     "details_inputs_count": "Είσοδοι ({count})",
     "details_outputs_count": "Έξοδοι ({count})"
   },

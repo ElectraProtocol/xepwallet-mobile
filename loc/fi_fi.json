@@ -391,7 +391,6 @@
     "details_fee_rate": "Siirtomaksun taso",
     "details_size": "Koko",
     "details_virtual_size": "Virtuaalinen koko",
-    "details_tx_hex": "Tx hex",
     "details_inputs_count": "Syötteet ({count})",
     "details_outputs_count": "Ulostulot ({count})"
   },

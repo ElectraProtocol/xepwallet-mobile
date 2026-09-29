@@ -391,7 +391,6 @@
     "details_fee_rate": "Tasumäär",
     "details_size": "Suurus",
     "details_virtual_size": "Virtuaalne suurus",
-    "details_tx_hex": "Tehingu hex",
     "details_inputs_count": "Sisendid ({count})",
     "details_outputs_count": "Väljundid ({count})"
   },

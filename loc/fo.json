@@ -404,7 +404,6 @@
     "details_fee_rate": "Avgjaldssatsur",
     "details_size": "Stødd",
     "details_virtual_size": "Tykislig stødd",
-    "details_tx_hex": "Sekstandatøl flytingarinnar",
     "details_inputs_count": "Inntøk ({count})",
     "details_outputs_count": "Úttøk ({count})"
   },

@@ -391,7 +391,6 @@
     "details_fee_rate": "Kiwango cha ada",
     "details_size": "Ukubwa",
     "details_virtual_size": "Ukubwa pepe",
-    "details_tx_hex": "Heksa ya Muamala",
     "details_inputs_count": "Maingizo ({count})",
     "details_outputs_count": "Matoleo ({count})"
   },

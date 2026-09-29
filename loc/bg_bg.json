@@ -391,7 +391,6 @@
     "details_fee_rate": "Ставка на таксата",
     "details_size": "Размер",
     "details_virtual_size": "Виртуален размер",
-    "details_tx_hex": "Hex на транзакцията",
     "details_inputs_count": "Входове ({count})",
     "details_outputs_count": "Изходи ({count})"
   },

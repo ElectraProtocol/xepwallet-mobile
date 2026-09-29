@@ -397,7 +397,6 @@
     "details_fee_rate": "Stawka opłaty",
     "details_size": "Rozmiar",
     "details_virtual_size": "Rozmiar wirtualny",
-    "details_tx_hex": "Hex transakcji",
     "details_inputs_count": "Wejścia ({count})",
     "details_outputs_count": "Wyjścia ({count})"
   },

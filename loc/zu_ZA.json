@@ -391,7 +391,6 @@
     "details_fee_rate": "Izinga lenkokhiso",
     "details_size": "Usayizi",
     "details_virtual_size": "Usayizi obonakalayo",
-    "details_tx_hex": "I-Hex Yethransekshini",
     "details_inputs_count": "Okufakwayo ({count})",
     "details_outputs_count": "Okukhishwayo ({count})"
   },

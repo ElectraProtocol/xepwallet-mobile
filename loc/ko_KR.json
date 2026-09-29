@@ -397,7 +397,6 @@
     "details_fee_rate": "수수료율",
     "details_size": "크기",
     "details_virtual_size": "가상 크기",
-    "details_tx_hex": "트랜잭션 Hex",
     "details_inputs_count": "입력 ({count})",
     "details_outputs_count": "출력 ({count})"
   },

@@ -391,7 +391,6 @@
     "details_fee_rate": "Gebyrsats",
     "details_size": "Størrelse",
     "details_virtual_size": "Virtuell størrelse",
-    "details_tx_hex": "Tx-hex",
     "details_inputs_count": "Inndata ({count})",
     "details_outputs_count": "Utdata ({count})"
   },

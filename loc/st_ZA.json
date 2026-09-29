@@ -391,7 +391,6 @@
     "details_fee_rate": "Sekgahla sa tefiso",
     "details_size": "Boholo",
     "details_virtual_size": "Boholo ba virtual",
-    "details_tx_hex": "Hex ya Tshebetsano",
     "details_inputs_count": "Tse Kenang ({count})",
     "details_outputs_count": "Tse Tswang ({count})"
   },

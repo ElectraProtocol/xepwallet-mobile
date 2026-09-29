@@ -391,7 +391,6 @@
     "details_fee_rate": "Tarifa-tasa",
     "details_size": "Tamaina",
     "details_virtual_size": "Tamaina birtuala",
-    "details_tx_hex": "Tx hex-a",
     "details_inputs_count": "Sarrerak ({count})",
     "details_outputs_count": "Irteerak ({count})"
   },

@@ -391,7 +391,6 @@
     "details_fee_rate": "የክፍያ መጠን",
     "details_size": "መጠን",
     "details_virtual_size": "ቨርቹዋል መጠን",
-    "details_tx_hex": "የግብይት ሄክስ",
     "details_inputs_count": "ግብዓቶች ({count})",
     "details_outputs_count": "ውጤቶች ({count})"
   },

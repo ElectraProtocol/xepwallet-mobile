@@ -391,7 +391,6 @@
     "details_fee_rate": "საკომისიოს განაკვეთი",
     "details_size": "ზომა",
     "details_virtual_size": "ვირტუალური ზომა",
-    "details_tx_hex": "ტრანზაქციის hex",
     "details_inputs_count": "შემავალები ({count})",
     "details_outputs_count": "გამავალები ({count})"
   },
