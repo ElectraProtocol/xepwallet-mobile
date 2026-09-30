@@ -88,8 +88,7 @@ android {
         applicationId "io.electraprotocol.xepwallet"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        // Previous releases used ABI split codes (22xxx), so the new bundle must be higher.
-        versionCode 23000
+        versionCode 23
         versionName "2.0.0"
         testBuildType System.getProperty('testBuildType', 'debug')
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
