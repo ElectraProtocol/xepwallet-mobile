@@ -173,6 +173,7 @@ jest.mock('../../loc', () => ({
       txid: 'txid',
       details_received: 'received',
       details_sent: 'sent',
+      details_tx_in_mempool: 'Tx in mempool',
       details_inputs: 'inputs',
       details_outputs: 'outputs',
       details_inputs_count: 'Inputs ({count})',
@@ -278,6 +279,15 @@ describe('TransactionStatus regression', () => {
 
   afterEach(() => {
     jest.clearAllMocks();
+  });
+
+  it('shows mempool status without a Bitcoin ETA or Speed Up action for pending on-chain transactions', async () => {
+    const { view } = setup(0, 1000);
+
+    await waitFor(() => expect(view.getByText('Tx in mempool')).toBeTruthy());
+    expect(view.queryByText(/ETA:|Analyzing/i)).toBeNull();
+    expect(view.queryByText('Speed Up')).toBeNull();
+    view.unmount();
   });
 
   it('copies the transaction ID from Advanced without fetching raw hex', async () => {

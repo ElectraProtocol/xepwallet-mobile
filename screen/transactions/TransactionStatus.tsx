@@ -71,37 +71,27 @@ type TransactionStatusHeaderOptions = NativeStackNavigationOptions & {
 };
 
 enum ActionType {
-  SetCPFPPossible,
-  SetRBFBumpFeePossible,
   SetRBFCancelPossible,
   SetTransaction,
   SetLoading,
-  SetEta,
   SetIntervalMs,
-  SetAllButtonStatus,
   SetWallet,
   SetLoadingError,
 }
 
 interface State {
-  isCPFPPossible: ButtonStatus;
-  isRBFBumpFeePossible: ButtonStatus;
   isRBFCancelPossible: ButtonStatus;
   tx: any;
   isLoading: boolean;
-  eta: string;
   intervalMs: number;
   wallet: TWallet | null;
   loadingError: boolean;
 }
 
 const initialState: State = {
-  isCPFPPossible: ButtonStatus.Unknown,
-  isRBFBumpFeePossible: ButtonStatus.Unknown,
   isRBFCancelPossible: ButtonStatus.Unknown,
   tx: undefined,
   isLoading: true,
-  eta: '',
   intervalMs: 1000,
   wallet: null,
   loadingError: false,
@@ -109,22 +99,14 @@ const initialState: State = {
 
 const reducer = (state: State, action: { type: ActionType; payload?: any }): State => {
   switch (action.type) {
-    case ActionType.SetCPFPPossible:
-      return { ...state, isCPFPPossible: action.payload };
-    case ActionType.SetRBFBumpFeePossible:
-      return { ...state, isRBFBumpFeePossible: action.payload };
     case ActionType.SetRBFCancelPossible:
       return { ...state, isRBFCancelPossible: action.payload };
     case ActionType.SetTransaction:
       return { ...state, tx: action.payload };
     case ActionType.SetLoading:
       return { ...state, isLoading: action.payload };
-    case ActionType.SetEta:
-      return { ...state, eta: action.payload };
     case ActionType.SetIntervalMs:
       return { ...state, intervalMs: action.payload };
-    case ActionType.SetAllButtonStatus:
-      return { ...state, isCPFPPossible: action.payload, isRBFBumpFeePossible: action.payload, isRBFCancelPossible: action.payload };
     case ActionType.SetWallet:
       return { ...state, wallet: action.payload };
     case ActionType.SetLoadingError:
@@ -159,7 +141,7 @@ const TransactionStatus: React.FC = () => {
     tx: initialTx,
     isLoading: !initialTx,
   });
-  const { isCPFPPossible, isRBFBumpFeePossible, isRBFCancelPossible, tx, isLoading, eta, intervalMs, wallet, loadingError } = state;
+  const { isRBFCancelPossible, tx, isLoading, intervalMs, wallet, loadingError } = state;
   const transactionId = tx?.hash || tx?.txid;
   const transactionIdCopyRef = useRef<CopyTextToClipboardHandle>(null);
   useScreenMenuActions({ copyTransactionId: transactionId && !loadingError ? () => transactionIdCopyRef.current?.copy() : undefined });
@@ -274,8 +256,6 @@ const TransactionStatus: React.FC = () => {
       backgroundColor: colors.cardSectionBackground,
       borderBottomColor: colors.cardBorderColor,
     },
-    speedUpButton: { backgroundColor: colors.transactionStateBumpButtonBackground },
-    speedUpButtonText: { color: colors.transactionPendingColor },
     cancelButton: { backgroundColor: colors.transactionStateCancelButtonBackground },
     cancelButtonText: { color: colors.transactionPendingColor },
     advancedContent: { borderTopColor: colors.cardBorderColor },
@@ -290,24 +270,8 @@ const TransactionStatus: React.FC = () => {
     dispatch({ type: ActionType.SetIntervalMs, payload: ms });
   };
 
-  const setEta = (value: string) => {
-    dispatch({ type: ActionType.SetEta, payload: value });
-  };
-
-  const setAllButtonStatus = (status: ButtonStatus) => {
-    dispatch({ type: ActionType.SetAllButtonStatus, payload: status });
-  };
-
   const setIsLoading = (value: boolean) => {
     dispatch({ type: ActionType.SetLoading, payload: value });
-  };
-
-  const setIsCPFPPossible = (status: ButtonStatus) => {
-    dispatch({ type: ActionType.SetCPFPPossible, payload: status });
-  };
-
-  const setIsRBFBumpFeePossible = (status: ButtonStatus) => {
-    dispatch({ type: ActionType.SetRBFBumpFeePossible, payload: status });
   };
 
   const setIsRBFCancelPossible = (status: ButtonStatus) => {
@@ -438,51 +402,8 @@ const TransactionStatus: React.FC = () => {
           if (txFromMempool.fee) {
             setMempoolFee(txFromMempool.fee);
           }
-
-          const satPerVbyte = txFromMempool.fee && fetchedTx.vsize ? txFromMempool.fee / fetchedTx.vsize : 0;
-          const fees = await BlueElectrum.estimateFees();
-
-          // Only set ETA if we have valid fee data
-          // Validate that fees exist, are numbers, and are positive
-          if (
-            fees &&
-            typeof fees.fast === 'number' &&
-            typeof fees.medium === 'number' &&
-            fees.fast > 0 &&
-            fees.medium > 0 &&
-            satPerVbyte > 0
-          ) {
-            // Fast should be >= medium, but handle edge cases
-            if (fees.fast >= fees.medium) {
-              // Normal case: fast >= medium
-              // If transaction fee is at least 50% of fast fee, consider it reasonable (not 1 day)
-              // This handles cases where fees are low and transaction is reasonably close to next block fee
-              const reasonableThreshold = fees.fast * 0.5; // 50% of fast fee
-
-              if (satPerVbyte >= fees.fast) {
-                setEta(loc.formatString(loc.transactions.eta_10m));
-              } else if (satPerVbyte >= fees.medium || satPerVbyte >= reasonableThreshold) {
-                // Use 3h if at least medium fee OR at least 50% of fast fee
-                setEta(loc.formatString(loc.transactions.eta_3h));
-              } else {
-                setEta(loc.formatString(loc.transactions.eta_1d));
-              }
-            } else {
-              // Edge case: fast < medium (shouldn't happen, but handle it)
-              // Use medium as the threshold since it's higher
-              if (satPerVbyte >= fees.medium) {
-                setEta(loc.formatString(loc.transactions.eta_10m));
-              } else if (satPerVbyte >= fees.fast) {
-                setEta(loc.formatString(loc.transactions.eta_3h));
-              } else {
-                setEta(loc.formatString(loc.transactions.eta_1d));
-              }
-            }
-          }
-          // If we don't have valid data, keep showing "Analyzing..." (don't set ETA)
         } else if (fetchedTx.confirmations && fetchedTx.confirmations > 0) {
           triggerHapticFeedback(HapticFeedbackTypes.NotificationSuccess);
-          setEta('');
           // Clear mempool fee when transaction is confirmed (will use calculated fee from vin/vout)
           setMempoolFee(null);
 
@@ -577,12 +498,10 @@ const TransactionStatus: React.FC = () => {
 
   const initialButtonsState = async () => {
     try {
-      await checkPossibilityOfCPFP();
-      await checkPossibilityOfRBFBumpFee();
       await checkPossibilityOfRBFCancel();
     } catch (e) {
       console.error('Error in initialButtonsState:', e);
-      setAllButtonStatus(ButtonStatus.NotPossible);
+      setIsRBFCancelPossible(ButtonStatus.NotPossible);
     }
     setIsLoading(false);
   };
@@ -644,49 +563,6 @@ const TransactionStatus: React.FC = () => {
     }
   }, [isLoading]);
 
-  const checkPossibilityOfCPFP = async () => {
-    if (!wallet || !tx?.hash) {
-      return setIsCPFPPossible(ButtonStatus.Unknown);
-    }
-    if (!wallet?.allowRBF() || isWatchOnlySegwitBech32(wallet)) {
-      return setIsCPFPPossible(ButtonStatus.NotPossible);
-    }
-
-    const cpfbTx = new HDSegwitBech32Transaction(null, tx.hash, wallet as HDSegwitBech32Wallet);
-
-    if ((await cpfbTx.isToUsTransaction()) && (await cpfbTx.getRemoteConfirmationsNum()) === 0) {
-      return setIsCPFPPossible(ButtonStatus.Possible);
-    } else {
-      return setIsCPFPPossible(ButtonStatus.NotPossible);
-    }
-  };
-
-  const checkPossibilityOfRBFBumpFee = async () => {
-    if (!wallet || !tx?.hash) {
-      return setIsRBFBumpFeePossible(ButtonStatus.Unknown);
-    }
-    if (!wallet?.allowRBF()) {
-      return setIsRBFBumpFeePossible(ButtonStatus.NotPossible);
-    }
-
-    let rbfTx: HDSegwitBech32Transaction;
-    if (isWatchOnlySegwitBech32(wallet)) {
-      rbfTx = new HDSegwitBech32Transaction(null, tx.hash, wallet._hdWalletInstance);
-    } else {
-      rbfTx = new HDSegwitBech32Transaction(null, tx.hash, wallet as HDSegwitBech32Wallet);
-    }
-    if (
-      (await rbfTx.isOurTransaction()) &&
-      (await rbfTx.getRemoteConfirmationsNum()) === 0 &&
-      (await rbfTx.isSequenceReplaceable()) &&
-      (await rbfTx.canBumpTx())
-    ) {
-      return setIsRBFBumpFeePossible(ButtonStatus.Possible);
-    } else {
-      return setIsRBFBumpFeePossible(ButtonStatus.NotPossible);
-    }
-  };
-
   const checkPossibilityOfRBFCancel = async () => {
     if (!wallet || !tx?.hash) {
       return setIsRBFCancelPossible(ButtonStatus.Unknown);
@@ -713,7 +589,7 @@ const TransactionStatus: React.FC = () => {
     }
   };
 
-  const navigateToRBF = (route: 'RBFBumpFee' | 'RBFCancel', transaction: Transaction, w: TWallet) => {
+  const navigateToRBF = (transaction: Transaction, w: TWallet) => {
     if (isWatchOnlySegwitBech32(w) && !w.useWithHardwareWalletEnabled()) {
       return Alert.alert(
         loc.wallets.details_title,
@@ -724,7 +600,7 @@ const TransactionStatus: React.FC = () => {
             onPress: async () => {
               w.setUseWithHardwareWalletEnabled(true);
               await saveToDisk();
-              navigate(route, {
+              navigate('RBFCancel', {
                 txid: transaction.hash,
                 wallet: w,
               });
@@ -739,18 +615,11 @@ const TransactionStatus: React.FC = () => {
         { cancelable: false },
       );
     } else {
-      navigate(route, {
+      navigate('RBFCancel', {
         txid: transaction.hash,
         wallet: w,
       });
     }
-  };
-
-  const navigateToCPFP = (transaction: Transaction, w: TWallet) => {
-    navigate('CPFP', {
-      txid: transaction.hash,
-      wallet: w,
-    });
   };
 
   const handleNotePress = useCallback(async () => {
@@ -1090,45 +959,24 @@ const TransactionStatus: React.FC = () => {
                   <BlueText style={[styles.stateLabel, stylesHook.stateLabelPending, scaledStyles.stateLabel]}>
                     {loc.transactions.pending}
                   </BlueText>
-                  <BlueText style={[styles.stateValue, stylesHook.stateValuePending, styles.stateValueInline, scaledStyles.stateValue]}>
-                    {eta || loc.transactions.details_eta_analyzing}
-                  </BlueText>
+                  {isOnChainTx && (
+                    <BlueText style={[styles.stateValue, stylesHook.stateValuePending, styles.stateValueInline, scaledStyles.stateValue]}>
+                      {loc.transactions.details_tx_in_mempool}
+                    </BlueText>
+                  )}
                 </View>
               </View>
-              {wallet &&
-                (isRBFBumpFeePossible === ButtonStatus.Possible ||
-                  isRBFCancelPossible === ButtonStatus.Possible ||
-                  isCPFPPossible === ButtonStatus.Possible) && (
-                  <View style={styles.stateButtons}>
-                    {isRBFBumpFeePossible === ButtonStatus.Possible && (
-                      <TouchableOpacity
-                        onPress={() => navigateToRBF('RBFBumpFee', tx, wallet)}
-                        style={[styles.speedUpButton, stylesHook.speedUpButton]}
-                        accessibilityRole="button"
-                      >
-                        <BlueText style={[styles.speedUpButtonText, stylesHook.speedUpButtonText]}>{loc.transactions.status_bump}</BlueText>
-                      </TouchableOpacity>
-                    )}
-                    {isCPFPPossible === ButtonStatus.Possible && (
-                      <TouchableOpacity
-                        onPress={() => navigateToCPFP(tx, wallet)}
-                        style={[styles.speedUpButton, stylesHook.speedUpButton]}
-                        accessibilityRole="button"
-                      >
-                        <BlueText style={[styles.speedUpButtonText, stylesHook.speedUpButtonText]}>{loc.transactions.status_bump}</BlueText>
-                      </TouchableOpacity>
-                    )}
-                    {isRBFCancelPossible === ButtonStatus.Possible && (
-                      <TouchableOpacity
-                        onPress={() => navigateToRBF('RBFCancel', tx, wallet)}
-                        style={[styles.cancelButton, stylesHook.cancelButton]}
-                        accessibilityRole="button"
-                      >
-                        <BlueText style={[styles.cancelButtonText, stylesHook.cancelButtonText]}>{loc.transactions.status_cancel}</BlueText>
-                      </TouchableOpacity>
-                    )}
-                  </View>
-                )}
+              {wallet && isRBFCancelPossible === ButtonStatus.Possible && (
+                <View style={styles.stateButtons}>
+                  <TouchableOpacity
+                    onPress={() => navigateToRBF(tx, wallet)}
+                    style={[styles.cancelButton, stylesHook.cancelButton]}
+                    accessibilityRole="button"
+                  >
+                    <BlueText style={[styles.cancelButtonText, stylesHook.cancelButtonText]}>{loc.transactions.status_cancel}</BlueText>
+                  </TouchableOpacity>
+                </View>
+              )}
             </>
           ) : txValue !== null && txValue < 0 ? (
             <TransactionStateHeader
@@ -1560,20 +1408,6 @@ const styles = StyleSheet.create({
     marginTop: 12,
     width: '100%',
     paddingHorizontal: 0,
-  },
-  speedUpButton: {
-    flex: 1,
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: 44,
-  },
-  speedUpButtonText: {
-    fontSize: 15,
-    fontWeight: '500',
-    textAlign: 'center',
   },
   cancelButton: {
     flex: 1,
