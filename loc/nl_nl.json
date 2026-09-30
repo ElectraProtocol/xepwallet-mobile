@@ -308,8 +308,6 @@
     "privacy_quickactions": "Wallet snelkoppelingen",
     "privacy_quickactions_explanation": "Houd het XEPWallet-app-icoon ingedrukt om snel het saldo van je wallet te bekijken.",
     "privacy_clipboard_explanation": "Bied snelkoppelingen aan als een adres of factuur op uw klembord staat.",
-    "privacy_do_not_track": "Analyses Uitschakelen",
-    "privacy_do_not_track_explanation": "Informatie over de prestatie en betrouwbaarheid zal niet worden opgegeven voor analyse.",
     "rate": "Koers",
     "push_notifications_explanation": "Door meldingen in te schakelen, wordt je apparaattoken naar de server verzonden, samen met wallet-adressen en transactie-ID's voor alle wallets en transacties die zijn gemaakt na het inschakelen van meldingen. Het apparaattoken wordt gebruikt om meldingen te verzenden, en de wallet-informatie stelt ons in staat om je te informeren over inkomende XEP of transactiebevestigingen.\n\nAlleen informatie van na het inschakelen van meldingen wordt verzonden — niets van daarvoor wordt verzameld.\n\nHet uitschakelen van meldingen verwijdert al deze informatie van de server. Bovendien zal het verwijderen van een wallet uit de app ook de bijbehorende informatie van de server verwijderen.",
     "selfTest": "Zelf-Test",

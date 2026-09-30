@@ -3,7 +3,6 @@ import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
 import UserNotifications
-import Bugsnag
 
 
 @main
@@ -27,29 +26,7 @@ class AppDelegate: RCTAppDelegate, UNUserNotificationCenterDelegate {
         // Set up device UID observers early
         setupDeviceUIDObservers()
         
-        let doNotTrackValue = userDefaultsGroup?.string(forKey: "donottrack") ?? "0"
-        NSLog("[AppDelegate] Initial Do Not Track value: '\(doNotTrackValue)'")
-
-        if let isDoNotTrackEnabled = userDefaultsGroup?.string(forKey: "donottrack"), isDoNotTrackEnabled == "1" {
-            let isEnabled = userDefaultsGroup?.string(forKey: "donottrack") ?? "0"
-            NSLog("[AppDelegate] Do Not Track setting: \(isEnabled), expected to be '1'")
-          
-            userDefaultsGroup?.set("Disabled", forKey: "deviceUIDCopy")
-            userDefaultsGroup?.synchronize()
-          
-            NSLog("[AppDelegate] Do Not Track enabled: set deviceUIDCopy to 'Disabled'")
-          
-        } else {
-      #if targetEnvironment(macCatalyst)
-      let config = BugsnagConfiguration.loadConfig()
-      config.appType = "macOS"
-      Bugsnag.start(with: config)
-      copyDeviceUID()
-      #else
-      Bugsnag.start()
-      copyDeviceUID()
-      #endif
-        }
+        copyDeviceUID()
 
         self.moduleName = "BlueWallet"
         self.dependencyProvider = RCTAppDependencyProvider()

@@ -314,8 +314,6 @@
     "privacy_quickactions": "錢包捷徑",
     "privacy_quickactions_explanation": "長按 XEPWallet 應用程式圖示以快速查看您錢包的結餘。",
     "privacy_clipboard_explanation": "如果在剪貼簿中找到地址或帳單，請提供捷徑。",
-    "privacy_do_not_track": "停用分析",
-    "privacy_do_not_track_explanation": "效能與可靠性資訊將不會送出進行分析。",
     "rate": "匯率",
     "push_notifications_explanation": "啟用通知後，您的裝置權杖將會傳送至伺服器，連同啟用通知後所有錢包與所進行交易的錢包地址與交易 ID。裝置權杖用於傳送通知，而錢包資訊則讓我們能通知您比特幣到帳或交易確認。\n\n僅傳送啟用通知後的資訊—之前的資料不會被收集。\n\n停用通知將從伺服器移除所有上述資訊。此外，從應用程式刪除錢包也會從伺服器移除其相關資訊。",
     "selfTest": "自行測試",

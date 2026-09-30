@@ -314,8 +314,6 @@
     "privacy_quickactions": "Mappusnarknappar",
     "privacy_quickactions_explanation": "Halt á XEPWallet app ímyndini, vel síðani mappu fyri at síggja salduna á mappuni.",
     "privacy_clipboard_explanation": "Virkir snarknappar í fall ein adressa ella gjaldsumbøn verður funnin í setiborðinum.",
-    "privacy_do_not_track": "Óvirkja greiningar",
-    "privacy_do_not_track_explanation": "Ritbúnaðar avriks- og dygdarupplýsingar verða ikki innsendir til greiningar.",
     "rate": "Gjaldoyrakostnaður",
     "push_notifications_explanation": "Verða fráboðanir virktar, so verður eindareyðmerkið sent til ambætaran, saman við mappuadressum og flytingareyðmerkjum, tilhoyrandi allar mappur, fremdar eftir at fráboðanir eru virktar. Eindareyðmerkið verður brúkt til at senda fráboðanina, og mappuupplýsingarnir gera ambætaran føran fyri at nágreina og fráboða tær um tíni inngjøld og váttanir.\n\nHettar hevur ikki afturvirkandi kraft. Upplýsingar verða einans sendir, frá tí at fráboðanir verða virktar.\n\nÓvirkjan av fráboðanum elvir til at allar omanfyrinevndu upplýsingar verða strikaðar frá ambætaranum. Umframt tað verða tilhoyrandi upplýsingar eisini strikaðar frá ambætaranum, tá ein mappa verður strika úr appini.",
     "selfTest": "Sjálvkanning",

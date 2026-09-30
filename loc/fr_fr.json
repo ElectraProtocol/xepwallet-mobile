@@ -308,8 +308,6 @@
     "privacy_quickactions": "Raccourci Portefeuille",
     "privacy_quickactions_explanation": "Touchez et maintenez l'icone XEPWallet sur votre écran d'accueil pour voir rapidement le solde de vos portefeuilles.",
     "privacy_clipboard_explanation": "Fournit un raccourci si une adresse ou une facture est trouvée dans le presse-papier.",
-    "privacy_do_not_track": "Désactiver l'analyse des données",
-    "privacy_do_not_track_explanation": "Les informations de performance et de fiabilité ne seront pas soumises pour analyse.",
     "rate": "Taux",
     "push_notifications_explanation": "En activant les notifications, le jeton de votre appareil sera envoyé au serveur, ainsi que les adresses de portefeuille et les identifiants de transaction pour tous les portefeuilles et transactions effectuées après l'activation des notifications. Le jeton de l'appareil est utilisé pour envoyer des notifications, et les informations du portefeuille nous permettent de vous informer des XEPs entrants ou des confirmations de transaction.\n\nSeules les informations à partir du moment où vous avez activé les notifications sont transmises ; rien d'avant n'est collecté.\n\nLa désactivation des notifications supprimera toutes ces informations du serveur. De plus, la suppression d'un portefeuille de l'application supprimera également les informations associées du serveur.",
     "selfTest": "Auto-test",

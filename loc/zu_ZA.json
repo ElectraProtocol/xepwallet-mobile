@@ -308,8 +308,6 @@
     "privacy_quickactions": "Izinqamuleli Zesikhwama",
     "privacy_quickactions_explanation": "Thinta uphinde ubambe isithonjana sohlelo lwe-XEPWallet ukuze ubuke ngokushesha ibhalansi yesikhwama sakho.",
     "privacy_clipboard_explanation": "Nikeza izinqamuleli uma ikheli noma i-invoyisi itholakala ebhodini lakho lokukopisha.",
-    "privacy_do_not_track": "Khubaza I-analytics",
-    "privacy_do_not_track_explanation": "Ulwazi lokusebenza nokwethembeka ngeke luthunyelwe ukuze luhlaziywe.",
     "rate": "Izinga",
     "push_notifications_explanation": "Ngokunika amandla izaziso, ithokheni yedivayisi yakho izothunyelwa kuseva, kanye namakheli ezikhwama nama-ID ethransekshini wazo zonke izikhwama namathransekshini enziwe ngemva kokunika amandla izaziso. Ithokheni yedivayisi isetshenziselwa ukuthumela izaziso, futhi ulwazi lwesikhwama lusivumela ukuthi sikwazise ngokwe-XEP engenayo noma ngokuqinisekiswa kwethransekshini.\n\nUlwazi kuphela olusukela ngemva kokuthi unike amandla izaziso oludluliselwayo—akukho lutho olusukela ngaphambili oluqoqwayo.\n\nUkukhubaza izaziso kuzosusa lonke lolu lwazi kuseva. Ngaphezu kwalokho, ukususa isikhwama kuhlelo lokusebenza nakho kuzosusa ulwazi lwaso oluhlobene kuseva.",
     "selfTest": "Ukuzihlola",

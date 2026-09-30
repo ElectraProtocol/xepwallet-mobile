@@ -308,8 +308,6 @@
     "privacy_quickactions": "Atalhos da carteira",
     "privacy_quickactions_explanation": "Toque e segure o ícone do aplicativo XEPWallet para visualizar rapidamente o saldo da sua carteira.",
     "privacy_clipboard_explanation": "Fornece atalhos se endereços ou faturas são encontrados na área de transferência.",
-    "privacy_do_not_track": "Desativar analítica",
-    "privacy_do_not_track_explanation": "Informações de confiabilidade e desempenho não serão enviadas para análise.",
     "rate": "Taxa",
     "push_notifications_explanation": "Ao habilitar as notificações, o token do seu dispositivo será enviado ao servidor, junto com endereços de carteira e IDs de transação para todas as carteiras e transações feitas após habilitar as notificações. O token do dispositivo é usado para enviar notificações, e as informações da carteira nos permitem notificá-lo sobre XEPs recebidos ou confirmações de transações.\n\nSomente informações após você habilitar as notificações são transmitidas — nada anterior é coletado.\n\nDesabilitar notificações removerá todas essas informações do servidor. Além disso, excluir uma carteira do aplicativo também removerá suas informações associadas do servidor.",
     "selfTest": "Autoteste",

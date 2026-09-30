@@ -308,8 +308,6 @@
     "privacy_quickactions": "Scorciatoie Wallet",
     "privacy_quickactions_explanation": "Tocca e tieni premuta l'icona dell'app XEPWallet per visualizzare rapidamente il saldo del tuo portafoglio.",
     "privacy_clipboard_explanation": "Fornisci scorciatoie se viene rilevato un indirizzo o una ricevuta nella tua clipboard.",
-    "privacy_do_not_track": "Disattiva Analytics",
-    "privacy_do_not_track_explanation": "Le informazioni sulle prestazioni e l'affidabilità non saranno inviate per l'analisi.",
     "rate": "Tariffa",
     "push_notifications_explanation": "Abilitando le notifiche, il token del tuo dispositivo sarà inviato al server, insieme agli indirizzi dei portafogli e agli ID delle transazioni per tutti i portafogli e le transazioni effettuate dopo aver abilitato le notifiche. Il token del dispositivo viene utilizzato per inviare notifiche, e le informazioni del portafoglio ci permettono di avvisarti riguardo a XEP in arrivo o conferme di transazioni.\n\nSolo le informazioni successive all'abilitazione delle notifiche vengono trasmesse—nulla di precedente viene raccolto.\n\nDisattivando le notifiche, tutte queste informazioni saranno rimosse dal server. Inoltre, eliminando un portafoglio dall'app saranno rimosse anche le informazioni associate dal server.",
     "selfTest": "Auto-Test",

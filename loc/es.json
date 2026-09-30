@@ -308,8 +308,6 @@
     "privacy_quickactions": "Atajos para tus carteras",
     "privacy_quickactions_explanation": "Mantén pulsado el icono de la aplicación XEPWallet para ver rápidamente el balance de tu cartera.",
     "privacy_clipboard_explanation": "Muestra atajos si encuentra direcciones o facturas en tu portapapeles.",
-    "privacy_do_not_track": "Deshabilitar analíticas",
-    "privacy_do_not_track_explanation": "Los datos sobre funcionamiento y fiabilidad no serán enviados para ser analizados.",
     "rate": "Tasa",
     "push_notifications_explanation": "Al habilitar las notificaciones, el token de tu dispositivo se enviará al servidor, junto con las direcciones de las carteras y los IDs de transacción de todas las carteras y transacciones realizadas después de habilitar las notificaciones. El token del dispositivo se usa para enviar notificaciones, y la información de la cartera nos permite avisarte sobre XEP entrante o confirmaciones de transacciones.\n\nSolo se transmite información posterior a la habilitación de las notificaciones—no se recopila nada anterior.\n\nDeshabilitar las notificaciones eliminará toda esta información del servidor. Además, eliminar una cartera de la aplicación también eliminará su información asociada del servidor.",
     "selfTest": "Autodiagnóstico",

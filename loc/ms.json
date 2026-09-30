@@ -308,8 +308,6 @@
     "privacy_quickactions": "Pintasan Dompet",
     "privacy_quickactions_explanation": "Sentuh dan tahan ikon aplikasi XEPWallet untuk melihat baki dompet anda dengan pantas.",
     "privacy_clipboard_explanation": "Memberikan pintasan jika alamat atau invois dijumpai pada papan sepit anda.",
-    "privacy_do_not_track": "Lumpuhkan Penyelidik",
-    "privacy_do_not_track_explanation": "Maklumat pencapaian dan keandalan tidak akan dihantar untuk kaji selidik.",
     "rate": "Kadar",
     "push_notifications_explanation": "Dengan membolehkan pemberitahuan, token peranti anda akan dihantar kepada pelayan, bersama dengan alamat dompet dan ID urus niaga untuk semua dompet dan urus niaga yang dibuat selepas membolehkan pemberitahuan. Token peranti digunakan untuk menghantar pemberitahuan, dan maklumat dompet membenarkan kami memaklumkan anda tentang XEP masuk atau pengesahan urus niaga.\n\nHanya maklumat selepas anda membolehkan pemberitahuan dihantar—tiada yang dikumpulkan sebelum itu.\n\nMelumpuhkan pemberitahuan akan membuang semua maklumat ini daripada pelayan. Selain itu, memadamkan dompet daripada aplikasi juga akan membuang maklumat berkaitan daripada pelayan.",
     "selfTest": "Swaujian",

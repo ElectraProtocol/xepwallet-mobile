@@ -308,8 +308,6 @@
     "privacy_quickactions": "지갑 단축경로",
     "privacy_quickactions_explanation": "XEPWallet 앱 아이콘을 길게 누르면 지갑 잔액을 빠르게 볼 수 있습니다.",
     "privacy_clipboard_explanation": "클립보드에 주소나 청구서가 보이면 단축경로를 제공하세요",
-    "privacy_do_not_track": "분석을 사용불가로",
-    "privacy_do_not_track_explanation": "성능과 신뢰성 정보는 분석하는 데 제출되지 않을 것 입니다.",
     "rate": "환율",
     "push_notifications_explanation": "알림을 활성화하면 기기 토큰과 함께, 알림을 활성화한 후 생성된 모든 지갑 및 트랜잭션의 지갑 주소와 트랜잭션 ID가 서버로 전송됩니다. 기기 토큰은 알림 전송에 사용되며, 지갑 정보는 비트코인 수신이나 트랜잭션 확인을 알려 주는 데 사용됩니다.\n\n알림을 활성화한 이후의 정보만 전송되며, 이전 데이터는 수집되지 않습니다.\n\n알림을 비활성화하면 이 정보가 모두 서버에서 삭제됩니다. 또한 앱에서 지갑을 삭제하면 해당 지갑과 관련된 정보도 서버에서 삭제됩니다.",
     "selfTest": "자가 테스트",

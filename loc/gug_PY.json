@@ -308,8 +308,6 @@
     "privacy_quickactions": "Viru ryru atajokuéra",
     "privacy_quickactions_explanation": "Epoko ha ejoko XEPWallet app icono rehecha pyaʼe hag̃ua ne viru ryru saldo.",
     "privacy_clipboard_explanation": "Omeʼẽ atajo ojetopa ramo peteĩ renda térã factura ne portapapeles-pe.",
-    "privacy_do_not_track": "Embogue Analytics",
-    "privacy_do_not_track_explanation": "Performance ha confiabilidad marandu noñemondomoʼãi análisis-rã.",
     "rate": "Cotización",
     "push_notifications_explanation": "Emyandývo momarandukuéra, ne mbaʼepuru token oñemondóta servidor-pe, viru ryru renda ha transaksión ID ndive opa viru ryru ha transaksión ojejapóva momarandu ñemyandy rire. Pe mbaʼepuru token ojepuru omondo hag̃ua momarandu, ha viru ryru marandu omoneĩ oréve romomarandu ndéve XEP oúva térã transaksión ñemoneĩ rehe.\n\nMarandu remyandy rire momarandukuéra añónte oñemondo—mbaʼeve tenondegua noñembyatýi.\n\nEmbogue ramo momarandukuéra omboguepáta opa ko marandu servidor-gui. Avei, embogue ramo peteĩ viru ryru app-gui omboguéta avei imarandu servidor-gui.",
     "selfTest": "Autoprueba",

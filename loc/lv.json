@@ -308,8 +308,6 @@
     "privacy_quickactions": "Maka saīsnes",
     "privacy_quickactions_explanation": "Pieskarieties XEPWallet lietotnes ikonai un turiet to, lai ātri apskatītu sava maka bilanci.",
     "privacy_clipboard_explanation": "Piedāvāt saīsnes, ja jūsu starpliktuvē tiek atrasta adrese vai rēķins.",
-    "privacy_do_not_track": "Atspējot analītiku",
-    "privacy_do_not_track_explanation": "Informācija par veiktspēju un uzticamību netiks iesniegta analīzei.",
     "rate": "Likme",
     "push_notifications_explanation": "Iespējojot paziņojumus, jūsu ierīces marķieris tiks nosūtīts uz serveri kopā ar maku adresēm un darījumu identifikatoriem visiem makiem un darījumiem, kas veikti pēc paziņojumu iespējošanas. Ierīces marķieris tiek izmantots paziņojumu sūtīšanai, un maka informācija ļauj mums informēt jūs par ienākošo XEP vai darījumu apstiprinājumiem.\n\nTiek pārraidīta tikai informācija pēc paziņojumu iespējošanas — nekas no iepriekšējā netiek vākts.\n\nPaziņojumu atspējošana noņems visu šo informāciju no servera. Turklāt maka dzēšana no lietotnes arī noņems ar to saistīto informāciju no servera.",
     "selfTest": "Pašpārbaude",

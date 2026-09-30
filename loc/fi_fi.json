@@ -308,8 +308,6 @@
     "privacy_quickactions": "Lompakon Pikanäppäimet",
     "privacy_quickactions_explanation": "Kosketa ja pidä Aloitusnäytön XEPWallet-sovelluskuvaketta nähdäksesi nopeasti lompakon saldon.",
     "privacy_clipboard_explanation": "Toimita pikakuvakkeet, jos leikepöydältä löytyy osoite tai lasku.",
-    "privacy_do_not_track": "Poista analytiikka käytöstä",
-    "privacy_do_not_track_explanation": "Suorituskyky- ja luotettavuustietoja ei lähetetä analysoitavaksi.",
     "rate": "Vaihtokurssi",
     "push_notifications_explanation": "Kun otat ilmoitukset käyttöön, laitetunnuksesi lähetetään palvelimelle yhdessä lompakkojen osoitteiden ja tapahtumatunnusten kanssa kaikille ilmoitusten käyttöönoton jälkeen tehdyille lompakoille ja tapahtumille. Laitetunnusta käytetään ilmoitusten lähettämiseen, ja lompakkotietojen avulla voimme ilmoittaa sinulle saapuvista XEPeista tai tapahtumavahvistuksista.\n\nVain ilmoitusten käyttöönoton jälkeiset tiedot lähetetään – mitään sitä edeltävältä ajalta ei kerätä.\n\nIlmoitusten poistaminen käytöstä poistaa kaikki nämä tiedot palvelimelta. Lisäksi lompakon poistaminen sovelluksesta poistaa myös siihen liittyvät tiedot palvelimelta.",
     "selfTest": "Itsetestaus",

@@ -308,8 +308,6 @@
     "privacy_quickactions": "Skróty Portfeli",
     "privacy_quickactions_explanation": "Dotknij i przytrzymaj ikonę aplikacji XEPWallet, aby szybko sprawdzić saldo swojego portfela.",
     "privacy_clipboard_explanation": "Włącz skróty jeżeli adres lub faktura są znalezione w schowku.",
-    "privacy_do_not_track": "Wyłącz analitykę",
-    "privacy_do_not_track_explanation": "Informacje dotyczące wydajności i niezawodności nie będą przesyłane do analizy.",
     "rate": "Kurs",
     "push_notifications_explanation": "Włączając powiadomienia, token urządzenia zostanie wysłany do serwera, wraz z adresami portfela oraz identyfikatorami transakcji dla wszystkich portfeli i transakcji dokonanych po włączeniu powiadomień. Token ten jest używany do wysyłania powiadomień, a informacje o portfelu pozwalają nam powiadamiać cię o przychodzących XEPach lub potwierdzeniach transakcji.\n\nPrzesyłane są wyłącznie informacje dotyczące okresu po włączeniu powiadomień — żadne dane sprzed tego momentu nie są zbierane.\n\nWyłączenie powiadomień spowoduje usunięcie wszystkich tych informacji z serwera. Dodatkowo, usunięcie portfela z aplikacji również spowoduje usunięcie powiązanych z nim danych z serwera.",
     "selfTest": "Autotest",

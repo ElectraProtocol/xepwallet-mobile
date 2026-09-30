@@ -171,4 +171,3 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.2.2'
 }
 apply plugin: 'com.google.gms.google-services'  // Google Services plugin
-apply plugin: "com.bugsnag.android.gradle"

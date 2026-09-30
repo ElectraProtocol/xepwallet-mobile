@@ -308,8 +308,6 @@
     "privacy_quickactions": "Shkurtoret e portofolit",
     "privacy_quickactions_explanation": "Prekni dhe mbani ikonën e aplikacionit XEPWallet për të parë shpejt ballancën e portofolit tuaj.",
     "privacy_clipboard_explanation": "Ofron shkurtore nëse gjendet një adresë ose faturë në kujtesën tuaj të përkohshme.",
-    "privacy_do_not_track": "Çaktivizo analitikën",
-    "privacy_do_not_track_explanation": "Informacioni mbi performancën dhe besueshmërinë nuk do të dërgohet për analizë.",
     "rate": "Norma",
     "push_notifications_explanation": "Duke aktivizuar njoftimet, kodi i pajisjes suaj do të dërgohet në server, së bashku me adresat e portofolit dhe ID-të e transaksioneve për të gjitha portofolat dhe transaksionet e kryera pasi të aktivizoni njoftimet. Kodi i pajisjes përdoret për të dërguar njoftime, ndërsa informacioni i portofolit na mundëson t’ju njoftojmë për XEP-in që ju vjen ose për konfirmimet e transaksioneve.\n\nVetëm informacioni i krijuar pas aktivizimit të njoftimeve transmetohet—asnjë e dhënë nga më parë nuk mblidhet.\n\nÇaktivizimi i njoftimeve do të fshijë të gjithë këtë informacion nga serveri. Gjithashtu, fshirja e një portofoli nga aplikacioni do të heqë edhe informacionin e tij përkatës nga serveri.",
     "selfTest": "Vetë-testimi",

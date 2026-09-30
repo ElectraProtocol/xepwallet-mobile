@@ -308,8 +308,6 @@
     "privacy_quickactions": "Các phím tắt ví",
     "privacy_quickactions_explanation": "Chạm và giữ biểu tượng ứng dụng XEPWallet để xem nhanh số dư của ví.",
     "privacy_clipboard_explanation": "Cung cấp phím tắt trong trường hợp một địa chỉ hoặc hóa đơn được tìm thấy trong bảng tạm của bạn.",
-    "privacy_do_not_track": "Vô hiệu hoá phân tích ",
-    "privacy_do_not_track_explanation": "Thông tin về hiệu suất và độ tin cậy sẽ không được gửi để phân tích.",
     "rate": "Tỷ lệ",
     "push_notifications_explanation": "Bằng cách bật thông báo, mã token thiết bị của bạn sẽ được gửi đến máy chủ, cùng với các địa chỉ ví và ID giao dịch cho tất cả các ví và giao dịch được thực hiện sau khi bật thông báo. Mã token thiết bị được dùng để gửi thông báo, và thông tin ví cho phép chúng tôi thông báo cho bạn về XEP đến hoặc xác nhận giao dịch.\n\nChỉ thông tin từ sau khi bạn bật thông báo mới được truyền — không có gì từ trước đó được thu thập.\n\nTắt thông báo sẽ xoá tất cả thông tin này khỏi máy chủ. Ngoài ra, xoá một ví khỏi ứng dụng cũng sẽ xoá thông tin liên quan của nó khỏi máy chủ.",
     "selfTest": "Tự kiểm tra",

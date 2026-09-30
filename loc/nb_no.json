@@ -308,8 +308,6 @@
     "privacy_quickactions": "Lommebok-snarveier",
     "privacy_quickactions_explanation": "Trykk og hold på XEPWallet-appens ikon for raskt å se saldoen for lommeboken din.",
     "privacy_clipboard_explanation": "Oppgi snarveier hvis en adresse eller faktura er funnet i utklippstavlen.",
-    "privacy_do_not_track": "Deaktiver Analyse",
-    "privacy_do_not_track_explanation": "Informasjon om ytelse og pålitelighet vil ikke bli sendt inn for analyse.",
     "rate": "Kurs",
     "push_notifications_explanation": "Ved å aktivere varslinger vil enhetstokenet ditt bli sendt til serveren, sammen med lommebokadresser og transaksjons-ID-er for alle lommebøker og transaksjoner som er gjort etter at varslinger ble aktivert. Enhetstokenet brukes til å sende varslinger, og lommebokinformasjonen lar oss varsle deg om innkommende XEP eller transaksjonsbekreftelser.\n\nKun informasjon fra etter at du aktiverer varslinger overføres – ingenting fra før blir samlet inn.\n\nÅ deaktivere varslinger vil fjerne all denne informasjonen fra serveren. I tillegg vil sletting av en lommebok fra appen også fjerne tilhørende informasjon fra serveren.",
     "selfTest": "Selvtest",

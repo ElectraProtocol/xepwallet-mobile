@@ -308,8 +308,6 @@
     "privacy_quickactions": "Cüzdan Kısayolları",
     "privacy_quickactions_explanation": "Cüzdanınızın bakiyesini hızlıca görüntülemek için XEPWallet uygulama simgesine basılı tutun.",
     "privacy_clipboard_explanation": "Panonuzda bir adres veya fatura bulunursa kısayollar sağla.",
-    "privacy_do_not_track": "Analitiği Devre Dışı Bırak",
-    "privacy_do_not_track_explanation": "Performans ve güvenilirlik bilgileri analiz için gönderilmez.",
     "rate": "Kur",
     "push_notifications_explanation": "Bildirimleri etkinleştirerek, cihaz tokeniniz, bildirimleri etkinleştirdikten sonra yapılan tüm cüzdanlara ve işlemlere ait cüzdan adresleri ve işlem ID'leri ile birlikte sunucuya gönderilir. Cihaz tokeni bildirim göndermek için kullanılır ve cüzdan bilgileri, gelen XEP veya işlem onayları hakkında sizi bilgilendirmemize olanak tanır.\n\nYalnızca bildirimleri etkinleştirdikten sonraki bilgiler iletilir—öncesinden hiçbir şey toplanmaz.\n\nBildirimleri devre dışı bırakmak, bu bilgilerin tümünü sunucudan kaldırır. Ayrıca, uygulamadan bir cüzdanı silmek, ona ait bilgileri de sunucudan kaldırır.",
     "selfTest": "Kendi Kendine Test",

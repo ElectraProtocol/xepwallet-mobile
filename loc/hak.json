@@ -308,8 +308,6 @@
     "privacy_quickactions": "錢包捷徑",
     "privacy_quickactions_explanation": "撳等 XEPWallet app 圖示毋放，做得遽遽查看你錢包个餘額。",
     "privacy_clipboard_explanation": "假使你个剪貼簿內肚尋到地址抑係發票，就提供捷徑。",
-    "privacy_do_not_track": "停用分析",
-    "privacy_do_not_track_explanation": "效能摎可靠性个資訊毋會送出去做分析。",
     "rate": "匯率",
     "push_notifications_explanation": "啟用通知以後，你裝置个 token 會送到伺服器，連同啟用通知以後所有錢包个地址摎交易个交易 ID。裝置 token 係用來送通知，錢包資訊係分𠊎等做得通知你有比特幣進來抑係交易確認。\n\n淨係你啟用通知以後个資訊正會傳送——以前个東西毋會收集。\n\n停用通知會將這兜資訊全部對伺服器移除。另外，對 app 刪除一隻錢包，也會將佢相關个資訊對伺服器移除。",
     "selfTest": "自我測試",

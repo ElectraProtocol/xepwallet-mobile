@@ -3,7 +3,6 @@ import DefaultPreference from 'react-native-default-preference';
 import { isReadClipboardAllowed, setReadClipboardAllowed } from '../../blue_modules/clipboard';
 import { getPreferredCurrency, GROUP_IO_BLUEWALLET, initCurrencyDaemon, setPreferredCurrency } from '../../blue_modules/currency';
 import { clearUseURv1, isURv1Enabled, setUseURv1 } from '../../blue_modules/ur';
-import { BlueApp } from '../../class/blue-app';
 import { saveLanguage, STORAGE_KEY } from '../../loc';
 import { FiatUnit, TFiatUnit } from '../../models/fiatUnit';
 import {
@@ -18,17 +17,6 @@ import { BLOCK_EXPLORERS, getBlockExplorerUrl, saveBlockExplorer, BlockExplorer,
 import * as BlueElectrum from '../../blue_modules/BlueElectrum';
 import { isBalanceDisplayAllowed, setBalanceDisplayAllowed } from '../../hooks/useWidgetCommunication';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-const getDoNotTrackStorage = async (): Promise<boolean> => {
-  try {
-    await DefaultPreference.setName(GROUP_IO_BLUEWALLET);
-    const doNotTrack = await DefaultPreference.get(BlueApp.DO_NOT_TRACK);
-    return doNotTrack === '1';
-  } catch {
-    console.error('Error getting DoNotTrack');
-    return false;
-  }
-};
 
 export const setTotalBalanceViewEnabledStorage = async (value: boolean): Promise<void> => {
   try {
@@ -81,8 +69,6 @@ interface SettingsContextType {
   setIsHandOffUseEnabledAsyncStorage: (value: boolean) => Promise<void>;
   isPrivacyBlurEnabled: boolean;
   setIsPrivacyBlurEnabled: (value: boolean) => void;
-  isDoNotTrackEnabled: boolean;
-  setDoNotTrackStorage: (value: boolean) => Promise<void>;
   isWidgetBalanceDisplayAllowed: boolean;
   setIsWidgetBalanceDisplayAllowedStorage: (value: boolean) => Promise<void>;
   isLegacyURv1Enabled: boolean;
@@ -110,8 +96,6 @@ const defaultSettingsContext: SettingsContextType = {
   setIsHandOffUseEnabledAsyncStorage: async () => {},
   isPrivacyBlurEnabled: true,
   setIsPrivacyBlurEnabled: () => {},
-  isDoNotTrackEnabled: false,
-  setDoNotTrackStorage: async () => {},
   isWidgetBalanceDisplayAllowed: true,
   setIsWidgetBalanceDisplayAllowedStorage: async () => {},
   isLegacyURv1Enabled: false,
@@ -137,7 +121,6 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = React.m
   const [language, setLanguage] = useState<string>('en');
   const [isHandOffUseEnabled, setIsHandOffUseEnabledState] = useState<boolean>(false);
   const [isPrivacyBlurEnabled, setIsPrivacyBlurEnabled] = useState<boolean>(true);
-  const [isDoNotTrackEnabled, setIsDoNotTrackEnabled] = useState<boolean>(false);
   const [isWidgetBalanceDisplayAllowed, setIsWidgetBalanceDisplayAllowed] = useState<boolean>(true);
   const [isLegacyURv1Enabled, setIsLegacyURv1Enabled] = useState<boolean>(false);
   const [isClipboardGetContentEnabled, setIsClipboardGetContentEnabled] = useState<boolean>(true);
@@ -178,9 +161,6 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = React.m
         }),
         getIsDeviceQuickActionsEnabled().then(quickActionsEnabled => {
           setIsQuickActionsEnabled(quickActionsEnabled);
-        }),
-        getDoNotTrackStorage().then(doNotTrack => {
-          setIsDoNotTrackEnabled(doNotTrack);
         }),
         getIsTotalBalanceViewEnabled().then(totalBalanceEnabled => {
           setIsTotalBalanceEnabled(totalBalanceEnabled);
@@ -243,20 +223,6 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = React.m
       setLanguage(newLanguage);
     } catch (e) {
       console.error('Error setting language:', e);
-    }
-  }, []);
-
-  const setDoNotTrackStorage = useCallback(async (value: boolean): Promise<void> => {
-    try {
-      await DefaultPreference.setName(GROUP_IO_BLUEWALLET);
-      if (value) {
-        await DefaultPreference.set(BlueApp.DO_NOT_TRACK, '1');
-      } else {
-        await DefaultPreference.clear(BlueApp.DO_NOT_TRACK);
-      }
-      setIsDoNotTrackEnabled(value);
-    } catch (e) {
-      console.error('Error setting DoNotTrack:', e);
     }
   }, []);
 
@@ -350,8 +316,6 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = React.m
       setIsHandOffUseEnabledAsyncStorage,
       isPrivacyBlurEnabled,
       setIsPrivacyBlurEnabled,
-      isDoNotTrackEnabled,
-      setDoNotTrackStorage,
       isWidgetBalanceDisplayAllowed,
       setIsWidgetBalanceDisplayAllowedStorage,
       isLegacyURv1Enabled,
@@ -378,8 +342,6 @@ export const SettingsProvider: React.FC<{ children: React.ReactNode }> = React.m
       setIsHandOffUseEnabledAsyncStorage,
       isPrivacyBlurEnabled,
       setIsPrivacyBlurEnabled,
-      isDoNotTrackEnabled,
-      setDoNotTrackStorage,
       isWidgetBalanceDisplayAllowed,
       setIsWidgetBalanceDisplayAllowedStorage,
       isLegacyURv1Enabled,

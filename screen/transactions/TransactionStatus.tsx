@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react';
-import { Alert, BackHandler, Linking, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
+import { BackHandler, Linking, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
 import { sha256 } from '@noble/hashes/sha256';
 import { useNavigation, RouteProp, useRoute } from '@react-navigation/native';
 import { NativeStackNavigationOptions, NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -13,8 +13,6 @@ import triggerHapticFeedback, { HapticFeedbackTypes } from '../../blue_modules/h
 import { uint8ArrayToHex } from '../../blue_modules/uint8array-extras';
 import AddressLabelBadge from '../../components/AddressLabelBadge';
 import BlueText from '../../components/BlueText';
-import { HDSegwitBech32Transaction } from '../../class/hd-segwit-bech32-transaction';
-import { HDSegwitBech32Wallet } from '../../class/wallets/hd-segwit-bech32-wallet';
 import { Transaction, TWallet } from '../../class/wallets/types';
 import { transactionExplorerUrl } from '../../models/blockExplorer';
 import presentAlert from '../../components/Alert';
@@ -35,7 +33,6 @@ import loc, { formatBalanceWithoutSuffix } from '../../loc';
 import { balanceUnitForXepWallet, BitcoinUnit } from '../../models/bitcoinUnits';
 import { DetailViewStackParamList } from '../../navigation/DetailViewStackParamList';
 import { isOnChainTransaction, resolveTxDisplayState } from '../../blue_modules/transactionDisplayState';
-import { isWatchOnlySegwitBech32 } from '../../util/isWatchOnlySegwitBech32';
 
 dayjs.extend(relativeTime);
 
@@ -57,12 +54,6 @@ async function populateVinValuesFromPrevTxs(fetchedTx: any): Promise<void> {
   }
 }
 
-enum ButtonStatus {
-  Possible,
-  Unknown,
-  NotPossible,
-}
-
 type RouteProps = RouteProp<DetailViewStackParamList, 'TransactionStatus'>;
 type NavigationProps = NativeStackNavigationProp<DetailViewStackParamList, 'TransactionStatus'>;
 
@@ -71,7 +62,6 @@ type TransactionStatusHeaderOptions = NativeStackNavigationOptions & {
 };
 
 enum ActionType {
-  SetRBFCancelPossible,
   SetTransaction,
   SetLoading,
   SetIntervalMs,
@@ -80,7 +70,6 @@ enum ActionType {
 }
 
 interface State {
-  isRBFCancelPossible: ButtonStatus;
   tx: any;
   isLoading: boolean;
   intervalMs: number;
@@ -89,7 +78,6 @@ interface State {
 }
 
 const initialState: State = {
-  isRBFCancelPossible: ButtonStatus.Unknown,
   tx: undefined,
   isLoading: true,
   intervalMs: 1000,
@@ -99,8 +87,6 @@ const initialState: State = {
 
 const reducer = (state: State, action: { type: ActionType; payload?: any }): State => {
   switch (action.type) {
-    case ActionType.SetRBFCancelPossible:
-      return { ...state, isRBFCancelPossible: action.payload };
     case ActionType.SetTransaction:
       return { ...state, tx: action.payload };
     case ActionType.SetLoading:
@@ -141,7 +127,7 @@ const TransactionStatus: React.FC = () => {
     tx: initialTx,
     isLoading: !initialTx,
   });
-  const { isRBFCancelPossible, tx, isLoading, intervalMs, wallet, loadingError } = state;
+  const { tx, isLoading, intervalMs, wallet, loadingError } = state;
   const transactionId = tx?.hash || tx?.txid;
   const transactionIdCopyRef = useRef<CopyTextToClipboardHandle>(null);
   useScreenMenuActions({ copyTransactionId: transactionId && !loadingError ? () => transactionIdCopyRef.current?.copy() : undefined });
@@ -256,8 +242,6 @@ const TransactionStatus: React.FC = () => {
       backgroundColor: colors.cardSectionBackground,
       borderBottomColor: colors.cardBorderColor,
     },
-    cancelButton: { backgroundColor: colors.transactionStateCancelButtonBackground },
-    cancelButtonText: { color: colors.transactionPendingColor },
     advancedContent: { borderTopColor: colors.cardBorderColor },
     rowValue: { color: colors.alternativeTextColor },
   });
@@ -272,10 +256,6 @@ const TransactionStatus: React.FC = () => {
 
   const setIsLoading = (value: boolean) => {
     dispatch({ type: ActionType.SetLoading, payload: value });
-  };
-
-  const setIsRBFCancelPossible = (status: ButtonStatus) => {
-    dispatch({ type: ActionType.SetRBFCancelPossible, payload: status });
   };
 
   // Seed transaction data from navigation param if available (offline / fallback)
@@ -496,20 +476,9 @@ const TransactionStatus: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const initialButtonsState = async () => {
-    try {
-      await checkPossibilityOfRBFCancel();
-    } catch (e) {
-      console.error('Error in initialButtonsState:', e);
-      setIsRBFCancelPossible(ButtonStatus.NotPossible);
-    }
-    setIsLoading(false);
-  };
-
   useEffect(() => {
     if (!tx?.hash || !wallet) return;
-    initialButtonsState().catch(error => console.error('Unhandled error in initialButtonsState:', error));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setIsLoading(false);
   }, [tx?.hash, wallet]);
 
   useEffect(() => {
@@ -562,65 +531,6 @@ const TransactionStatus: React.FC = () => {
       };
     }
   }, [isLoading]);
-
-  const checkPossibilityOfRBFCancel = async () => {
-    if (!wallet || !tx?.hash) {
-      return setIsRBFCancelPossible(ButtonStatus.Unknown);
-    }
-    if (!wallet?.allowRBF()) {
-      return setIsRBFCancelPossible(ButtonStatus.NotPossible);
-    }
-
-    let rbfTx: HDSegwitBech32Transaction;
-    if (isWatchOnlySegwitBech32(wallet)) {
-      rbfTx = new HDSegwitBech32Transaction(null, tx.hash, wallet._hdWalletInstance);
-    } else {
-      rbfTx = new HDSegwitBech32Transaction(null, tx.hash, wallet as HDSegwitBech32Wallet);
-    }
-    if (
-      (await rbfTx.isOurTransaction()) &&
-      (await rbfTx.getRemoteConfirmationsNum()) === 0 &&
-      (await rbfTx.isSequenceReplaceable()) &&
-      (await rbfTx.canCancelTx())
-    ) {
-      return setIsRBFCancelPossible(ButtonStatus.Possible);
-    } else {
-      return setIsRBFCancelPossible(ButtonStatus.NotPossible);
-    }
-  };
-
-  const navigateToRBF = (transaction: Transaction, w: TWallet) => {
-    if (isWatchOnlySegwitBech32(w) && !w.useWithHardwareWalletEnabled()) {
-      return Alert.alert(
-        loc.wallets.details_title,
-        loc.transactions.enable_offline_signing,
-        [
-          {
-            text: loc._.ok,
-            onPress: async () => {
-              w.setUseWithHardwareWalletEnabled(true);
-              await saveToDisk();
-              navigate('RBFCancel', {
-                txid: transaction.hash,
-                wallet: w,
-              });
-            },
-            style: 'default',
-          },
-          {
-            text: loc._.cancel,
-            style: 'cancel',
-          },
-        ],
-        { cancelable: false },
-      );
-    } else {
-      navigate('RBFCancel', {
-        txid: transaction.hash,
-        wallet: w,
-      });
-    }
-  };
 
   const handleNotePress = useCallback(async () => {
     // Ark rows have no on-chain hash; use their synthetic txid as fallback key.
@@ -966,17 +876,6 @@ const TransactionStatus: React.FC = () => {
                   )}
                 </View>
               </View>
-              {wallet && isRBFCancelPossible === ButtonStatus.Possible && (
-                <View style={styles.stateButtons}>
-                  <TouchableOpacity
-                    onPress={() => navigateToRBF(tx, wallet)}
-                    style={[styles.cancelButton, stylesHook.cancelButton]}
-                    accessibilityRole="button"
-                  >
-                    <BlueText style={[styles.cancelButtonText, stylesHook.cancelButtonText]}>{loc.transactions.status_cancel}</BlueText>
-                  </TouchableOpacity>
-                </View>
-              )}
             </>
           ) : txValue !== null && txValue < 0 ? (
             <TransactionStateHeader
@@ -1401,27 +1300,6 @@ const styles = StyleSheet.create({
   },
   stateValueInline: {
     marginBottom: 0,
-  },
-  stateButtons: {
-    flexDirection: 'row',
-    gap: 12,
-    marginTop: 12,
-    width: '100%',
-    paddingHorizontal: 0,
-  },
-  cancelButton: {
-    flex: 1,
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    minHeight: 44,
-  },
-  cancelButtonText: {
-    fontSize: 15,
-    fontWeight: '500',
-    textAlign: 'center',
   },
   card: {
     borderRadius: 12,

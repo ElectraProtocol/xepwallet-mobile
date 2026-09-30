@@ -3,7 +3,7 @@ import { useNavigation, RouteProp, useRoute } from '@react-navigation/native';
 import BigNumber from 'bignumber.js';
 import * as bitcoin from 'bitcoinjs-lib';
 import React, { useCallback, useEffect } from 'react';
-import { FlatList, Linking, Pressable, StyleSheet, Text, TextInput, View, ListRenderItemInfo } from 'react-native';
+import { FlatList, Pressable, StyleSheet, Text, TextInput, View, ListRenderItemInfo } from 'react-native';
 import Icon from '../../components/Icon';
 import { satoshiToBTC } from '../../blue_modules/currency';
 import BlueText from '../../components/BlueText';
@@ -124,13 +124,6 @@ const SendCreate = () => {
         onPress={() => Clipboard.setString(tx)}
       >
         <Text style={styles.actionText}>{loc.send.create_copy}</Text>
-      </Pressable>
-      <Pressable
-        accessibilityRole="button"
-        style={({ pressed }) => [styles.actionTouch, pressed && styles.actionTouchPressed]}
-        onPress={() => Linking.openURL('https://coinb.in/?verify=' + tx)}
-      >
-        <Text style={styles.actionText}>{loc.send.create_verify}</Text>
       </Pressable>
     </View>
   );

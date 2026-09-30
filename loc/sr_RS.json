@@ -308,8 +308,6 @@
     "privacy_quickactions": "Prečice novčanika",
     "privacy_quickactions_explanation": "Dodirnite i držite ikonu XEPWallet aplikacije da biste brzo pregledali stanje vašeg novčanika.",
     "privacy_clipboard_explanation": "Pruža prečice ako se adresa ili faktura pronađe u vašem clipboard-u.",
-    "privacy_do_not_track": "Onemogući analitiku",
-    "privacy_do_not_track_explanation": "Informacije o performansama i pouzdanosti neće biti poslate na analizu.",
     "rate": "Kurs",
     "push_notifications_explanation": "Omogućavanjem obaveštenja, token vašeg uređaja će biti poslat serveru, zajedno sa adresama novčanika i ID-ovima transakcija za sve novčanike i transakcije napravljene nakon omogućavanja obaveštenja. Token uređaja se koristi za slanje obaveštenja, a informacije o novčaniku nam omogućavaju da vas obavestimo o dolaznim XEP uplatama ili potvrdama transakcija.\n\nPrenosi se samo informacije nakon što omogućite obaveštenja—ništa od pre toga se ne prikuplja.\n\nOnemogućavanjem obaveštenja, sve ove informacije će biti uklonjene sa servera. Pored toga, brisanjem novčanika iz aplikacije takođe će se ukloniti pridružene informacije sa servera.",
     "selfTest": "Samotestiranje",

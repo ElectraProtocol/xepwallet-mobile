@@ -314,8 +314,6 @@
     "privacy_quickactions": "钱包快捷方式",
     "privacy_quickactions_explanation": "长按 XEPWallet 应用程序图标即可快速查看钱包余额。",
     "privacy_clipboard_explanation": "如果在剪贴板中发现地址或发票，则提供快捷方式。",
-    "privacy_do_not_track": "禁用数据分析功能",
-    "privacy_do_not_track_explanation": "性能和可靠性信息将不会被提交用于数据分析。",
     "rate": "汇率",
     "push_notifications_explanation": "启用通知后，您的设备令牌将被发送到服务器，同时还会发送启用通知后所有钱包及交易的地址和交易 ID。设备令牌用于发送通知，而钱包信息则用于通知您比特币到账或交易确认情况。\n\n仅会传输您启用通知之后的信息——启用之前的信息不会被收集。\n\n禁用通知将从服务器中删除所有这些信息。此外，从应用中删除钱包也会删除该钱包在服务器上的相关信息。",
     "selfTest": "自检",

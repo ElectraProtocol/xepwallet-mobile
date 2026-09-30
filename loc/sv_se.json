@@ -308,8 +308,6 @@
     "privacy_quickactions": "Plånboksgenvägar",
     "privacy_quickactions_explanation": "Tryck och håll in XEPWallet-appikonen för att snabbt se saldot i din plånbok.",
     "privacy_clipboard_explanation": "Ange genvägar om en adress eller faktura hittas i ditt urklipp.",
-    "privacy_do_not_track": "Inaktivera Analytics",
-    "privacy_do_not_track_explanation": "Information om prestanda och tillförlitlighet kommer inte att skickas in för analys.",
     "rate": "Kurs",
     "push_notifications_explanation": "Genom att aktivera aviseringar skickas din enhets-token till servern, tillsammans med plånboksadresser och transaktions-ID för alla plånböcker och transaktioner som görs efter att aviseringar har aktiverats. Enhets-token används för att skicka aviseringar, och plånboksinformationen gör att vi kan meddela dig om inkommande XEP eller transaktionsbekräftelser.\n\nEndast information från efter att du aktiverat aviseringar överförs—inget från tidigare samlas in.\n\nAtt inaktivera aviseringar tar bort all denna information från servern. Att radera en plånbok från appen tar också bort dess associerade information från servern.",
     "selfTest": "Självtest",

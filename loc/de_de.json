@@ -308,8 +308,6 @@
     "privacy_quickactions": "Walletverknüpfungen",
     "privacy_quickactions_explanation": "Auf dem Startbildschirm das XEPWallet App-Symbol gedrückt halten, um rasch den Saldo zu sehen.",
     "privacy_clipboard_explanation": "Nutzt Rechnungen und Adressen in der Zwischenablage zum Senden.",
-    "privacy_do_not_track": "Diagnosedaten ausschalten",
-    "privacy_do_not_track_explanation": "Leistungs- und Zuverlässigkeitsinformationen nicht zur Analyse einreichen.",
     "rate": "Kurs",
     "push_notifications_explanation": "Durch das Aktivieren von Benachrichtigungen wird das Gerätetoken zusammen mit den Wallet-Adressen inkl. künftigen Transaktions-IDs an den Benachrichtigungsdienst gesendet. Das Gerätetoken erlaubt es, Benachrichtigungen an das Gerät zu adressieren; die Wallet-Informationen ermöglichen, über eingehende Transaktionen und Bestätigungen zu informieren.\n\nNach der Aktivierung werden nur künftige, nicht aber vergangene Transaktions-IDs übertragen.\n\nMit der Deaktivierung werden alle diese Informationen wieder vom Server entfernt. Das Gleiche passiert beim Löschen einer Wallet aus der App.",
     "selfTest": "Selbsttest",

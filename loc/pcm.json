@@ -308,8 +308,6 @@
     "privacy_quickactions": "Wallet shortcuts wey dey",
     "privacy_quickactions_explanation": "Touch and hold the XEPWallet app icon make you quick see your wallet balance.",
     "privacy_clipboard_explanation": "Provide shortcuts if address or invoice dey for your clipboard.",
-    "privacy_do_not_track": "Off Analytics",
-    "privacy_do_not_track_explanation": "Performance and reliability information no go send for analysis.",
     "rate": "Rate am",
     "push_notifications_explanation": "If you enable notifications, your device token go go to the server, with wallet addresses and transaction IDs for all wallets and transactions wey happen after you enable notifications. We use the device token to send notifications, and the wallet information dey let us notify you about incoming XEP or transaction confirmations.\n\nNa only information from after you enable notifications dey transmit—nothing from before dey collect.\n\nIf you disable notifications, all this information go comot from the server. Also, if you delete wallet from the app, im information go comot from the server.",
     "selfTest": "Self-Test",

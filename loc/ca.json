@@ -308,8 +308,6 @@
     "privacy_quickactions": "Dreceres del moneder",
     "privacy_quickactions_explanation": "Mantingueu premuda la icona de l'aplicació XEPWallet per consultar ràpidament el saldo del vostre moneder.",
     "privacy_clipboard_explanation": "Proporcionar dreceres si es troba una adreça o factura al vostre porta-retalls.",
-    "privacy_do_not_track": "Desactivar analítiques",
-    "privacy_do_not_track_explanation": "La informació de rendiment i fiabilitat no s'enviarà per a la seva anàlisi.",
     "rate": "Cotització",
     "push_notifications_explanation": "En activar les notificacions, el token del vostre dispositiu s'enviarà al servidor, juntament amb les adreces del moneder i els IDs de les transaccions per a tots els moneders i transaccions fets després d'activar les notificacions. El token del dispositiu s'utilitza per enviar notificacions, i la informació del moneder ens permet notificar-vos sobre XEP entrants o confirmacions de transaccions.\n\nNomés es transmet la informació posterior a l'activació de les notificacions—no es recopila res anterior.\n\nDesactivar les notificacions eliminarà tota aquesta informació del servidor. A més, eliminar un moneder de l'aplicació també eliminarà la seva informació associada del servidor.",
     "selfTest": "Autotest",

@@ -308,8 +308,6 @@
     "privacy_quickactions": "Tárca gyorsbillentyűk",
     "privacy_quickactions_explanation": "Érintsd meg és tartsd nyomva a XEPWallet alkalmazás ikont a képernyőn a tárca egyenleg gyors megtekintéséhez.",
     "privacy_clipboard_explanation": "Jelenítsen meg opciókat, ha cím vagy számla található a vágólapon.",
-    "privacy_do_not_track": "Analitika kikapcsolása",
-    "privacy_do_not_track_explanation": "A teljesítményre és a megbízhatóságra vonatkozó információk nem lesznek beküldve elemzésre.",
     "rate": "Ráta",
     "push_notifications_explanation": "Az értesítések engedélyezésével az eszközöd token-je elküldésre kerül a szerverre, az értesítések engedélyezése után létrehozott összes tárca tárcacímével és tranzakcióazonosítójával együtt. Az eszköz token-jét az értesítések küldésére használjuk, a tárca információi pedig lehetővé teszik számunkra, hogy értesítsünk a beérkező XEPokról vagy a tranzakciók megerősítéseiről.\n\nCsak az értesítések engedélyezése utáni információ kerül továbbításra — semmi nem kerül begyűjtésre korábbról.\n\nAz értesítések letiltása eltávolítja ezeket az információkat a szerverről. Továbbá, ha töröl egy tárcát az alkalmazásból, az azzal kapcsolatos információk is törlődnek a szerverről.",
     "selfTest": "Önteszt",

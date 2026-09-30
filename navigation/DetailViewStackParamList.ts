@@ -49,7 +49,6 @@ export type DetailViewStackParamList = {
     txid: string;
   };
   RBFBumpFee: { txid: string; wallet: TWallet | null };
-  RBFCancel: { txid: string; wallet: TWallet | null };
   SelectWallet: {
     chainType?: Chain;
     onWalletSelect?: (wallet: TWallet, navigationWrapper: TNavigationWrapper) => void;

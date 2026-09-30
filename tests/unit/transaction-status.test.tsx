@@ -281,12 +281,13 @@ describe('TransactionStatus regression', () => {
     jest.clearAllMocks();
   });
 
-  it('shows mempool status without a Bitcoin ETA or Speed Up action for pending on-chain transactions', async () => {
+  it('shows mempool status without Bitcoin ETA or replacement actions for pending on-chain transactions', async () => {
     const { view } = setup(0, 1000);
 
     await waitFor(() => expect(view.getByText('Tx in mempool')).toBeTruthy());
     expect(view.queryByText(/ETA:|Analyzing/i)).toBeNull();
     expect(view.queryByText('Speed Up')).toBeNull();
+    expect(view.queryByText('Cancel')).toBeNull();
     view.unmount();
   });
 

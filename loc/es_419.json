@@ -310,8 +310,6 @@
     "privacy_quickactions": "Atajos de la Billetera",
     "privacy_quickactions_explanation": "Mantén pulsado el icono de la aplicación XEPWallet para ver rápidamente el saldo de tu billetera.",
     "privacy_clipboard_explanation": "Proporciona atajos si encuentras una dirección o factura en tu portapapeles.",
-    "privacy_do_not_track": "Desactivar análisis",
-    "privacy_do_not_track_explanation": "La información de rendimiento y confiabilidad no se enviará para su análisis.",
     "rate": "Tasa",
     "push_notifications_explanation": "Al habilitar las notificaciones, el token de tu dispositivo se enviará al servidor, junto con las direcciones de la billetera y los identificadores de transacciones de todas las billeteras y transacciones realizadas después de habilitar las notificaciones. El token del dispositivo se utiliza para enviar notificaciones, y la información de la billetera nos permite notificarte sobre la llegada de XEP o las confirmaciones de transacciones.\n\nSolo se transmite la información que se recibe después de habilitar las notificaciones; no se recopila nada anterior.\n\nSi deshabilitas las notificaciones, se eliminará toda esta información del servidor. Además, si eliminas una billetera de la aplicación, también se eliminará la información asociada a ella del servidor.",
     "selfTest": "Auto-Test",

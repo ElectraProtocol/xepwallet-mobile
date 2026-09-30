@@ -308,8 +308,6 @@
     "privacy_quickactions": "Dikgutshwanyane tsa Sepache",
     "privacy_quickactions_explanation": "Tshwara mme o boloke aekhone ya XEPWallet ho bona tjhelete ya sepache sa hao ka potlako.",
     "privacy_clipboard_explanation": "Fana ka dikgutshwanyane haeba aterese kapa invoisi e fumanwa ho clipboard ya hao.",
-    "privacy_do_not_track": "Tima Tlhahlobo",
-    "privacy_do_not_track_explanation": "Tlhahisoleseding ya tshebetso le ya botshepehi e ke ke ya rongwa bakeng sa tlhahlobo.",
     "rate": "Sekgahla",
     "push_notifications_explanation": "Ka ho nolofatsa ditsebiso, thokene ya sesebediswa sa hao e tla rongwa sevaeng, hammoho le diaterese tsa dipache le di-ID tsa ditshebetsano bakeng sa dipache tsohle le ditshebetsano tse entsweng ka mor'a ho nolofatsa ditsebiso. Thokene ya sesebediswa e sebediswa ho romela ditsebiso, mme tlhahisoleseding ya sepache e re dumella ho o tsebisa ka XEP e kenang kapa netefatso ya ditshebetsano.\n\nKe tlhahisoleseding feela ya ka mor'a hore o nolofatse ditsebiso e fetiswang—ha ho letho la pele ho senotswe.\n\nHo tima ditsebiso ho tla tlosa tlhahisoleseding ena yohle sevaeng. Ho feta moo, ho tlosa sepache ho aplikheishene le hona ho tla tlosa tlhahisoleseding ya sona sevaeng.",
     "selfTest": "Boitlhahlobo",

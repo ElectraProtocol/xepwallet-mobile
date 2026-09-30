@@ -308,8 +308,6 @@
     "privacy_quickactions": "Llwybrau Byr Waled",
     "privacy_quickactions_explanation": "Cyffwrdd a dal eicon yr ap XEPWallet i weld balans dy waled yn gyflym.",
     "privacy_clipboard_explanation": "Darparu llwybrau byr os canfyddir cyfeiriad neu anfoneb yn dy glipfwrdd.",
-    "privacy_do_not_track": "Analluogi Dadansoddeg",
-    "privacy_do_not_track_explanation": "Ni fydd gwybodaeth perfformiad a dibynadwyedd yn cael ei chyflwyno i'w dadansoddi.",
     "rate": "Cyfradd",
     "push_notifications_explanation": "Drwy alluogi hysbysiadau, bydd tocyn dy ddyfais yn cael ei anfon at y gweinydd, ynghyd â chyfeiriadau waled a IDs trafodion ar gyfer pob waled a thrafodyn a wnaed ar ôl galluogi hysbysiadau. Defnyddir tocyn y ddyfais i anfon hysbysiadau, ac mae gwybodaeth y waled yn caniatáu i ni dy hysbysu am XEP sy'n dod i mewn neu gadarnhad trafodion.\n\nDim ond gwybodaeth o ar ôl iti alluogi hysbysiadau a drosglwyddir—ni chesglir unrhyw beth o cyn hynny.\n\nBydd analluogi hysbysiadau yn gwaredu'r holl wybodaeth hon o'r gweinydd. Yn ogystal, bydd dileu waled o'r ap hefyd yn gwaredu ei gwybodaeth gysylltiedig o'r gweinydd.",
     "selfTest": "Hunan-brawf",

@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation, RouteProp, useFocusEffect, useRoute, useLocale } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import Icon from '../../components/Icon';
@@ -50,7 +49,6 @@ import { useStorage } from '../../hooks/context/useStorage';
 import { useKeyboard } from '../../hooks/useKeyboard';
 import loc, { formatBalance, formatBalanceWithoutSuffix } from '../../loc';
 import { BitcoinUnit, Chain } from '../../models/bitcoinUnits';
-import NetworkTransactionFees, { NetworkTransactionFee, NetworkTransactionFeeType } from '../../models/networkTransactionFees';
 import { SendDetailsStackParamList } from '../../navigation/SendDetailsStackParamList';
 import { CommonToolTipActions, ToolTipAction } from '../../typings/CommonToolTipActions';
 import ActionSheet from '../ActionSheet';
@@ -68,10 +66,8 @@ interface IPaymentDestinations {
 
 export interface IFee {
   current: number | null;
-  slowFee: number | null;
-  mediumFee: number | null;
-  fastestFee: number | null;
 }
+const XEP_FEE_RATE_SAT_PER_VBYTE = 100;
 type NavigationProps = NativeStackNavigationProp<SendDetailsStackParamList, 'SendDetails'>;
 type RouteProps = RouteProp<SendDetailsStackParamList, 'SendDetails'>;
 const SendDetails = () => {
@@ -121,11 +117,7 @@ const SendDetails = () => {
   const [wallet, setWallet] = useState<TWallet | null>(null);
   const { isVisible } = useKeyboard();
   const [addresses, setAddresses] = useState<IPaymentDestinations[]>([{ address: '', key: String(Math.random()), unit: amountUnit }]);
-  const [networkTransactionFees, setNetworkTransactionFees] = useState(new NetworkTransactionFee(3, 2, 1));
-  const [networkTransactionFeesIsLoading, setNetworkTransactionFeesIsLoading] = useState(false);
-  const [customFee, setCustomFee] = useState<string | null>(null);
-  const [selectedPresetFeeRate, setSelectedPresetFeeRate] = useState<string | null>(null);
-  const [feePrecalc, setFeePrecalc] = useState<IFee>({ current: null, slowFee: null, mediumFee: null, fastestFee: null });
+  const [feePrecalc, setFeePrecalc] = useState<IFee>({ current: null });
   const [changeAddress, setChangeAddress] = useState<string | null>(null);
   const [dumb, setDumb] = useState(false);
   const { isEditable } = routeParams;
@@ -134,46 +126,6 @@ const SendDetails = () => {
   const allBalance = formatBalanceWithoutSuffix(balance, BitcoinUnit.BTC, true);
   // estimated sendable amount when MAX is selected (null if not applicable)
   const [maxSendableAmount, setMaxSendableAmount] = useState<number | null>(null);
-  // if cutomFee is not set, we need to choose highest possible fee for wallet balance
-  // if there are no funds for even Slow option, use 1 sat/vbyte fee
-  const feeRate = useMemo(() => {
-    console.log('SendDetails: feeRate useMemo - customFee:', customFee);
-    console.log('SendDetails: feeRate useMemo - selectedPresetFeeRate:', selectedPresetFeeRate);
-    console.log('SendDetails: feeRate useMemo - feePrecalc:', feePrecalc);
-    console.log('SendDetails: feeRate useMemo - networkTransactionFees:', networkTransactionFees);
-
-    if (customFee) {
-      console.log('SendDetails: Using customFee:', customFee);
-      return customFee;
-    }
-
-    if (selectedPresetFeeRate) {
-      console.log('SendDetails: Using selectedPresetFeeRate:', selectedPresetFeeRate);
-      return selectedPresetFeeRate;
-    }
-
-    // If we have precalculated fees, use them to determine the default fee
-    if (feePrecalc.slowFee !== null) {
-      let initialFee;
-      if (feePrecalc.fastestFee !== null) {
-        initialFee = String(networkTransactionFees.fastestFee);
-        console.log('SendDetails: Using fastestFee:', initialFee);
-      } else if (feePrecalc.mediumFee !== null) {
-        initialFee = String(networkTransactionFees.mediumFee);
-        console.log('SendDetails: Using mediumFee:', initialFee);
-      } else {
-        initialFee = String(networkTransactionFees.slowFee);
-        console.log('SendDetails: Using slowFee:', initialFee);
-      }
-      console.log('SendDetails: Final feeRate:', initialFee);
-      return initialFee;
-    }
-
-    // If no precalc fees yet, default to fastestFee from network fees
-    const defaultFee = String(networkTransactionFees.fastestFee);
-    console.log('SendDetails: No precalc fees yet, using default networkTransactionFees.fastestFee:', defaultFee);
-    return defaultFee;
-  }, [customFee, selectedPresetFeeRate, feePrecalc, networkTransactionFees]);
 
   useEffect(() => {
     // decode route params
@@ -261,30 +213,6 @@ const SendDetails = () => {
 
     // we are ready!
     setIsLoading(false);
-
-    // load cached fees
-    AsyncStorage.getItem(NetworkTransactionFee.StorageKey)
-      .then(res => {
-        if (!res) return;
-        const fees = JSON.parse(res);
-        if (!fees?.fastestFee) return;
-        setNetworkTransactionFees(fees);
-      })
-      .catch(e => console.log('loading cached recommendedFees error', e));
-
-    // load fresh fees from servers
-
-    setNetworkTransactionFeesIsLoading(true);
-    NetworkTransactionFees.recommendedFees()
-      .then(async fees => {
-        if (!fees?.fastestFee) return;
-        setNetworkTransactionFees(fees);
-        await AsyncStorage.setItem(NetworkTransactionFee.StorageKey, JSON.stringify(fees));
-      })
-      .catch(e => console.log('loading recommendedFees error', e))
-      .finally(() => {
-        setNetworkTransactionFeesIsLoading(false);
-      });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // change header and reset state on wallet change
@@ -316,8 +244,6 @@ const SendDetails = () => {
   // recalc fees in effect so we don't block render
   useEffect(() => {
     if (!wallet) return; // wait for it
-    const fees = networkTransactionFees;
-    const requestedSatPerByte = Number(feeRate);
     const m = new Measure('getUtxo');
     const lutxo = utxos || wallet.getUtxo();
     m.end();
@@ -330,14 +256,7 @@ const SendDetails = () => {
         .reduce((prev, curr) => prev + curr.value, 0);
     }
 
-    const options = [
-      { key: 'current', fee: requestedSatPerByte },
-      { key: 'slowFee', fee: fees.slowFee },
-      { key: 'mediumFee', fee: fees.mediumFee },
-      { key: 'fastestFee', fee: fees.fastestFee },
-    ] as const;
-
-    const newFeePrecalc: /* Record<string, any> */ IFee = { ...feePrecalc };
+    const newFeePrecalc: IFee = { current: null };
 
     let targets = [];
     for (const transaction of addresses) {
@@ -374,22 +293,19 @@ const SendDetails = () => {
       }
     });
 
-    for (const opt of options) {
-      let flag = false;
-      while (true) {
-        try {
-          const { fee } = wallet.coinselect(lutxo, targets, opt.fee);
-          newFeePrecalc[opt.key] = fee;
-          break;
-        } catch (e: any) {
-          if (e.message.includes('Not enough') && !flag) {
-            flag = true;
-            targets = targets.map((t, index) => (index > 0 ? { ...t, value: 546 } : { address: t.address }));
-            continue;
-          }
-          newFeePrecalc[opt.key] = null;
-          break;
+    let retriedWithMinimumOutputs = false;
+    while (true) {
+      try {
+        const { fee } = wallet.coinselect(lutxo, targets, XEP_FEE_RATE_SAT_PER_VBYTE);
+        newFeePrecalc.current = fee;
+        break;
+      } catch (e: any) {
+        if (e.message.includes('Not enough') && !retriedWithMinimumOutputs) {
+          retriedWithMinimumOutputs = true;
+          targets = targets.map((t, index) => (index > 0 ? { ...t, value: 546 } : { address: t.address }));
+          continue;
         }
+        break;
       }
     }
 
@@ -407,7 +323,7 @@ const SendDetails = () => {
 
     setParams({ frozenBalance: frozen });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [wallet, networkTransactionFees, utxos, addresses, feeRate, dumb]);
+  }, [wallet, utxos, addresses, dumb]);
 
   // we need to re-calculate fees if user opens-closes coin control
   useFocusEffect(
@@ -526,7 +442,6 @@ const SendDetails = () => {
     assert(wallet, 'Internal error: wallet is not set');
     Keyboard.dismiss();
     setIsLoading(true);
-    const requestedSatPerByte = feeRate;
     for (const [index, transaction] of addresses.entries()) {
       let error;
       if (!transaction.amount || Number(transaction.amount) < 0 || parseFloat(String(transaction.amount)) === 0) {
@@ -534,9 +449,6 @@ const SendDetails = () => {
         console.log('validation error');
       } else if (parseFloat(String(transaction.amountSats)) <= 500) {
         error = loc.send.details_amount_field_is_less_than_minimum_amount_sat;
-        console.log('validation error');
-      } else if (!requestedSatPerByte || parseFloat(requestedSatPerByte) <= 0) {
-        error = loc.send.details_fee_field_is_not_valid;
         console.log('validation error');
       } else if (!transaction.address) {
         error = loc.send.details_address_field_is_not_valid;
@@ -619,7 +531,7 @@ const SendDetails = () => {
     if (!wallet) return;
     const change = await getChangeAddressAsync();
     assert(change, 'Could not get change address');
-    const requestedSatPerByte = Number(feeRate);
+    const requestedSatPerByte = XEP_FEE_RATE_SAT_PER_VBYTE;
     const lutxo: CreateTransactionUtxo[] = utxos || (wallet?.getUtxo() ?? []);
     console.log({ requestedSatPerByte, lutxo: lutxo.length });
 
@@ -1253,44 +1165,6 @@ const SendDetails = () => {
     }
   }, [colors, wallet, isTransactionReplaceable, balance, addresses, isEditable, isLoading, setHeaderRightOptions]);
 
-  // Handle selectedFeeRate and selectedFeeType returned from SelectFeeScreen
-  useEffect(() => {
-    const selectedFeeRate = routeParams.selectedFeeRate;
-    const selectedFeeType = routeParams.selectedFeeType;
-
-    console.log('SendDetails: Fee selection useEffect triggered');
-    console.log('SendDetails: selectedFeeRate:', selectedFeeRate);
-    console.log('SendDetails: selectedFeeType:', selectedFeeType);
-    console.log('SendDetails: current customFee:', customFee);
-    console.log('SendDetails: current selectedPresetFeeRate:', selectedPresetFeeRate);
-    console.log('SendDetails: networkTransactionFees:', networkTransactionFees);
-
-    if (selectedFeeRate !== undefined || selectedFeeType !== undefined) {
-      console.log('SendDetails: Processing fee selection...');
-
-      if (selectedFeeType === NetworkTransactionFeeType.CUSTOM) {
-        console.log('SendDetails: CUSTOM fee selected, setting customFee to:', selectedFeeRate);
-        // Custom fee was selected - set the custom fee rate and clear preset
-        setCustomFee(selectedFeeRate || null);
-        setSelectedPresetFeeRate(null);
-      } else if (
-        selectedFeeType === NetworkTransactionFeeType.FAST ||
-        selectedFeeType === NetworkTransactionFeeType.MEDIUM ||
-        selectedFeeType === NetworkTransactionFeeType.SLOW
-      ) {
-        console.log('SendDetails: Preset fee selected:', selectedFeeType);
-        console.log('SendDetails: Setting selectedPresetFeeRate to:', selectedFeeRate);
-        // Preset fee was selected - set the preset fee rate and clear custom fee
-        setSelectedPresetFeeRate(selectedFeeRate || null);
-        setCustomFee(null);
-      }
-
-      console.log('SendDetails: Clearing route params...');
-      // Clear the parameters to prevent re-processing
-      setParams({ selectedFeeRate: undefined, selectedFeeType: undefined });
-    }
-  }, [routeParams.selectedFeeRate, routeParams.selectedFeeType, networkTransactionFees, setParams, customFee, selectedPresetFeeRate]);
-
   const handleRecipientsScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     const contentOffset = e.nativeEvent.contentOffset;
     const viewSize = e.nativeEvent.layoutMeasurement;
@@ -1555,36 +1429,15 @@ const SendDetails = () => {
               inputAccessoryViewID={DismissKeyboardInputAccessoryViewID}
             />
           </View>
-          <Pressable
-            testID="chooseFee"
-            accessibilityRole="button"
-            onPress={() => {
-              Keyboard.dismiss();
-              const selectedRecipientUnit = addresses[scrollIndex.current]?.unit || amountUnit;
-              navigation.navigate('SelectFee', {
-                networkTransactionFees,
-                feePrecalc,
-                feeRate,
-                feeUnit: selectedRecipientUnit,
-                walletID: wallet?.getID() || '',
-                customFee,
-              });
-            }}
-            disabled={isLoading}
-            style={({ pressed }) => [pressed && styles.pressed, styles.fee]}
-          >
+          <View style={styles.fee}>
             <Text style={[styles.feeLabel, stylesHook.feeLabel]}>{loc.send.create_fee}</Text>
 
             <View style={[styles.feeRow, stylesHook.feeRow]}>
-              {networkTransactionFeesIsLoading ? (
-                <ActivityIndicator />
-              ) : (
-                <Text style={stylesHook.feeValue}>
-                  {feePrecalc.current ? formatFee(feePrecalc.current) : feeRate + ' ' + loc.units.sat_vbyte}
-                </Text>
-              )}
+              <Text style={stylesHook.feeValue}>
+                {feePrecalc.current !== null ? formatFee(feePrecalc.current) : XEP_FEE_RATE_SAT_PER_VBYTE + ' ' + loc.units.sat_vbyte}
+              </Text>
             </View>
-          </Pressable>
+          </View>
           {renderCreateButton()}
         </View>
       </ScrollView>

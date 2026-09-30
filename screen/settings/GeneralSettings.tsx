@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Platform } from 'react-native';
 import { openSettings } from 'react-native-permissions';
-import A from '../../blue_modules/analytics';
 import loc from '../../loc';
 import { useStorage } from '../../hooks/context/useStorage';
 import { useSettings } from '../../hooks/context/useSettings';
@@ -22,8 +21,6 @@ const GeneralSettings: React.FC = () => {
   const { wallets, isStorageEncrypted } = useStorage();
 
   const {
-    isDoNotTrackEnabled,
-    setDoNotTrackStorage,
     isPrivacyBlurEnabled,
     setIsPrivacyBlurEnabled,
     isWidgetBalanceDisplayAllowed,
@@ -50,20 +47,6 @@ const GeneralSettings: React.FC = () => {
       setIsLoading(SettingsPrivacySection.None);
     })();
   }, [isStorageEncrypted]);
-
-  const onDoNotTrackValueChange = useCallback(
-    async (value: boolean) => {
-      setIsLoading(SettingsPrivacySection.All);
-      try {
-        setDoNotTrackStorage(value);
-        A.setOptOut(value);
-      } catch (e) {
-        console.debug('onDoNotTrackValueChange catch', e);
-      }
-      setIsLoading(SettingsPrivacySection.None);
-    },
-    [setDoNotTrackStorage],
-  );
 
   const onQuickActionsValueChange = useCallback(
     async (value: boolean) => {
@@ -157,6 +140,7 @@ const GeneralSettings: React.FC = () => {
             onValueChange: onTotalBalanceEnabledValueChange,
             disabled: isLoading === SettingsPrivacySection.All || wallets.length < 2,
           }}
+          bottomDivider={!isDesktop}
           switchTestID="TotalBalanceSwitch"
         />
         {!isDesktop && (
@@ -168,18 +152,9 @@ const GeneralSettings: React.FC = () => {
               onValueChange: onTemporaryScreenshotsValueChange,
               disabled: isLoading === SettingsPrivacySection.All,
             }}
+            bottomDivider={false}
           />
         )}
-        <SettingsListItem
-          title={loc.settings.privacy_do_not_track}
-          subtitle={loc.settings.privacy_do_not_track_explanation}
-          switch={{
-            value: isDoNotTrackEnabled,
-            onValueChange: onDoNotTrackValueChange,
-            disabled: isLoading === SettingsPrivacySection.All,
-          }}
-          bottomDivider={false}
-        />
       </SettingsSection>
 
       {Platform.OS === 'ios' && (

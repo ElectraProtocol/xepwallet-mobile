@@ -15,7 +15,6 @@ import IsItMyAddress from '../screen/settings/IsItMyAddress';
 import Success from '../screen/send/success';
 import CPFP from '../screen/transactions/CPFP';
 import RBFBumpFee from '../screen/transactions/RBFBumpFee';
-import RBFCancel from '../screen/transactions/RBFCancel';
 import TransactionStatus from '../screen/transactions/TransactionStatus';
 import WalletAddresses from '../screen/wallets/WalletAddresses';
 import WalletDetails from '../screen/wallets/WalletDetails';
@@ -400,11 +399,6 @@ const DetailViewStackScreensStack = () => {
           name="RBFBumpFee"
           component={RBFBumpFee}
           options={navigationStyle({ title: loc.transactions.rbf_title })(theme)}
-        />
-        <DetailViewStack.Screen
-          name="RBFCancel"
-          component={RBFCancel}
-          options={navigationStyle({ title: loc.transactions.cancel_title })(theme)}
         />
         <DetailViewStack.Screen
           name="SelectWallet"

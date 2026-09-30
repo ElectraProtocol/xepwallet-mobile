@@ -5,7 +5,6 @@ import { Alert, Image, Linking, StyleSheet, Text, TouchableOpacity, View } from 
 import { getApplicationName, getBuildNumber, getBundleId, getUniqueIdSync, getVersion } from 'react-native-device-info';
 import Icon from '@react-native-vector-icons/fontawesome6';
 
-import A from '../../blue_modules/analytics';
 import BlueTextCentered from '../../components/BlueTextCentered';
 import { HDSegwitBech32Wallet } from '../../class/wallets/hd-segwit-bech32-wallet';
 import presentAlert from '../../components/Alert';
@@ -132,7 +131,6 @@ const About: React.FC = () => {
             accessibilityRole="button"
             onPress={() => {
               const stringToCopy = 'userId:' + getUniqueIdSync();
-              A.logError('copied unique id');
               Clipboard.setString(stringToCopy);
             }}
           >

@@ -308,8 +308,6 @@
     "privacy_quickactions": "Iindlela ezikhawulezayo zeNgxowa",
     "privacy_quickactions_explanation": "Bamba uchukumise iikoni ye-app ye-XEPWallet ukuze ukhawuleze ujonge ibhalansi yengxowa yakho.",
     "privacy_clipboard_explanation": "Bonelela ngeendlela ezikhawulezayo ukuba idilesi okanye i-invoyisi ifumaneka kwi-clipboard yakho.",
-    "privacy_do_not_track": "Vala uHlalutyo",
-    "privacy_do_not_track_explanation": "Ulwazi lokusebenza nokuthembeka aluzukuthunyelwa ukuze luhlalutywe.",
     "rate": "Ireyithi",
     "push_notifications_explanation": "Ngokuvula izaziso, itoken yesixhobo sakho iya kuthunyelwa kwiseva, kunye needilesi zengxowa kunye nee-IDs ze-transactions zazo zonke iingxowa kunye nee-transactions ezenziwe emva kokuvula izaziso. Itoken yesixhobo isetyenziselwa ukuthumela izaziso, kwaye ulwazi lwengxowa lusivumela ukukwazisa malunga ne-XEP engenayo okanye ukuqinisekiswa kwe-transactions.\n\nUlwazi kuphela kususela ekuvuleni kwakho izaziso luyathunyelwa—akukho nto ngaphambili iqokelelwayo.\n\nUkuvala izaziso kuya kususa lonke olu lwazi kwiseva. Ukongezelela, ukucima ingxowa kwi-app kukwakhulula ulwazi lwayo lwadibanayo kwiseva.",
     "selfTest": "Uvavanyo lwakho",

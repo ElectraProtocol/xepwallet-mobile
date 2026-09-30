@@ -308,8 +308,6 @@
     "privacy_quickactions": "Jalan Pintas Dompet",
     "privacy_quickactions_explanation": "Sentuh dan tahan ikon aplikasi XEPWallet untuk melihat saldo dompet Anda dengan cepat.",
     "privacy_clipboard_explanation": "Sediakan pintasan jika alamat atau faktur ditemukan di clipboard Anda.",
-    "privacy_do_not_track": "Nonaktifkan Analitik",
-    "privacy_do_not_track_explanation": "Informasi performa dan keandalan tidak akan dikirim untuk dianalisis.",
     "rate": "Kurs",
     "push_notifications_explanation": "Dengan mengaktifkan notifikasi, token perangkat Anda akan dikirim ke server, beserta alamat dompet dan ID transaksi untuk semua dompet dan transaksi yang dilakukan setelah notifikasi diaktifkan. Token perangkat digunakan untuk mengirim notifikasi, dan informasi dompet memungkinkan kami memberitahu Anda tentang XEP masuk atau konfirmasi transaksi.\n\nHanya informasi setelah Anda mengaktifkan notifikasi yang dikirimkan—tidak ada data sebelumnya yang dikumpulkan.\n\nMenonaktifkan notifikasi akan menghapus semua informasi ini dari server. Selain itu, menghapus dompet dari aplikasi juga akan menghapus informasi terkait dompet tersebut dari server.",
     "selfTest": "Tes Mandiri",

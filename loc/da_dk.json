@@ -308,8 +308,6 @@
     "privacy_quickactions": "Wallet-genveje",
     "privacy_quickactions_explanation": "Tryk og hold på XEPWallet-appikonet for hurtigt at se din wallets saldo.",
     "privacy_clipboard_explanation": "Tilbyd genveje, hvis en adresse eller faktura findes i din udklipsholder.",
-    "privacy_do_not_track": "Deaktiver analyse",
-    "privacy_do_not_track_explanation": "Oplysninger om ydeevne og pålidelighed vil ikke blive indsendt til analyse.",
     "rate": "Kurs",
     "push_notifications_explanation": "Ved at aktivere notifikationer vil dit enhedstoken blive sendt til serveren sammen med wallet-adresser og transaktions-id'er for alle wallets og transaktioner foretaget efter aktivering af notifikationer. Enhedstokenet bruges til at sende notifikationer, og wallet-informationen tillader os at give dig besked om indgående XEP eller transaktionsbekræftelser.\n\nKun oplysninger fra efter du aktiverer notifikationer overføres—intet fra før indsamles.\n\nDeaktivering af notifikationer vil fjerne alle disse oplysninger fra serveren. Derudover vil sletning af en wallet fra appen også fjerne dens tilknyttede oplysninger fra serveren.",
     "selfTest": "Selvtest",

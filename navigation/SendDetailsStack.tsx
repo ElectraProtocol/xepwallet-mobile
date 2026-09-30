@@ -11,7 +11,6 @@ import { withLazySuspense } from './LazyLoadingIndicator';
 import { CoinControlSortDirection, CoinControlSortType, SendDetailsStackParamList } from './SendDetailsStackParamList';
 import HeaderRightButton from '../components/HeaderRightButton';
 import { BitcoinUnit } from '../models/bitcoinUnits';
-import SelectFeeScreen from '../screen/SelectFeeScreen';
 import CoinControlOutputSheet from '../screen/send/CoinControlOutputSheet';
 import PsbtRawSheet from '../components/PsbtRawSheet';
 import { CommonToolTipActions } from '../typings/CommonToolTipActions';
@@ -119,19 +118,6 @@ const SendDetailsStack = () => {
           withRouteParamHeaderOptions({ headerRight: true }),
         )(theme)}
         initialParams={{ isEditable: true, feeUnit: BitcoinUnit.BTC, amountUnit: BitcoinUnit.BTC }} // Correctly typed now
-      />
-      <Stack.Screen
-        name="SelectFee"
-        component={SelectFeeScreen}
-        options={navigationStyle({
-          presentation: 'formSheet',
-          headerTitle: '',
-          sheetAllowedDetents: Platform.OS === 'ios' ? 'fitToContents' : [0.45],
-          sheetGrabberVisible: true,
-          closeButtonPosition: CloseButtonPosition.Right,
-          keyboardHandlingEnabled: true,
-          navigationBarTranslucent: false,
-        })(theme)}
       />
       <Stack.Screen
         name="Confirm"

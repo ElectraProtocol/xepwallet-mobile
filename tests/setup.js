@@ -504,12 +504,6 @@ jest.mock('react-native-haptic-feedback', () => {
   };
 });
 
-jest.mock('../blue_modules/analytics', () => {
-  const ret = jest.fn();
-  ret.ENUM = { CREATED_WALLET: '' };
-  return ret;
-});
-
 // addInvoice() registers a fire-and-forget payment-push callback; disable the
 // URI in unit tests so node-fetch does not leave in-flight handles after the
 // suite exits (which makes Jest fail with "did not exit one second after").

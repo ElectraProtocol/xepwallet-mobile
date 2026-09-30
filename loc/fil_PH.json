@@ -308,8 +308,6 @@
     "privacy_quickactions": "Mga Shortcut ng Wallet",
     "privacy_quickactions_explanation": "Pindutin at hawakan ang icon ng XEPWallet app upang mabilis na makita ang balanse ng iyong wallet.",
     "privacy_clipboard_explanation": "Magbigay ng mga shortcut kung may nakitang address o invoice sa iyong clipboard.",
-    "privacy_do_not_track": "I-disable ang Analytics",
-    "privacy_do_not_track_explanation": "Hindi isusumite para sa pagsusuri ang impormasyon ng performance at reliability.",
     "rate": "Halaga ng palitan",
     "push_notifications_explanation": "Sa pag-enable ng mga abiso, ipapadala sa server ang token ng iyong device, kasama ang mga address ng wallet at transaction ID para sa lahat ng wallet at transaksiyong ginawa pagkatapos i-enable ang mga abiso. Ang token ng device ay ginagamit upang magpadala ng mga abiso, at ang impormasyon ng wallet ay nagbibigay-daan sa aming abisuhan ka tungkol sa papasok na XEP o mga kumpirmasyon ng transaksiyon.\n\nImpormasyon lamang mula sa pagkatapos mong i-enable ang mga abiso ang ipinapadala—walang kinokolekta mula sa nakaraan.\n\nAng pag-disable ng mga abiso ay aalisin ang lahat ng impormasyong ito mula sa server. Bukod pa rito, ang pag-delete ng wallet mula sa app ay aalisin din ang kaugnay nitong impormasyon mula sa server.",
     "selfTest": "Pagsusuri sa Sarili",

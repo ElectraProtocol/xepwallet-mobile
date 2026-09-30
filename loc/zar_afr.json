@@ -308,8 +308,6 @@
     "privacy_quickactions": "Beursie-kortpaaie",
     "privacy_quickactions_explanation": "Raak en hou die XEPWallet app-ikoon om jou beursie se balans vinnig te sien.",
     "privacy_clipboard_explanation": "Verskaf kortpaaie indien 'n adres of faktuur in jou knipbord gevind word.",
-    "privacy_do_not_track": "Skakel analise af",
-    "privacy_do_not_track_explanation": "Prestasie- en betroubaarheidsinligting sal nie vir ontleding ingedien word nie.",
     "rate": "Koers",
     "push_notifications_explanation": "Deur kennisgewings te aktiveer, sal jou toestel-token na die bediener gestuur word, saam met beursie-adresse en transaksie-ID's vir alle beursies en transaksies wat ná die aktivering van kennisgewings gemaak is. Die toestel-token word gebruik om kennisgewings te stuur, en die beursie-inligting laat ons toe om jou in kennis te stel van inkomende XEP of transaksie-bevestigings.\n\nSlegs inligting van ná jy kennisgewings aktiveer, word oorgedra—niks van voorheen word ingesamel nie.\n\nDie afskakeling van kennisgewings sal al hierdie inligting van die bediener verwyder. Verder sal die verwydering van 'n beursie uit die app ook die gepaardgaande inligting van die bediener verwyder.",
     "selfTest": "Selftoets",
