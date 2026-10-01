@@ -8,8 +8,6 @@ buildscript {
         compileSdkVersion = 36
         targetSdkVersion = 36
         googlePlayServicesVersion = "16.1.0"
-        googlePlayServicesIidVersion = "16.0.1"
-        firebaseVersion = "21.1.0"
         ndkVersion = "28.2.13676358"
         kotlinVersion = '2.1.20'
     }
@@ -21,7 +19,6 @@ buildscript {
         classpath("com.android.tools.build:gradle:8.13.2")
         classpath("com.facebook.react:react-native-gradle-plugin")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
-	    classpath 'com.google.gms:google-services:4.5.0'  // Google Services plugin
     }
 }
 
@@ -92,11 +89,8 @@ if (buildscript != null) {
 }
 
 subprojects { project ->
-    // react-native-device-info's androidTest classpath pulls
-    // play-services-iid:16.0.1 -> play-services-base:16.0.1 -> support-v4:26.1.0,
-    // which collides with androidx.core:core:1.13.1 (Duplicate class
-    // android.support.v4.app.INotificationSideChannel). Exclude the pre-AndroidX
-    // support-* modules so the AndroidX equivalents in core win.
+    // Exclude legacy support libraries if another dependency brings them in;
+    // their AndroidX equivalents are already used by the app.
     configurations.all {
         exclude group: 'com.android.support', module: 'support-compat'
         exclude group: 'com.android.support', module: 'support-annotations'

@@ -32,23 +32,6 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:configChanges="uiMode">
 
-        <meta-data
-            android:name="firebase_messaging_auto_init_enabled"
-            android:value="false" />
-        <meta-data
-            android:name="firebase_analytics_collection_enabled"
-            android:value="false" />
-        <!-- Bugsnag must not initialize from its library manifest. -->
-        <provider android:name="com.bugsnag.android.internal.BugsnagContentProvider" tools:node="remove" />
-        <!-- Push is disabled, so do not auto-initialize Firebase either. -->
-        <provider android:name="com.google.firebase.provider.FirebaseInitProvider" tools:node="remove" />
-        <service android:name="com.google.firebase.components.ComponentDiscoveryService" tools:node="remove" />
-        <!-- No native push entry points until XEP has its own notification service. -->
-        <service android:name="com.wix.reactnativenotifications.core.ProxyService" tools:node="remove" />
-        <service android:name="com.wix.reactnativenotifications.fcm.FcmInstanceIdListenerService" tools:node="remove" />
-        <service android:name="com.wix.reactnativenotifications.fcm.FcmInstanceIdRefreshHandlerService" tools:node="remove" />
-        <service android:name="com.google.firebase.messaging.FirebaseMessagingService" tools:node="remove" />
-        <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" tools:node="remove" />
 <provider
     android:name="androidx.core.content.FileProvider"
     android:authorities="${applicationId}.provider"

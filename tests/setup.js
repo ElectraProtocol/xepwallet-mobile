@@ -63,10 +63,6 @@ jest.mock('react-native-secure-key-store', () => {
   return {};
 });
 
-jest.mock('react-native-notifications', () => {
-  return {};
-});
-
 jest.mock('react-native-background-fetch', () => {
   // The real module instantiates `new NativeEventEmitter(...)` at module
   // load, which throws under jest because the underlying native module is

@@ -18,8 +18,6 @@
     "androidx.compose.material3:material3",
     "@react-navigation/native-stack",
     "react-native-screens",
-    "react-native-notifications",
-    "@bugsnag/react-native",
     "react-native-reanimated",
     "react-native-worklets"
   ],

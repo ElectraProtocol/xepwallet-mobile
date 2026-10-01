@@ -34,8 +34,8 @@ const About: React.FC = () => {
     navigate('Licensing');
   }, [navigate]);
 
-  const openCommunityLink = useCallback((url: string) => {
-    Linking.openURL(url).catch(error => console.error('Could not open community link:', error));
+  const openExternalLink = useCallback((url: string) => {
+    Linking.openURL(url).catch(error => console.error('Could not open external link:', error));
   }, []);
 
   const handlePerformanceTest = useCallback(async () => {
@@ -69,22 +69,31 @@ const About: React.FC = () => {
         <SettingsListItem
           title="Electra Protocol on X"
           leftAvatar={<Icon name="x-twitter" size={24} color={colors.foregroundColor} iconStyle="brand" />}
-          onPress={() => openCommunityLink('https://x.com/ElectraProtocol')}
+          onPress={() => openExternalLink('https://x.com/ElectraProtocol')}
         />
         <SettingsListItem
           title={loc.settings.about_sm_github}
           leftAvatar={<Icon name="github" size={24} color={colors.foregroundColor} iconStyle="brand" />}
-          onPress={() => openCommunityLink('https://github.com/ElectraProtocol')}
+          onPress={() => openExternalLink('https://github.com/ElectraProtocol')}
         />
         <SettingsListItem
           title={loc.settings.about_sm_telegram}
           leftAvatar={<Icon name="telegram" size={24} color={colors.foregroundColor} iconStyle="brand" />}
-          onPress={() => openCommunityLink('https://t.me/ElectraProtocol')}
+          onPress={() => openExternalLink('https://t.me/ElectraProtocol')}
         />
         <SettingsListItem
           title="Electra Protocol on Discord"
           leftAvatar={<Icon name="discord" size={24} color={colors.foregroundColor} iconStyle="brand" />}
-          onPress={() => openCommunityLink('https://discord.gg/eCSQMJsKpw')}
+          onPress={() => openExternalLink('https://discord.gg/eCSQMJsKpw')}
+          bottomDivider={false}
+        />
+      </SettingsSection>
+
+      <SettingsSection>
+        <SettingsListItem
+          title="Privacy Policy"
+          chevron
+          onPress={() => openExternalLink('https://www.electraprotocol.com/privacy-policy-mobile-wallet')}
           bottomDivider={false}
         />
       </SettingsSection>

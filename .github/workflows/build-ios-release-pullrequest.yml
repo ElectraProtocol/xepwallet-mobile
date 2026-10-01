@@ -418,15 +418,6 @@ jobs:
           
           echo -e "\033[1;31m========================================================\033[0m"
 
-      - name: Upload Bugsnag Sourcemaps
-        if: success()
-        run: bundle exec fastlane ios upload_bugsnag_sourcemaps
-        env:
-          BUGSNAG_API_KEY: ${{ secrets.BUGSNAG_API_KEY }}
-          BUGSNAG_RELEASE_STAGE: production
-          PROJECT_VERSION: ${{ env.PROJECT_VERSION }}
-          NEW_BUILD_NUMBER: ${{ env.NEW_BUILD_NUMBER }}
-
       - name: Upload Build Logs
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
